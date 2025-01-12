@@ -1,0 +1,34 @@
+<div class="position-relative home-page app-main-page">
+    <div class="page-parent d-flex w-100">
+        <div class="main-page w-100">
+            <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
+                <div class="w-100 d-flex align-items-center justify-content-center">
+                    <div class="login-container position-relative">
+                        <div class="animated animatedFadeInUp fadeInUp app-card bg-white w-100 login-card">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <span class="fw-bold section-heading-h2">THE V-CUT</span>
+                            </div>
+                            <div class="d-flex align-items-center search-box-container w-100">
+                                <div class="position-relative w-100">
+                                    <input class="app-text-box search-box" id="search-dashboard"
+                                           [(ngModel)]="submenuSearchText"
+                                           (keyup)="submenuSearch()"
+                                           placeholder="Search V-CUT Salons near you"/>
+
+                                    <span class="icon-search material-symbols-rounded medium-icon">search</span>
+                                    <span class="icon-clear material-symbols-rounded medium-icon"
+                                          (click)="clearSearch()"
+                                          *ngIf="submenuSearchText">close</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <ngx-ui-loader [loaderId]="'loader-login-container'"></ngx-ui-loader>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

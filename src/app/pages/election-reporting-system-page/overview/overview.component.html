@@ -1,0 +1,106 @@
+<div class="overview-page">
+    <div class="row">
+        <div class="col-12">
+            <div class="row" style="height: 40px !important;">
+                <p class="col-md-6 section-heading-h2">Voting Details</p>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="search-count-divider"></div>
+                        <div class="position-relative">
+                            <span class="caller-tooltip-icon">
+                                <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from the source system. This helps ensure that you are viewing the latest information available.</div>
+
+                              <span class="icon-search  material-symbols-rounded medium-icon">info</span>
+                            </span>
+                              <span class="text txt-margin"
+                                ><b>Last Synced:</b> {{lastUpdated}}</span
+                              >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 h-100">
+                <ag-grid-angular
+                        class="{{ appliedThemeClassOnTable }} ag-theme-material-table"
+                        [gridOptions]="votingGridOptions"
+                        (gridReady)="votingOnGridReady($event)"
+                        [columnDefs]="votingColumnDefs"
+                        [rowData]="votingRowData"
+                ></ag-grid-angular>
+            </div>
+        </div>
+        <div class="col-12 mt-4" *ngIf="false">
+            <div class="row">
+                <p class="col-md-6 section-heading-h2">Manitoba 2023 Election Night</p>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="search-count-divider"></div>
+                        <div class="position-relative">
+                            <span class="caller-tooltip-icon">
+                                <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from the source system. This helps ensure that you are viewing the latest information available.</div>
+
+                              <span class="icon-search  material-symbols-rounded medium-icon">info</span>
+                            </span>
+                              <span class="text txt-margin"
+                                ><b>Last Synced:</b> {{lastUpdated}}</span
+                              >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="d-flex mt-4">
+                <div class="section-heading-h2">Manitoba 2023 Election Night</div>
+                <div class="d-flex mt-2 justify-content-between mx-4 table-two">
+                    <div class="search-count-divider"></div>
+                    <div class="position-relative position-relative-table-two">
+                        <span class="caller-tooltip-icon">
+                            <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from the source system. This helps ensure that you are viewing the latest information available.</div>
+
+                          <span class="icon-search material-symbols-rounded medium-icon">info</span>
+                        </span>
+                          <span class="text txt-margin"
+                            ><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span
+                          >
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="divider my-3 position-relative">
+                <div class="d-flex align-items-center position-absolute view-options" style="bottom: 2px;">
+                    <div class=" material-symbols-rounded medium-icon mx-2 view-option"
+                         (click)="onViewOptionChange(opt)"
+                         [ngClass]="{'active': opt.selected}"
+                         *ngFor="let opt of viewOptions">
+                        {{opt.icon}}
+                    </div>
+                </div>
+            </div>
+
+                <div *ngIf="selectedViewOption.icon === 'data_table'" class="w-100 h-100">
+                    <ag-grid-angular
+                            class="{{ appliedThemeClassOnTable }}"
+                            [gridOptions]="manitobaGridOptions"
+                            (gridReady)="manitobaOnGridReady($event)"
+                            [columnDefs]="manitobaColumnDefs"
+                            [rowData]="manitobaRowData"
+                    ></ag-grid-angular>
+                </div>
+        </div>
+
+        <div class="d-flex align-items-center w-100 mt-4 pt-4">
+            <div style="height: auto" class="w-50">
+                <ag-charts-angular
+                        style="height: 100%"
+                        [options]="options"
+                ></ag-charts-angular>
+            </div>
+            <div style="height: auto" class="w-50">
+                <ag-charts-angular
+                        style="height: 100%"
+                        [options]="optionsBar"
+                ></ag-charts-angular>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+@import '../../../styles/variables';
+
+::ng-deep .app-dark-mode {
+  .app-breadcrumb {
+    .breadcrumb {
+      a {
+        color: white !important;
+      }
+    }
+  }
+}
+
+.app-breadcrumb {
+  color: $CPPrimary;
+  margin: 0 -20px;
+
+  .page-header {
+    padding: 0 20px 0 24px;
+  }
+
+  .breadcrumb {
+    padding: 0;
+    background: none;
+    font-size: 0.875rem;
+    font-family: $CPMediumRegularFont;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+    a {
+      color: $CoolGrey;
+      font-weight: 600;
+      text-decoration: none;
+
+      &.active {
+        color: $TextGrey;
+      }
+    }
+
+  }
+
+  .breadcrumb-item + .breadcrumb-item {
+    position: relative;
+    padding-left: 2rem;
+
+    &:before {
+      /*font-family: "feather";
+      content: "\e844";
+      color: #fff;*/
+      width: 0;
+      height: 0;
+      content: "";
+      border-color: transparent $CPPrimary;
+      border-style: solid;
+      border-width: 5px 0 5px 7px;
+      margin-bottom: 2px;
+
+      &:first-child {
+        display: none;
+      }
+    }
+  ;
+  }
+}
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
+}
+
+.cop-date-icon {
+  background: #231e1e;
+  color: white;
+  border-radius: 0;
+  border-left: 0;
+}
+
+.top-selects {
+  &.cop-top-selects {
+    padding: 0;
+  }
+
+  .form-control {
+    &.cop-date-input {
+      width: 57% !important;
+    }
+  }
+
+  &.refresh-col {
+    text-align: right;
+    display: block;
+  }
+}
+
+.app-breadcrumb .breadcrumb-item + .breadcrumb-item:before {
+  color: $CPPrimary !important;
+  position: absolute;
+  top: 8.5px;
+  left: 0.8rem;
+}

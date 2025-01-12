@@ -1,0 +1,194 @@
+@import "src/styles/variables";
+
+::ng-deep .app-dark-mode .riding-page {
+  .title {
+    color: white !important;
+  }
+}
+
+.riding-page {
+  .section-heading-h2 {
+    // font-size: 1.25rem !important;
+    // margin-bottom: 1rem !important;
+    font-size: 18px !important;
+    font-weight: 700;
+    font-style: LatoSemibold;
+  }
+  
+  .choose-riding-section {
+    margin-bottom: 0.5rem;
+    .riding-title {
+      margin-bottom: 0px !important;
+      font-size: 1.25rem !important;
+    }
+  }
+  margin-bottom: 80px;
+  .title {
+    font-size: 20px;
+    color: #383b3e;
+  }
+  .ridings-lastsynced-icons {
+    margin-top: 0.75rem;
+    position: relative;
+    bottom: 10px;
+  }
+  
+  .caller-tooltip-icon {
+    padding-top: 7px;
+    &:hover {
+      .icon {
+        color: $CPPrimary !important;
+      }
+
+      .caller-tooltip {
+        display: block;
+      }
+    }
+
+    .caller-tooltip {
+      display: none;
+      position: absolute;
+      top: 40px;
+      width: 400px;
+      background: white;
+      border-radius: 4px;
+      z-index: 9;
+      border: 1px solid #c1c1c1;
+      font-size: 12px;
+      color: $CPBlack;
+      right: 0;
+    }
+  }
+  .eye-icon-container {
+    position: relative;
+    display: inline-block;
+    &:hover {
+      .icon {
+        color: $CPPrimary !important;
+      }
+
+      .caller-tooltip {
+        display: block;
+      }
+    }
+    .caller-tooltip-icon {
+      padding-top: 10px;
+      padding-bottom: 0px !important;
+      .icon {
+        padding-left: 0px !important;
+      }
+    }
+    .caller-tooltip {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: 3px;
+      width: 400px;
+      background: white;
+      border-radius: 4px;
+      z-index: 9;
+      border: 1px solid #c1c1c1;
+      font-size: 14px;
+      color: $CPBlack;
+      transform: translateY(-50%);
+    }
+  }
+
+  .search-box {
+    width: 250px;
+  }
+
+  input.app-text-box {
+    padding: 0.75rem 0.75rem 0.75rem 2rem;
+  }
+
+  .icon-search {
+    font-size: 22px;
+    position: absolute;
+    top: 11px;
+    left: 6px;
+    cursor: pointer;
+  }
+
+  .icon-clear {
+    font-size: 22px;
+    position: absolute;
+    top: 11px;
+    right: 6px;
+    cursor: pointer;
+  }
+
+  .view-options {
+    bottom: 8px;
+    right: 0;
+
+    .view-option {
+      position: relative;
+      cursor: pointer;
+
+      &.active {
+        position: relative;
+
+        &:after {
+          content: "";
+          width: 100%;
+          height: 3px !important;
+          display: block;
+          background: #cc212c;
+          position: absolute;
+          bottom: -8px;
+        }
+      }
+    }
+  }
+
+  .select-region-button {
+    border-radius: inherit;
+    padding: 9px 26px;
+  }
+
+  .card-border {
+    border: 1px solid $StrokeGrey;
+  }
+
+  .ag-custom-header {
+    background-color: #99a3b3 !important;
+  }
+
+  .ag-theme-material .ag-header-row {
+    background-color: #99a3b3 !important;
+  }
+  .mode-divider {
+    border-right: 1px solid black;
+    height: 18px;
+    margin-bottom: 0;
+    margin: 0 15px;
+
+    @include below-tablet {
+      display: none;
+    }
+  }
+
+  .timestamp-icon {
+    font-size: 22px;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    cursor: pointer;
+  }
+
+  .txt-margin {
+    margin-left: 1.5rem;
+  }
+  .selected-riding-name {
+    margin-bottom: 0px !important;
+    font-size: 1.25rem !important;
+    margin-right: 10px;
+  }
+}
+
+::ng-deep {
+  .ag-paging-button{
+    margin: -2px;
+  }
+}

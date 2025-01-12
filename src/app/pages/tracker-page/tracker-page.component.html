@@ -1,0 +1,222 @@
+<div class="position-relative tracker-page app-main-page">
+  <div class="d-flex justify-content-between export-section bg-white align-items-center py-2 px-3">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="app-submenu-container">
+      <app-submenu [searchPlaceHolder]="'Search Articles'"
+                   [hasSearchCount]="true"
+                   [searchCount]="trackers.length"
+                   [hasExport]="true"
+                   (onExport)="exportCSV()"
+                   [hasSearch]="true"
+                   [hasRefresh]="true"
+      ></app-submenu>
+    </div>
+  </div>
+
+  <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
+    <div class="w-100 d-flex align-items-center justify-content-center">
+      <div class="dashboard-container position-relative w-100">
+        <div class="app-container">
+          <div class="row">
+            <div class="col-12">
+              <div class="d-flex justify-content-between align-items-center py-2 filters-section">
+                <div class="filters">
+                  <div>Filter By:</div>
+                  <div class="app-ngs-container category">
+                    <ng-select class="app-multi-select" [searchable]="false"  placeholder="Category"
+                               (change)="applyFiltersAndSearch()"
+                               [items]="categories"
+                               [(ngModel)]="selectedCategory" bindLabel="name" bindValue="name">
+                      <ng-template ng-label-tmp let-item="item">
+                        <span class="app-ngs-name">Category: </span> <span class="app-ngs-value">{{item.name}}</span>
+                      </ng-template>
+                    </ng-select>
+                  </div>
+                  <div class="app-ngs-container status">
+                    <ng-select class="app-multi-select" [searchable]="false" placeholder="Status"
+                               (change)="applyFiltersAndSearch()"
+                               [items]="statuses" [(ngModel)]="selectedStatus" bindLabel="name" bindValue="name">
+                      <ng-template ng-label-tmp let-item="item">
+                        <span class="app-ngs-name">Status: </span> <span class="app-ngs-value">{{item.name}}</span>
+                      </ng-template>
+                    </ng-select>
+                  </div>
+                  <div class="app-ngs-container">
+                    <ng-select class="app-multi-select" [searchable]="false" placeholder="Source"
+                               (change)="applyFiltersAndSearch()"
+                               [items]="sources" [(ngModel)]="selectedSource" bindLabel="name" bindValue="name">
+                      <ng-template ng-label-tmp let-item="item">
+                        <span class="app-ngs-name">Source: </span> <span class="app-ngs-value">{{item.name}}</span>
+                      </ng-template>
+                    </ng-select>
+                  </div>
+                  <div class="app-ngs-container">
+                    <ng-select class="app-multi-select" [searchable]="false" placeholder="Language"
+                               (change)="applyFiltersAndSearch()"
+                               [items]="languages" [(ngModel)]="selectedLanguage" bindLabel="name" bindValue="name">
+                      <ng-template ng-label-tmp let-item="item">
+                        <span class="app-ngs-name">Language: </span> <span class="app-ngs-value">{{item.name}}</span>
+                      </ng-template>
+                    </ng-select>
+                  </div>
+                  <div class="app-ngs-container">
+                    <ng-select class="app-multi-select" [searchable]="false" placeholder="Last Attempt Date"
+                               (change)="applyFiltersAndSearch()"
+                               [items]="dateRanges" [(ngModel)]="selectedDateRange" bindLabel="name" bindValue="name">
+                      <ng-template ng-label-tmp let-item="item">
+                        <span class="app-ngs-name">Last Attempt Date: </span> <span
+                        class="app-ngs-value">{{item.name}}</span>
+                      </ng-template>
+                    </ng-select>
+                  </div>
+
+                  <div class="app-ngs-container">
+                    <a class="animated-link clr-grey fs-14" (click)="clearAllFilters()">Clear</a>
+                  </div>
+                </div>
+                <div class="table-actions">
+                  <div class="show-cols d-flex align-items-center">
+                    <span class="mr-1 role-name">Show Apple/Article ID:</span>
+                    <mat-checkbox class="app-check-box"
+                                  [(ngModel)]="showIdColumns"
+                                  [disableRipple]="true"
+                                  (click)="showIdCols($event)">
+                    </mat-checkbox>
+
+
+                    <div class="app-ngs-container">
+                      <ng-select class="app-multi-select" [searchable]="false" [clearable]="false"
+                                 [items]="pageNumbers" [(ngModel)]="selectedRowsPerPage"
+                                 bindLabel="name" bindValue="name">
+                        <ng-template ng-label-tmp let-item="item">
+                          <span class="app-ngs-name">View: </span> <span class="app-ngs-value">{{item.name}}</span>
+                        </ng-template>
+                      </ng-select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <mat-accordion class="main-lob mobile-filters" #lobAccordion="matAccordion"
+                             [multi]="true">
+                <mat-expansion-panel [hideToggle]="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <div class="d-flex align-items-center justify-content-between w-100 filters-heading">
+                        <span>Filters</span>
+                        <span class="material-symbols-rounded medium-icon pl-2">Expand_more</span>
+                      </div>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="filters">
+                    <div class="app-ngs-container category">
+                      <ng-select class="app-multi-select" [searchable]="false" placeholder="Category"
+                                 (change)="applyFiltersAndSearch()"
+                                 [items]="categories"
+                                 [(ngModel)]="selectedCategory" bindLabel="name" bindValue="name">
+                        <ng-template ng-label-tmp let-item="item">
+                          <span class="app-ngs-name">Category: </span> <span class="app-ngs-value">{{item.name}}</span>
+                        </ng-template>
+                      </ng-select>
+                    </div>
+                    <div class="app-ngs-container status">
+                      <ng-select class="app-multi-select" [searchable]="false" placeholder="Status"
+                                 (change)="applyFiltersAndSearch()"
+                                 [items]="statuses" [(ngModel)]="selectedStatus" bindLabel="name" bindValue="name">
+                        <ng-template ng-label-tmp let-item="item">
+                          <span class="app-ngs-name">Status: </span> <span class="app-ngs-value">{{item.name}}</span>
+                        </ng-template>
+                      </ng-select>
+                    </div>
+                    <div class="app-ngs-container">
+                      <ng-select class="app-multi-select" [searchable]="false" placeholder="Source"
+                                 (change)="applyFiltersAndSearch()"
+                                 [items]="sources" [(ngModel)]="selectedSource" bindLabel="name" bindValue="name">
+                        <ng-template ng-label-tmp let-item="item">
+                          <span class="app-ngs-name">Source: </span> <span class="app-ngs-value">{{item.name}}</span>
+                        </ng-template>
+                      </ng-select>
+                    </div>
+                    <div class="app-ngs-container">
+                      <ng-select class="app-multi-select" [searchable]="false" placeholder="Language"
+                                 (change)="applyFiltersAndSearch()"
+                                 [items]="languages" [(ngModel)]="selectedLanguage" bindLabel="name" bindValue="name">
+                        <ng-template ng-label-tmp let-item="item">
+                          <span class="app-ngs-name">Language: </span> <span class="app-ngs-value">{{item.name}}</span>
+                        </ng-template>
+                      </ng-select>
+                    </div>
+                    <div class="app-ngs-container">
+                      <ng-select class="app-multi-select" [searchable]="false" placeholder="Last Attempt Date"
+                                 (change)="applyFiltersAndSearch()"
+                                 [items]="dateRanges" [(ngModel)]="selectedDateRange" bindLabel="name" bindValue="name">
+                        <ng-template ng-label-tmp let-item="item">
+                          <span class="app-ngs-name">Last Attempt Date: </span> <span
+                          class="app-ngs-value">{{item.name}}</span>
+                        </ng-template>
+                      </ng-select>
+                    </div>
+
+                    <div class="app-ngs-container d-flex justify-content-end">
+                      <a class="animated-link clr-burgandy fs-14" (click)="clearAllFilters()">Clear</a>
+                    </div>
+                  </div>
+                  <div class="table-actions mt-3">
+                    <div class="show-cols d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center ">
+                        <span class="mr-1 role-name">Show Apple/Article ID:</span>
+                        <mat-checkbox class="app-check-box"
+                                      [(ngModel)]="showIdColumns"
+                                      [disableRipple]="true"
+                                      (click)="showIdCols($event)">
+                        </mat-checkbox>
+                      </div>
+
+
+                      <div class="app-ngs-container">
+                        <ng-select class="app-multi-select mb-0" [searchable]="false" [clearable]="false"
+                                   [items]="pageNumbers" [(ngModel)]="selectedRowsPerPage"
+                                   bindLabel="name" bindValue="name">
+                          <ng-template ng-label-tmp let-item="item">
+                            <span class="app-ngs-name">View: </span> <span class="app-ngs-value">{{item.name}}</span>
+                          </ng-template>
+                        </ng-select>
+                      </div>
+                    </div>
+                  </div>
+
+                </mat-expansion-panel>
+              </mat-accordion>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="position-relative">
+                <div class="w-100 h-100">
+                  <ag-grid-angular
+                    #agGrid
+                    class="{{appliedThemeClassOnTable}}"
+                    [rowData]="trackers"
+                    [columnDefs]="trackerCols"
+                    [defaultColDef]="defaultColDef"
+                    [animateRows]="true"
+                    [pagination]="true"
+                    [paginationPageSize]="selectedRowsPerPage"
+                    (paginationChanged)="onAgGridPaginationChanged()"
+                    (gridReady)="onGridReady($event)"
+                    (firstDataRendered)="onFirstDataRendered()">
+                  </ag-grid-angular>
+                </div>
+                <ngx-ui-loader [loaderId]="'loader-1'"></ngx-ui-loader>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

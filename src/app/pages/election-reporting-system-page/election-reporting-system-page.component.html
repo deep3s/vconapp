@@ -1,0 +1,541 @@
+<!-- <div class="w-100 h-100 mt-4 p-4 fw-bold text-center show-tablet-mobile">
+  WARNING!... Given the vast amount of data presented throughout, Please do not use ERS on any other viewport other than desktop.
+</div> -->
+
+<!-- <div class="hide-tablet-mobile position-relative app-election-reporting-system-page app-main-page"> -->
+<div class="position-relative app-election-reporting-system-page app-main-page">
+  <div class="d-flex justify-content-between export-section bg-white align-items-center py-2 px-3">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="app-submenu-container">
+      <submenu></submenu>
+    </div>
+  </div>
+
+  <!-- <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
+      <label for="tabMenuDropdown">Select a Tab:</label>
+      <select id="tabMenuDropdown" (change)="onSelect($event)">
+        <option *ngFor="let menu of tabMenus" [value]="menu.tabUrl">
+          <span>{{ menu.name }}</span>
+        </option>
+      </select>
+    </div> -->
+
+  <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
+    <div class="w-100 d-flex align-items-center justify-content-center">
+      <div class="dashboard-container position-relative w-100">
+        <div class="app-container">
+          <div class="row tabs-section">
+            <div class="col-12">
+              <div class="d-flex justify-content-between align-items-center py-2 tab-menu-div">
+                <div style="margin-top: 4px;" class="app-icon-button tab-btn justify-content-center" *ngFor="let tab of tabMenus; index as i"
+                  [ngClass]="{ active: tab.tabUrl === router.url }" (click)="handleTabMenuClick(tab.tabUrl)">
+                  <span class="material-symbols-rounded semi-bold-icon">{{ tab.icon }}
+                  </span>
+                  <span class="text">{{ tab.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="position-relative">
+                <div class="w-100 h-100">
+                  <div class="sub-page app-card-container" style="padding-top: 0.4rem !important;">
+                    <div class="app-card bg-white p-4" style="padding-top: 0rem !important;">
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                          <span class="material-symbols-rounded semi-bold-icon" style="font-size: 1.2rem !important;">{{
+                            currentLocation?.icon }}</span>
+                          <!-- <div class="section-heading-h2 fw-bold p-2 my-2" style="padding-top:0rem !important;display: contents;font-size: 1.2rem !important;"> -->
+                          <div class="section-heading-h2 fw-bold p-2 my-2" style="font-size: 1.2rem !important;">
+                            {{ currentLocation?.name }}
+                          </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2 filters-section">
+                          <!--<div
+                                                      class="app-ngs-container my-riding"
+                                                      *ngIf="
+                                                        currentLocation &&
+                                                        currentLocation?.name &&
+                                                        currentLocation.name == 'Ridings'
+                                                      "
+                                                    >
+                                                      <button (click)="goToMyRidings()" class="app-button-primary m-3">My Ridings</button>
+                          
+                                                    </div>-->
+                        
+                          <span
+                            *ngIf="currentLocation &&currentLocation?.name &&(currentLocation.name == 'Regions and All Ridings' || currentLocation.name == 'My Ridings' || currentLocation.name == 'Ridings-2')">Group
+                            Ridings By Caller</span>
+                          <div class="app-ngs-container status"
+                            *ngIf="currentLocation &&currentLocation?.name &&(currentLocation.name == 'Regions and All Ridings' || currentLocation.name == 'My Ridings' || currentLocation.name == 'Ridings-2')">
+                            <!-- <button class="app-button-primary m-3">My Region/Ridings</button> -->
+                            <!-- <select placeholder="Group Ridings By Caller" id='peeps' name='people' [(ngModel)]="selectedgroupCaller">
+                                                      <option *ngFor="let item of groupCallers" [value]="item.email" (click)="onGroupCallerChange($event)">
+                                                        {{item.name}}
+                                                      </option>    
+                                                  </select> -->
+                            <ng-select style="width: 220px;" class="edit-party-selection" [searchable]="false" [items]="groupCallers"
+                              [(ngModel)]="selectedgroupCaller" bindLabel="name" bindValue="name" (change)="onGroupCallerChange($event)">
+                              <ng-template ng-label-tmp let-item="item">
+                                <!-- <span class="app-ngs-name"></span> -->
+                                <span class="app-ngs-value">{{
+                                  item.name
+                                  }}</span>
+                              </ng-template>
+                              <ng-template ng-option-tmp let-item="item" let-index="index">
+                                <b>{{item.name}}</b>
+                              </ng-template>
+                            </ng-select>
+                          </div>
+                        
+                          <div *ngIf="
+                                                        currentLocation &&
+                                                        currentLocation?.name &&
+                                                        currentLocation.name == 'UnElected'
+                                                      " class="d-flex">
+                        
+                          </div>
+                        </div>
+                      </div>
+                      <div class="divider"></div>
+
+                    
+
+                      <!-- New Cards Start -->
+                      <div class="parent-div" *ngIf="currentLocation &&currentLocation?.name && [
+                      'Overview',
+                      'Uncalled / Called',
+                    ].indexOf(currentLocation.name) !== -1"
+                        style="margin-top: 1rem !important;margin-bottom: 0.2rem !important;">
+
+                        <div class="child-div" *ngIf="tilesData && tilesData.leaderCard"
+                          style="display: flex;padding: 0rem !important;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="poll-title section-heading-h3" style="padding-bottom: 0.2rem !important;margin-left: 5px;">
+                              <span style="font-weight: bold;">
+                                {{ tilesData.leaderCard.title }}
+                              </span>
+                              {{tilesData.leaderCard.allLeaderCard}}
+                              <!-- {{tilesData.leaderCard.buttonLabel + " ("+tilesData.leaderCard.percentage + "%)"}}   -->
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="child-div" *ngIf="tilesData && tilesData.ridingCard" style="display: flex;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="poll-title section-heading-h3" style="margin-left: 5px;">
+                              <span style="font-weight: bold;">
+                                {{ tilesData.ridingCard.ridings + " of " + tilesData.ridingCard.totalRidings }}
+                              </span>
+                              {{ " " + tilesData.ridingCard.title + " ("+ tilesData.ridingCard.seats+" upcoming)"}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="child-div" *ngIf="tilesData && tilesData.pollCard" style="display: flex;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="poll-title section-heading-h3" style="padding-bottom: 0.2rem !important;margin-left: 5px;">
+                              <span style="font-weight: bold;">
+                                {{ tilesData.pollCard.polls + " of " + tilesData.pollCard.totalPolls }}
+                              </span>
+                              {{ tilesData.pollCard.title }} ({{ tilesData.pollCard.percentage +
+                              " %" }})
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <!-- <div class="parent-div" *ngIf="currentLocation &&currentLocation?.name && [
+                      'Overview',
+                      'Uncalled / Called',
+                    ].indexOf(currentLocation.name) !== -1"
+                        style="margin-top: 1rem !important;margin-bottom: 0.2rem !important;">
+                        <div class="child-div" *ngIf="tilesData && tilesData.ridingCard"
+                          style="display: flex;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="poll-title section-heading-h3">
+                              <span style="font-weight: bold;">
+                                {{ tilesData.ridingCard.ridings + " of " + tilesData.ridingCard.totalRidings }}
+                              </span>
+                              {{ " " + tilesData.ridingCard.title + "("+ tilesData.ridingCard.seats+" to come)"}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="child-div" *ngIf="tilesData && tilesData.pollCard"
+                        style="display: flex;">
+                        <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                          <div class="poll-title section-heading-h3"
+                          style="padding-bottom: 0.2rem !important;">
+                          <span style="font-weight: bold;">
+                            {{ tilesData.pollCard.polls + " of " + tilesData.pollCard.totalPolls }}
+                          </span>
+                          {{ tilesData.pollCard.title }} ({{ tilesData.pollCard.percentage +
+                              " %" }})
+                        </div>
+                        </div>
+                      </div>
+
+                        <div class="child-div" *ngIf="tilesData && tilesData.leaderCard"
+                          style="display: flex;padding: 0rem !important;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="poll-title section-heading-h3"
+                          style="padding-bottom: 0.2rem !important;">
+                          <span style="font-weight: bold;">
+                            {{tilesData.leaderCard.percentage + "%"}}  
+                          </span>
+                          {{ tilesData.leaderCard.title }}
+                        </div>
+
+                          </div>
+                        </div>
+                       
+                      </div> -->
+                      <!--New Cards End -->
+
+                      <!-- Cards Start -->
+                      <div class="parent-div" *ngIf="currentLocation &&currentLocation?.name && [
+                      'Overview1',
+                      'Uncalled / Called1',
+                    ].indexOf(currentLocation.name) !== -1"
+                        style="margin-top: 1rem !important;margin-bottom: 0.2rem !important;">
+                        <div class="child-div" *ngIf="tilesData && tilesData.ridingCard"
+                          style="height: 110px !important;display: flex;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="summary-card px-3" style="padding: 0rem !important;">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <div class="section-heading-h2 fw-bold mb-0" style="font-size: 1rem !important;">
+                                  {{ tilesData.ridingCard.ridings + " of " + tilesData.ridingCard.totalRidings }}
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <span class="section-heading-h3 fw-bold px-2 mb-0"
+                                    style="font-size: 1rem !important;">
+                                    {{ tilesData.ridingCard.percentage + " %" }}
+                                  </span>
+                                  <span class="material-symbols-rounded semi-bold-icon" style="font-size: 1.8rem"
+                                    *ngIf="tilesData.ridingCard.isIconShow"
+                                    [ngStyle]="{ color: tilesData.ridingCard.iconColor || '#cc212c' }">
+                                    {{ tilesData.ridingCard.iconName }}
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="poll-title section-heading-h3 fw-light pb-2">
+                                {{ tilesData.ridingCard.title }}
+                              </div>
+                              <!-- <mat-progress-bar mode="determinate" [value]="tilesData.ridingCard.ridingPercentage"
+                            color="warn" class="mt-4 poll-line custom-progress-bar"></mat-progress-bar> -->
+                              <mat-progress-bar mode="determinate" [value]="tilesData.ridingCard.ridingPercentage"
+                                [ngStyle]="{'background-color': tilesData.ridingCard.progressBarBackgroundColor, '--mdc-linear-progress-active-indicator-color': tilesData.ridingCard.progressBarColor}">
+                              </mat-progress-bar>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="child-div" *ngIf="tilesData && tilesData.leaderCard"
+                          style="height: 110px !important;display: flex;padding: 0rem !important;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-4" style="padding: 0.2rem !important;">
+                            <div class="summary-card" style="padding:0.3rem !important">
+                              <div
+                                class="d-flex justify-content-between align-items-center section-heading-h3 fw-bold mb-4"
+                                style="font-size: 1rem !important;">
+                                {{ tilesData.leaderCard.title }}
+                                <span class="card-header-split">{{
+                                  tilesData.leaderCard.percentage + " %"
+                                  }}</span>
+                              </div>
+                              <div class="d-flex align-items-center justify-content-start">
+                                <div class="app-icon-button leader-last-item-first-icon">
+                                  <span class="material-symbols-rounded semi-bold-icon">Settings
+                                  </span>
+                                  <span class="text">{{
+                                    tilesData.leaderCard.buttonLabel
+                                    }}</span>
+                                </div>
+                                <div class="mx-4 leader-last-item-second-icon">
+                                  <span class="text mx-2">{{
+                                    tilesData.leaderCard.elLabel
+                                    }}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="child-div" *ngIf="tilesData && tilesData.pollCard"
+                          style="height: 110px !important;display: flex;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="summary-card px-3" style="padding: 0.2rem !important;">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <div class="section-heading-h2 fw-bold mb-0" style="font-size: 1rem !important;">
+                                  {{
+                                  tilesData.pollCard.polls +
+                                  " of " +
+                                  tilesData.pollCard.totalPolls
+                                  }}
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <span class="section-heading-h3 fw-bold px-2 mb-0"
+                                    style="font-size: 1rem !important;">{{ tilesData.pollCard.percentage +
+                                    " %" }}
+                                  </span>
+                                  <span class="material-symbols-rounded semi-bold-icon" style="font-size: 1.8rem"
+                                    *ngIf="tilesData.pollCard.isIconShow" [ngStyle]="{
+                                  color:
+                                    tilesData.pollCard.iconColor ||
+                                    '#cc212c'
+                                }">{{ tilesData.pollCard.iconName }}
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="poll-title section-heading-h3 fw-light pb-2"
+                                style="padding-bottom: 0.2rem !important;">
+                                {{ tilesData.pollCard.title }}
+                              </div>
+                              <!-- <mat-progress-bar mode="determinate" [value]="tilesData.pollCard.pollPercentage"
+                            color="warn" class="mt-4 poll-line custom-progress-bar"></mat-progress-bar> -->
+
+                              <mat-progress-bar mode="determinate" [value]="tilesData.pollCard.pollPercentage"
+                                class="mt-4 poll-line custom-progress-bar"
+                                [ngStyle]="{'background-color': tilesData.pollCard.progressBarBackgroundColor, '--mdc-linear-progress-active-indicator-color': tilesData.pollCard.progressBarColor}">
+                              </mat-progress-bar>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="parent-div" *ngIf="currentLocation &&currentLocation?.name && [
+                          'Overview',
+                          'Uncalled / Called',
+                        ].indexOf(currentLocation.name) !== -1" style="margin-top: 1rem !important;margin-bottom: 0.2rem !important;">
+                        <div class="child-div" *ngIf="tilesData && tilesData.ridingCard" style="height: 110px !important;display: flex;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="summary-card px-3" style="padding: 0rem !important;">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <div class="section-heading-h2 fw-bold mb-0" style="font-size: 1rem !important;">
+                                  {{ tilesData.ridingCard.ridings + " of " + tilesData.ridingCard.totalRidings }}
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <span class="section-heading-h3 fw-bold px-2 mb-0" style="font-size: 1rem !important;">
+                                    {{ tilesData.ridingCard.percentage + " %" }}
+                                  </span>
+                                  <span class="material-symbols-rounded semi-bold-icon" style="font-size: 1.8rem"
+                                    *ngIf="tilesData.ridingCard.isIconShow"
+                                    [ngStyle]="{ color: tilesData.ridingCard.iconColor || '#cc212c' }">
+                                    {{ tilesData.ridingCard.iconName }}
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="poll-title section-heading-h3 fw-light pb-2">
+                                {{ tilesData.ridingCard.title }}
+                              </div>
+
+                                <mat-progress-bar mode="determinate" [value]="tilesData.ridingCard.ridingPercentage"
+                  [ngStyle]="{'background-color': tilesData.ridingCard.progressBarBackgroundColor, '--mdc-linear-progress-active-indicator-color': tilesData.ridingCard.progressBarColor}">
+</mat-progress-bar>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="child-div" *ngIf="tilesData && tilesData.leaderCard" style="height: 110px !important;display: flex;padding: 0rem !important;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-4" style="padding: 0.2rem !important;">
+                            <div class="summary-card" style="padding:0.3rem !important">
+                              <div
+                                class="d-flex justify-content-between align-items-center section-heading-h3 fw-bold mb-4" style="font-size: 1rem !important;">
+                                {{ tilesData.leaderCard.title }}
+                                <span class="card-header-split">{{
+                                  tilesData.leaderCard.percentage + " %"
+                                  }}</span>
+                              </div>
+                              <div class="d-flex align-items-center justify-content-start">
+                                <div class="app-icon-button leader-last-item-first-icon">
+                                  <span class="material-symbols-rounded semi-bold-icon">Settings
+                                  </span>
+                                  <span class="text">{{
+                                    tilesData.leaderCard.buttonLabel
+                                    }}</span>
+                                </div>
+                                <div class="mx-4 leader-last-item-second-icon">
+                                  <span class="text mx-2">{{
+                                    tilesData.leaderCard.elLabel
+                                    }}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="child-div" *ngIf="tilesData && tilesData.pollCard" style="height: 110px !important;display: flex;">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="summary-card px-3" style="padding: 0.2rem !important;">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <div class="section-heading-h2 fw-bold mb-0" style="font-size: 1rem !important;">
+                                  {{
+                                  tilesData.pollCard.polls +
+                                  " of " +
+                                  tilesData.pollCard.totalPolls
+                                  }}
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <span class="section-heading-h3 fw-bold px-2 mb-0" style="font-size: 1rem !important;">{{ tilesData.pollCard.percentage +
+                                    " %" }}
+                                  </span>
+                                  <span class="material-symbols-rounded semi-bold-icon" style="font-size: 1.8rem"
+                                    *ngIf="tilesData.pollCard.isIconShow" [ngStyle]="{
+                                      color:
+                                        tilesData.pollCard.iconColor ||
+                                        '#cc212c'
+                                    }">{{ tilesData.pollCard.iconName }}
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="poll-title section-heading-h3 fw-light pb-2" style="padding-bottom: 0.2rem !important;">
+                                {{ tilesData.pollCard.title }}
+                              </div>
+  
+                                <mat-progress-bar mode="determinate" [value]="tilesData.pollCard.pollPercentage" class="mt-4 poll-line custom-progress-bar"
+                                [ngStyle]="{'background-color': tilesData.pollCard.progressBarBackgroundColor, '--mdc-linear-progress-active-indicator-color': tilesData.pollCard.progressBarColor}">
+              </mat-progress-bar>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                      <!-- Cards End -->
+
+                      <!-- <div class="row custom-mt custom-mb" *ngIf="
+                            currentLocation &&
+                            currentLocation?.name &&
+                            [
+                              'Region',
+                              'UnElected',
+                              'Overview',
+                              'Ridings',
+                              'Call Election'
+                            ].indexOf(currentLocation.name) !== -1
+                          ">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3"
+                          *ngIf="tilesData && tilesData.ridingCard">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="summary-card px-3">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <div class="section-heading-h2 fw-bold mb-0">
+                                  {{
+                                  tilesData.ridingCard.ridings +
+                                  " of " +
+                                  tilesData.ridingCard.totalRidings
+                                  }}
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <span class="section-heading-h3 fw-bold px-2 mb-0">{{ tilesData.ridingCard.percentage
+                                    + " %" }}
+                                  </span>
+                                  <span class="material-symbols-rounded semi-bold-icon" style="font-size: 1.8rem"
+                                    *ngIf="tilesData.ridingCard.isIconShow" [ngStyle]="{
+                                        color:
+                                          tilesData.ridingCard.iconColor ||
+                                          '#cc212c'
+                                      }">{{ tilesData.ridingCard.iconName }}
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="poll-title section-heading-h3 fw-light pb-2">
+                                {{ tilesData.ridingCard.title }}
+                              </div>
+                              <mat-progress-bar mode="determinate" [value]="tilesData.ridingCard.ridingPercentage"
+                                color="warn" class="mt-4 poll-line" class="custom-progress-bar"></mat-progress-bar>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3"
+                          *ngIf="tilesData && tilesData.leaderCard">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-4">
+                            <div class="summary-card">
+                              <div
+                                class="d-flex justify-content-between align-items-center section-heading-h3 fw-bold mb-4">
+                                {{ tilesData.leaderCard.title }}
+                                <span class="card-header-split">{{
+                                  tilesData.leaderCard.percentage + " %"
+                                  }}</span>
+                              </div>
+                              <div class="d-flex align-items-center justify-content-start">
+                                <div class="app-icon-button leader-last-item-first-icon">
+                                  <span class="material-symbols-rounded semi-bold-icon">Settings
+                                  </span>
+                                  <span class="text">{{
+                                    tilesData.leaderCard.buttonLabel
+                                    }}</span>
+                                </div>
+                                <div class="mx-4 leader-last-item-second-icon">
+                                  <span class="text mx-2">{{
+                                    tilesData.leaderCard.elLabel
+                                    }}</span>
+                                   <span
+                                      class="material-symbols-rounded semi-bold-icon"
+                                      >North
+                                    </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3" *ngIf="tilesData && tilesData.pollCard">
+                          <div class="app-card bg-gray h-100 w-100 d-flex px-2">
+                            <div class="summary-card px-3">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <div class="section-heading-h2 fw-bold mb-0">
+                                  {{
+                                  tilesData.pollCard.polls +
+                                  " of " +
+                                  tilesData.pollCard.totalPolls
+                                  }}
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <span class="section-heading-h3 fw-bold px-2 mb-0">{{ tilesData.pollCard.percentage +
+                                    " %" }}
+                                  </span>
+                                  <span class="material-symbols-rounded semi-bold-icon" style="font-size: 1.8rem"
+                                    *ngIf="tilesData.pollCard.isIconShow" [ngStyle]="{
+                                      color:
+                                        tilesData.pollCard.iconColor ||
+                                        '#cc212c'
+                                    }">{{ tilesData.pollCard.iconName }}
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="poll-title section-heading-h3 fw-light pb-2">
+                                {{ tilesData.pollCard.title }}
+                              </div>
+                              <mat-progress-bar mode="determinate" [value]="tilesData.pollCard.pollPercentage"
+                                color="warn" class="mt-4 poll-line" class="custom-progress-bar"></mat-progress-bar>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                     
+                       <!-- bar chart Start -->
+                      <!-- <div style="height: auto" *ngIf="currentLocation &&currentLocation?.name && [
+                      'Overview',
+                      'My Ridings',
+                      'Regions and All Ridings',
+                      'Uncalled / Called',
+                      'Call Election'
+                    ].indexOf(currentLocation.name) !== -1">
+                        <ag-charts-angular [options]="optionsBar"></ag-charts-angular>
+                      </div> -->
+                      <div style="height: auto" *ngIf="currentLocation &&currentLocation?.name && [
+                      'Overview',
+                      'Uncalled / Called',
+                    ].indexOf(currentLocation.name) !== -1">
+                        <ag-charts-angular [options]="optionsBar"></ag-charts-angular>
+                      </div>
+                      <!-- bar chart End -->
+                      <router-outlet></router-outlet>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

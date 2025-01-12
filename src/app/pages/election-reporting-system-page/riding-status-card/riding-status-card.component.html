@@ -1,0 +1,14 @@
+<div style="display: flex; align-items: center; justify-content: center; height: 100%;"
+  class="ag-custom-header"
+  matTooltip="{{ statusData?.label }}"
+  matTooltipPosition="below"
+>
+  <span
+    class="material-symbols-rounded semi-bold-icon"
+    [style]="{
+      color: statusData?.color
+    }"
+    *ngIf="statusData && statusData.label && statusData.iconName != ''"
+    ><i [class]="statusData?.iconName"></i>
+  </span>
+</div>

@@ -1,0 +1,104 @@
+@import "src/styles/variables";
+
+.submenu {
+  margin-right: 0.4rem;
+
+  @include mobile {
+    margin-right: 0;
+  }
+
+  .search-count-divider {
+    border-left: 1px solid $StrokeGrey;
+    margin: 0 15px 0 24px;
+    height: 24px;
+  }
+
+  .export-btn {
+    margin-right: 0px;
+  }
+
+  .icon-search {
+    font-size: 22px;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    cursor: pointer;
+  }
+
+  .txt-margin {
+    margin-left: 1.5rem;
+  }
+  .caller-tooltip-icon {
+    padding-top: 7px;
+    &:hover {
+      .icon {
+        color: $CPPrimary !important;
+      }
+
+      .caller-tooltip {
+        display: block;
+      }
+    }
+
+    .caller-tooltip {
+      display: none;
+      position: absolute;
+      top: 28px;
+      width: 400px;
+      background: white;
+      border-radius: 4px;
+      z-index: 9;
+      border: 1px solid #c1c1c1;
+      font-size: 12px;
+      color: $CPBlack;
+    }
+  }
+}
+
+:host ::ng-deep .ng-select .material-symbols-rounded.medium-icon {
+  font-size: 24px;
+  color: white; /* Replace with your desired color */
+  transition: all 0.2s ease-in;
+  position: absolute;
+  right: 0px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+:host ::ng-deep .ng-select .expand-more {
+  content: 'expand_more';
+}
+
+:host ::ng-deep .ng-select .expand-less {
+  content: 'expand_less';
+  top: 1px; /* Adjust if needed */
+}
+:host ::ng-deep .ng-select .ng-arrow-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+
+  .ng-arrow {
+    border: none;
+  }
+}
+
+//======================== Election DropDown ====================
+
+
+// :host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items {
+//  overflow-x: auto; /* Enable horizontal scrolling */
+// }
+
+// :host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+//   display: inline-block; /* Ensure options are displayed inline for horizontal scrolling */
+//   width: auto; /* Allow the options to adjust their width automatically */
+// }
+
+// :host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items::-webkit-scrollbar {
+//   height: 10px; /* Set the height of the horizontal scrollbar */
+//   width: 10px; /* Set the width of the vertical scrollbar */
+// }
+//========================End of Election DropDown ====================

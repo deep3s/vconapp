@@ -1,0 +1,11 @@
+<app-header class="application">
+  <!--<app-disclaimer></app-disclaimer>-->
+  <div class="d-flex w-100">
+    <app-pinned-menu></app-pinned-menu>
+    <div class="w-100 scrolling-section">
+      <router-outlet></router-outlet>
+      <app-footer *ngIf="!isLoggedIn"></app-footer>
+    </div>
+  </div>
+
+</app-header>

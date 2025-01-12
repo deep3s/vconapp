@@ -1,0 +1,197 @@
+<div class="riding2-page" style="margin-top: 1rem !important;">
+    <div class="row">
+        <div class="col-12 col-md-3 fixed-div">
+            <div class="row">
+                <div class="col-6 buttons-container">
+                    <div (click)="expandAll()" class="expand-collapse-button export-btn" matTooltip="Expand All Ridings"
+                        matTooltipPosition="below">
+                        <span class="material-symbols-rounded semi-bold-icon">expand_more </span>
+                        <span class="text">Expand All</span>
+                    </div>
+                </div>
+                <div class="col-6 buttons-container">
+                    <div (click)="collapseAll()" class="expand-collapse-button export-btn" matTooltip="Collapse All Ridings"
+                        matTooltipPosition="below">
+                        <span class="material-symbols-rounded semi-bold-icon">expand_less </span>
+                        <span class="text">Collapse All</span>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 35px;">
+                <div class="d-flex align-items-center justify-content-between flex-wrap">
+                    <div class="d-flex align-items-center">
+                        <div class="section-heading-h2 riding-title">
+                            <span
+                                class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-blue position-relative">notifications
+                            </span>
+                            {{allRidingsTitle}}
+                        </div>
+                    </div>
+                </div>
+                <div class="ag-theme-grid" style="height: auto;width:100%">
+                    <ag-grid-angular class="{{ appliedThemeClassOnTable }}" [gridOptions]="allRidingsGridOptions"
+                        (gridReady)="allOnGridReady($event)" [rowData]="allRidingsRowData"
+                        [columnDefs]="allRidingsColumnDefs"
+                        [getContextMenuItems]="getContextMenuItemsForUndecided.bind(this)">
+                    </ag-grid-angular>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-9 scrollable-div">          
+            <div class="row">
+                <div class="col-12" style="padding-bottom: 20px;" [ngClass]="{'col-md-4': allRidingsData.length > 1}"
+                    *ngFor="let riding of allRidingsData; index as i">
+                    <mat-accordion class="main-lob" #lobAccordion="matAccordion" [multi]="true">
+                        <mat-expansion-panel [expanded]="panelState[i]" [hideToggle]="true">
+                            <mat-expansion-panel-header style="padding-left: 0px;">
+                                <mat-panel-title style="text-transform: none;">
+                                    <div class="d-flex align-items-center justify-content-between w-100">
+                                        <div class="d-flex align-items-center">
+                                            <div *ngIf="riding.status=='ELECTED'" style="display: flex; align-items: center; justify-content: center; height: 100%;"
+                                                class="ag-custom-header" matTooltip="{{ riding.ridingIcon?.label }}"
+                                                matTooltipPosition="below">
+                                                <span class="material-symbols-rounded semi-bold-icon"
+                                                    [style]="{color: riding.ridingIcon?.color}"
+                                                    style="margin-right: 4px;"
+                                                    *ngIf="riding.ridingIcon && riding.ridingIcon.label && riding.ridingIcon.iconName != ''">
+                                                    <i [class]="riding.ridingIcon?.iconName"></i>
+                                                </span>
+                                            </div>
+
+                                            <p *ngIf="riding.status=='KILLED'" class="rcorners" [ngStyle]="{ 'background-color': '#e6e6e6', 'font-family':'LatoMedium', 'color':'#606366', 'text-transform':'none' }">Call</p>
+                                            <p *ngIf="riding.status!='KILLED' && riding.status!='ELECTED'" class="rcorners" [ngStyle]="{ 'background-color': '#cc212c', 'text-transform':'none' }">Call</p>
+
+                                            <span class="section-heading-h2">{{" "+ riding.districtId+" - "+ riding.ridingName}}</span>
+                                            <span class="caller-tooltip-icon" style="margin-left: 5px;">
+                                                <div class="caller-tooltip p-3"> {{riding.caller_notes}}</div>
+                                                <span class="material-symbols-rounded">info</span>
+                                            </span>
+                                            <!-- <span *ngIf="riding.isEyeIcon" class="caller-tooltip-icon">
+                                                <span
+                                                    class="icon material-symbols-rounded semi-bold-icon px-3 clr-grey position-relative">
+                                                    visibility
+                                                </span>
+                                                <div class="caller-tooltip p-3">
+                                                    <div class="row">
+                                                        <div>Riding Note <a [routerLink]="['/manageERS/edit-ridings']"
+                                                                style="color: #3f51b5;">(Edit Notes)</a></div>
+                                                    </div>
+                                                    <div class="divider"></div>
+                                                    <div class="row">
+                                                        <div class="col-4">Previous</div>
+                                                        <div class="col-8">Carlo Rouleau</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4">Likely Winner</div>
+                                                        <div class="col-8">
+                                                            <span class="cl-circle"></span>
+                                                            PCP
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-4">Caller Notes</div>
+                                                        <div class="col-8">
+                                                            <div>Pon-cabinet min in seat since 2011 UCP</div>
+                                                            <div>Pon-cabinet min in seat since 2011 UCP</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-4">Prominent</div>
+                                                        <div class="col-8">Six term city councilor</div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-4">Caller</div>
+                                                        <div class="col-8">Tyler Griffin</div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-end">
+                                                        <b>Last Synced:</b> 21:06:54 EDT 10/03/2023
+                                                    </div>
+                                                </div>
+                                            </span> -->
+                                        </div>
+                                        <span class="material-symbols-rounded medium-icon pl-2">Expand_more</span>
+                                    </div>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <div class="row">
+                                <!-- <p class="col-md-6 section-heading-h2">Manitoba 2023 Election Night</p> -->
+                                <div class="col-md-12">
+                                    <div class="d-flex">
+                                        <!-- <div class="search-count-divider"></div> -->
+                                        <div class="position-relative">
+                                            <!-- <span class="caller-tooltip-icon">
+                                                <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data
+                                                    in the table was updated from the source system. This helps ensure that you are
+                                                    viewing the latest information available.</div>
+                
+                                                <span class="icon-search  material-symbols-rounded medium-icon">info</span>
+                                            </span> -->
+                                            <span class="poll-title section-heading-h3"><b>{{riding.reported_polls+"/"+riding.total_polls}}</b>
+                                                Polls Reporting</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="divider position-relative riding-my-3">
+                                        <div class="d-flex align-items-center position-absolute view-options"
+                                            style="bottom: 2px;">
+                                            <p class="rcorners"
+                                                [ngStyle]="{ 'background-color': riding.updatedStatus.color }">
+                                                {{riding.updatedStatus.label}}</p>
+                                            <!-- <span class="caller-tooltip-icon">
+                                                <div class="caller-tooltip p-3"> {{riding.info}}</div>
+                                                <span class="material-symbols-rounded">info</span>
+                                            </span> -->
+                                            <div class=" material-symbols-rounded medium-icon mx-2 view-option"
+                                                (click)="onViewOptionChange(opt,riding)"
+                                                [ngClass]="{'active': opt.selected}"
+                                                *ngFor="let opt of riding.viewOptions">
+                                                {{opt.icon}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+
+                            <div *ngIf="riding.selectedViewOption.icon === 'data_table'" style="height: auto"
+                            class="py-4">
+                            <ag-grid-angular class="{{ appliedThemeClassOnTable }}"
+                                [gridOptions]="ridingGridOptions" (gridReady)="ridingOnGridReady($event)"
+                                [rowData]="riding.candidates">
+                            </ag-grid-angular>
+                        </div>
+                        <div *ngIf="riding.selectedViewOption.icon === 'ssid_chart'" style="height: auto"
+                            class="py-4">
+                            <ag-charts-angular style="height: 100%"
+                                [options]="riding.options"></ag-charts-angular>
+                        </div>
+                        <div *ngIf="riding.selectedViewOption.icon === 'bar_chart'" style="height: auto"
+                            class="py-4">
+                            <ag-charts-angular style="height: 100%"
+                                [options]="riding.optionsBar"></ag-charts-angular>
+                        </div>
+
+
+                            <!-- <div style="height: auto" class="py-4">
+                                <ag-grid-angular class="{{ appliedThemeClassOnTable }}"
+                                    [gridOptions]="ridingGridOptions" (gridReady)="ridingOnGridReady($event)"
+                                    [rowData]="riding.candidates">
+                                </ag-grid-angular>
+                            </div> -->
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

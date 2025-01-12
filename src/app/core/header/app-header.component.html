@@ -1,0 +1,189 @@
+<mat-sidenav-container
+        class="sidenav-container"
+        (scroll)="onWindowScroll($event)"
+        [ngClass]="{ 'app-light-mode': isLightMode, 'app-dark-mode': !isLightMode }"
+>
+    <mat-sidenav
+        #drawer
+        class="sidenav"
+        fixedInViewport="true"
+        [ngClass]="{ hidden: !isHandset$.matches }"
+        [attr.role]="isHandset$.matches ? 'dialog' : 'navigation'"
+        [mode]="isHandset$.matches ? 'over' : 'side'"
+        [autoFocus]="false"
+    >
+        <!--This below section is for mobile view-->
+        <mat-nav-list></mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content [ngClass]="{ 'sidebar-opened': toggleSideNav }">
+        <mat-toolbar color="primary" class="header-toolbar">
+            <div class="menu-row" id="menu-row">
+                <div>
+                    <a
+                            class="skip-to-main-content"
+                            aria-label="Skip to main content"
+                            href="#"
+                            (click)="goToMainContent('main-content')"
+                    >
+                        Skip to main content
+                    </a>
+                </div>
+                <div
+                        class="dashboard-header"
+                        [ngClass]="{ 'in-login-page': isLoginPage }"
+                >
+                    <div class="burg-menu d-flex align-items-center mr-3">
+            <span
+                    class="material-symbols-rounded semi-bold-icon header-menu"
+                    *ngIf="!isLoginPage"
+                    [ngClass]="{ active: dashboardMenuOpened }"
+                    (click)="opendashboardMenu($event)"
+            >segment</span
+            >
+                        <!--<div class="dot-menu header-menu"
+                             *ngIf="!isLoginPage">
+                          <input id="dot-menu" type="checkbox" class="dot-menu__checkbox"
+                                 value="{{!isLoggedIn}}" checked="{{!isLoggedIn}}"
+                                 (click)="opendashboardMenu($event)">
+                          <label for="dot-menu" class="dot-menu__label"><span></span></label>
+                        </div>-->
+                    </div>
+                    <div
+                            class="logo-menu fw-medium cursor-pointer"
+                            [routerLink]="'/dash'"
+                    >
+                        <!--<img
+                          src="/assets/images/cp/CP_logo_white.svg"
+                          alt="logo "
+                          class="logo-menu-img"
+                        />-->
+                        <span class="fw-bold text1 logo-menu-img">THE V-CUT</span>
+
+                        <div class="logo-text">
+                            <span class="fw-bold text1">{{ isLoginPage ? "Salon & Spa" : "" }}</span>
+                            <span class="fw-medium text2">{{
+                                    isLoginPage ? "" : ""
+                                }}</span>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <div
+                                class="search-box d-flex align-items-center justify-content-end"
+                        >
+                            <!--<img alt="alternative text" class="icon-search"
+                                 src="assets/images/search.svg"/>
+
+                            <div class="dashboard-search-result pr-4 pl-4 pt-2 pb-2 "
+                                 [ngClass]="{'opened': dashboardSearchOpened}"
+                                 (clickOutside)="clickedOutOfdashboardSearch($event)">
+                                <div class="fw-medium pb-2 pt-2">Reports</div>
+                                <div class="divider mb-3"></div>
+                                <div class="result-container d-flex align-items-center pb-3 pt-2"
+                                     *ngFor="let res of dashboardSearchResult">
+                                    <span class="lnr lnr-file-empty header-menu pr-3"></span>
+
+                                </div>
+                            </div>-->
+                            <!--<div class="hide-tablet-mobile">
+                                <mat-button-toggle-group
+                                        [(ngModel)]="language"
+                                        name="fontStyle" aria-label="Font Style"
+                                        class="mx-3"
+                                        *ngIf="!isLoginPage">
+                                    <mat-button-toggle value="EN">EN</mat-button-toggle>
+                                    <mat-button-toggle value="FR">FR</mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </div>-->
+                            <div class="light-dark-switch">
+                <span
+                        class="material-symbols-rounded medium-icon header-menu dark-mode"
+                        matTooltip="Switch to Dark Mode"
+                        matTooltipPosition="below"
+                        *ngIf="isLightMode"
+                        (click)="goToDarkMode($event)"
+                >
+                  nightlight
+                </span>
+                                <span
+                                        class="material-symbols-rounded medium-icon header-menu light-mode"
+                                        matTooltip="Switch to Light Mode"
+                                        matTooltipPosition="below"
+                                        *ngIf="!isLightMode"
+                                        (click)="goToLightMode($event)"
+                                >
+                  light_mode
+                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="mode-divider" *ngIf="!isLoginPage"></span>
+                    <div
+                            class="right-icons d-flex align-items-center"
+                            *ngIf="!isLoginPage"
+                    >
+                        <!--<app-notifications
+                          matTooltip="Notifications"
+                          matTooltipPosition="below"></app-notifications>-->
+
+                        <div
+                                class="user-profile d-flex align-items-center"
+                                (clickOutside)="clickedOutOfUserProfile()"
+                                (click)="toggleProfileOptions()"
+                        >
+              <span class="material-symbols-rounded profile-icon">
+                account_circle
+              </span>
+                            <span class="fw-bold user-name">{{
+                                    userName || "Helen Washington"
+                                }}</span>
+                            <span class="material-symbols-rounded medium-icon">
+                expand_more
+              </span>
+                            <div
+                                    class="profile-opt-container"
+                                    [ngClass]="{ opened: isProfileContainerOpened }"
+                            >
+                                <!--<div class="one">
+                                  <div class="two"></div>
+                                </div>-->
+                                <div class="options">
+                                    <div
+                                            class="option"
+                                            *ngFor="let notification of profileOptions"
+                                    >
+                                        <div class="name d-flex align-items-center">
+                      <span
+                              class="material-symbols-rounded medium-icon-icon pr-2"
+                      >
+                        {{ notification.icon }}</span
+                      >
+                                            <a
+                                                    class="option-link animated-link fw-medium"
+                                                    (click)="profileOptionMenuClick(notification.route)"
+                                            >
+                                                {{ notification.name }}</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-toolbar>
+        <!-- Add Content Here -->
+        <ng-content class="header-content"></ng-content>
+
+        <div
+                id="scroll-to-top-container"
+                aria-label="Back to top"
+                class="scroll-to-top-container animated animatedFadeInUp fadeInUp"
+                [ngClass]="{ offline: isAppOffline }"
+                (click)="scrollToTop()"
+        >
+            <div class="img-container"></div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

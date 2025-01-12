@@ -1,0 +1,37 @@
+<div
+  class="d-flex align-items-center justify-content-between"
+  matTooltip="{{ statusData?.label }}"
+  matTooltipPosition="below"
+>
+  <span
+    class="text"
+    [style]="{
+      'font-size': statusData?.fontSize || '0.9rem',
+      'white-space': 'nowrap', 
+      'overflow': 'hidden',
+      'text-overflow': 'ellipsis',
+      color: statusData?.color
+    }"
+    *ngIf="statusData.label != ''"
+    >{{ statusData?.label }}</span
+  >
+  <span
+    class="text mx-3"
+    [style]="{
+      'font-size': statusData?.fontSize || '0.9rem',
+      color: statusData?.color,
+      'margin-right': '0px !important'
+    }"
+    *ngIf="statusData && statusData.subLabel != ''"
+    >{{ statusData?.subLabel }}</span
+  >
+  <span
+    class="material-symbols-rounded semi-bold-icon"
+    [style]="{
+      color: statusData?.color,
+      'font-size': statusData?.fontSize || '1.1rem'
+    }"
+    *ngIf="statusData && statusData.label && statusData.iconName != ''"
+    ><i [class]="statusData?.iconName"></i>
+  </span>
+</div>

@@ -1,0 +1,88 @@
+@import "src/styles/variables";
+
+::ng-deep .mat-dialog-container {
+  position: relative;
+}
+
+.app-button-card.close-btn {
+  padding: 2px 3px;
+
+  &:hover {
+    background: $CPPrimaryHover;
+  }
+}
+.user-modal {
+  font-family: $CPLightRegularFont;
+
+  .role-name {
+    font-family: $CPLightRegularFont;
+    padding-right: 15px;
+  }
+
+  &.mat-mdc-dialog-content {
+    max-height: none;
+  }
+
+
+  .profile-icon-ctnr {
+    //width: 290px;
+    //height: 290px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .profile-icon {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    margin-top: 20px;
+    border: 3px solid #c1c1c1;
+    margin-bottom: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    letter-spacing: normal;
+  }
+  .app-container{
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .app-card {
+    border: none;
+
+    .card-heading {
+      background: $CPPrimary;
+      color: white;
+
+      .app-button-card {
+        &.with-border {
+          border: 1px solid white;
+        }
+      }
+    }
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  .input-label {
+    font-weight: normal;
+  }
+
+  .close-span {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    -webkit-appearance: none;
+
+    .img-icon {
+      width: 10px;
+    }
+  }
+
+}

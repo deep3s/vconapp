@@ -1,0 +1,50 @@
+<div class="position-relative tracker-page app-main-page">
+  <div class="d-flex justify-content-between export-section bg-white align-items-center py-2 px-3">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="app-submenu-container">
+      <app-submenu [searchPlaceHolder]="'Search Users'"
+                   [hasSearchCount]="true"
+                   [searchCount]="users.length"
+                   [hasExport]="false"
+                   [hasSearch]="true"
+                   [hasRefresh]="true"></app-submenu>
+    </div>
+  </div>
+  <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
+    <div class="w-100 d-flex align-items-center justify-content-center">
+      <div class="dashboard-container position-relative w-100">
+        <div class="app-container">
+          <div class="row">
+            <div class="col-12">
+              <div class="app-card-container position-relative">
+                <div class="w-100 h-100">
+                  <ag-grid-angular
+                    #agGrid
+                    class="{{appliedThemeClassOnTable}}"
+                    [rowData]="users"
+                    [columnDefs]="companiesColumnDefs"
+                    [columnTypes]="columnTypes"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="'single'"
+                    (rowClicked)="onSelectionChanged($event)"
+                    [animateRows]="true"
+                    [pagination]="true"
+                    [paginationPageSize]="selectedRowsPerPage"
+                    (paginationChanged)="onAgGridPaginationChanged()"
+                    (gridReady)="onGridReady($event)"
+                    (firstDataRendered)="onFirstDataRendered()">
+                  </ag-grid-angular>
+                </div>
+                <ngx-ui-loader [loaderId]="'loader-1'"></ngx-ui-loader>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

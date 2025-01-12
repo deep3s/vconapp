@@ -1,0 +1,357 @@
+<div class="riding-page" style="margin-top: 1rem !important;">
+  <div class="row">
+    <div class="col-12 col-md-5">
+      <div
+        class="d-flex align-items-center justify-content-between choose-riding-section mb-3 flex-wrap"
+      >
+        <p class="section-heading-h2 riding-title">Choose Ridings</p>
+        <div class="position-relative">
+          <!-- <input class="app-text-box search-box" id="search-dashboard" [(ngModel)]="ridingSearchText" (keyup)="searchRidings()"
+                        placeholder="Search Riding or Candidate" /> -->
+          <input
+            class="app-text-box search-box"
+            id="search-dashboard"
+            [(ngModel)]="ridingSearchText"
+            id="quickFilter"
+            (input)="onQuickFilterChanged()"
+            placeholder="Search Riding or Candidate"
+          />
+
+          <span class="icon-search material-symbols-rounded medium-icon"
+            >search</span
+          >
+          <span
+            class="icon-clear material-symbols-rounded medium-icon"
+            (click)="clearRidingSearch()"
+            *ngIf="ridingSearchText"
+            >close</span
+          >
+        </div>
+      </div>
+      <div style="height: auto">
+        <!-- <ag-grid-angular
+          #agGrid
+          class="{{ appliedThemeClassOnTable }}"
+          [rowData]="ridingRowData"
+          [columnDefs]="ridingColumnDefs"
+          [columnTypes]="columnTypes"
+          [defaultColDef]="defaultColDef"
+          [rowSelection]="'single'"
+          [pagination]="true"
+          [paginationPageSize]="selectedRowsPerPage"
+          (paginationChanged)="onAgGridPaginationChanged()"
+          (rowClicked)="onSelectionChanged($event)"
+          [animateRows]="true"
+          [suppressMovableColumns]="true"
+          (gridReady)="ridingOnGridReady($event)"
+          (firstDataRendered)="onFirstDataRendered()"
+        >
+        </ag-grid-angular> -->
+        <ag-grid-angular
+          #agGrid
+          class="{{ appliedThemeClassOnTable }}"
+          [rowData]="ridingRowData"
+          [columnDefs]="ridingColumnDefs"
+          [columnTypes]="columnTypes"
+          [defaultColDef]="defaultColDef"
+          [rowSelection]="'multiple'"
+          [rowHeight]="30"
+          (rowClicked)="onSelectionChanged($event)"
+          [animateRows]="true"
+          [suppressMovableColumns]="true"
+          (gridReady)="ridingOnGridReady($event)"
+          (firstDataRendered)="onFirstDataRendered()"
+        >
+        </ag-grid-angular>
+        <!-- <ag-grid-angular
+                        class="{{ appliedThemeClassOnTable }}"
+                        [rowData]="ridingRowData"
+                        [columnDefs]="ridingColumnDefs"
+                        [columnTypes]="columnTypes"
+                        [defaultColDef]="defaultColDef"
+                        [rowSelection]="'single'"
+                        [pagination]="true"
+                        [paginationPageSize]="selectedRowsPerPage"
+                        (paginationChanged)="onAgGridPaginationChanged()"
+                        (rowClicked)="onSelectionChanged($event)"
+                        [gridOptions]="ridingGridOptions"
+                        (gridReady)="ridingOnGridReady($event)"
+                        (firstDataRendered)="onFirstDataRendered()"
+                ></ag-grid-angular> -->
+        <!--<ag-grid-angular
+                        class="{{ appliedThemeClassOnTable }}"
+                        (rowClicked)="onSelectionChanged($event)"
+                        [gridOptions]="ridingGridOptions"
+                        (gridReady)="ridingOnGridReady($event)"
+                        [rowData]="ridingRowData"
+                ></ag-grid-angular>-->
+      </div>
+    </div>
+    <!-- <div class="col-12 col-md-7" *ngIf="selectedRiding.ridingName"> -->
+    <div class="col-12 col-md-7">
+      <div
+        class="d-flex justify-content-between ridings-lastsynced-icons mb-3 flex-wrap" style="margin-top: 0rem !important;"
+      >
+        <div class="d-flex align-items-center" style="width:100%">
+        <div style="width:70%;display: ruby;">
+          <div
+            *ngIf="selectedRiding.ridingName"
+            class="section-heading-h2 selected-riding-name"
+          >
+            {{ selectedRiding.ridingName }}
+          </div>
+          <div class="eye-icon-container">
+            <div class="caller-tooltip-icon pb-2">
+              <span
+                class="icon material-symbols-rounded semi-bold-icon px-2 clr-grey position-relative"
+              >
+                visibility
+              </span>
+            </div>
+            <div class="caller-tooltip p-3">
+              <div class="row">
+                <div>
+                  Riding Note
+                  <a
+                    [routerLink]="['/manageERS/edit-ridings']"
+                    style="color: #3f51b5"
+                    >(Edit Notes)</a
+                  >
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="row">
+                <div class="col-4">Previous:</div>
+                <div class="col-8">{{ridingNotes.previous}}</div>
+              </div>
+              <div class="row">
+                <div class="col-4">Likely Winner:</div>
+                <div class="col-8">
+                  <span class="cl-circle"></span>
+                  {{ridingNotes.likelyWinner}}
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">Caller Notes:</div>
+                <div class="col-8">
+                  {{ridingNotes.callerNotes}}
+                  <!-- <div>Pon-cabinet min in seat since 2011 UCP</div>
+                  <div>Pon-cabinet min in seat since 2011 UCP</div> -->
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">Prominent:</div>
+                <div class="col-8">{{ridingNotes.prominent}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">Caller:</div>
+                <div class="col-8">{{ridingNotes.caller}}</div>
+              </div>
+              <div class="row">
+                <div class="col-4">Last Synced:</div>
+                <div class="col-8">{{ridingNotes.lastSynced}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="eye-icon-container">
+            <div class="caller-tooltip-icon pb-2" style="padding-top: 0px">
+              (Riding Notes)
+            </div>
+            <div class="caller-tooltip p-3">
+              <div class="row">
+                <div>
+                  Riding Note
+                  <a
+                    [routerLink]="['/manageERS/edit-ridings']"
+                    style="color: #3f51b5"
+                    >(Edit Notes)</a
+                  >
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="row">
+                <div class="col-4">Previous:</div>
+                <div class="col-8">Carlo Rouleau</div>
+              </div>
+              <div class="row">
+                <div class="col-4">Likely Winner:</div>
+                <div class="col-8">
+                  <span class="cl-circle"></span>
+                  PCP
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">Caller Notes:</div>
+                <div class="col-8">
+                  <div>Pon-cabinet min in seat since 2011 UCP</div>
+                  <div>Pon-cabinet min in seat since 2011 UCP</div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">Prominent:</div>
+                <div class="col-8">Six term city councilor:</div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">Caller:</div>
+                <div class="col-8">Tyler Griffin</div>
+              </div>
+              <div class="row">
+                <div class="col-4">Last Synced:</div>
+                <div class="col-8">21:06:54 EDT 10/03/2023</div>
+              </div>
+            </div>
+          </div>
+          <span class="mode-divider"></span>
+          <!-- <p style="font-weight: bold;">Action: </p> -->
+          <div class="app-icon-button leader-last-item-first-icon" (click)="electRiding($event, 'Elect/Call')">
+            <span class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-green position-relative">check_circle
+            </span>
+            <span class="text">Elect/Call</span>
+          </div>
+
+          <div style="margin-left: 5px;" class="app-icon-button leader-last-item-first-icon" (click)="electRiding($event, 'Kill')">
+            <span class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-red position-relative">unpublished
+            </span>
+            <span class="text">Kill</span>
+          </div>
+
+          <div style="margin-left: 5px;" class="app-icon-button leader-last-item-first-icon" (click)="electRiding($event, 'Reconsider')">
+            <span class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-red position-relative">unpublished
+            </span>
+            <span class="text">Reconsider</span>
+          </div>
+
+          <!-- <span
+            (click)="electRiding($event, 'Elect/Call')"
+            matTooltip="Elect/Call"
+            matTooltipPosition="below"
+            class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-green position-relative"
+          >
+            check_circle
+          </span> -->
+          <!-- <span
+            (click)="electRiding($event, 'Kill/Reconsider')"
+            matTooltip="Kill"
+            matTooltipPosition="below"
+            class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-red position-relative"
+          >
+            unpublished
+          </span> -->
+          <!-- <span style="border:1px solid;color: purple;"
+            (click)="electRiding($event, 'Kill/Reconsider')"
+            matTooltip="Reconsider"
+            matTooltipPosition="below"
+            class="icon material-symbols-rounded semi-bold-icon ng-star-inserted"
+          >
+          <i _ngcontent-hnd-c251="" class="ri-restart-line"></i>
+          </span> -->
+        </div>
+        <div style="float: right;width:30%">
+          <div class="text txt-margin">
+            <div style="float: right;"><b>Last Updated:</b> {{lastUpdated}}</div>
+          </div>
+          <div class="text txt-margin">
+            <div style="float: right;margin-right: 3.2rem !important;"><b>Polls Reporting:</b> {{pollsReporting}}</div>
+          </div>
+        </div>
+        </div>
+        <!-- <div class="d-flex mt-2 justify-content-between mx-1">
+                    <div class="search-count-divider"></div>
+                    <div class="position-relative">
+                        <span class="caller-tooltip-icon">
+                            <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from the source system. This helps ensure that you are viewing the latest information available.</div>
+
+                          <span class="timestamp-icon material-symbols-rounded medium-icon">info</span>
+                        </span>
+                        <span class="text txt-margin"
+                        ><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span>
+                    </div>
+                </div> -->
+      </div>
+      <!-- <div
+        class="d-flex justify-content-between ridings-lastsynced-icons mb-3 flex-wrap"
+      > -->
+      <!-- <div
+          *ngIf="selectedRiding.ridingName"
+          class="d-flex align-items-center"
+        >
+          <div class="section-heading-h2 selected-riding-name">
+            Polls reporting:
+          </div>
+          <div>36/125(28.8%)</div> -->
+      <!-- <div style="padding-top: 7px">36/125 (28.8%)</div>
+        </div> -->
+
+      <!-- <div class="d-flex mt-2 justify-content-between mx-1"> -->
+      <!-- <div class="search-count-divider"></div> -->
+      <!-- <div class="position-relative"> -->
+      <!-- <span class="caller-tooltip-icon"> -->
+      <!-- <div class="caller-tooltip p-3">
+                Indicates the most recent date and time when the data in the
+                table was updated from the source system. This helps ensure that
+                you are viewing the latest information available.
+              </div> -->
+
+      <!-- <span class="timestamp-icon material-symbols-rounded medium-icon"
+                >info</span
+              > -->
+      <!-- </span> -->
+      <!-- <span class="timestamp-icon material-symbols-rounded medium-icon">info</span> -->
+      <!-- <span class="text txt-margin"
+              ><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span
+            > -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <div style="height: auto; margin-top: -8px" class="pb-4">
+        <ag-grid-angular
+          class="{{ appliedThemeClassOnTable }}"
+          [gridOptions]="manitobaGridOptions"
+          (gridReady)="manitobaOnGridReady($event)"
+          [rowData]="manitobaRowData"
+          [columnDefs]="manitobaColumnDefs"
+        ></ag-grid-angular>
+      </div>
+      <div class="divider my-3 position-relative">
+        <div class="d-flex align-items-center position-absolute view-options">
+          <div
+            class="material-symbols-rounded medium-icon mx-2 view-option"
+            (click)="onViewOptionChange(opt)"
+            [ngClass]="{ active: opt.selected }"
+            *ngFor="let opt of viewOptions"
+          >
+            {{ opt.icon }}
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedViewOption.icon === 'bar_chart'" style="height: auto">
+        <ag-charts-angular
+          style="height: 100%"
+          [options]="optionsBar"
+        ></ag-charts-angular>
+      </div>
+      <!-- <div *ngIf="selectedViewOption.icon === 'pie_chart'" style="height: auto">
+                <ag-charts-angular
+                        style="height: 100%"
+                        [options]="optionsPie"
+                ></ag-charts-angular>
+            </div> -->
+      <div
+        *ngIf="selectedViewOption.icon === 'ssid_chart'"
+        style="height: auto"
+      >
+        <ag-charts-angular
+          style="height: 100%"
+          [options]="options"
+        ></ag-charts-angular>
+      </div>
+    </div>
+  </div>
+</div>

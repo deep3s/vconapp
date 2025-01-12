@@ -1,0 +1,131 @@
+$CPPrimary: #1d1c1c;
+$CPPrimaryHover: #359e00;
+$CPPrimary_1: #C93C45;
+$CPPrimary_2: #be5057;
+$CPLightPrimary: rgba(139, 39, 65, 0.07);
+$CPLightPrimary_2: #FFCBCB;
+$CPInfoGreen: #77C54A;
+$CPBlue: #0767A8;
+$CPBlack: #262424;
+$CPRed: #de0808;
+$Plum: #612141;
+$CoolGrey: #9E9E9E;
+$TextGrey: #606366;
+$GreyShade: #e6e6e6;
+$GreyMedium: #86888a;
+$DisabledGrey: #888888;
+$StrokeGrey: #BBBCBC;
+$LightBackgroundGrey: #e2e2e2;
+$ExtraLightBackgroundGrey: #f5f5f5;
+$Charcoal: #383B3E;
+$HighContrastCPBurgundy: #4c1023;
+$HighContrastCharcoal: #141516;
+
+$CPDark: #359e00;
+$CPDarkLightBG: #222628;
+$CPDarkBorder: #313437;
+$CPDarkCardsBG: $CPDark;
+
+$AppInputHeight: 45px;
+$CPLightRegularFont: 'LatoMedium';
+$CPMediumRegularFont: 'LatoMedium';
+$CPLightItalicFont: 'LatoLightItalic';
+$CPSemiBoldFont: 'LatoSemiBold';
+
+$MobileScalerScreenWidth: 575px;
+$MobileScreenWidth: 600px;
+$TabletScreenWidth: 992px;
+$NotMobileScreenWidth: 601px;
+$BelowTablet: 767px;
+$startDesktop: 1024px;
+$largeDesktop: 1200px;
+
+@mixin scaler-mobile {
+  @media only screen and (max-width: $MobileScalerScreenWidth) {
+    @content;;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: $MobileScreenWidth) {
+    @content;;
+  }
+}
+
+@mixin mobile-landscape {
+  @media only screen and (min-device-width: 480px) and (max-device-width: 670px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin iphone-landscape {
+  @media only screen and (min-device-width: 375px) and (max-device-width: 670px) and (orientation: landscape) {
+    @content;;
+  }
+}
+
+@mixin not-mobile {
+  @media only screen and (min-width: $NotMobileScreenWidth) {
+    @content;;
+  }
+}
+
+@mixin tablet-mobile {
+  @media only screen and (max-width: $TabletScreenWidth) {
+    @content;;
+  }
+}
+
+@mixin desktop-and-ipad-pro {
+  @media only screen and (min-width: $TabletScreenWidth) {
+    @content;;
+  }
+}
+
+@mixin mobile-to-ipad-pro {
+  @media only screen and (min-width: $MobileScreenWidth) and (max-width: $TabletScreenWidth) {
+    @content;;
+  }
+}
+
+@mixin only-desktop {
+  @media only screen and (min-width: $startDesktop) {
+    @content;;
+  }
+}
+
+@mixin not-desktop {
+  @media only screen and (max-width: $startDesktop) {
+    @content;;
+  }
+}
+
+@mixin large-desktop {
+  @media only screen and (min-width: $largeDesktop) {
+    @content;;
+  }
+}
+
+@mixin below-tablet {
+  @media only screen and (max-width: $BelowTablet) {
+    @content;;
+  }
+}
+
+.app-tooltip-animation {
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: right top;
+  transition: all 0.2s ease-in-out;
+  //transition-delay: 0.1s;
+
+  &.opened {
+    transform: scaleY(1);
+    opacity: 1;
+
+    .for-animation {
+      opacity: 1;
+      //transform: scale(1);
+    }
+  }
+}

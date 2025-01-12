@@ -1,0 +1,83 @@
+<div class="position-relative app-manage-ers app-main-page">
+  <div
+    class="d-flex justify-content-between export-section bg-white align-items-center py-2 px-3"
+  >
+    <app-breadcrumbs></app-breadcrumbs>
+  </div>
+
+  <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
+    <div class="w-100 d-flex align-items-center justify-content-center">
+      <div class="dashboard-container position-relative w-100">
+        <div class="app-container py-2 px-3">
+          <div class="row">
+            <div class="col-12">
+              <div class="position-relative">
+                <div class="w-100 h-100">
+                  <div class="sub-page app-card-container">
+                    <div class="app-card bg-white p-4">
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <div class="d-flex align-items-center">
+                          <span class="material-symbols-rounded semi-bold-icon"
+                            >create_new_folder</span
+                          >
+                          <div class="section-heading-h2 fw-bold p-2 mx-2 my-2">
+                            Manage ERS
+                          </div>
+                        </div>
+                        <div
+                          class="d-flex justify-content-between align-items-center py-2 filters-section"
+                        ></div>
+                      </div>
+                      <div class="divider"></div>
+                      <!-- <div class="row">
+                        <div class="col-12">
+                          <div class="d-flex align-items-center py-3">
+                            <div
+                              class="app-icon-button tab-btn justify-content-center"
+                              *ngFor="let tab of tabMenus; index as i"
+                              matTooltip="{{ 'Go to ' + tab.name }}"
+                              matTooltipPosition="below"
+                              [ngClass]="{ active: tab.tabUrl === router.url }"
+                              (click)="handleTabMenuClick(tab.tabUrl)"
+                            >
+                              <span
+                                class="material-symbols-rounded semi-bold-icon"
+                                >{{ tab.icon }}
+                              </span>
+                              <span class="text">{{ tab.name }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="row manage-ers">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4" *ngFor="let tab of tabMenus; index as i">
+                          <div class="app-card bg-white h-100 w-100 d-flex"
+                               >
+                            <div class=" dash-menu">
+                              <div class="menu-icon mb-3">
+                                <span class="material-symbols-rounded semi-bold-icon">{{ tab.icon }}</span>
+                              </div>
+                              <div class="menu-name pb-3">{{tab.name}}</div>
+                             
+            
+                              <div class="menu-footer mt-3">
+                                <button class="app-button-primary mt-3" (click)="handleTabMenuClick(tab.tabUrl)">View</button>
+                              </div>
+                            </div>
+                          </div>
+            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

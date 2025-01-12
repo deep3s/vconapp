@@ -1,0 +1,110 @@
+<mat-dialog-content class="user-modal">
+    <div [ngClass]="appliedThemeClass">
+        <div class="app-card bg-white">
+            <div class="d-flex card-heading justify-content-between align-items-center px-3 py-2 ">
+                <div class="fw-medium clr-white">
+                    Ridings
+                </div>
+                <span class="app-button-card close-btn fw-medium d-flex align-items-center justify-content-center"
+                      mat-dialog-close>
+                    <span class="material-symbols-rounded semi-bold-icon clr-white header-menu"
+                          matTooltip="Close"
+                          matTooltipPosition="below">Close</span>
+                </span>
+            </div>
+            <div class="divider"></div>
+
+            <div class="app-container mt-4">
+
+                <div class="row">
+                    <div class="col-12"
+                         [ngClass]="{'col-md-6': dialogData.ridings.length > 1}"
+                         *ngFor="let riding of dialogData.ridings; index as i">
+                        <mat-accordion class="main-lob" #lobAccordion="matAccordion" [multi]="true">
+                            <mat-expansion-panel [expanded]="true"
+                                                 [hideToggle]="true">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <div class="d-flex align-items-center justify-content-between w-100">
+                                            <div class="d-flex align-items-center">
+                                                <span class="">{{riding.ridingName}}</span>
+                                                <span class="caller-tooltip-icon">
+                                                    <span class="icon material-symbols-rounded semi-bold-icon px-3 clr-grey position-relative">
+                                                        visibility
+                                                    </span>
+                                                     <div class="caller-tooltip p-3">
+                                                        <div class="row">
+                                                            <div>Riding Note <a [routerLink]="['/manageERS/edit-ridings']" style="color: #3f51b5;">(Edit Notes)</a></div>
+                                                        </div>
+                                                        <div class="divider"></div>
+                                                        <div class="row">
+                                                            <div class="col-4">Previous</div>
+                                                            <div class="col-8">Carlo Rouleau</div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-4">Likely Winner</div>
+                                                            <div class="col-8">
+                                                                <span class="cl-circle"></span>
+                                                                PCP
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-4">Caller Notes</div>
+                                                            <div class="col-8">
+                                                                <div>Pon-cabinet min in seat since 2011 UCP</div>
+                                                                <div>Pon-cabinet min in seat since 2011 UCP</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-4">Prominent</div>
+                                                            <div class="col-8">Six term city councilor</div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-4">Caller</div>
+                                                            <div class="col-8">Tyler Griffin</div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center justify-content-end">
+                                                            <b>Last Synced:</b> 21:06:54 EDT 10/03/2023
+                                                        </div>
+                                                    </div>
+                                                </span>
+
+                                            </div>
+                                            <span class="material-symbols-rounded medium-icon pl-2">Expand_more</span>
+                                        </div>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div style="height: auto" class="py-4">
+                                    <ag-grid-angular
+                                            class="{{ appliedThemeClassOnTable }}"
+                                            [gridOptions]="manitobaGridOptions"
+                                            (gridReady)="manitobaOnGridReady($event)"
+                                            [rowData]="riding.candidates">
+                                    </ag-grid-angular>
+                                </div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <div class="d-flex align-items-center justify-content-end" *ngIf="dialogData.enableElect">
+                            <button (click)="electRiding($event)" class="app-button-primary my-3 mx-3">Kill/Reconsider
+                            </button>
+                            <button (click)="electRiding($event)" class="app-button-primary my-3">Elect/Call</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="">
+                    <div class="row">
+                        <div class="col-12 d-flex align-items-center justify-content-end">
+                            <button (click)="onNoClick()" class="app-button-secondary m-3">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</mat-dialog-content>

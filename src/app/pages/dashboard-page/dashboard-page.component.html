@@ -1,0 +1,129 @@
+<div class="position-relative dashboard-page app-main-page">
+  <div class="d-flex justify-content-between export-section bg-white align-items-center py-2 px-3">
+    <app-breadcrumbs></app-breadcrumbs>
+    <app-submenu></app-submenu>
+  </div>
+  <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
+    <div class="w-100 d-flex align-items-center justify-content-center">
+      <div class="dashboard-container position-relative w-100">
+
+        <div class="app-container">
+          <div class="row">
+            <div class="col-12">
+              <div class="section-heading-h2 fw-medium pt-3 mb-3">Welcome to THE V-CUT</div>
+              <div class="fw-medium">THE V-CUT is a centralized platform for managing editorial workflows, content and resources.
+              </div>
+              <div class="divider mb-4 mt-2"></div>
+            </div>
+          </div>
+          <div class="section-heading-h3 fw-medium my-2">TOOLS </div>
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4">
+              <div class="app-card bg-white h-100 w-100 d-flex"
+                   [routerLink]="'/tracker'">
+                <div class=" dash-menu">
+                  <div class="menu-icon mb-3">
+                    <span class="material-symbols-rounded semi-bold-icon">auto_stories</span>
+                  </div>
+                  <div class="menu-name pb-3">Apple Tracker</div>
+                  <div class="menu-content">An editorial tracker dashboard tool that provides
+                    comprehensive insights for managing publishing workflows.
+                  </div>
+
+                  <div class="menu-footer mt-3">
+                    <button class="app-button-primary mt-3">View</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4">
+              <div class="app-card h-100 bg-white w-100 d-flex"
+                   [routerLink]="'/publisher'">
+                <div class="dash-menu">
+                  <div class="menu-icon mb-3">
+                    <span class="material-symbols-rounded semi-bold-icon">panorama</span>
+                  </div>
+                  <div class="menu-name pb-3">Photo Publisher</div>
+                  <div class="menu-content" style="margin-bottom: 25px;">A photo metadata update tool that enables
+                    editing and management of images for editorial use.
+                  </div>
+                  <div class="menu-footer mt-3">
+                    <button class="app-button-primary mt-3">View</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4 hide-tablet-mobile">
+              <div class="app-card h-100 bg-white w-100 d-flex"
+                   [routerLink]="'/ers/overview'">
+                <div class=" dash-menu">
+                  <div class="menu-icon mb-3">
+                    <span class="material-symbols-rounded semi-bold-icon">border_all</span>
+                  </div>
+                  <div class="menu-name pb-3">Election Reporting System (ERS)</div>
+                  <div class="menu-content">
+                    Experience & leverage (at a glance) the latest insights for the current Canadian Election that’s unfolding – at a Municipal, Provincial or Federal level.
+                  </div>
+
+                  <div class="menu-footer mt-3">
+                    <button class="app-button-primary mt-3">View</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-heading-h3 fw-medium my-2">ADMINISTRATION </div>
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+              <div class="app-card h-100 bg-white w-100 d-flex"
+                   [routerLink]="'/users'">
+                <div class=" dash-menu">
+                  <div class="menu-icon mb-3">
+                    <span class="material-symbols-rounded semi-bold-icon">badge</span>
+                  </div>
+                  <div class="menu-name pb-3">Manage Users</div>
+                  <div class="menu-content" style="margin-bottom: 25px;">A user management update tool
+                    that streamlines the process of managing and organizing user data and permissions.
+                  </div>
+
+                  <div class="menu-footer mt-3">
+                    <button class="app-button-primary mt-3">View</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 hide-tablet-mobile">
+              <div class="app-card h-100 bg-white w-100 d-flex"
+                   [routerLink]="'/manageERS'">
+                <div class=" dash-menu">
+                  <div class="menu-icon mb-3">
+                    <span class="material-symbols-rounded semi-bold-icon">create_new_folder</span>
+                  </div>
+                  <div class="menu-name pb-3">Manage ERS</div>
+                  <div class="menu-content">
+                    A tool for the THE V-CUT Admin team geared towards optimizing the experience for the end user / caller through the customization of settings related specifically to the ERS.
+                  </div>
+
+                  <div class="menu-footer mt-3">
+                    <button class="app-button-primary mt-3">View</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

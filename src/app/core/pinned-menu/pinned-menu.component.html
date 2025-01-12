@@ -1,0 +1,66 @@
+<div
+  class="dashboard-menu pinned-menu"
+  [ngClass]="{ opened: dashboardMenuOpened }"
+>
+  <!--<div class="top-section">
+        <i class="lnr ri-grid-fill icon-menu p-3"
+           (click)="clickedOutOfdashboardMenu()"></i>
+    </div> -->
+  <!--<label class="sr-only" for="search-dashboard">Search by Insights</label>-->
+  <!--<div class="position-relative my-2 search-box">
+        <input class="app-text-box" id="search-dashboard"
+               placeholder="Search menu"
+               [(ngModel)]="insightSearchText"
+               (keyup)="searchInsight()"/>
+
+      <span class="icon-search material-symbols-rounded medium-icon">search</span>
+    </div>-->
+  <div class="menu-section px-2 py-2 mx-2">
+  <!-- <div class="show-tablet-mobile d-flex align-items-center justify-content-between w-100">
+    <span style="padding-left: 19px;font-weight: bold;">THE V-CUT</span>
+  </div> -->
+    <mat-accordion class="main-lob" #lobAccordion="matAccordion" [multi]="true">
+      <mat-expansion-panel
+        *ngFor="let group of dashboardMenus; index as i"
+        [hideToggle]="true"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div
+              class="d-flex align-items-center justify-content-between w-100"
+            >
+              <span>{{ group.name }}</span>
+              <span class="material-symbols-rounded medium-icon pl-2"
+                >Expand_more</span
+              >
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="d-flex w-100">
+          <div
+            class="group align-self-stretch"
+            [ngClass]="{ 'w-50': group.group2, 'w-100': !group.group2 }"
+          >
+            <div
+              class="a-menu"
+              *ngFor="let menu of group.group"
+              [ngClass]="{ active: menu.tabUrl === router.url }"
+              (click)="clickMainMenuLink(menu.tabUrl, menu.name)"
+            >
+              <span class="material-symbols-rounded medium-icon pl-2">{{
+                menu.icon
+              }}</span>
+              <span class="px-2">{{ menu.name }}</span>
+            </div>
+          </div>
+          <div class="group2" *ngIf="group.group2">
+            <div class="a-menu" *ngFor="let menu of group.group2">
+              <!--<span class="{{menu.icon}} pl-2"></span>-->
+              <span class="px-2">{{ menu.name }}</span>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+@import "src/styles/variables";
+
+::ng-deep .app-dark-mode .call-election-page {
+  .title {
+    color: white !important;
+  }
+}
+
+.call-election-page {
+  .title {
+    font-size: 20px;
+    color: #383b3e;
+  }
+
+  .select-region-button {
+    border-radius: inherit;
+    padding: 9px 26px;
+  }
+
+  .card-border {
+    border: 1px solid $StrokeGrey;
+  }
+
+  .ag-custom-header {
+    background-color: #99a3b3 !important;
+  }
+
+  .ag-theme-material .ag-header-row {
+    background-color: #99a3b3 !important;
+  }
+
+  .section-heading-h2 {
+    font-size: 18px !important;
+    font-weight: 700;
+    font-style: LatoSemibold;
+  }
+}
+
+::ng-deep {
+  .ag-column-drop-wrapper {
+    display: none;
+  }
+
+  .ag-cell-value,
+  .ag-group-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #606366;
+  }
+  
+  .ag-row-selected {
+
+    .ag-cell-value,
+    .ag-group-value {
+      color: white !important;
+    }
+  }
+
+  .ag-theme-material {
+    .ag-row-hover.ag-full-width-row.ag-row-group::before {
+      background: $CPPrimary !important;
+    }
+
+    .ag-row-hover.ag-full-width-row.ag-row-group:not(.ag-row-selected)::before {
+      background: $LightBackgroundGrey !important;
+    }
+  }
+
+  .ag-ltr .ag-group-child-count {
+    margin-left: 3px;
+    visibility: hidden;
+  }
+}

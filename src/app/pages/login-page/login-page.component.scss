@@ -1,0 +1,87 @@
+@import "../../../styles/variables";
+
+::ng-deep .app-dark-mode {
+  .login-page {
+    .logo-white {
+      display: block !important;
+    }
+
+    .logo-black {
+      display: none !important;
+    }
+
+    .forgot-password-link {
+      color: white !important;
+    }
+
+  }
+}
+
+.login-page {
+  min-height: calc(100vh - 68px);
+  padding: 16px 25px 25px 25px;
+  background: $ExtraLightBackgroundGrey;
+
+  .forgot-password-link {
+    color: $CPBlack;
+  }
+
+  .sign-in-label {
+    font-size: 18px;
+    padding-top: 40px;
+    font-weight: 500;
+  }
+
+  .logo-white {
+    display: none;
+  }
+
+  .logo-black {
+    display: block;
+  }
+
+  .page-parent {
+    //margin-left: 35px;
+
+    .main-page {
+
+    }
+  }
+
+  .login-container {
+    margin-top: 50px;
+
+    @include mobile {
+      margin-top: 15px;
+    }
+
+    .login-card {
+    }
+
+    .app-card {
+      padding: 50px 80px;
+      height: 530px;
+      width: 500px !important;
+      border: none;
+
+      @include mobile {
+        padding: 30px;
+        width: 100% !important;
+      }
+
+      &.error-in-login {
+        height: 570px;
+      }
+    }
+  }
+
+  .logo-menu-img {
+    //padding: 15px 30px;
+    height: 33px;
+
+    @include mobile {
+      height: 30px;
+    }
+  }
+
+}

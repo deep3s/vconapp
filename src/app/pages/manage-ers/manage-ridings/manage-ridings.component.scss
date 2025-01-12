@@ -1,0 +1,225 @@
+@import "src/styles/variables";
+
+::ng-deep .app-dark-mode {
+  .edit-riding-page {
+    .tab-btn {
+      color: $ExtraLightBackgroundGrey;
+      .material-symbols-rounded {
+        color: $ExtraLightBackgroundGrey;
+      }
+    }
+
+    .section-heading-h2,
+    .section-heading-h3 {
+      color: white !important;
+    }
+
+    .app-card {
+      // border-color: transparent !important;
+      border: 1px solid $StrokeGrey !important;
+    }
+
+    .title {
+      color: white !important;
+    }
+
+    .add-btn {
+      color: white;
+      background: none !important;
+      border: 1px solid $StrokeGrey;
+    }
+  }
+}
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background: $LightBackgroundGrey;
+}
+.edit-riding-page {
+  min-height: calc(100vh - 68px);
+  background: $ExtraLightBackgroundGrey;
+
+  @include mobile {
+    padding-bottom: 150px;
+  }
+
+  ::ng-deep .text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .search-box {
+    width: 250px;
+  }
+
+  input.app-text-box {
+    //padding: 0.75rem 0.75rem 0.75rem 2rem;
+    border: none;
+  }
+
+  input.search-app-text-box {
+    padding: 0.75rem 0.75rem 0.75rem 2rem;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .icon-search {
+    font-size: 22px;
+    position: absolute;
+    top: 16px;
+    left: 6px;
+    cursor: pointer;
+  }
+
+  .icon-clear {
+    font-size: 22px;
+    position: absolute;
+    top: 11px;
+    right: 6px;
+    cursor: pointer;
+  }
+
+  .app-card-container {
+    min-height: calc(100vh - 278px);
+    position: relative;
+  }
+
+  .tab-btn {
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3rem;
+    width: 250px;
+    height: 250px;
+
+    cursor: pointer;
+    line-height: 2.5;
+    transition: all 0.2s ease-in-out;
+    font-family: $CPLightRegularFont;
+    padding-left: 8px;
+
+    .material-symbols-rounded.large-icon {
+      font-size: 3rem;
+      border-radius: 4px;
+      margin: 6px 0;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:hover,
+    &.active {
+      border-radius: 4px;
+      background: $CPPrimary;
+      color: $ExtraLightBackgroundGrey;
+
+      .material-symbols-rounded.large-icon {
+        background: $CPPrimary;
+        color: $ExtraLightBackgroundGrey;
+      }
+    }
+
+    &:first-child {
+      background: $CPPrimary;
+      color: $ExtraLightBackgroundGrey;
+
+      .material-symbols-rounded.large-icon {
+        background: $CPPrimary;
+        color: $ExtraLightBackgroundGrey;
+      }
+    }
+  }
+}
+
+.sub-page {
+  min-height: calc(100vh - 68px);
+
+  .app-card-container {
+    position: relative;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .material-symbols-rounded.large-icon {
+    font-size: 32px;
+    border-radius: 4px;
+    margin: 6px 0;
+    color: $CPPrimary;
+  }
+
+  .section-heading-h2 {
+    color: $Charcoal;
+  }
+
+  .section-heading-h3 {
+    font-size: 1rem;
+  }
+
+  .filters-section {
+    flex-wrap: wrap;
+
+    @include below-tablet {
+      display: none !important;
+    }
+
+    .app-ngs-container {
+      padding: 10px 0 10px 10px;
+
+      &.status {
+        // width: 20rem;
+      }
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+
+
+/* Add Part */
+.my-2 {
+  margin: 0.5rem; /* Adjust margin as needed */
+  margin-left: 0rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-item {
+  display: flex;
+  align-items: center;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+
+.flex-1 {
+  flex: 1;
+}
+
+.extra-width {
+  width: calc(100% / 5 * 4 + 5.5rem); /* Increase width by 5.5rem */
+}
+
+.app-text-box {
+  width: 100%; /* Adjust width as needed */
+}
+
+/* End of Add Part */
+
+
+// /* Target the clear button wrapper to hide it from ng-select*/
+// ::ng-deep .ng-clear-wrapper {
+//   display: none;
+// }

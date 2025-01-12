@@ -1,0 +1,40 @@
+<div class="d-flex align-items-center justify-content-between app-submenu">
+  <div class="d-flex align-items-center">
+    <div class="search-count" *ngIf="hasSearchCount">{{searchCount}}</div>
+    <div class="search-count-divider" *ngIf="hasSearch"></div>
+    <div class="position-relative" *ngIf="hasSearch">
+      <input class="app-text-box search-box" id="search-dashboard"
+             [(ngModel)]="submenuSearchText"
+             (keyup)="submenuSearch()"
+             placeholder="{{searchPlaceHolder}}"/>
+
+      <span class="icon-search material-symbols-rounded medium-icon">search</span>
+      <span class="icon-clear material-symbols-rounded medium-icon"
+            (click)="clearSearch()"
+            *ngIf="submenuSearchText">close</span>
+    </div>
+  </div>
+
+
+  <div class="d-flex align-items-center">
+    <div class="app-icon-button export-btn"
+         matTooltip="Download table data to CSV file"
+         matTooltipPosition="below" *ngIf="hasExport" (click)="export()">
+      <span class="material-symbols-rounded semi-bold-icon">text_snippet
+      </span>
+      <span class="text">Export</span>
+    </div>
+    <span class="material-symbols-rounded semi-bold-icon header-menu" *ngIf="hasRefresh"
+          matTooltip="Sync data"
+          matTooltipPosition="below" (click)="refreshSubmenu()">sync</span>
+    <span class="material-symbols-rounded semi-bold-icon header-menu"
+          matTooltip="Exit fullscreen"
+          matTooltipPosition="below"
+          (click)="closeFullscreen()" *ngIf="isFullScreen">Fullscreen_exit</span>
+    <span class="material-symbols-rounded semi-bold-icon header-menu full-screen"
+          matTooltip="Fullscreen"
+          matTooltipPosition="below"
+          (click)="openFullscreen()" *ngIf="!isFullScreen">Fullscreen</span>
+  </div>
+
+</div>

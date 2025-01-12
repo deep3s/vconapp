@@ -1,0 +1,358 @@
+@import "src/styles/variables";
+
+::ng-deep .app-dark-mode {
+  .manage-settings-page {
+    .tab-btn {
+      color: $ExtraLightBackgroundGrey;
+
+      .material-symbols-rounded {
+        color: $ExtraLightBackgroundGrey;
+      }
+    }
+
+    .section-heading-h2 {
+      // font-size: 1.25rem !important;
+      // margin-bottom: 1rem !important;
+      font-size: 18px !important;
+      font-weight: 700;
+      font-style: LatoSemibold;
+    }
+
+    .section-heading-h2,
+    .section-heading-h3 {
+      color: white !important;
+    }
+
+    .app-card {
+      // border-color: transparent !important;
+      border: 1px solid $StrokeGrey !important;
+    }
+  }
+
+  .add-btn {
+    color: white;
+    background: none !important;
+    border: 1px solid $StrokeGrey;
+  }
+}
+
+.manage-settings-page {
+  min-height: calc(100vh - 68px);
+  background: $ExtraLightBackgroundGrey;
+
+  @include mobile {
+    padding-bottom: 150px;
+  }
+
+  ::ng-deep .text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .app-ngs-color {
+    height: 12px;
+    width: 12px;
+    display: inline-flex;
+    border-radius: 50%;
+  }
+
+  .color-show {
+    height: 20px;
+    width: 20px;
+    display: inline-flex;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  input[type="color"] {
+    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
+    -moz-appearance: none; /* Remove default styling in Mozilla browsers */
+    appearance: none; /* Remove default styling in modern browsers */
+    border: none;
+    padding: 0;
+    // width: 50px; /* Desired width */
+    // height: 50px; /* Desired height */
+    border-radius: 50%; /* Make it circular */
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%; /* Make the color swatch circular */
+  }
+
+  .add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background: $LightBackgroundGrey;
+  }
+
+
+  .app-ngs-value {
+    padding-left: 5px;
+  }
+
+  .search-box {
+    width: 250px;
+  }
+
+  input.app-text-box {
+    //padding: 0.75rem 0.75rem 0.75rem 2rem;
+    border: none;
+  }
+
+  input.search-app-text-box {
+    padding: 0.75rem 0.75rem 0.75rem 2rem;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .icon-search {
+    font-size: 22px;
+    position: absolute;
+    top: 16px;
+    left: 6px;
+    cursor: pointer;
+  }
+
+  .icon-clear {
+    font-size: 22px;
+    position: absolute;
+    top: 11px;
+    right: 6px;
+    cursor: pointer;
+  }
+
+  .app-ngs-container {
+    //padding: 10px 0 10px 10px;
+
+    &.category {
+      width: 200px;
+    }
+
+    &.status {
+      width: 120px;
+    }
+  }
+
+  .app-card-container {
+    min-height: calc(100vh - 278px);
+    position: relative;
+  }
+
+  .tab-btn {
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3rem;
+    width: 250px;
+    height: 250px;
+
+    cursor: pointer;
+    line-height: 2.5;
+    transition: all 0.2s ease-in-out;
+    font-family: $CPLightRegularFont;
+    padding-left: 8px;
+
+    .material-symbols-rounded.large-icon {
+      font-size: 3rem;
+      border-radius: 4px;
+      margin: 6px 0;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:hover,
+    &.active {
+      border-radius: 4px;
+      background: $CPPrimary;
+      color: $ExtraLightBackgroundGrey;
+
+      .material-symbols-rounded.large-icon {
+        background: $CPPrimary;
+        color: $ExtraLightBackgroundGrey;
+      }
+    }
+
+    &:first-child {
+      background: $CPPrimary;
+      color: $ExtraLightBackgroundGrey;
+
+      .material-symbols-rounded.large-icon {
+        background: $CPPrimary;
+        color: $ExtraLightBackgroundGrey;
+      }
+    }
+  }
+}
+
+.sub-page {
+  min-height: calc(100vh - 68px);
+
+  .app-card-container {
+    position: relative;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .material-symbols-rounded.large-icon {
+    font-size: 32px;
+    border-radius: 4px;
+    margin: 6px 0;
+    color: $CPPrimary;
+  }
+
+  .section-heading-h2 {
+    color: $Charcoal;
+  }
+
+  .section-heading-h3 {
+    font-size: 1rem;
+  }
+
+  .filters-section {
+    flex-wrap: wrap;
+
+    @include below-tablet {
+      display: none !important;
+    }
+
+    .app-ngs-container {
+      padding: 10px 0 10px 10px;
+
+      &.status {
+        // width: 20rem;
+      }
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.app-check-box {
+  .role-name {
+    // font-family: LatoRegular;
+    // font-family: $CPLightRegularFont;
+    // font-weight: bold;
+
+    color: #606366;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
+
+::ng-deep {
+  .ag-paging-button{
+    margin: 4px;
+  }
+}
+
+.section-heading-h2 {
+  // font-size: 1.25rem !important;
+  // margin-bottom: 1rem !important;
+  font-size: 18px !important;
+  font-weight: 700;
+  font-style: LatoSemibold;
+}
+
+
+.my-2 {
+  margin: 0.5rem; /* Adjust margin as needed */
+  margin-left: 0rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-item {
+  display: flex;
+  align-items: center;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.extra-width {
+  width: calc(100% / 5 * 4 + 5.5rem); /* Increase width by 5.5rem */
+}
+
+.app-text-box {
+  width: 100%; /* Adjust width as needed */
+}
+
+// .color-show {
+//   width: 40px;
+//   height: 40px;
+//   border: none;
+//   border-radius: 50%;
+//   padding: 0;
+//   cursor: pointer;
+// }
+
+// .app-button-primary {
+//   margin-left: 10px; /* Adjust spacing as needed */
+// }
+
+
+// ======= Remove mdc-checkbox__ripple Start =======
+::ng-deep .mdc-checkbox__ripple {
+  display: none !important;
+}
+
+::ng-deep .mdc-checkbox {
+  --mdc-checkbox-unselected-focus-icon-color: rgb(95, 92, 92);
+  --mdc-checkbox-unselected-hover-icon-color: rgb(95, 92, 92);
+}
+// ======= Remove mdc-checkbox__ripple End =======
+
+//-----------DropDowns Start-------------
+::ng-deep .ng-select .ng-placeholder {
+  color: #606366;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Style unselected options */
+::ng-deep .ng-select .ng-option:not(.ng-option-selected) {
+  color: #606366;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Style selected options */
+::ng-deep .ng-select .ng-option.ng-option-selected {
+  color: #606366;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/*  ng-template Style for the value text */
+.app-ngs-value {
+  color: #606366;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+// /* Target the clear button wrapper to hide it */
+// ::ng-deep .ng-clear-wrapper {
+//   display: none;
+// }
+//-----------DropDowns End-------------
+

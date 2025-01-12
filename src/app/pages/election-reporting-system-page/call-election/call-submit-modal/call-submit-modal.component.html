@@ -1,0 +1,153 @@
+<mat-dialog-content class="publisher-modal hide-scrollbar">
+    <div [ngClass]="appliedThemeClass">
+      <div class="app-card bg-white">
+        <div class="d-flex card-heading justify-content-between align-items-center px-3 py-2 ">
+          <div class="fw-medium clr-white">
+           Submit Call Statement
+          </div>
+          <span class="app-button-card close-btn fw-medium d-flex align-items-center justify-content-center"
+                mat-dialog-close>
+                      <span class="material-symbols-rounded semi-bold-icon clr-white header-menu"
+                            matTooltip="Close"
+                            matTooltipPosition="below">Close</span>
+                  </span>
+        </div>
+        <div class="divider"></div>
+        <div class="">
+            <div class="row" style="padding: 15px;">
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                      <p class="call-statement-heading-div">English Call Statement</p>
+                      <div class="col-md-6">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div class="search-count-divider"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div style="height: auto">
+                        <p
+                          class="col-md-6 section-heading-h3"
+                          *ngIf="data.selectedCallType.value == 'Default'"
+                          style="width: 100%;"
+                        >
+                          <span
+                            *ngIf="
+                              (data.selectedCallType.type == 'Majority' ||
+                              data.selectedCallType.type == 'Minority')
+                            "
+                          >
+                            {{
+                              "The " +
+                                data.selectedParty.name +
+                                " of Manitoba (PC) has won a " +
+                                data.selectedCallType.type +
+                                " Government in the province of Manitoba"
+                            }}
+                          </span>
+                          <span
+                            *ngIf="
+                            data.selectedCallType.type == 'Elected - Majority / Minority Unknown'
+                            "
+                          >
+                            {{
+                              "The " +
+                              data.selectedParty.name +
+                                " of Manitoba (PC)  has won the Manitoba Election - a Majority or Minority form Government hasn't yet been determined"
+                            }}
+                          </span>
+                        </p>
+                        <textarea
+                        [(ngModel)]="textareaEnglish"
+                          id="notes"
+                          name="notes"
+                          class="col-md-6 app-text-box app-text-area form-control"
+                          maxlength="250"
+                          rows="4"
+                          type="text"
+                          *ngIf="data.selectedCallType.value == 'Submit Call Statement'"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="row">
+                      <p class="call-statement-heading-div">French Call Statement</p>
+                      <div class="col-md-6">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div class="search-count-divider"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div style="height: auto">
+                        <p
+                          class="col-md-6 section-heading-h3"
+                          *ngIf="data.selectedCallType.value == 'Default'"
+                          style="width: 100%;"
+                        >
+                          <span
+                            *ngIf="data.selectedCallType.type == 'Majority'"
+                          >
+                            {{
+                                data.frenchSelectedPartyName +
+                                " du Manitoba (PC) a remporté un gouvernement majoritaire dans la province du Manitoba"
+                            }}
+                          </span>
+                          <span
+                            *ngIf="data.selectedCallType.type == 'Minority'"
+                          >
+                            {{
+                                data.frenchSelectedPartyName +
+                                " du Manitoba (PC) a remporté un gouvernement minoritaire dans la province du Manitoba"
+                            }}
+                          </span>
+                          <span
+                            *ngIf="data.selectedCallType.type == 'Elected - Majority / Minority Unknown'
+                            "
+                          >
+                            {{
+                                data.frenchSelectedPartyName +
+                                " du Manitoba (PC) a remporté les élections au Manitoba - un gouvernement majoritaire ou minoritaire n’a pas encore été déterminé"
+                            }}
+                          </span>
+                        </p>
+                        <textarea
+                        [(ngModel)]="textareaFrench"
+                          id="notes"
+                          name="notes"
+                          class="col-md-6 app-text-box app-text-area form-control"
+                          maxlength="250"
+                          rows="4"
+                          type="text"
+                          *ngIf="data.selectedCallType.value == 'Submit Call Statement'"
+                        ></textarea>
+                      </div>
+                      <div style="text-align: end" class="mt-3">
+                        <button
+                          (click)="onCancelCall()"
+                          class="app-button-secondary my-3 mx-3"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          (click)="onSubmitCall()"
+                          class="app-button-primary select-region-button"
+                        >
+                          Submit Call
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+
+
+      
+       
+      </div>
+    </div>
+  
+</mat-dialog-content>
+  

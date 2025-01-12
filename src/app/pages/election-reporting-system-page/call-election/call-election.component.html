@@ -1,0 +1,250 @@
+<div class="call-election-page">
+  <div class="row">
+    <!-- <div class="col-md-4">
+      <div class="row">
+        <p class="col-md-6 section-heading-h2">Choose Riding</p>
+        <div class="col-md-6">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="search-count-divider"></div>
+            <div class="position-relative">
+              <input
+                class="app-text-box search-box"
+                id="search-dashboard"
+                [(ngModel)]="submenuSearchText"
+                id="quickFilter"
+                (input)="onQuickFilterChanged()"
+                placeholder="Search Ridings"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="height: auto">
+          <ag-grid-angular
+            class="{{ appliedThemeClassOnTable }}"
+            [gridOptions]="ridingGridOptions"
+            (gridReady)="ridingOnGridReady($event)"
+            [rowData]="ridingRowData"
+          ></ag-grid-angular>
+        </div>
+        <div style="text-align: end">
+          <button
+            (click)="onSubmitSelectRegion()"
+            class="app-button-primary my-3 select-region-button"  
+          >
+            Select Riding
+          </button>
+        </div>
+      </div>
+    </div> -->
+    <div class="col-md-6">
+      <div class="row">
+        <p class="col-md-6 section-heading-h2">Parties</p>
+        <div class="col-md-6">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="search-count-divider"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="height: auto">
+          <ag-grid-angular
+            class="{{ appliedThemeClassOnTable }}"
+            [gridOptions]="partyGridOptions"
+            (gridReady)="partyOnGridReady($event)"
+            [rowData]="partyRowData"
+            (firstDataRendered)="onPartyFirstDataRendered()"
+          ></ag-grid-angular>
+        </div>
+        <!-- <div style="text-align: end">
+          <button
+            (click)="onSubmitSelectRegion()"
+            class="app-button-primary my-3 select-region-button"
+          >
+            Select Party
+          </button>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <p class="col-md-6 section-heading-h2">Call Type</p>
+        <div class="col-md-6">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="search-count-divider"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="height: auto">
+          <!-- <ag-grid-angular
+            class="{{ appliedThemeClassOnTable }}"
+            [gridOptions]="callTypeGridOptions"
+            [autoGroupColumnDef]="autoGroupColumnDef"
+            (gridReady)="callTypeOnGridReady($event)"
+            [rowData]="callTypeRowData"
+          ></ag-grid-angular> -->
+          <ag-grid-angular
+          class="{{ appliedThemeClassOnTable }}"
+          [columnDefs]="callTypeColumnDefs"
+          [defaultColDef]="defaultColDef"
+          [groupDisplayType]="groupDisplayType"
+          [rowGroupPanelShow]="rowGroupPanelShow"
+      
+          [gridOptions]="callTypeGridOptions"
+          [autoGroupColumnDef]="autoGroupColumnDef"
+          (gridReady)="callTypeOnGridReady($event)"
+          [rowData]="callTypeRowData"
+        ></ag-grid-angular>
+          <!-- <ag-grid-angular
+            class="{{ appliedThemeClassOnTable }}"
+            [columnDefs]="callTypeColumnDefs"
+            [defaultColDef]="defaultColDef"
+            [groupDisplayType]="groupDisplayType"
+            [rowGroupPanelShow]="rowGroupPanelShow"
+            [groupDefaultExpanded]="groupDefaultExpanded"
+            [gridOptions]="callTypeGridOptions"
+            [autoGroupColumnDef]="autoGroupColumnDef"
+            (gridReady)="callTypeOnGridReady($event)"
+            [rowData]="callTypeRowData"
+          ></ag-grid-angular> -->
+        </div>
+        <!-- <div style="text-align: end">
+          <button
+            (click)="onSubmitSelectRegion()"
+            class="app-button-primary my-3 select-region-button"
+          >
+            Select Call Type
+          </button>
+        </div> -->
+      </div>
+    </div>
+    <!-- <div class="col-md-6 my-3" *ngIf="selectedParty && selectedCallType">
+      <div class="row">
+        <p class="col-md-6 section-heading-h2">English Call Statement</p>
+        <div class="col-md-6">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="search-count-divider"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="height: auto">
+          <p
+            class="col-md-6 section-heading-h3"
+            *ngIf="selectedCallType && selectedCallType.value == 'Default'"
+            style="width: 100%;"
+          >
+            <span
+              *ngIf="
+                selectedCallType &&
+                (selectedCallType.type == 'Majority' ||
+                  selectedCallType.type == 'Minority')
+              "
+            >
+              {{
+                "The " +
+                  selectedParty.name +
+                  " of Manitoba (PC) has won a " +
+                  selectedCallType.type +
+                  " Government in the province of Manitoba"
+              }}
+            </span>
+            <span
+              *ngIf="
+                selectedCallType &&
+                selectedCallType.type == 'Elected - Majority / Minority Unknown'
+              "
+            >
+              {{
+                "The " +
+                  selectedParty.name +
+                  " of Manitoba (PC)  has won the Manitoba Election - a Majority or Minority form Government hasn't yet been determined"
+              }}
+            </span>
+          </p>
+          <textarea
+            id="notes"
+            name="notes"
+            class="col-md-6 app-text-box app-text-area form-control"
+            maxlength="250"
+            rows="4"
+            type="text"
+            *ngIf="selectedCallType && selectedCallType.value == 'Custom'"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 my-3" *ngIf="selectedParty && selectedCallType">
+      <div class="row">
+        <p class="col-md-6 section-heading-h2">French Call Statement</p>
+        <div class="col-md-6">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="search-count-divider"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="height: auto">
+          <p
+            class="col-md-6 section-heading-h3"
+            *ngIf="selectedCallType && selectedCallType.value == 'Default'"
+            style="width: 100%;"
+          >
+            <span
+              *ngIf="selectedCallType && selectedCallType.type == 'Majority'"
+            >
+              {{
+                frenchSelectedPartyName +
+                  " du Manitoba (PC) a remporté un gouvernement majoritaire dans la province du Manitoba"
+              }}
+            </span>
+            <span
+              *ngIf="selectedCallType && selectedCallType.type == 'Minority'"
+            >
+              {{
+                frenchSelectedPartyName +
+                  " du Manitoba (PC) a remporté un gouvernement minoritaire dans la province du Manitoba"
+              }}
+            </span>
+            <span
+              *ngIf="
+                selectedCallType &&
+                selectedCallType.type == 'Elected - Majority / Minority Unknown'
+              "
+            >
+              {{
+                frenchSelectedPartyName +
+                  " du Manitoba (PC) a remporté les élections au Manitoba - un gouvernement majoritaire ou minoritaire n’a pas encore été déterminé"
+              }}
+            </span>
+          </p>
+          <textarea
+            id="notes"
+            name="notes"
+            class="col-md-6 app-text-box app-text-area form-control"
+            maxlength="250"
+            rows="4"
+            type="text"
+            *ngIf="selectedCallType && selectedCallType.value == 'Custom'"
+          ></textarea>
+        </div>
+        <div style="text-align: end" class="mt-3">
+          <button
+            (click)="onSubmitSelectRegion()"
+            class="app-button-primary mx-3 select-region-button"
+          >
+            Cancel
+          </button>
+          <button
+            (click)="onSubmitSelectRegion()"
+            class="app-button-primary select-region-button"
+          >
+            Submit Call
+          </button>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

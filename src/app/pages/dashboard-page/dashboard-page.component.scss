@@ -1,0 +1,94 @@
+@import "../../../styles/variables";
+
+::ng-deep .app-dark-mode .dashboard-page {
+  .section-heading-h2, .section-heading-h3 {
+    color: white !important;
+  }
+
+  .dash-menu {
+    .menu-name {
+      color: white !important;
+    }
+  }
+
+  .app-card {
+    border-color: transparent !important;
+
+    &:hover {
+      border-color: $CPDarkBorder !important;
+    }
+  }
+}
+
+
+.dashboard-page {
+  min-height: calc(100vh - 68px);
+  background: $ExtraLightBackgroundGrey;
+
+  .dashboard-container {
+    max-height: calc(100vh - 129px);
+    overflow-y: auto;
+
+    @include mobile {
+      padding-bottom: 150px;
+    }
+
+    .app-container {
+      margin-bottom: 80px;
+    }
+  }
+
+  .app-card-container {
+    position: relative;
+    margin-top: 10px;
+    cursor: pointer;
+    height: 100%;
+
+    @include mobile {
+      margin-bottom: 30px;
+    }
+
+    .app-card {
+      border-color: white;
+
+      &:hover {
+        border-color: $StrokeGrey;
+      }
+    }
+  }
+
+  .quick-link {
+    font-size: 30px;
+    line-height: 48px;
+  }
+
+  .dash-menu {
+    padding: 30px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    column-gap: 10px;
+
+    .app-button-primary {
+      padding: 6px 1.25rem !important;
+    }
+
+    .menu-icon .material-symbols-rounded {
+      font-size: 26px;
+      padding: 12px;
+      box-shadow: 0 4px 10px #00000008, 0 0 2px #0000000f, 0 2px 6px #0000001f !important;
+      border-radius: 10px;
+      color: $CPPrimary;
+    }
+  }
+
+  .menu-name {
+    font-size: 20px;
+    color: $Charcoal;
+  }
+
+  .section-heading-h2 {
+    color: $Charcoal;
+    margin-bottom: 5px !important;
+  }
+}

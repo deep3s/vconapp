@@ -1,0 +1,282 @@
+<div class="region-page">
+    <div class="row" style="margin-top: .5% !important;">
+        <div class="col-md-6">
+            <div class="row choose-region-section" style="margin-top: 1rem !important;">
+                <p class="col-md-6 section-heading-h2 choose-region-title">Choose Region</p>
+                <div class="col-md-6">
+                    <!-- <div class="d-flex align-items-center justify-content-between">
+                        <div class="search-count-divider"></div>
+                        <div class="position-relative">
+                            <input
+                                    class="app-text-box search-box"
+                                    id="search-dashboard"
+                                    [(ngModel)]="submenuSearchText"
+                                    id="quickFilter"
+                                    (input)="onQuickFilterChanged()"
+                                    placeholder="Search Region"
+                            />
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div>
+                <div class="w-100" style="height: auto">
+                    <ag-grid-angular [style.height.px]="gridHeight"
+                            class="{{ appliedThemeClassOnTable }}"
+                            [gridOptions]="regionGridOptions"
+                            (gridReady)="onRegionGridReady($event)"
+                            (rowClicked)="onregionSelectionChanged($event)"
+                            (firstDataRendered)="onRegionFirstDataRendered()"
+                            [rowData]="regionRowData"
+                            [rowHeight]="rowHeight"
+                    ></ag-grid-angular>
+                </div>
+            </div>
+
+            <!-- <div class="my-3 d-flex align-items-center justify-content-end">
+                <button class="app-button-primary"> Select Region </button>
+            </div> -->
+        </div>
+        <div class="col-md-6 p-3" style="margin-top: 1rem !important;">
+            <div class="selected-region"
+                 style="font-size: 18px !important; font-weight: 700;">{{selectedRegionName}}
+    <div class="d-flex align-items-center justify-content-between" style="margin-top: -3.1rem !important;">
+        <div class="search-count-divider"></div>
+        <div class="position-relative">
+            <input
+                    class="app-text-box search-box"
+                    id="search-dashboard"
+                    [(ngModel)]="submenuSearchText"
+                    (input)="onRidingOrRegionSearch()"
+                    placeholder="Search Region/Ridings"
+            />
+        </div>
+    </div>
+</div>
+            <!-- <ag-grid-angular
+                #agGrid
+                class="{{appliedThemeClassOnTable}}"
+                [rowData]="ridingRowData"
+                [columnDefs]="ridingColumnDefs"
+                [columnTypes]="columnTypes"
+                [defaultColDef]="defaultColDef"
+                [rowSelection]="'single'"
+                [pagination]="true"
+                [paginationPageSize]="selectedRowsPerPage"
+                (rowClicked)="onSelectionChanged($event)"
+                [animateRows]="true"
+                [suppressMovableColumns]="true"
+                (gridReady)="ridingOnGridReady($event)"
+                (firstDataRendered)="onRidingFirstDataRendered()">
+            </ag-grid-angular> -->
+            <ag-grid-angular [style.height.px]="gridHeight"
+                #agGrid
+                class="{{appliedThemeClassOnTable}}"
+                [rowData]="ridingRowData"
+                [columnDefs]="ridingColumnDefs"
+                [columnTypes]="columnTypes"
+                [defaultColDef]="defaultColDef"
+                [rowSelection]="'single'"
+                (rowClicked)="onSelectionChanged($event)"
+                [animateRows]="true"
+                [suppressMovableColumns]="true"
+                (gridReady)="ridingOnGridReady($event)"
+                [rowHeight]="rowHeight"
+                (firstDataRendered)="onRidingFirstDataRendered()"
+                (rowDataChanged)="onRowDataChanged($event)">
+            </ag-grid-angular>
+        </div>
+
+        <div class="col-12 p-3 mt-4">
+            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
+                <div class="d-flex align-items-center">
+                    <div *ngIf="selectedRiding.ridingName" class="section-heading-h2 selected-riding-name">{{selectedRiding.ridingName}}</div>
+                    <div class="eye-icon-container">
+                        <div class="caller-tooltip-icon pb-2">
+                            <span class="icon material-symbols-rounded semi-bold-icon px-2 clr-grey position-relative">
+                                visibility
+                            </span>
+                        </div>
+                            <div class="caller-tooltip p-3">
+                                <div class="row">
+                                    <div>Riding Note <a [routerLink]="['/manageERS/edit-ridings']" style="color: #3f51b5;">(Edit Notes)</a></div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col-4">Previous:</div>
+                                    <div class="col-8">Carlo Rouleau</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">Likely Winner:</div>
+                                    <div class="col-8">
+                                        <span class="cl-circle"></span>
+                                        PCP
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4">Caller Notes:</div>
+                                    <div class="col-8">
+                                        <div>Pon-cabinet min in seat since 2011 UCP</div>
+                                        <div>Pon-cabinet min in seat since 2011 UCP</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4">Prominent:</div>
+                                    <div class="col-8">Six term city councilor:</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4">Caller:</div>
+                                    <div class="col-8">Tyler Griffin</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">Last Synced:</div>
+                                    <div class="col-8">21:06:54 EDT 10/03/2023</div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="eye-icon-container">
+                        <div class="caller-tooltip-icon pb-2" style="padding-top: 0px;">
+                            (Riding Notes)
+                        </div>
+                            <div class="caller-tooltip p-3">
+                                <div class="row">
+                                    <div>Riding Note <a [routerLink]="['/manageERS/edit-ridings']" style="color: #3f51b5;">(Edit Notes)</a></div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col-4">Previous:</div>
+                                    <div class="col-8">Carlo Rouleau</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">Likely Winner:</div>
+                                    <div class="col-8">
+                                        <span class="cl-circle"></span>
+                                        PCP
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4">Caller Notes:</div>
+                                    <div class="col-8">
+                                        <div>Pon-cabinet min in seat since 2011 UCP</div>
+                                        <div>Pon-cabinet min in seat since 2011 UCP</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4">Prominent:</div>
+                                    <div class="col-8">Six term city councilor:</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4">Caller:</div>
+                                    <div class="col-8">Tyler Griffin</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">Last Synced:</div>
+                                    <div class="col-8">21:06:54 EDT 10/03/2023</div>
+                                </div>
+                            </div>
+                    </div>
+                    <span class="mode-divider"></span>
+                    <div class="app-icon-button leader-last-item-first-icon" (click)="electRiding($event, 'Elect/Call')">
+                        <span class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-green position-relative">check_circle
+                        </span>
+                        <span class="text">Elect/Call</span>
+                      </div>
+
+                      <div style="margin-left: 5px;" class="app-icon-button leader-last-item-first-icon" (click)="electRiding($event, 'Kill')">
+                        <span class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-red position-relative">unpublished
+                        </span>
+                        <span class="text">Kill</span>
+                      </div>
+
+                      <div style="margin-left: 5px;" class="app-icon-button leader-last-item-first-icon" (click)="electRiding($event, 'Reconsider')">
+                        <span class="icon material-symbols-rounded semi-bold-icon px-1 cursor-pointer clr-red position-relative">unpublished
+                        </span>
+                        <span class="text">Reconsider</span>
+                      </div>
+                    <!-- <span (click)="electRiding($event,'Elect/Call')" style="margin-bottom: 10px !important;" matTooltip="Elect/Call"
+                        matTooltipPosition="below"
+                        class="icon material-symbols-rounded semi-bold-icon px-1 mb-3 cursor-pointer clr-green position-relative">
+                        check_circle
+                    </span>
+                    <span (click)="electRiding($event,'Kill/Reconsider')" style="margin-bottom: 10px !important;"
+                          matTooltip="Kill/Reconsider"
+                          matTooltipPosition="below"
+                          class="icon material-symbols-rounded semi-bold-icon px-1 mb-3 cursor-pointer clr-red position-relative">
+                        unpublished
+                    </span> -->
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="search-count-divider"></div>
+                    <div class="position-relative">
+                        <span class="caller-tooltip-icon">
+                            <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from the source system. This helps ensure that you are viewing the latest information available.</div>
+
+                          <span class="timestamp-icon material-symbols-rounded medium-icon">info</span>
+                        </span>
+            <!-- <span class="timestamp-icon material-symbols-rounded medium-icon">info</span> -->
+                        <span class="text txt-margin"
+                        ><b>Last Synced:</b> {{last_updated}}</span
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="w-100" style="height: auto">
+                <ag-grid-angular
+                        class="{{ appliedThemeClassOnTable }}"
+                        [gridOptions]="manitobaGridOptions"
+                        (gridReady)="manitobaOnGridReady($event)"
+                        [rowData]="manitobaRowData"
+                ></ag-grid-angular>
+            </div>
+            <!-- <div class="row mt-4 d-flex align-items-end">
+                <div class="col-md-6 position-relative" style="text-align: end">
+                    <span class="caller-tooltip-icon"  style="text-align: start">
+                        <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from the source system. This helps ensure that you are viewing the latest information available.</div>
+
+                      <span class="graph-icon material-symbols-rounded medium-icon">info</span>
+                    </span>
+                    <span class="text txt-margin"><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span>
+                </div>
+                <div class="col-md-6 position-relative" style="text-align: end">
+                    <span class="caller-tooltip-icon"  style="text-align: start">
+                        <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from the source system. This helps ensure that you are viewing the latest information available.</div>
+
+                      <span class="graph-icon material-symbols-rounded medium-icon">info</span>
+                    </span>
+                    <span class="text txt-margin"><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-md-6 app-card-container">
+                    <div class="app-card bg-white">
+                        <div class="dash-menu m-auto">
+                            <div style="height: auto">
+                                <!-- <ag-charts-angular [options]="pieOptions"></ag-charts-angular> -->
+                                <ag-charts-angular [options]="optionsBar"></ag-charts-angular>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 app-card-container">
+                    <div class="app-card bg-white">
+                        <div class="dash-menu m-auto">
+                            <div style="height: auto">
+                                <ag-charts-angular
+                                        style="height: 100%"
+                                        [options]="options"
+                                ></ag-charts-angular>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

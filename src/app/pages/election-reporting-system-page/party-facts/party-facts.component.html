@@ -1,0 +1,76 @@
+<div class="party-facts-page">
+  <div class="row">
+    <div class="col-md-6" *ngFor="
+        let card of parties;
+        index as i
+      ">
+      <div class="card-border mt-4 p-3">
+        <app-party-card [partyData]="{
+            color: card.color,
+            label: card.name,
+            fontSize: '22px'
+          }"></app-party-card>
+        <div class="position-relative my-3">
+          <span class="caller-tooltip-icon">
+            <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from
+              the source system. This helps ensure that you are viewing the latest information available.</div>
+            <span class="timestamp-icon material-symbols-rounded medium-icon">info</span>
+          </span>
+          <!-- <span class="timestamp-icon material-symbols-rounded medium-icon">info</span> -->
+          <span class="text txt-margin"><b>Last Synced:</b> {{ card.lastSync }}</span>
+        </div>
+        <div style="height: auto">
+          <!-- <ag-grid-angular
+            class="{{ appliedThemeClassOnTable }}"
+            [gridOptions]="partyFactsGridOptions"
+            (gridReady)="partyFactsOnGridReady($event, card)"
+            [rowData]="card.tableRow"
+          ></ag-grid-angular> -->
+          <table class="d-flex vertical-table-pcp py-2 px-3">
+            <tr class="d-flex row">
+              <th>Leader : </th>
+              <th>Leader Since : </th>
+              <th>Leader's Seat : </th>
+              <th>At Dissolution : </th>
+            </tr>
+            <tr class="d-flex row col-md-10 px-4" *ngFor="let row of card.tableRow; index as i">
+              <td>{{ row.leader }}</td>
+              <td>{{ row.leaderSince }}</td>
+              <td>{{ row.leaderSeat }}</td>
+              <td>{{ row.leaderElection }}</td>
+            </tr>
+          </table>
+          <!-- <table *ngIf="card.name=='Progressive Conservative Party of Manitoba (PC)'" class="d-flex vertical-table-pcp py-2 px-3">
+            <tr class="d-flex row">
+              <th>Leader : </th>
+              <th>Leader Since : </th>
+              <th>Leader's Seat : </th>
+              <th>Last Election : </th>
+            </tr>
+            <tr class="d-flex row col-md-10 px-4" *ngFor="let row of card.tableRow; index as i">
+              <td>{{ row.leader }}</td>
+              <td>{{ row.leaderSince }}</td>
+              <td>{{ row.leaderSeat }}</td>
+              <td>{{ row.leaderElection }}</td>
+            </tr>
+          </table> -->
+
+          <!-- <table *ngIf="card.name!='Progressive Conservative Party of Manitoba (PC)'" class="d-flex vertical-table py-2 px-3">
+            <tr class="d-flex row">
+              <th>Leader</th>
+              <th>Leader Since</th>
+              <th>Leader's Seat</th>
+              <th>Last Election</th>
+            </tr>
+            <tr class="d-flex row col-md-10 px-4" *ngFor="let row of card.tableRow; index as i">
+              <td>{{ row.leader }}</td>
+              <td>{{ row.leaderSince }}</td>
+              <td>{{ row.leaderSeat }}</td>
+              <td>{{ row.leaderElection }}</td>
+            </tr>
+          </table> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

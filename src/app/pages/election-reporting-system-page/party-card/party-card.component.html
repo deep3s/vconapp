@@ -1,0 +1,40 @@
+<div class="d-flex align-items-center" *ngIf="partyData?.length">
+    <div *ngFor="let party of partyData"
+         class="d-flex align-items-center party-card-icon"
+         matTooltip="{{ party?.label }}"
+         matTooltipPosition="below"
+    >
+  <span
+          class="material-symbols-rounded semi-bold-icon"
+          [style]="{
+      'background-color': party?.color,
+      color: party?.color,
+      'font-size': party?.fontSize || '0.8rem'
+    }"
+  >Settings
+  </span>
+
+        <span *ngIf="party.label!=''"
+              class="text mx-2"
+              [style]="{
+      'font-size': party?.fontSize || '1rem',
+      'white-space': 'nowrap',
+      'overflow': 'hidden',
+      'text-overflow': 'ellipsis'
+    }"
+        >{{ party?.label }}</span>
+
+    </div>
+</div>
+<div class="d-flex align-items-center" *ngIf="!partyData?.length">
+    <span class="text mx-2"
+          [style]="{
+          color: 'grey',
+      'font-size': '1rem',
+      'white-space': 'nowrap',
+      'overflow': 'hidden',
+      'text-overflow': 'ellipsis'
+    }"
+    >N/A</span>
+
+</div>

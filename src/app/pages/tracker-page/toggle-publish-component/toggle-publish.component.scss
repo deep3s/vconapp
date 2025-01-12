@@ -1,0 +1,45 @@
+@import "src/styles/variables";
+
+
+::ng-deep .disable-toggle {
+  pointer-events: none;
+  cursor: not-allowed;
+
+  * {
+    pointer-events: none;
+  }
+}
+
+.toggle-publish {
+  margin-top: 5px;
+  border: 1px solid $StrokeGrey;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 36px;
+  cursor: pointer;
+
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 49px;
+  }
+
+  .yes {
+    border-right: 1px solid $StrokeGrey;
+  }
+
+  .no {
+
+  }
+
+  .active {
+    color: $CPPrimary;
+    background: $CPLightPrimary;
+  }
+}

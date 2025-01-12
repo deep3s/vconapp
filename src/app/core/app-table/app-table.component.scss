@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+
+.economic-table {
+  font-family: $CPMediumRegularFont;
+  //font-size: 0.8125rem;
+  //font-weight: 600;
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+    @include scaler-mobile {
+      margin-left: -8px;
+      margin-right: -8px;
+    }
+  }
+
+  .headings {
+    //border-bottom: 1px solid $LightBackgroundGrey;
+    padding: 12px 15px;
+    background: #d3edee;
+
+    .heading {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .economic-table-row {
+    border-bottom: 1px solid $StrokeGrey;
+    padding: 20px 15px;
+  }
+}

@@ -1,0 +1,106 @@
+<mat-dialog-content class="user-modal">
+  <div [ngClass]="appliedThemeClass">
+    <div class="app-card bg-white">
+      <div class="d-flex card-heading justify-content-between align-items-center px-3 py-2 ">
+        <div class="fw-medium clr-white">
+          User Details
+        </div>
+        <span class="app-button-card close-btn fw-medium d-flex align-items-center justify-content-center"
+              mat-dialog-close>
+                    <span class="material-symbols-rounded semi-bold-icon clr-white header-menu"
+                          matTooltip="Close"
+                          matTooltipPosition="below">Close</span>
+                </span>
+      </div>
+      <div class="divider"></div>
+
+      <div class="app-container">
+        <form [formGroup]="userForm" class="user-profile-form" (ngSubmit)="onSubmitUserProfile()">
+          <div class="row">
+            <div class="col-12 col-sm-6 py-3">
+              <div class="form-group">
+                <label class="input-label" for="firstName">First Name </label>
+                <input formControlName="firstName" id="firstName" name="firstName"
+                       class="app-text-box form-control"
+                       [ngClass]="{ 'is-invalid': submitted && fmp.firstName.errors }"
+                       type="text"/>
+                <div *ngIf="submitted && fmp.firstName.errors" class="invalid-feedback">
+                  <div *ngIf="fmp.firstName.errors.required">First Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 py-3">
+              <div class="form-group">
+                <label class="input-label" for="firstName">Last Name </label>
+                <input formControlName="lastName" id="lastName" name="lastName"
+                       class="app-text-box form-control"
+                       [ngClass]="{ 'is-invalid': submitted && fmp.lastName.errors }"
+                       type="text"/>
+                <div *ngIf="submitted && fmp.lastName.errors" class="invalid-feedback">
+                  <div *ngIf="fmp.lastName.errors.required">Last Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 pb-3">
+              <div class="form-group">
+                <label class="input-label" for="email">Email</label>
+                <input formControlName="email" id="email" name="email"
+                       class="app-text-box form-control"
+                       [ngClass]="{ 'is-invalid': submitted && fmp.email.errors }"
+                       type="text"/>
+                <div *ngIf="submitted && fmp.email.errors" class="invalid-feedback">
+                  <div *ngIf="fmp.email.errors.required">Email is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 pb-3">
+              <div class="form-group">
+                <label class="input-label" for="createdDate">Created Date</label>
+                <input formControlName="createdDate" id="createdDate" name="createdDate"
+                       class="app-text-box form-control"
+                       [ngClass]="{ 'is-invalid': submitted && fmp.createdDate.errors }"
+                       type="text"/>
+                <div *ngIf="submitted && fmp.createdDate.errors" class="invalid-feedback">
+                  <div *ngIf="fmp.createdDate.errors.required">Date is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <label class="input-label select-label mt-4 mb-1 fw-semibold">Role</label>
+        <div class="divider  mb-2"></div>
+
+        <div class="">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group pb-3">
+                <div class="row">
+                  <div class="col-12 mb-2 mt-1">
+                    <span class="">Admin</span>
+                    <mat-slide-toggle class="app-slide-toggle mx-3" [(ngModel)]="isAdmin"></mat-slide-toggle>
+                  </div>
+                  <div class="col-12">
+                    <span class="">Apps</span>
+                  </div>
+                  <div class="col-12" >
+                    <mat-checkbox *ngFor="let role of roles" class="app-check-box mr-4"
+                                  [disabled]="isAdmin"
+                                  [disableRipple]="true"
+                                  [checked]="isAdmin">
+                      <span class="role-name">{{role.name}}</span>
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 d-flex align-items-center justify-content-end">
+              <button (click)="onNoClick()" class="app-button-secondary m-3">Cancel</button>
+              <button (click)="onSubmitUserProfile()" class="app-button-primary my-3">Save</button>
+            </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>

@@ -1,0 +1,11 @@
+<div class="text-ellipsis">
+  <span [ngClass]="{'red-cell': isNA}">
+    <span *ngIf="isNA"
+          class="material-symbols-rounded medium-icon">
+      image_not_supported
+    </span>
+    <span >
+      {{cellValue}}
+    </span>
+  </span>
+</div>

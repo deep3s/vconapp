@@ -1,0 +1,62 @@
+<div class="d-flex align-items-center justify-content-between submenu">
+  <div class="d-flex align-items-center">
+    <div class="search-count-divider"></div>
+    <div class="position-relative">
+      <span class="caller-tooltip-icon">
+        <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was updated from the source system. This helps ensure that you are viewing the latest information available.</div>
+      
+      <!-- <span class="icon-search material-symbols-rounded medium-icon">info</span> -->
+    </span>
+      <!-- <span class="text txt-margin"
+        ><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span
+      >  -->
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <!--<app-notifications class="px-2 pt-2"
+              matTooltip="Notifications"
+              matTooltipPosition="below"></app-notifications>-->
+              <!-- <span class="material-symbols-rounded semi-bold-icon border_all_icon">border_all</span> -->
+              <div class="app-ngs-container status" style="padding: 0px 8px 0px 0px">
+                <ng-select #select [searchable]="false" placeholder="Select Election" [items]="electionsList"
+                [(ngModel)]="selectedElection" bindLabel="name" bindValue="name" [groupBy]="'groupName'"
+                (change)="onElectionChange($event); updateSelectBackgroundColor()" (open)="adjustDropdownWidth()">           
+                <ng-template ng-label-tmp let-item="item">
+                    <span class="app-ngs-name"></span>
+                    <span class="app-ngs-value" [style.color]="item.selectedColor">
+                        {{ item.name }}
+                    </span>
+                    <span class="material-symbols-rounded medium-icon"
+                        [ngClass]="{'expand-more': !select.isOpen, 'expand-less': select.isOpen}">
+                        {{ select.isOpen ? 'expand_less' : 'expand_more' }}
+                    </span>
+                </ng-template>
+                
+                <ng-template ng-option-tmp let-item="item" let-index="index">
+                    <div class="custom-option">
+                        {{ item.name }}
+                    </div>
+                </ng-template>
+            </ng-select>
+            
+              </div>
+    <!-- <div
+      class="app-icon-button export-btn"
+      [routerLink]="'/manage-settings'"
+      matTooltip="Manage ERS Settings"
+      matTooltipPosition="below" 
+      [routerLink]="'/manageERS'">
+      <span class="material-symbols-rounded semi-bold-icon">Settings </span>
+      <span class="text">Manage ERS</span>
+    </div> -->
+    <div
+    class="app-icon-button export-btn"
+    matTooltip="Manage ERS Settings"
+    matTooltipPosition="below" 
+    [routerLink]="'/ers/ridings-2'">
+    <span class="material-symbols-rounded semi-bold-icon">Settings </span>
+    <span class="text" style="padding-left: 3px;">Manage ERS</span>
+  </div>
+  </div>
+</div>

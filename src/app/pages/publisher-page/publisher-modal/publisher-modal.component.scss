@@ -1,0 +1,68 @@
+@import "src/styles/variables";
+
+::ng-deep .mat-dialog-container {
+  position: relative;
+}
+
+.app-button-card.close-btn {
+  padding: 2px 3px;
+
+  &:hover {
+    background: $CPPrimaryHover;
+  }
+}
+
+.publisher-modal {
+  font-family: $CPLightRegularFont;
+
+  .user-profile-form {
+    padding: 0 16px;
+  }
+
+  &.mat-mdc-dialog-content {
+    max-height: 90vh;
+  }
+
+  .profile-icon {
+    width: 100%;
+    border: 1px solid #c1c1c1;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .app-card {
+    border: none;
+
+    .card-heading {
+      background: $CPPrimary;
+      color: white;
+
+      .app-button-card {
+        &.with-border {
+          border: 1px solid white;
+        }
+      }
+    }
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  .input-label {
+    font-weight: normal;
+  }
+
+  .close-span {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    -webkit-appearance: none;
+
+    .img-icon {
+      width: 10px;
+    }
+  }
+
+}

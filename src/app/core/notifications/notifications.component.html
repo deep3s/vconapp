@@ -1,0 +1,32 @@
+<span (clickOutside)="clickedOutOfNotification($event)" class="notifications">
+  <span class="header-menu medium-icon material-symbols-rounded"
+        (click)="toggleContainer(null)">Notifications</span>
+  <span class="bage" *ngIf="notifications.length">{{notifications.length}}</span>
+  <div class="notification-container" [ngClass]="{'opened': isContainerOpened}">
+    <!--<img src="./assets/images/Icons/Functional/close.png"
+         (click)="toggleContainer(null)"
+         alt="close" class="img-icon close-container"/>-->
+    <!--<div class="one">
+      <div class="two"></div>
+    </div>-->
+    <div class="notifications">
+      <div class="notification" *ngFor="let notification of notifications">
+        <div class="name">
+          <a class="notification-link animated-link clr-burgandy fw-medium" href="#">{{notification.name}}</a></div>
+        <div class="date">{{notification.date}}</div>
+        <div class="desc clr-burgandy">{{notification.desc}}</div>
+        <!--<i class="ri-delete-bin-6-line clr-burgandy hide-notification"
+           (click)="hideNotification(notification, $event)"></i>-->
+      </div>
+    </div>
+    <div class="no-notification-msg" *ngIf="!notifications.length">
+      There is no new notification.
+    </div>
+    <div class="see-all ">
+        <a class="animated-link clr-burgandy fw-medium"
+           (click)="toggleContainer(null)" href="#">Close</a>
+        <a class="see-all-link animated-link clr-burgandy fw-medium"
+           [routerLink]="'/email-alerts'">See All</a>
+    </div>
+  </div>
+</span>

@@ -1,0 +1,18 @@
+@import "src/styles/variables";
+
+::ng-deep .red-cell {
+  color: #AC3026;
+  background: #F0D6E1;
+  padding: 6px 10px 10px 10px;
+  border-radius: 4px;
+
+  .material-symbols-rounded {
+    padding-right: 6px;
+    font-size: 20px;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

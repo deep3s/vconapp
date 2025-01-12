@@ -1,0 +1,76 @@
+@import "../../../styles/variables";
+
+::ng-deep .app-dark-mode .support-page{
+  .section-heading-h2, .section-heading-h3 {
+    color: white !important;
+  }
+
+  .dash-menu {
+    .menu-name {
+      color: white !important;
+    }
+  }
+
+  .app-card {
+    border-color: transparent !important;
+
+    &:hover {
+      border-color: $CPDarkBorder !important;
+    }
+  }
+}
+
+
+.support-page {
+  min-height: calc(100vh - 68px);
+  background: $ExtraLightBackgroundGrey;
+
+  .dashboard-container {
+    max-height: calc(100vh - 129px);
+    overflow-y: auto;
+
+    .app-container {
+      margin-bottom: 80px;
+    }
+  }
+
+  .app-card-container {
+    position: relative;
+    margin-top: 10px;
+    cursor: pointer;
+
+    .app-card {
+      border-color: white;
+
+      &:hover {
+        border-color: $StrokeGrey;
+      }
+    }
+  }
+
+  .quick-link {
+    font-size: 30px;
+    line-height: 48px;
+  }
+
+  .dash-menu {
+    padding: 20px;
+
+    .menu-icon .material-symbols-rounded {
+      font-size: 35px;
+      padding: 16px;
+      box-shadow: 0 4px 10px #00000008, 0 0 2px #0000000f, 0 2px 6px #0000001f !important;
+      border-radius: 10px;
+      color: $CPPrimary;
+    }
+  }
+
+  .menu-name {
+    font-size: 20px;
+    color: $Charcoal;
+  }
+
+  .section-heading-h2 {
+    color: $Charcoal;
+  }
+}

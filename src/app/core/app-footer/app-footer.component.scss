@@ -1,0 +1,39 @@
+@import "../../../styles/variables";
+
+::ng-deep .app-dark-mode {
+  .app-footer {
+    .content {
+      border-top: 1px solid $CPDarkBorder !important;
+      background: $CPDarkLightBG !important;
+    }
+  }
+}
+
+.app-footer {
+  //margin-top: 60px;
+  font-size: 14px;
+  font-family: $CPMediumRegularFont;
+  background: $ExtraLightBackgroundGrey;
+
+  .content {
+    border-top: 1px solid $LightBackgroundGrey;
+    padding: 20px 30px;
+    position: fixed;
+    background: $ExtraLightBackgroundGrey;
+    //z-index: 999;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    line-height: 2;
+  }
+
+  .left-links{
+    span{
+      padding-right: 25px;
+    }
+  }
+
+  .date-text{
+    margin-left: 5px;
+  }
+}

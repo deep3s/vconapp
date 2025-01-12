@@ -1,0 +1,14 @@
+<div class="text-center">
+  <!--<span [ngClass]="{'active': params.value === 'Yes'}" class="yes"
+        (click)="assignPublishedFlag('Yes', $event)">Yes</span>
+  <span [ngClass]="{'active': params.value === 'No'}" class="no"
+        >No</span>-->
+  <mat-slide-toggle class="app-slide-toggle" *ngIf="!isNA"
+                    [ngClass]="{'disable-toggle': params.value}"
+                    [disabled]="isChecked"
+                    (click)="assignPublishedFlag($event)" [(ngModel)]="isChecked"></mat-slide-toggle>
+  <span *ngIf="isNA"
+        matTooltip="Unlock is not applicable on this tracker as image is not available "
+        matTooltipPosition="below">NA</span>
+
+</div>

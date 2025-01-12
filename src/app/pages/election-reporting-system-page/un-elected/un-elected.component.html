@@ -1,0 +1,137 @@
+<div class="un-elected-page">
+  <div class="row">
+    <div class="col-12 mb-4" *ngIf="false">
+      <div class="d-flex align-items-center justify-content-between">
+        <p class=" section-heading-h2">Voting Details</p>
+        <div class="">
+          <div class="d-flex align-items-center justify-content-end last-synched">
+            <div class="search-count-divider"></div>
+            <div class="position-relative">
+              <span class="caller-tooltip-icon">
+                <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was
+                  updated from
+                  the source system. This helps ensure that you are viewing the latest information available.</div>
+                <span class="timestamp-icon material-symbols-rounded medium-icon">info</span>
+              </span>
+              <!-- <span class="timestamp-icon material-symbols-rounded medium-icon">info</span> -->
+              <span class="text txt-margin"><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height: auto">
+        <ag-grid-angular class="{{ appliedThemeClassOnTable }}" [gridOptions]="votingGridOptions"
+          (gridReady)="votingOnGridReady($event)" [rowData]="votingRowData"></ag-grid-angular>
+      </div>
+    </div>
+    <div class="col-md-6 p-3">
+      <div class="d-flex align-items-center justify-content-between flex-wrap">
+        <div class="d-flex align-items-center">
+          <div class="section-heading-h2">Undecided Ridings</div>
+          <div class="eye-icon-container">
+            <div class="caller-tooltip-icon pb-2" style="color: #3f51b5;font-weight: bold;font-size: 15px;padding-top: 0px;">
+              (Table Legend)
+            </div>
+            <div class="caller-tooltip p-3">
+              <div class="row">
+                <div>Table Legend</div>
+              </div>
+              <div class="divider" style=" margin-bottom: 7px;"></div>
+              <div *ngFor="let item of tableLegands" class="row">
+                <div class="col-1"><span class="material-symbols-rounded semi-bold-icon" [style]="{
+                                  color: item?.color,
+                                  'font-size': '1.1rem'
+                                }"><i [class]="item?.icon"></i>
+                  </span></div>
+                <div class="col-11">{{item.description}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-end last-synched">
+          <div class="search-count-divider"></div>
+          <div class="position-relative">
+            <span class="caller-tooltip-icon">
+              <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was
+                updated from
+                the source system. This helps ensure that you are viewing the latest information available.</div>
+              <span class="timestamp-icon material-symbols-rounded medium-icon">info</span>
+            </span>
+            <!-- <span class="timestamp-icon material-symbols-rounded medium-icon">info</span> -->
+            <span class="text txt-margin" style="font-size: 0.9rem !important;"><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span>
+          </div>
+        </div>
+      </div>
+      <div class="ag-theme-grid" style="height: auto;width:100%">
+        <!-- <ag-grid-angular
+        class="{{ appliedThemeClassOnTable }}"
+        [defaultColDef]="defaultColDef"
+        [gridOptions]="undecidedRidingsGridOptions"
+        (gridReady)="unDecidedOnGridReady($event)"
+        [domLayout]="'autoHeight'"
+        [rowData]="undecidedRidingsRowData"
+        [getContextMenuItems]="getContextMenuItemsForUndecided.bind(this)">
+      </ag-grid-angular> -->
+
+      <ag-grid-angular
+        class="{{ appliedThemeClassOnTable }}"
+        [gridOptions]="undecidedRidingsGridOptions"
+        (gridReady)="unDecidedOnGridReady($event)"
+        [rowData]="undecidedRidingsRowData"
+        [columnDefs]="undecidedRidingsColumnDefs"
+        [getContextMenuItems]="getContextMenuItemsForUndecided.bind(this)">
+      </ag-grid-angular>
+      </div>
+    </div>
+    <div class="col-md-6 p-3">
+      <div class="d-flex align-items-center justify-content-between flex-wrap">
+        <div class="d-flex align-items-center">
+          <div class="section-heading-h2">Called Ridings</div>
+          <div class="eye-icon-container">
+            <div class="caller-tooltip-icon pb-2" style="color: #3f51b5;font-weight: bold;font-size: 15px;padding-top: 0px;">
+              (Table Legend)
+            </div>
+            <div class="caller-tooltip p-3">
+              <div class="row">
+                <div>Table Legend</div>
+              </div>
+              <div class="divider" style=" margin-bottom: 7px;"></div>
+              <div *ngFor="let item of tableLegands" class="row">
+                <div class="col-1"><span class="material-symbols-rounded semi-bold-icon" [style]="{
+                                  color: item?.color,
+                                  'font-size': '1.1rem'
+                                }"><i [class]="item?.icon"></i>
+                  </span></div>
+                <div class="col-11">{{item.description}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-end last-synched">
+          <div class="search-count-divider"></div>
+          <div class="position-relative">
+            <span class="caller-tooltip-icon">
+              <div class="caller-tooltip p-3"> Indicates the most recent date and time when the data in the table was
+                updated from
+                the source system. This helps ensure that you are viewing the latest information available.</div>
+              <span class="timestamp-icon material-symbols-rounded medium-icon">info</span>
+            </span>
+            <!-- <span class="timestamp-icon material-symbols-rounded medium-icon">info</span> -->
+            <span class="text txt-margin" style="font-size: 0.9rem !important;"><b>Last Synced:</b> 21:06:54 EDT 10/03/2023</span>
+          </div>
+        </div>
+      </div>
+      <div class="ag-theme-grid" style="height: auto;width:100%">
+      <ag-grid-angular
+        class="{{ appliedThemeClassOnTable }}"
+
+        [gridOptions]="calledRidingsGridOptions"
+        (gridReady)="calledOnGridReady($event)"
+        [rowData]="calledRidingsRowData"
+        [columnDefs]="calledRidingsColumnDefs"
+        [getContextMenuItems]="getContextMenuItems.bind(this)">
+      </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+</div>

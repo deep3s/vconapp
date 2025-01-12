@@ -1,0 +1,120 @@
+<mat-dialog-content class="publisher-modal">
+  <div [ngClass]="appliedThemeClass">
+    <div class="app-card bg-white">
+      <div class="d-flex card-heading justify-content-between align-items-center px-3 py-2 ">
+        <div class="fw-medium clr-white">
+          Photo Details
+        </div>
+        <span class="app-button-card close-btn fw-medium d-flex align-items-center justify-content-center"
+              mat-dialog-close>
+                    <span class="material-symbols-rounded semi-bold-icon clr-white header-menu"
+                          matTooltip="Close"
+                          matTooltipPosition="below">Close</span>
+                </span>
+      </div>
+      <div class="divider"></div>
+
+      <form [formGroup]="userForm" class="user-profile-form" (ngSubmit)="onSubmitPhotoProfile()">
+        <div class="">
+          <div class="row">
+            <div class="col-12 col-md-7">
+              <div class="clr-grey py-3">Image</div>
+              <div class="d-flex header h-md-100">
+                <img [src]="data.thumbnail" class="profile-icon"
+                     alt="profile-image"/>
+              </div>
+            </div>
+            <div class="col-12 col-md-5">
+              <div class="row">
+                <div class="col-12 mt-4 pb-3">
+                  <div class="form-group">
+                    <label class="input-label" for="title">Title </label>
+                    <input formControlName="title" id="title" name="title"
+                           class="app-text-box form-control" maxlength="50"
+                           [ngClass]="{ 'is-invalid': submitted && fmp.title.errors }"
+                           type="text"/>
+                    <div *ngIf="submitted && fmp.title.errors" class="invalid-feedback">
+                      <div *ngIf="fmp.title.errors.required">Title is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 pb-3">
+                  <div class="form-group">
+                    <label class="input-label" for="assetDate">Asset Date (MMDDYY)</label>
+                    <div class="app-mat-form-field d-flex align-items-center">
+                      <mat-form-field appearance="outline">
+                        <input [matDatepicker]="picker1" id='assetDate' matInput
+                               class="app-text-box" formControlName="assetDate"
+                               [formControl]="fmp.assetDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+
+                    <!--<input formControlName="assetDate" id="assetDate" name="assetDate"
+                           class="app-text-box form-control"
+                           [ngClass]="{ 'is-invalid': submitted && fmp.assetDate.errors }"
+                           type="text"/>
+                    <div *ngIf="submitted && fmp.assetDate.errors" class="invalid-feedback">
+                      <div *ngIf="fmp.assetDate.errors.required">Asset Date is required</div>
+                    </div>-->
+                  </div>
+                </div>
+                <div class="col-12 pb-3">
+                  <div class="form-group">
+                    <label class="input-label" for="fileName">File Name </label>
+                    <input formControlName="fileName" id="fileName" name="fileName"
+                           class="app-text-box form-control"
+                           [ngClass]="{ 'is-invalid': submitted && fmp.fileName.errors }"
+                           type="text"/>
+                    <div *ngIf="submitted && fmp.fileName.errors" class="invalid-feedback">
+                      <div *ngIf="fmp.lastName.errors.required">File Name is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 pb-3">
+                  <div class="form-group">
+                    <label class="input-label" for="subject">Source</label>
+                    <input formControlName="subject" id="subject" name="subject"
+                           class="app-text-box form-control"
+                           [ngClass]="{ 'is-invalid': submitted && fmp.subject.errors }"
+                           type="text"/>
+                    <div *ngIf="submitted && fmp.subject.errors" class="invalid-feedback">
+                      <div *ngIf="fmp.subject.errors.required">Subject is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 pb-3">
+                  <div class="form-group">
+                    <label class="input-label" for="description">Description</label>
+                    <textarea formControlName="description" id="description" name="description"
+                              class="app-text-box app-text-area form-control" maxlength="250" rows="6"
+                              [ngClass]="{ 'is-invalid': submitted && fmp.description.errors }"
+                              type="text"></textarea>
+                    <div *ngIf="submitted && fmp.email.errors" class="invalid-feedback">
+                      <div *ngIf="fmp.description.errors.required">Description is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+        </div>
+
+      </form>
+
+      <div class="user-profile-form">
+        <div class="row">
+          <div class="col-12 d-flex align-items-center justify-content-end mb-3">
+            <button (click)="onNoClick()" class="app-button-secondary my-3 mx-3"> Cancel </button>
+            <button (click)="onSubmitPhotoProfile()" class="app-button-primary my-3"> Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>

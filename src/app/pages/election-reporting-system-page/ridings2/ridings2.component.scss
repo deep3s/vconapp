@@ -1,0 +1,241 @@
+@import "src/styles/variables";
+
+@media (max-width: 600px) {
+  .ag-theme-grid {
+    font-size: 12px;
+  }
+}
+
+::ng-deep .app-dark-mode .riding2-page {
+  .title {
+    color: white !important;
+  }
+}
+
+.riding2-page {
+
+  .export-btn {
+    margin-right: 8px;
+  }
+
+  .expand-collapse-button {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 4px 12px;
+    border: 1px solid $StrokeGrey;
+  
+    &:hover,
+    &:active {
+      background: $LightBackgroundGrey;
+      cursor: pointer;
+    }
+  
+    .text {
+      padding-left: 8px;
+    }
+  }
+
+  .fixed-div {
+    position: fixed;
+    // top: 0;
+    // left: 0;
+    width: 25%; /* Adjust width as needed */
+    height: 100vh; /* Full height */
+    overflow-y: auto; /* Enable scrolling within the fixed div if needed */
+    background-color: #f8f9fa; /* Optional: Background color */
+}
+
+.scrollable-div {
+    margin-left: 25%; /* Adjust margin to match the width of the fixed div */
+    height: 100vh;
+    overflow-y: auto;
+    padding-left: 30px;
+}
+
+
+  .riding-my-3 {
+    margin-top: 2rem !important;
+    margin-bottom: 0rem !important;
+  }
+
+  .view-options {
+    bottom: 8px;
+    right: 0;
+
+    .view-option {
+      position: relative;
+      cursor: pointer;
+
+      &.active {
+        position: relative;
+
+        &:after {
+          content: "";
+          width: 100%;
+          height: 3px !important;
+          display: block;
+          background: #cc212c;
+          position: absolute;
+          bottom: -4px;
+        }
+      }
+    }
+  }
+
+  // .rcorners {
+  //   border-radius: 15px;
+  //   background: #029955;
+  //   padding: 4px;
+  //   width: 150px;
+  //   text-align: center;
+  //   color: white;
+  //   margin-bottom: 2px;
+  //   margin-right: 8px;
+  //   padding: 4px; 
+  // }
+
+  .rcorners {
+    border-radius: 8px;
+   // background: #029955;
+   // width: 150px;
+    text-align: center;
+    color: white;
+    margin-bottom: 2px;
+    margin-right: 8px;
+    padding: 4px; 
+  }
+
+  .title {
+    font-size: 20px;
+    color: #383b3e;
+  }
+
+  .pc-party-class {
+    background-color: aqua;
+  }
+
+  .ag-theme-grid {
+    width: 100%;
+    height: 100%;
+  }
+
+  .select-region-button {
+    border-radius: inherit;
+    padding: 9px 26px;
+  }
+
+  .pc-party-class {
+    color: red;
+  }
+
+  .card-border {
+    border: 1px solid $StrokeGrey;
+  }
+
+  // .ag-custom-header {
+  //   background-color: #99a3b3 !important;
+  // }
+
+  .ag-theme-material .ag-header-row {
+    background-color: #99a3b3 !important;
+  }
+
+  .timestamp-icon {
+    font-size: 22px;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    cursor: pointer;
+  }
+
+  .txt-margin {
+    margin-left: 1.5rem;
+  }
+
+  .alignment {
+    text-align: center !important;
+  }
+
+  .section-heading-h2 {
+    // font-size: 1.25rem !important;
+    // margin-bottom: 1rem !important;
+    font-size: 18px !important;
+    font-weight: 700;
+    font-style: LatoSemibold;
+    line-height: 36px;
+    margin-bottom: 0px !important;
+  }
+
+  .last-synched {
+    margin-bottom: 1.2rem !important;
+  }
+
+  .caller-tooltip-icon {
+    padding-top: 7px;
+
+    &:hover {
+      .icon {
+        color: $CPPrimary !important;
+      }
+
+      .caller-tooltip {
+        display: block;
+      }
+    }
+
+    .caller-tooltip {
+      display: none;
+      position: absolute;
+      top: 40px;
+      width: 400px;
+      background: $CPBlack;
+      border-radius: 4px;
+      z-index: 9;
+      border: 1px solid #c1c1c1;
+      font-size: 12px;
+      color: white;
+      right: 0;
+    }
+  }
+
+  .eye-icon-container {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+      .icon {
+        color: $CPPrimary !important;
+      }
+
+      .caller-tooltip {
+        display: block;
+      }
+    }
+
+    .caller-tooltip-icon {
+      padding-bottom: 19px !important;
+      padding-left: 4px;
+
+      .icon {
+        padding-left: 0px !important;
+      }
+    }
+
+    .caller-tooltip {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: 3px;
+      width: 500px;
+      background: white;
+      border-radius: 4px;
+      z-index: 9;
+      border: 1px solid #c1c1c1;
+      font-size: 14px;
+      color: $CPBlack;
+      transform: translateY(-50%);
+    }
+  }
+
+}

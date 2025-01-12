@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+ .color-show {
+   height: 15px;
+   width: 15px;
+   display: inline-flex;
+   border-radius: 50%;
+   cursor: pointer;
+ }
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  padding: 3%;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+.color-block {
+  text-align: start;
+  margin-left: 15px;
+}

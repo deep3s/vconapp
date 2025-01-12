@@ -1,0 +1,101 @@
+<mat-dialog-content class="publisher-modal">
+    <div [ngClass]="appliedThemeClass">
+        <div class="app-card bg-white">
+            <div class="d-flex card-heading justify-content-between align-items-center px-3 py-2 ">
+                <div class="fw-medium clr-white">
+                    {{data.title}}
+                </div>
+                <span class="app-button-card close-btn fw-medium d-flex align-items-center justify-content-center"
+                    mat-dialog-close>
+                    <span class="material-symbols-rounded semi-bold-icon clr-white header-menu" matTooltip="Close"
+                        matTooltipPosition="below">Close</span>
+                </span>
+            </div>
+            <div class="divider"></div>
+
+            <form [formGroup]="userForm" class="user-profile-form" (ngSubmit)="onOkCall()">
+                <div class="">
+                    <div class="row">
+                        <div class="col-12 pb-3">
+                            <div class="form-group">
+                                <label class="input-label" for="ridingName">RidingName</label>
+                                <input formControlName="ridingName" id="ridingName" name="ridingName"
+                                    class="app-text-box form-control" maxlength="50" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 pb-3">
+                            <div class="form-group">
+                                <label class="input-label" for="party">Party</label>
+                                <input formControlName="party" id="party" name="party" class="app-text-box form-control"
+                                    maxlength="50" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 pb-3">
+                            <div class="form-group">
+                                <label class="input-label" for="reported_polls">Reported Polls</label>
+                                <input formControlName="reported_polls" id="reported_polls" name="reported_polls"
+                                    class="app-text-box form-control" maxlength="50" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 pb-3">
+                            <div class="form-group">
+                                <label class="input-label" for="total_polls">Total Polls</label>
+                                <input formControlName="total_polls" id="total_polls" name="total_polls"
+                                    class="app-text-box form-control" maxlength="50" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 pb-3">
+                            <div class="form-group">
+                                <label class="input-label" for="percentage_reported">Percentage Reported</label>
+                                <input formControlName="percentage_reported" id="title" name="title"
+                                    class="app-text-box form-control" maxlength="50" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 pb-3">
+                            <div class="form-group">
+                                <label class="input-label" for="status">Status</label>
+                                <input formControlName="status" id="status" name="status"
+                                    class="app-text-box form-control" maxlength="50" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 pb-3">
+                            <div class="form-group">
+                                <label class="input-label" for="margin">Margin</label>
+                                <input formControlName="margin" id="margin" name="margin"
+                                    class="app-text-box form-control" maxlength="50" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 pb-3">
+                            <div class="form-group">
+                                <label class="input-label" for="lastReport">LastReport</label>
+                                <input formControlName="lastReport" id="lastReport" name="lastReport"
+                                    class="app-text-box form-control" maxlength="50" type="text" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </form>
+
+            <div class="user-profile-form">
+                <div class="row">
+                    <div class="col-12 d-flex align-items-center justify-content-end mb-3">
+                        <button (click)="onNoClick()" class="app-button-secondary my-3 mx-3"> Cancel </button>
+                        <button (click)="onOkCall()" class="app-button-primary my-3"> Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</mat-dialog-content>

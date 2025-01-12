@@ -1,0 +1,28 @@
+<mat-dialog-content class="publisher-modal">
+  <div [ngClass]="appliedThemeClass">
+    <div class="app-card bg-white">
+      <div class="d-flex card-heading justify-content-between align-items-center px-3 py-2 ">
+        <div class="fw-medium clr-white">
+          Unlock Confirmation
+        </div>
+        <span class="app-button-card close-btn fw-medium d-flex align-items-center justify-content-center"
+              (click)="onNoClick()">
+                    <span class="material-symbols-rounded semi-bold-icon clr-white header-menu"
+                          matTooltip="Close"
+                          matTooltipPosition="below">Close</span>
+                </span>
+      </div>
+      <div class="divider"></div>
+      <div class="px-3">
+        <div class="my-4">Are you sure you want to unlock the article, "{{data.article}}" ?</div>
+        <div class="row">
+          <div class="col-12 d-flex align-items-center justify-content-end mb-3">
+            <button (click)="onNoClick()" class="app-button-secondary my-3 mx-4"> Cancel</button>
+            <button (click)="onSubmitPhotoProfile()" class="app-button-primary my-3 "> Unlock </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>
