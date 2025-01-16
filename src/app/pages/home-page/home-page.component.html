@@ -1,34 +1,398 @@
-<div class="position-relative home-page app-main-page">
-    <div class="page-parent d-flex w-100">
-        <div class="main-page w-100">
-            <div class="animated animatedFadeInUp fadeInUp w-100 position-relative">
-                <div class="w-100 d-flex align-items-center justify-content-center">
-                    <div class="login-container position-relative">
-                        <div class="animated animatedFadeInUp fadeInUp app-card bg-white w-100 login-card">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <span class="fw-bold section-heading-h2">THE V-CUT</span>
-                            </div>
-                            <div class="d-flex align-items-center search-box-container w-100">
-                                <div class="position-relative w-100">
-                                    <input class="app-text-box search-box" id="search-dashboard"
-                                           [(ngModel)]="submenuSearchText"
-                                           (keyup)="submenuSearch()"
-                                           placeholder="Search V-CUT Salons near you"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Services</title>
+    <link rel="stylesheet" href="./home-page.component.scss">
 
-                                    <span class="icon-search material-symbols-rounded medium-icon">search</span>
-                                    <span class="icon-clear material-symbols-rounded medium-icon"
-                                          (click)="clearSearch()"
-                                          *ngIf="submenuSearchText">close</span>
-                                </div>
-                            </div>
 
-                        </div>
-                        <ngx-ui-loader [loaderId]="'loader-login-container'"></ngx-ui-loader>
-                    </div>
+    <style>
+        .error-message {
+            margin-top: 10px;
+            color: #f80505;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        #map {
+            width: 800px;
+            height: 350px;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+        }
+        .head{
+            font-family:Arial, Helvetica, sans-serif;
+            color: red;
+            padding-left: 100px;
+            text-align: center;
+
+        }
+        .tag{
+            font-family:Arial, Helvetica, sans-serif;
+            color: red;
+            padding-left: 100px;
+            text-align: center;
+            padding-top: -100px;
+            margin-top: -50px;
+        }
+        .tag span{
+            color:white;
+        }
+        .head span{
+            color:white;
+        }
+        .heading {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-bar {
+            /* max-width: 800px; */
+            margin: 0 auto;
+            padding: -50px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+        }
+
+        .dropdown-container {
+            position: relative;
+            flex: 1;
+        }
+
+        .search-bar input[type="text"],
+        .search-bar button {
+            padding: 10px;
+            height: 45px; /* Consistent height */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%; /* Ensure inputs stretch */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+        input[type="text"],
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="time"]:focus {
+            border-color: #080808;
+            outline: none;
+        }
+        .flatpickr-calendar {
+            background-color: #9e1a1a; /* Light gray background */
+            border-radius: 8px;
+        }
+        .search-bar button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #servicesInput {
+            border-radius: 10px;
+        }
+        #locationInput {
+            border-radius: 10px;
+        }
+        #datePicker {
+            border-radius: 10px;
+        }
+        #timePicker{
+            border-radius: 10px;
+        }
+
+        .search-bar button:hover {
+            background-color: #3376f1;
+            color: rgb(12, 12, 12);
+            font-size: 15px;
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            position: absolute;
+            top: 100%; /* Position below input field */
+            left: 0;
+            width: 100%;
+            max-height: 200px ;
+            overflow-y: auto;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden by default */
+            z-index: 1000;
+        }
+
+        .dropdown.active {
+            display: block; /* Show the dropdown */
+        }
+
+        .dropdown-item {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #faf7f7;
+            background-color: rgb(10, 10, 10);
+            color: rgb(245, 241, 241);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #bae228;
+            color: #ee0f0f;
+        }
+        .dropdown-container {
+            position: relative;
+            flex: 1;
+        }
+
+
+        .search-bar {
+            background-color:rgb(240, 44, 44);
+            border-color:black;
+            border-radius: 90px;
+            padding:10px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 4px 4px 4px rgb(3, 3, 3);
+            display: flex;
+            align-items: center;
+            border-width: 10px; /* Adjust the thickness of the border */
+            border-style: solid; /* Ensure the border is visible */
+            border-color:rgb(99, 14, 14); /* Set a color for the border */
+
+        }
+        .search-bar input {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 50px;
+            flex:1;
+            margin-right: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            /* margin-left: 15px; padding-left: 60px;  */
+            font-size: 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            align-items: center;
+        }
+        .icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .time-container {
+            position: relative;
+        }
+
+        #timeDropdown {
+            padding: 10px;
+            display: none;
+            background-color: #000;
+            color: white;
+        }
+
+        #timeDropdown.active {
+            display: block;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+
+        /* General Flatpickr Calendar Styles */
+        .flatpickr-calendar {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        /* Highlight the displayed month */
+        .flatpickr-current-month span.cur-month {
+            font-size: 18px;
+            font-weight: bold;
+            color: #6c63ff; /* Default month color */
+        }
+
+        /* Specifically target December */
+        .flatpickr-current-month span.cur-month.december {
+            color: #ff5733 !important; /* Custom color for December */
+        }
+
+        /* Customize the year */
+        .flatpickr-current-month .numInputWrapper input.cur-year {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff; /* Year color */
+            background: transparent;
+            border: none;
+            text-align: center;
+        }
+
+        /* Customize navigation arrows */
+        .flatpickr-prev-button,
+        .flatpickr-next-button {
+            color: #6c63ff; /* Arrow color */
+            font-size: 16px;
+        }
+
+        /* Hover effect for navigation arrows */
+        .flatpickr-prev-button:hover,
+        .flatpickr-next-button:hover {
+            color: #ff5733; /* Change color on hover */
+        }
+        /* CSS for highlighted text */
+        .highlight {
+            background-color: yellow; /* Highlight background */
+            color: red; /* Highlighted text color */
+            font-weight: bold; /* Optional: make the matched part bold */
+        }
+        /* Top Right Buttons */
+        .top-right-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .top-right-buttons button {
+            background-color: red;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .top-right-buttons button:hover {
+            background-color:black;
+            border:2px solid white;
+        }
+        .tag{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<section class="heading">
+    <div class="head">
+        <h1 style="font-size:35px;"><span>3</span>S</h1>
+    </div>
+
+    <div class="tag">
+        <h2 style="font-size:25px;">S<span>mart</span> S<span>alon</span> S<span>ervices</span></h2>
+    </div>
+</section>
+
+<section class="search">
+    <div class="container">
+        <div class="search-bar">
+            <!-- Services Dropdown -->
+            <div class="dropdown-container">
+                <input id="servicesInput" type="text" placeholder="🔍 All treatments and venues" />
+                <div id="servicesDropdown" class="dropdown">
+                    <div class="dropdown-item">Haircut</div>
+                    <div class="dropdown-item">Hair Coloring</div>
+                    <div class="dropdown-item">Facials</div>
+                    <div class="dropdown-item">Manicure</div>
+                    <div class="dropdown-item">Pedicure</div>
+                    <div class="dropdown-item">Hair spa</div>
+                    <div class="dropdown-item">Waxing</div>
+                    <div class="dropdown-item">Brazilian</div>
+                    <div class="dropdown-item">Bleach</div>
+                    <div class="dropdown-item">Cleanup</div>
                 </div>
             </div>
+            <!-- Location Input -->
+            <div class="dropdown-container">
+                <input id="locationInput" type="text" placeholder="📍 Enter Location" />
+                <button id="useCurrentLocation" style="display: none;">Use Current Location</button>
+            </div>
+            <!-- Date Picker -->
+            <div>
+                <input type="text" id="datePicker" placeholder="📅 Select Date" />
+            </div>
+            <!-- Time Picker -->
+            <div class="time-container">
+                <input id="timePicker" type="text" placeholder="⏰ Select Time" >
+                <div id="timeDropdown" class="dropdown">
+                    <label>From:</label>
+                    <select id="fromTime">
+                        <option value="" disabled selected>Select Time</option>
+                        <option>09:00 AM</option>
+                        <option>10:00 AM</option>
+                        <option>11:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>01:00 PM</option>
+                        <option>02:00 PM</option>
+                        <option>03:00 PM</option>
+                        <option>04:00 PM</option>
+                        <option>05:00 PM</option>
+                        <option>06:00 PM</option>
+                        <option>07:00 PM</option>
+                        <option>08:00 PM</option>
+                        <option>09:00 PM</option>
+                    </select>
+                    <label>To:</label>
+                    <select id="toTime">
+                        <option value="" disabled selected>Select Time</option>
+                        <option>10:00 AM</option>
+                        <option>11:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>01:00 PM</option>
+                        <option>02:00 PM</option>
+                        <option>03:00 PM</option>
+                        <option>04:00 PM</option>
+                        <option>05:00 PM</option>
+                        <option>06:00 PM</option>
+                        <option>07:00 PM</option>
+                        <option>08:00 PM</option>
+                        <option>09:00 PM</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Search Button -->
+            <div>
+                <button id="search-button">Search</button>
+            </div>
+            <div class="error-message" id="error-message"></div>
         </div>
     </div>
-</div>
-
-
+</section>
+<!-- Map Container -->
+<div id="map"></div><br>
+</body>
+</html>
