@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from "ngx-ui-loader";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import {
   MSAL_GUARD_CONFIG,
@@ -39,6 +38,7 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
+
       clientId: "55e3f693-a983-43d6-9d8d-492cdb497130",
       // clientId: '3fba556e-5d4a-48e3-8e1a-fd57c12cb82e', // PPE testing environment
       authority:
@@ -102,7 +102,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
   providers: [
     {

@@ -177,3 +177,11 @@ $ph-animation-duration: 0.8s !default;
 .ng-clear-wrapper {
   display: none;
 }
+
+
+.mat-mdc-form-field-subscript-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  display: none;
+}

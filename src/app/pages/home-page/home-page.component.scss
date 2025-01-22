@@ -1,0 +1,153 @@
+mat-form-field{
+  background-color: white;
+  border: #359e00;
+ }
+
+ /* Override the default down arrow icon */
+ .mat-select-arrow {
+  font-size: 24px; /* Adjust the size if needed */
+  content: "\23F0"; /* Unicode for the clock emoji (⏰) */
+  font-family: "Segoe UI Symbol", "Noto Color Emoji", sans-serif; /* Ensure proper display of the emoji */
+ }
+
+ /* Container styling */
+ .container {
+  height: 100vh; // vh-100
+  display: flex; // d-flex
+  justify-content: center; // justify-content-center
+  align-items: center; // align-items-center
+  margin-top: -250px;
+ }
+ .trt{
+  margin-left: 3px;
+  border-radius: 4px;
+ }
+ .loc{
+  margin-left: 3px;
+  border-radius: 4px;
+ }
+ .date{
+  margin-left: 3px;
+  border-radius: 4px;
+ }
+ .time{
+  margin-left: 3px;
+  border-radius: 4px;
+ }
+ /* Row styling */
+ .row {
+  display: flex;
+  flex-wrap: wrap; // Ensures child elements wrap if needed
+ }
+
+ /* Card styling */
+ .custom-card {
+  width: 91.6667%; // col-11: 11/12 of the container
+  display: flex; // d-flex
+  align-items: center; // align-items-center
+  flex-direction: row; // flex-row
+  padding: 0.5rem 1.25rem; // py-2 px-5
+  border-radius: 67px;
+  border-width: 30px;
+  background-color: red;
+
+  border-color: #4c1023;
+ }
+
+ /* Individual form fields */
+ .mat-form-field {
+  margin-left: 1rem; // ms-3 or ms-2 for spacing
+  &.ms-3 {
+   margin-left: 1rem;
+  }
+  &.ms-2 {
+   margin-left: 0.5rem;
+  }
+ }
+
+ /* Button styling */
+ .custom-button {
+  margin-left: 1.25rem; // ms-5
+  padding: 20px;
+  border-radius: 20px;
+ background-color: blue;
+  color: whitesmoke;
+
+  &:hover {
+   background-color: black;
+   color: whitesmoke// Darker shade for hover
+  }
+ }
+
+
+.carousel-container {
+ position: relative;
+ width: 100%;
+ overflow: hidden;
+ margin-top:-300px;
+ height: 400px;
+}
+
+.card-container {
+ display: flex;
+ width: 500%;
+/* Allow cards
+ to expand beyond container width */
+
+}
+
+.card {
+ flex: 0 0 auto;
+ width: 300px;
+ margin: 10px;
+ background-color: goldenrod;
+ padding: 10px;
+ border-radius: 5px;
+ /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.card-img {
+ width: 100%;
+ height: 200px;
+ border-radius: 5px;
+ object-fit: cover;
+}
+
+.card-description {
+ font-size: 1em;
+ color: rgb(0, 0, 0);
+}
+
+
+.card-title {
+ font-size: 1.5em;
+ color: rgb(0, 0, 0);
+ margin: 0;
+}
+.card a {
+ text-decoration: none !important; /* Forcefully removes underline */
+ color: inherit; /* Inherit text color from parent */
+ display: block; /*  Ensures the entire card is clickable */
+}
+
+.card-link {
+ text-decoration: none; /* Removes the underline */
+ color: inherit; /* Ensures the link text takes on the color of its parent */
+ display: block; /* Ensures the entire card is clickable */
+}
+
+.card-content {
+ text-align: center;
+ padding: 15px;
+}
+
+@keyframes scroll {
+ from {
+  transform: translateX(0);
+ }
+ to {
+  transform: translateX(-50%);
+ }
+}

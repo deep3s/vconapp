@@ -157,6 +157,7 @@ const routes: Routes = [
       status: true,
     },
     loadChildren: () => import('../home-page/home-page.module').then(m => m.HomePageModule) },
+  { path: 'salon-details', loadChildren: () => import('../salon-details-page/salon-details-page.module').then(m => m.SalonDetailsPageModule) },
 ];
 
 @NgModule({

@@ -13,7 +13,7 @@ import { RidingEyeCardComponent } from '../riding-eye-card/riding-eye-card.compo
 import { getPartyColor } from 'src/app/shared/parties-constants';
 import { getDefaultColDef, HandleColumnVisibleChange, UnElectedMarginColor } from 'src/app/shared/constants';
 import { getRegionBarChart, getRegionLineGraph } from 'src/app/shared/chart-constants';
-import { defaultThrottleConfig } from 'rxjs/internal/operators/throttle';
+
 import { CdkDragDrop, moveItemInArray  } from '@angular/cdk/drag-drop';
 
 @Component({
