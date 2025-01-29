@@ -1,1 +1,88 @@
-<p>salon-details-page works!</p>
+<div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <a href="#">Home</a> >
+        <a href="#">Massage</a> >
+        <a href="#">Bengaluru</a> >
+        <span>V -Cut Salon</span>
+    </div>
+
+    <h1>V -Cut Salon</h1>
+    <div class="info-container">
+        <p>No reviews yet • Open until 12:00 am • Koramangala, Bengaluru</p>
+        <!-- Action Buttons -->
+        <ul class="action-buttons">
+            <li>
+                <button class="share-button" aria-label="Share">
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+                        <path d="M15.293 1.293a1 1 0 0 1 1.414 0l5.25 5.25a1 1 0 0 1-1.414 1.414L17 4.414V16a1 1 0 1 1-2 0V4.414l-3.543 3.543a1 1 0 1 1-1.414-1.414zM5.586 11.586A2 2 0 0 1 7 11h3a1 1 0 1 1 0 2H7v13h18V13h-3a1 1 0 1 1 0-2h3a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V13a2 2 0 0 1 .586-1.414"></path>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <button class="favorite-button" aria-label="Add to favorites" (click)="toggleFavorite()">
+                    <svg [ngClass]="{'favorite': isFavorite}" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+                        <path d="M13.488 26.603c.6.404 1.102.719 1.455.934.176.107.465.275.563.332.304.17.68.173.984.003.102-.06.394-.23.567-.335a40.466 40.466 0 0 0 5.862-4.356C26.072 20.343 29.5 16.21 29.5 11.5A7.5 7.5 0 0 0 16 7a7.5 7.5 0 0 0-13.5 4.5c0 4.71 3.428 8.843 6.581 11.68a40.5 40.5 0 0 0 4.407 3.423m-.903-19.958A5.5 5.5 0 0 0 4.5 11.5c0 3.79 2.822 7.407 5.919 10.194A38.5 38.5 0 0 0 16 25.84a38.466 38.466 0 0 0 5.581-4.145C24.678 18.907 27.5 15.29 27.5 11.5a5.5 5.5 0 0 0-10.577-2.115 1 1 0 0 1-1.846 0 5.5 5.5 0 0 0-2.492-2.74"></path>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="booking-container">
+<!--        <div class="booking-header">-->
+<!--            <button class="back-button" (click)="goBack()">-->
+<!--                <svg viewBox="0 0 32 32">-->
+<!--                    <path fill-rule="evenodd" d="M14.707 6.293a1 1 0 0 1 0 1.414L7.414 15H27a1 1 0 1 1 0 2H7.414l7.293 7.293a1 1 0 0 1-1.414 1.414l-9-9a1 1 0 0 1 0-1.414l9-9a1 1 0 0 1 1.414 0" clip-rule="evenodd"></path>-->
+<!--                </svg>-->
+<!--            </button>-->
+<!--            <span class="header-text">Select services</span>-->
+<!--            <button class="close-button" (click)="close()">-->
+<!--                <svg viewBox="0 0 32 32">-->
+<!--                    <path fill-rule="evenodd" d="M7.293 7.293a1 1 0 0 1 1.414 0L16 14.586l7.293-7.293a1 1 0 1 1 1.414 1.414L17.414 16l7.293 7.293a1 1 0 0 1-1.414 1.414L16 17.414l-7.293 7.293a1 1 0 0 1-1.414-1.414L14.586 16 7.293 8.707a1 1 0 0 1 0-1.414" clip-rule="evenodd"></path>-->
+<!--                </svg>-->
+<!--            </button>-->
+<!--        </div>-->
+        <div class="image-gallery">
+            <img src="https://autumnsalon.in/wp-content/uploads/2024/07/Unisex-salon.jpg" alt="Image 1" class="gallery-image1">
+            <img src="https://apsaraunisexsalon.com/wp-content/uploads/2023/08/Unisex-Salon.jpg" alt="Image 2" class="gallery-image2">
+        </div>
+
+        <!-- Services Section -->
+        <div class="services-section">
+            <h2>Services</h2>
+
+
+                <div *ngFor="let service of (showAll ? services : services.slice(0, 4))" class="service-card">
+                    <h3 class="service-name">{{ service.name }}</h3>
+                    <p class="service-duration">{{ service.duration }}</p>
+                    <div class="service-info">
+                        <p class="service-price">{{ service.price }}</p>
+                        <p class="service-discount">Save {{ service.discount }}</p>
+                        <button class="book-button">Book</button>
+                    </div>
+                </div>
+
+
+            <!-- "See All" Button -->
+            <button class="see-all-button" (click)="toggleShowAll()">
+                {{ showAll ? 'Show Less' : 'See All' }}
+            </button>
+
+        </div>
+    </div>
+</div>
+
+
+        <!-- Progress Steps -->
+<!--                    <div class="progress-steps">-->
+<!--                        <ul>-->
+<!--                            <li><a class="step-link" [routerLink]="['/services']">Services</a> ></li>-->
+<!--                            <li><a class="step-link" [routerLink]="['/professional']">Professional</a> ></li>-->
+<!--                            <li><a class="step-link" [routerLink]="['/Time']">Time</a> ></li>-->
+<!--                            <li><a class="step-link" [routerLink]="['/Confirm']">Confirm</a> ></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+
+
+

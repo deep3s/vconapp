@@ -1,0 +1,230 @@
+/* Main container of the page */
+.container {
+  text-align: left;
+  max-width: 1600px;
+  margin-top: 100px;
+  padding-bottom: 20px;
+  min-height: 100vh;
+}
+
+.breadcrumbs {
+  margin-bottom: 10px;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Action Buttons Styling */
+.action-buttons {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.action-buttons li {
+  margin-left: 10px;
+}
+
+.share-button, .favorite-button {
+  background: none;
+  border: 2px solid #333;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+  padding: 0;
+}
+
+.share-button:hover, .favorite-button:hover {
+  transform: scale(1.1);
+  background-color: navajowhite;
+}
+
+svg {
+  width: 32px;
+  height: 32px;
+  fill: black;
+}
+
+/* Gallery Images */
+.gallery-image1 {
+  height: 500px;
+  width: 900px;
+  border-radius: 30px;
+  margin-right: 20px;
+}
+
+.gallery-image2 {
+  height: 500px;
+  width: 400px;
+  border-radius: 30px;
+}
+
+/* Booking Section */
+.booking-container {
+  padding: 20px;
+  padding-bottom: 50px;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.back-button, .close-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: -30px;
+}
+
+/* Progress Steps */
+.progress-steps {
+  margin-top: 40px;
+  padding: 10px 0;
+}
+
+.progress-steps ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.progress-steps ul li {
+  display: inline-block;
+}
+
+.step-link {
+  font-size: 16px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.step-link:hover {
+  text-decoration: underline;
+}
+
+/* Services Section */
+.services-section {
+  width: 100%;
+}
+
+.services-container {
+
+
+
+  height:600px;
+  max-height: 820px;
+
+
+  margin-left: -10px;
+
+}
+
+/* Service Card */
+.service-card {
+  background: #fff;
+  padding: 15px;
+  width: 900px;
+  gap: 20px;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  height:200px;
+  //padding-bottom: 50px;
+  //padding-right: 10px;
+  position: relative; /* Required for absolute positioning of button */
+}
+
+/* Align price, discount, and book button in the same row */
+.service-info {
+  display: flex;
+  align-items: center;
+  margin-top:-15px;
+  flex-wrap: wrap; /* Ensures wrapping on smaller screens */
+  gap: 10px;
+}
+
+/* Service Price */
+.service-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Ensure discount is next to the price */
+.service-discount {
+  font-size: 14px;
+  font-weight: bold;
+  color: green;
+  margin-left: 5px;
+}
+
+
+/* Book Button - Positioned in Right-Center Corner */
+.book-button {
+  position: absolute;
+  right: 10px; /* Aligns to the right */
+  top: 50%; /* Centers vertically */
+  transform: translateY(-50%); /* Ensures true center alignment */
+  background-color: whitesmoke;
+  color: black;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.service-duration{
+  margin-top: -10px;
+  font-size: 15px;
+}
+
+.service-name{
+  font-size: 20px;
+  font-weight: bold;
+
+}
+.book-button:hover {
+  background-color: #0056b3;
+}
+
+/* "See All" Button */
+.see-all-button {
+  margin-top: 10px;
+  background: #007BFF;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block; /* Ensure it is being displayed */
+  visibility: visible;
+  }
+
+
+

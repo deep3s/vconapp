@@ -185,3 +185,31 @@ $ph-animation-duration: 0.8s !default;
   position: relative;
   display: none;
 }
+
+/* Apply scroll to the entire page */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto; /* Enables vertical scrolling */
+  box-sizing: border-box; /* Ensures consistent sizing */
+}
+
+/* Style for the scrollbars */
+body::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar thumb color */
+  border-radius: 10px; /* Rounded corners for thumb */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Thumb color on hover */
+}
