@@ -3,19 +3,25 @@
   text-align: left;
   max-width: 1600px;
   margin-top: 100px;
-  padding-bottom: 20px;
   min-height: 100vh;
+  margin-left: 30px;
+  padding-left: 200px;
 }
 
 .breadcrumbs {
   margin-bottom: 10px;
+  margin-left: 30px;
 }
 
+.head{
+  margin-left: 30px;
+}
 .info-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+  margin-left: 30px;
 }
 
 /* Action Buttons Styling */
@@ -55,16 +61,21 @@ svg {
 }
 
 /* Gallery Images */
+
+.image-gallery{
+  margin-left: 0px;
+}
 .gallery-image1 {
   height: 500px;
-  width: 900px;
+  width: 820px;
   border-radius: 30px;
   margin-right: 20px;
 }
 
 .gallery-image2 {
   height: 500px;
-  width: 400px;
+  width: 500px;
+  margin-left: 0px;
   border-radius: 30px;
 }
 
@@ -74,6 +85,7 @@ svg {
   padding-bottom: 50px;
   background-color: #fff;
   min-height: 100vh;
+  margin-left: 5px;
 }
 
 .booking-header {
@@ -87,13 +99,6 @@ svg {
   font-weight: bold;
 }
 
-.back-button, .close-button {
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: -30px;
-}
 
 /* Progress Steps */
 .progress-steps {
@@ -126,61 +131,99 @@ svg {
 /* Services Section */
 .services-section {
   width: 100%;
+  gap:50px;
+  flex: 1;
+  margin-right: 20px;
 }
 
-.services-container {
-
-
-
-  height:600px;
-  max-height: 820px;
-
-
-  margin-left: -10px;
-
-}
+//.services-container {
+//  height:600px;
+//  max-height: 820px;
+//  margin-left: -10px;
+//  display: grid;
+//  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ensure cards are responsive */
+//  gap: 60px; /* Add space between cards */
+//  padding-right: 10px;
+//
+//}
 
 /* Service Card */
 .service-card {
   background: #fff;
-  padding: 15px;
+  padding: 20px;
   width: 900px;
-  gap: 20px;
   display: grid;
-
   grid-template-columns: 1fr;
   border-radius: 8px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  height:200px;
-  //padding-bottom: 50px;
-  //padding-right: 10px;
+  height:100px;
+  margin-bottom: 20px; /* Adds space between the rows */
+  margin-right: 20px; /* Adds space between columns */
   position: relative; /* Required for absolute positioning of button */
+}
+
+.service-card:hover {
+  background-color: #f0f0f0; /* Light gray background when hovered */
+  transform: scale(1.05); /* Slightly enlarge the card */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+  cursor: pointer; /* Show a pointer cursor to indicate interactivity */
+}
+
+/* Selected Card Effect */
+.service-card.selected {
+  border: 2px solid #007BFF; /* Highlight the card with a blue border */
+  background-color: #e7f1ff; /* Light blue background when selected */
 }
 
 /* Align price, discount, and book button in the same row */
 .service-info {
   display: flex;
   align-items: center;
-  margin-top:-15px;
+  margin-top:-25px;
   flex-wrap: wrap; /* Ensures wrapping on smaller screens */
   gap: 10px;
+  margin-bottom: -30px;
+
 }
 
 /* Service Price */
 .service-price {
   font-size: 16px;
-  font-weight: bold;
-  color: #000;
+  font-weight: normal;
+  color: black;
 }
 
 /* Ensure discount is next to the price */
 .service-discount {
   font-size: 14px;
-  font-weight: bold;
+  font-weight: normal;
   color: green;
   margin-left: 5px;
 }
+.service-duration{
+  margin-top: -13px;
+  font-size: 15px;
+  color: grey;
+}
 
+.service-name{
+  font-size: 15px;
+  font-weight: normal;
+  color: black;
+}
+
+.service-header {
+  font-weight: normal;
+  color: black;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+
+.book-button:hover {
+  background-color: #0056b3;
+}
 
 /* Book Button - Positioned in Right-Center Corner */
 .book-button {
@@ -198,19 +241,6 @@ svg {
   transition: background-color 0.3s ease;
 }
 
-.service-duration{
-  margin-top: -10px;
-  font-size: 15px;
-}
-
-.service-name{
-  font-size: 20px;
-  font-weight: bold;
-
-}
-.book-button:hover {
-  background-color: #0056b3;
-}
 
 /* "See All" Button */
 .see-all-button {
@@ -228,3 +258,465 @@ svg {
 
 
 
+
+
+/* Page Container */
+.page-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  position: relative;
+  margin-left:-15px;
+}
+.service-header{
+  font-size: 20px;
+}
+
+/* Fixed Card */
+.fixed-card {
+  position: relative; /* Start as absolute inside the services section */
+  right: 200px;
+  top: 100px; /* Start at the top of the services section */
+  width: 350px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: position 0.3s ease, top 0.3s ease;
+  margin-right: -200px;
+}
+/* Ensure that fixed-card becomes fixed within the services section */
+.page-container .services-section {
+  position: relative;
+}
+
+.fixed-card.fixed {
+  position: fixed; /* Become fixed when scrolling */
+  top: 100px; /* Adjust based on your layout */
+  left: calc(100% + 20px); /* Keeps the fixed card next to the service cards */
+}
+
+/* Title */
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Status */
+.status {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.open {
+  color: green;
+}
+
+.closed {
+  color: red;
+}
+
+/* Location */
+.location p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Buttons */
+.deals-btn,
+.book-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.deals-btn {
+  background: #f8c102;
+  color: black;
+}
+
+.book-btn {
+  background: #007bff;
+  color: white;
+}
+
+.book-btn:hover {
+  background: #0056b3;
+}
+
+.deals-btn:hover {
+  background: #e0a800;
+}
+
+/* Responsive Fix */
+@media (max-width: 1024px) {
+  .page-container {
+    flex-direction: column;
+  }
+
+  .fixed-card {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    right: 0;
+    top: 0;
+  }
+}
+
+
+
+/* Team Section */
+.team-section {
+  padding: 20px;
+  margin-left: 10px;
+}
+
+/* Team Title */
+.team-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Employee Card */
+.employee-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Employee Link */
+.employee-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Avatar */
+.employee-avatar {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-initials {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Employee Info */
+.employee-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.employee-role {
+  font-size: 14px;
+  color: gray;
+}
+
+/* Style adjustments here */
+.about-self {
+  font-family: Arial, sans-serif;
+  margin-left: 30px;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.about-text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.map-and-meta {
+  margin-top: 20px;
+}
+
+.meta-container {
+  margin-bottom: 20px;
+}
+
+.subheader-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.opening-hours {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+.hours {
+  display: flex;
+  justify-content: flex-end; /* Align hours to the right */
+}
+
+.hour-item {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.day {
+  display: flex;
+  align-items: center; /* Vertically align the day and status indicator */
+}
+
+.day-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This aligns the day and hours vertically */
+
+}
+
+.day-name {
+  margin-left: 8px; /* Space between the indicator and day name */
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+
+.hours-range {
+  font-size: 14px;
+  margin-left: 70px;
+}
+
+.feature-icon {
+  margin-right: 10px;
+}
+
+.get-directions {
+  text-decoration: none;
+}
+
+.map-img-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.location-text {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.directions-text {
+  font-weight: bold;
+}
+
+
+/* This will ensure the two sections are aligned side by side */
+.section-container {
+  display: flex;
+  justify-content: space-between; /* Create space between the two sections */
+  gap: 2rem; /* Optional: space between sections */
+}
+
+/* Ensure each section is properly spaced and aligned */
+.opening-times-section, .additional-info-section {
+  flex: 1; /* Make both sections take equal width */
+}
+
+/* Optional: Add some margin or padding if needed for fine-tuning */
+.subheader-title, .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.opening-hours {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+}
+
+.feature-icon {
+  margin-right: 10px; /* Space between the icon and text */
+}
+
+.feature-text {
+  font-size: 1.1em;
+  color: #333;
+}
+
+
+//beforefooter
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 columns */
+  grid-template-rows: repeat(5, auto); /* 5 rows */
+  gap: 10px; /* Space between items */
+  //justify-content: start; /* Aligns the grid items to the left */
+  text-align: left; /* Aligns text inside items to the left */
+}
+
+.services-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: contents; /* Keeps all <li> inside the same grid */
+}
+
+
+
+.services-list a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: block; /* Ensures full width clickable area */
+  text-align: left; /* Aligns text to the left */
+}
+
+.tabs{
+  margin-top: -30px;
+  margin-bottom: 40px;
+  padding: 5px;
+  text-align: center;
+  background-color: black;
+  color: whitesmoke;
+  border-radius: 20px;
+  width: 270px;
+}
+
+//footer
+.footer {
+  background: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.footer-section {
+  margin: 10px;
+}
+.footer-section h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-section ul li {
+  margin: 5px 0;
+}
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.language-button{
+  margin-left: -200px;
+}
+
+.locations-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensure the container takes up the full available width */
+}
+
+.location-cards-wrapper {
+  display: flex;
+  gap: 20px;
+  //overflow-x: auto; /* Allow horizontal scrolling */
+  width: 100%; /* Allow wrapper to be flexible */
+  padding: 10px; /* Optional: Adds space around the cards */
+}
+
+.location-card {
+  width: 250px; /* Adjust width of each card */
+  height: 250px; /* Set height equal to width to make it square */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent shrinking of the card */
+  display: flex;
+  flex-direction: column; /* To stack content inside the card */
+  align-items: center;
+  justify-content: center;
+}
+
+.location-image {
+  width: 100%;
+  height: 60%; /* Set height of image to take up 60% of the card */
+  object-fit: cover;
+}
+
+.location-details {
+  padding: 15px;
+  text-align: center;
+  height: 40%; /* Make sure text takes up the remaining space */
+}
+
+.location-details h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.location-details p {
+  font-size: 14px;
+  color: #666;
+}
+
+.arrow {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.left-arrow {
+  margin-right: 10px;
+}
+
+.right-arrow {
+  margin-left: 10px;
+}
