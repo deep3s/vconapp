@@ -99,10 +99,11 @@ export class SalonDetailsPageComponent {
             }
         ]
     };
-
-
-
-
+    branches = [
+        {name: 'Vcut Salon - Downtown', address: '123 Main St, Downtown', image: 'assets/images/downtown.jpg'},
+        {name: 'Vcut Salon - Uptown', address: '456 High St, Uptown', image: 'assets/images/uptown.jpg' },
+        {  name: 'Vcut Salon - Midtown', address: '789 Center St, Midtown', image: 'assets/images/midtown.jpg' },
+    ];
 
     // Sample services to be displayed in the UI
     services = [

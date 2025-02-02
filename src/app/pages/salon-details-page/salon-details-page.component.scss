@@ -3,21 +3,12 @@
 
 
   .breadcrumbs {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
-
-  .head {
-    margin-left: 30px;
-  }
-
-  .info-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    margin-left: 30px;
-  }
-
+h2{
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
   /* Action Buttons Styling */
   .action-buttons {
     list-style: none;
@@ -117,17 +108,6 @@
     flex: 1;
     margin-right: 20px;
   }
-
-  //.services-container {
-  //  height:600px;
-  //  max-height: 820px;
-  //  margin-left: -10px;
-  //  display: grid;
-  //  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ensure cards are responsive */
-  //  gap: 60px; /* Add space between cards */
-  //  padding-right: 10px;
-  //
-  //}
 
   /* Service Card */
   .service-card {
@@ -238,17 +218,6 @@
     visibility: visible;
   }
 
-
-  /* Page Container */
-  .page-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-    position: relative;
-    margin-left: -15px;
-  }
-
   .service-header {
     font-size: 20px;
   }
@@ -351,18 +320,13 @@
     }
   }
 
-
-  /* Team Section */
-  .team-section {
-    padding: 20px;
-    margin-left: 10px;
-  }
-
   /* Team Title */
+  .team-section{
+    margin-top: 30px;
+  }
   .team-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-weight: normal;
+    margin-bottom: 10px;
   }
 
   /* Employee Card */
@@ -415,13 +379,8 @@
 
   /* Style adjustments here */
   .about-self {
-    font-family: Arial, sans-serif;
-    margin-left: 30px;
-  }
-
-  .header-title {
-    font-size: 24px;
-    font-weight: bold;
+    margin-top: 30px;
+    //margin-left: 30px;
   }
 
   .about-text {
@@ -438,8 +397,6 @@
   }
 
   .subheader-title {
-    font-size: 20px;
-    font-weight: bold;
     margin-bottom: 10px;
   }
 
@@ -506,37 +463,34 @@
 
   .location-text {
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 4px;
   }
 
   .directions-text {
     font-weight: bold;
   }
-
-
-  /* This will ensure the two sections are aligned side by side */
-  .section-container {
+//time
+  .hour-item {
     display: flex;
-    justify-content: space-between; /* Create space between the two sections */
-    gap: 2rem; /* Optional: space between sections */
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
   }
 
-  /* Ensure each section is properly spaced and aligned */
-  .opening-times-section, .additional-info-section {
-    flex: 1; /* Make both sections take equal width */
+  .day-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
-  /* Optional: Add some margin or padding if needed for fine-tuning */
-  .subheader-title, .section-title {
-    margin-bottom: 1.5rem;
+  .hours-container {
+    font-weight: normal;
+    margin-right: 10px;
   }
 
-  .opening-hours {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
+.additional-info-section{
+  margin-left: 200px;
+}
   .info-list {
     list-style: none;
     padding: 0;
@@ -594,7 +548,10 @@
     border-radius: 20px;
     width: 270px;
   }
-
+.other-loc{
+  margin-top: 20px;
+  font-size: 20px;
+}
   //footer
   .footer {
     background: #333;
@@ -639,7 +596,9 @@
   .language-button {
     margin-left: -200px;
   }
-
+.vnb{
+  margin-top: 30px;
+}
   .locations-container {
     display: flex;
     align-items: center;
@@ -656,8 +615,8 @@
   }
 
   .location-card {
-    width: 250px; /* Adjust width of each card */
-    height: 250px; /* Set height equal to width to make it square */
+    width: 230px; /* Adjust width of each card */
+    height: 230px; /* Set height equal to width to make it square */
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
@@ -704,6 +663,8 @@
   }
 
   .right-arrow {
-    margin-left: 10px;
+    margin-left:10px;
   }
+
+
 }
