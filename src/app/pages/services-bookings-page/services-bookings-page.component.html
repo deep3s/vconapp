@@ -1,0 +1,22 @@
+<div class="services-section">
+    <h2>Services</h2>
+
+    <p class="service-header">Massage</p>
+
+    <div class="cards">
+        <div *ngFor="let service of (showAll ? services : services.slice(0, 4))" class="service-card">
+            <h3 class="service-name">{{ service.name }}</h3>
+            <p class="service-duration">{{ service.duration }}</p>
+            <div class="service-info">
+                <p class="service-price">{{ service.price }}</p>
+                <p class="service-discount">Save {{ service.discount }}</p>
+                <button class="book-button" (click)="onServiceClick(service)">Book</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- "See All" Button -->
+    <button class="see-all-button" (click)="toggleShowAll()">
+        {{ showAll ? 'Show Less' : 'See All' }}
+    </button>
+</div>

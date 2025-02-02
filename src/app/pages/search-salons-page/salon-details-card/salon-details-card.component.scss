@@ -1,0 +1,40 @@
+@import "src/styles/variables";
+
+.salon-card {
+  margin-bottom: 60px;
+
+  .salon-card-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .salon-card-content p {
+    font-size: 1em;
+    color: #555;
+  }
+
+
+  .salon-card-image {
+    height: 200px;
+  }
+
+  .salon-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .see-more {
+    padding-left: 10px;
+  }
+
+  .service-card {
+    padding: 8px;
+
+    &:hover {
+      background: $LightBackgroundGrey;
+      border-radius: 8px;
+    }
+  }
+}

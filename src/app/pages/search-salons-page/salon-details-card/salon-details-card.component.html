@@ -1,0 +1,38 @@
+<div class="salon-card ">
+    <div class="salon-card-image">
+        <img src='{{salon.image}}' alt="salon Image">
+    </div>
+
+    <div class="salon-card-content">
+        <div class="d-flex justify-content-between mt-3 salon-details-section">
+            <div>
+                <div class="section-heading-h3 fw-bold">{{ salon.name }}</div>
+                <div class="address fs-14 clr-grey">{{ salon.address }}</div>
+            </div>
+            <div>
+                <div class="distance fw-bold">{{ salon.distance }}</div>
+            </div>
+        </div>
+        <div class="divider my-2"></div>
+
+        <div class="services-section w-100">
+            <div *ngFor="let service of salon.services" class="service-card mb-2">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <div class="service-name fw-bold">{{ service.name }}</div>
+                        <div class="service-duration clr-grey fs-14">{{ service.duration }}</div>
+                    </div>
+                    <div>
+                        <div class="service-price">{{ service.price }}</div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center my-2">
+                    <button class="app-button-secondary me-2" *ngFor="let slot of service.nextSlots">{{ slot }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="see-more animated-link">See More</a>
+    </div>
+</div>
