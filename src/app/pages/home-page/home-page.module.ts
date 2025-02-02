@@ -17,6 +17,8 @@ import {MatSelectModule} from "@angular/material/select";
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
+import { RatingStarComponent } from 'src/app/shared-components/rating-star/rating-star.component';
+import { AppSharedModule } from 'src/app/shared-components/app-shared.module';
 
 // import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
@@ -35,6 +37,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   ],
     imports: [
         CommonModule,
+        AppSharedModule,
         FormsModule,
         ReactiveFormsModule,
         MatCheckboxModule,
