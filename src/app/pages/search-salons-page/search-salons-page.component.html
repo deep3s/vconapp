@@ -1,18 +1,13 @@
-<div class="search-salons-page container">
-    <div class="d-flex align-items-center">
+<div class="search-salons-page container-fluid">
+    <div class="d-flex align-items-start w-100">
 
-
-        <div class="salon-list-section">
-            <div class="card-container">
-
+        <div class="salon-list-section w-25 p-3">
+            <div class="salon-card-container">
+                <salon-details-card *ngFor="let salon of salons" [salon]="salon"></salon-details-card>
             </div>
-            </div>
-
-
         </div>
 
-        <div class="map-section">
-
+        <div class="map-section w-75 h-100 p-3">
 
         </div>
     </div>

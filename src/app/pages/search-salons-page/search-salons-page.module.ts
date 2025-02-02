@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { SearchSalonsPageRoutingModule } from './search-salons-page-routing.module';
 import { SearchSalonsPageComponent } from './search-salons-page.component';
+import { SalonDetailsCardComponent } from './salon-details-card/salon-details-card.component';
 
 
 @NgModule({
   declarations: [
-    SearchSalonsPageComponent
+    SearchSalonsPageComponent,
+    SalonDetailsCardComponent
   ],
   imports: [
     CommonModule,
