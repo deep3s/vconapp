@@ -15,40 +15,44 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
-import { RatingStarComponent } from './rating-star/rating-star.component';
-import { StarsComponent } from './stars/stars.component';
+import {RatingStarComponent} from './rating-star/rating-star.component';
+import {StarsComponent} from './stars/stars.component';
+import {SalonCardComponent} from './salon-card/salon-card.component';
+import {SalonCardsComponent} from './salon-cards/salon-cards.component';
 
 @NgModule({
-  declarations: [
-    RatingStarComponent, 
-    StarsComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    ClickOutsideModule,
-    MatTabsModule,
-    MatCheckboxModule,
-    MatExpansionModule,
-    FormsModule,
-    MatDialogModule,
-    ClipboardModule,
-    MatDatepickerModule,
-    MatTooltipModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatMomentDateModule,
-    FormsModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatRadioModule,
-  ],
-  providers: [],
-  exports: [
-    RatingStarComponent,
-    StarsComponent
-  ],
-  bootstrap: []
+    declarations: [
+        RatingStarComponent,
+        StarsComponent, SalonCardComponent, SalonCardsComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        ClickOutsideModule,
+        MatTabsModule,
+        MatCheckboxModule,
+        MatExpansionModule,
+        FormsModule,
+        MatDialogModule,
+        ClipboardModule,
+        MatDatepickerModule,
+        MatTooltipModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatMomentDateModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatRadioModule,
+    ],
+    providers: [],
+    exports: [
+        RatingStarComponent,
+        StarsComponent,
+        SalonCardComponent,
+        SalonCardsComponent
+    ],
+    bootstrap: []
 })
 export class AppSharedModule {
 }

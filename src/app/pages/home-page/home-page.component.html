@@ -4,6 +4,8 @@
    <rating-star [rating]="4.3" [tnr]="600"></rating-star>
    <rating-star [rating]="4.5" [tnr]="467"></rating-star>
 
+    <salon-cards  [salons]="salons" [title]="'Venues Near By'" ></salon-cards>
+
     <div class="row">
         <div class="custom-card">
             <mat-form-field appearance="outline" class="trt">
@@ -33,8 +35,7 @@
                 />
                 <mat-autocomplete
                     #autoLocation="matAutocomplete"
-                    (optionSelected)="onLocationSelected($event)"
-                >
+                    (optionSelected)="onLocationSelected($event)">
                     <mat-option *ngFor="let location of filteredLocations | async" [value]="location">
                         {{ location }}
                     </mat-option>
