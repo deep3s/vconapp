@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container salon-details-page">
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">
         <a routerLink="/">Home</a> >
@@ -6,154 +6,167 @@
         <a routerLink="/bengaluru">Bengaluru</a> >
         <span>V -Cut Salon</span>
     </div>
-    <h1 class="head">V -Cut Salon</h1>
-    <div class="info-container">
-        <p>No reviews yet • Open until 12:00 am • Koramangala, Bengaluru</p>
+    <div>
+        <h1 class="head">{{ salonDetails.name }}</h1>
+        <div class="d-flex  justify-content-between">
+            <div class="d-flex ">
+                <rating-star [rating]="4.5" [tnr]="467"></rating-star>
+                <span>{{ salonDetails.openUntil }}</span>
+                <span>{{ salonDetails.sa }}</span>
+            </div>
 
-        <!-- Action Buttons -->
-        <ul class="action-buttons">
-            <li>
-                <button class="share-button" aria-label="Share">
-                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-                        <path d="M15.293 1.293a1 1 0 0 1 1.414 0l5.25 5.25a1 1 0 0 1-1.414 1.414L17 4.414V16a1 1 0 1 1-2 0V4.414l-3.543 3.543a1 1 0 1 1-1.414-1.414zM5.586 11.586A2 2 0 0 1 7 11h3a1 1 0 1 1 0 2H7v13h18V13h-3a1 1 0 1 1 0-2h3a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V13a2 2 0 0 1 .586-1.414"></path>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button class="favorite-button" aria-label="Add to favorites" (click)="toggleFavorite()">
-                    <svg [ngClass]="{'favorite': isFavorite}" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-                        <path d="M13.488 26.603c.6.404 1.102.719 1.455.934.176.107.465.275.563.332.304.17.68.173.984.003.102-.06.394-.23.567-.335a40.466 40.466 0 0 0 5.862-4.356C26.072 20.343 29.5 16.21 29.5 11.5A7.5 7.5 0 0 0 16 7a7.5 7.5 0 0 0-13.5 4.5c0 4.71 3.428 8.843 6.581 11.68a40.5 40.5 0 0 0 4.407 3.423m-.903-19.958A5.5 5.5 0 0 0 4.5 11.5c0 3.79 2.822 7.407 5.919 10.194A38.5 38.5 0 0 0 16 25.84a38.466 38.466 0 0 0 5.581-4.145C24.678 18.907 27.5 15.29 27.5 11.5a5.5 5.5 0 0 0-10.577-2.115 1 1 0 0 1-1.846 0 5.5 5.5 0 0 0-2.492-2.74"></path>
-                    </svg>
-                </button>
-            </li>
-        </ul>
+            <div>
+                <!-- Action Buttons -->
+                <ul class="action-buttons">
+                    <li>
+                        <button class="share-button" aria-label="Share">
+                            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32"
+                                 height="32">
+                                <path d="M15.293 1.293a1 1 0 0 1 1.414 0l5.25 5.25a1 1 0 0 1-1.414 1.414L17 4.414V16a1 1 0 1 1-2 0V4.414l-3.543 3.543a1 1 0 1 1-1.414-1.414zM5.586 11.586A2 2 0 0 1 7 11h3a1 1 0 1 1 0 2H7v13h18V13h-3a1 1 0 1 1 0-2h3a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V13a2 2 0 0 1 .586-1.414"></path>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="favorite-button" aria-label="Add to favorites" (click)="toggleFavorite()">
+                            <svg [ngClass]="{'favorite': isFavorite}" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 32 32" width="32" height="32">
+                                <path d="M13.488 26.603c.6.404 1.102.719 1.455.934.176.107.465.275.563.332.304.17.68.173.984.003.102-.06.394-.23.567-.335a40.466 40.466 0 0 0 5.862-4.356C26.072 20.343 29.5 16.21 29.5 11.5A7.5 7.5 0 0 0 16 7a7.5 7.5 0 0 0-13.5 4.5c0 4.71 3.428 8.843 6.581 11.68a40.5 40.5 0 0 0 4.407 3.423m-.903-19.958A5.5 5.5 0 0 0 4.5 11.5c0 3.79 2.822 7.407 5.919 10.194A38.5 38.5 0 0 0 16 25.84a38.466 38.466 0 0 0 5.581-4.145C24.678 18.907 27.5 15.29 27.5 11.5a5.5 5.5 0 0 0-10.577-2.115 1 1 0 0 1-1.846 0 5.5 5.5 0 0 0-2.492-2.74"></path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="booking-container">
-        <!-- Image Gallery -->
-        <div class="image-gallery">
-            <img src="https://autumnsalon.in/wp-content/uploads/2024/07/Unisex-salon.jpg" alt="Salon Image 1" class="gallery-image1">
-            <img src="https://apsaraunisexsalon.com/wp-content/uploads/2023/08/Unisex-Salon.jpg" alt="Salon Image 2" class="gallery-image2">
-        </div>
 
-        <div class="page-container">
+    <!-- Image Gallery -->
+    <div class="image-gallery d-flex ">
+        <img src="https://autumnsalon.in/wp-content/uploads/2024/07/Unisex-salon.jpg" alt="Salon Image 1"
+             class="gallery-image1">
+        <img src="https://apsaraunisexsalon.com/wp-content/uploads/2023/08/Unisex-Salon.jpg" alt="Salon Image 2"
+             class="gallery-image2">
+    </div>
+
+
+    <div class="pt-4">
+        <div class=" services-section d-flex w-100 mt-4">
             <!-- Services Section -->
-            <div class="services-section">
-                <h2>Services</h2>
+            <div class="w-75">
+                <service-list [services]="salonDetails.services" [title]="'Services'"></service-list>
 
-                <p class="service-header">Massage</p>
-
-                <div class="cards">
-                    <div *ngFor="let service of (showAll ? services : services.slice(0, 4))" class="service-card">
-                        <h3 class="service-name">{{ service.name }}</h3>
-                        <p class="service-duration">{{ service.duration }}</p>
-                        <div class="service-info">
-                            <p class="service-price">{{ service.price }}</p>
-                            <p class="service-discount">Save {{ service.discount }}</p>
-                            <button class="book-button" (click)="onServiceClick(service)">Book</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- "See All" Button -->
-                <button class="see-all-button" (click)="toggleShowAll()">
-                    {{ showAll ? 'Show Less' : 'See All' }}
-                </button>
             </div>
-
+            <div class="w-25 ps-4">
+                <salon-details-card></salon-details-card>
+            </div>
             <!-- Fixed Card -->
-            <div class="card fixed-card">
-                <h2 class="title">V-Cut Salon</h2>
-                <p class="reviews">No reviews yet</p>
+        </div>
 
-                <button class="deals-btn">Deals</button>
-                <button class="book-btn" (click)="bookNow()">Book now</button>
 
-                <div class="status">
-                    <span [class.open]="isOpen" [class.closed]="!isOpen">● {{ isOpen ? 'Open' : 'Closed' }}</span>
-                    until 12:00 am
-                </div>
-
-                <div class="location">
-                    <p>Relax massage spa, 100ft Intermediate Ring Road, Koramangala, Bengaluru, Karnataka</p>
-                    <a href="https://maps.google.com/?daddr=Relax%20massage%20spa%2C%20100ft%20Intermediate%20Ring%20Road%2C%20Koramangala%2C%20Bengaluru%2C%20Karnataka" class="directions">Get directions</a>
-                    <button class="call-now-button" (click)="makeCall()">Call Now</button>
-                </div>
+        <div class="team-section">
+            <h2 class="section-heading-h2">Team</h2>
+            <!-- Employee Card -->
+            <div class="employee-card">
+                <a class="employee-link" href="/waxing-salons">
+                    <div class="employee-avatar">
+                        <span class="avatar-initials">S</span>
+                    </div>
+                    <div class="employee-info">
+                        <p class="employee-name">Shilpa</p>
+                        <p class="employee-role">Massage Spa Therapist</p>
+                    </div>
+                </a>
             </div>
         </div>
-    </div>
 
-    <div class="team-section">
-        <h2 class="team-title">Team</h2>
+        <div class="reviews">
+            <h2 class="section-heading-h2">Reviews</h2>
 
-        <!-- Employee Card -->
-        <div class="employee-card">
-            <a class="employee-link" href="/waxing-salons">
-                <div class="employee-avatar">
-                    <span class="avatar-initials">S</span>
-                </div>
-                <div class="employee-info">
-                    <p class="employee-name">Shilpa</p>
-                    <p class="employee-role">Massage Spa Therapist</p>
-                </div>
-            </a>
         </div>
-    </div>
 
-    <div class="about-self">
-        <h2 class="header-title">About</h2>
-        <p class="about-text">
-            near me spa body massage body massage body body massage in near me body massage spa near me body spa near me female to male spa near me full body massage massage &amp; spa massage &amp; spa near me massage centre near me massage in near me b 2 b massage b to b massage centre near me b2 b massage near me bangalore best spa bangalore body massage bangalore massage bangalore massage spa bangalore spa massage spa best massage in koramangala full body massage full body massage near me female to male spa near me 24 hours full body massage centres near me b2b spa near me Spa near me body massage spa koramang
-        </p>
 
-        <div>
-            <a href="https://maps.google.com/?daddr=Relax%20massage%20spa%2C%20100ft%20Intermediate%20Ring%20Road%2C%20Koramangala%2C%20Bengaluru%2C%20Karnataka">
-                <img src="https://link/to/map-image.png" alt="Map Location" class="map-image">
-            </a>
-        </div>
-        <div class="map-and-meta">
-            <div class="meta-container">
-                <div class="section-container">
-                    <div class="opening-times-section">
-                        <h3 class="subheader-title">Opening times</h3>
-                        <ul class="opening-hours">
-                            <li class="hour-item" *ngFor="let day of openingDays">
-                                <div class="day-row">
-                                    <div class="day">
-                                        <span class="status-indicator status-open"></span>
-                                        <p class="day-name">{{ day.name }}</p>
-                                    </div>
-                                    <div class="hours">
-                                        <p class="hours-range">{{ day.hours }}</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="about-self">
+            <h2 class="section-heading-h2">About</h2>
+            <p class="about-text">
+                near me spa body massage body massage body body massage in near me body massage spa near me body spa
+                near me
+                female to male spa near me full body massage massage &amp; spa massage &amp; spa near me massage centre
+                near
+                me massage in near me b 2 b massage b to b massage centre near me b2 b massage near me bangalore best
+                spa
+                bangalore body massage bangalore massage bangalore massage spa bangalore spa massage spa best massage in
+                koramangala full body massage full body massage near me female to male spa near me 24 hours full body
+                massage centres near me b2b spa near me Spa near me body massage spa koramang
+            </p>
 
-                    <div class="additional-info-section">
-                        <h3 class="section-title">Additional Information</h3>
-                        <ul class="info-list">
-                            <li class="info-item">
-                                <div class="feature">
+            <div>
+                <a href="https://maps.google.com/?daddr=Relax%20massage%20spa%2C%20100ft%20Intermediate%20Ring%20Road%2C%20Koramangala%2C%20Bengaluru%2C%20Karnataka">
+                    <img src="https://link/to/map-image.png" alt="Map Location" class="map-image">
+                </a>
+            </div>
+            <div class="section-container d-flex">
+                <div class="opening-times-section">
+                    <h2 class="section-heading-h2">Opening times</h2>
+                    <ul class="opening-hours">
+                        <li class="hour-item" *ngFor="let day of openingDays">
+                            <div class="day-container">
+                                <span class="status-indicator status-open"></span>
+                                <p class="day-name">{{ day.name }}</p>
+                            </div>
+                            <div class="hours-container">
+                                <p class="hours-range">{{ day.hours }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="additional-info-section">
+                    <h2 class="section-heading-h2">Additional Information</h2>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <div class="feature">
                             <span class="feature-icon" aria-hidden="true">
                                 <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                    <path fill-rule="evenodd" d="M28.04 8.293a1 1 0 0 1 0 1.414l-14 14a1 1 0 0 1-1.414 0l-7-7a1 1 0 1 1 1.414-1.414l6.293 6.293L26.626 8.293a1 1 0 0 1 1.415 0" clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd"
+                                          d="M28.04 8.293a1 1 0 0 1 0 1.414l-14 14a1 1 0 0 1-1.414 0l-7-7a1 1 0 1 1 1.414-1.414l6.293 6.293L26.626 8.293a1 1 0 0 1 1.415 0"
+                                          clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                                    <p class="feature-text">Instant Confirmation</p>
-                                </div>
-                            </li>
-                        </ul>
+                                <p class="feature-text">Instant Confirmation</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="other-loc">
+        <h2 class="section-heading-h2">Other locations</h2>
+        <div class="location-cards-wrapper d-flex">
+            <div class="location-card" *ngFor="let branch of branches" (click)="goToHomePage()">
+                <div class="location-link">
+                    <img [src]="branch.image" [alt]="branch.name" class="salon-image">
+                    <div class="location-details">
+                        <h3>{{ branch.name }}</h3>
+                        <p>{{ branch.address }}</p>
                     </div>
                 </div>
             </div>
         </div>
+
+
+    </div>
+
+    <div class="vnb">
+        <h2 class="section-heading-h2">Venues nearby</h2>
         <div class="locations-container">
             <button class="arrow left-arrow" (click)="moveLeft()">←</button>
 
             <div class="location-cards-wrapper">
-                <div class="location-card" *ngFor="let location of visibleLocations; let i = index" (click)="goToHomePage()">
+                <div class="location-card" *ngFor="let location of visibleLocations; let i = index"
+                     (click)="goToHomePage()">
                     <div class="location-link">
                         <img [src]="location.image" alt="{{ location.name }}" class="location-image">
                         <div class="location-details">
@@ -166,11 +179,13 @@
 
             <button class="arrow right-arrow" (click)="moveRight()">→</button>
         </div>
-
-
+    </div>
+    <section>
         <div class="linking-module">
-            <h2 class="section-title">Treat yourself anytime, anywhere</h2>
-            <input class="section-radio" id="lm-lm-landing-page-seo-tab-0" name="lm-lm-landing-page-seo" type="radio" value="Other businesses in Bengaluru" checked>
+            <h2 class="section-heading-h2">Treat yourself anytime, anywhere</h2>
+            <input class="section-radio" id="lm-lm-landing-page-seo-tab-0" name="lm-lm-landing-page-seo"
+                   type="radio"
+                   value="Other businesses in Bengaluru" checked>
             <div class="tabs">
                 <label class="tab active" for="lm-lm-landing-page-seo-tab-0">Other businesses in Bengaluru</label>
             </div>
@@ -211,7 +226,7 @@
                     <li><p><a href="/Massages">Massages</a></p></li>
                     <li><p><a href="/Spa Massages">Spa Massages</a></p></li>
                     <li><p><a href="/Bikini Waxing">Bikini Waxing</a></p></li>
-                    <li><p><a href="/Underarm Waxing">Underarm Waxing  </a></p></li>
+                    <li><p><a href="/Underarm Waxing">Underarm Waxing </a></p></li>
                     <li><p><a href="/BHair Makeup Services">Hair Makeup Services</a></p></li>
                 </ul>
             </div>
@@ -255,20 +270,20 @@
                 </div>
             </div>
         </footer>
-    </div>
-    <div class="footer-container">
-        <button id="language-selector" type="button" class="language-button" aria-pressed="false" aria-labelledby="language-label" aria-live="polite">
-            <span class="language-text">English</span>
-            <!--        <span class="language-icon" aria-hidden="true">-->
-            <!--      <svg fill="currentColor"  viewBox="0 0 32 32">-->
-            <!--        <path fill-rule="evenodd" d="M19.429 3.457C24.944 4.96 29 10.007 29 16c0 2.022-.462 3.937-1.285 5.643a1 1 0 0 1-.088.18l-.006.01c-2.084 4.144-6.319 7.02-11.238 7.161a1 1 0 0 1-.169.004L16 29C8.82 29 3 23.18 3 16S8.82 3 16 3c1.105 0 2.177.138 3.201.397q.117.017.227.06M5 16c0-1.786.426-3.473 1.181-4.965l1.305 3.471a1.99 1.99 0 0 0 1.454 1.272l2.675.574.471.981.009.018a2.03 2.03 0 0 0 1.778 1.111h.163l-.96 2.154a2 2 0 0 0 .35 2.173l2.352 2.544-.322 1.654C9.633 26.703 5 21.893 5 16m2.923-6.016L8.956 7.55A10.96 10.96 0 0 1 16 5c.826 0 1.63.091 2.404.264l.944 1.709-3.356 3.035-1.55.854h-2.655a2.012 2.012 0 0 0-1.844 1.218l-.651 1.547zm4.107 4.412-.818-.176.58-1.358h2.697c.303 0 .634-.091.917-.241l1.552-.858a2 2 0 0 0 .383-.279l3.365-3.04a2.01 2.01 0 0 0 .536-2.117A11 11 0 0 1 27 16c0 1.35-.244 2.645-.689 3.84l-5.792-3.563a1.9 1.9 0 0 0-.794-.282l-2.85-.386a1.98 1.98 0 0 0-1.915.853l-1.071-.003-.473-.975a1.99 1.99 0 0 0-1.386-1.088m13.409 7.256a11 11 0 0 1-7.927 5.245l.232-1.179a2.025 2.025 0 0 0-.491-1.741l-2.354-2.54 1.715-3.845 2.853.387z" clip-rule="evenodd"></path>-->
-            <!--      </svg>-->
-            <!--    </span>-->
-        </button>
-        <p class="footer-text">© 2025 V-Cut Salon.com </p>
-    </div>
+
+        <div class="footer-container">
+            <button id="language-selector" type="button" class="language-button" aria-pressed="false"
+                    aria-labelledby="language-label" aria-live="polite">
+                <span class="language-text">English</span>
+                <!--        <span class="language-icon" aria-hidden="true">-->
+                <!--      <svg fill="currentColor"  viewBox="0 0 32 32">-->
+                <!--        <path fill-rule="evenodd" d="M19.429 3.457C24.944 4.96 29 10.007 29 16c0 2.022-.462 3.937-1.285 5.643a1 1 0 0 1-.088.18l-.006.01c-2.084 4.144-6.319 7.02-11.238 7.161a1 1 0 0 1-.169.004L16 29C8.82 29 3 23.18 3 16S8.82 3 16 3c1.105 0 2.177.138 3.201.397q.117.017.227.06M5 16c0-1.786.426-3.473 1.181-4.965l1.305 3.471a1.99 1.99 0 0 0 1.454 1.272l2.675.574.471.981.009.018a2.03 2.03 0 0 0 1.778 1.111h.163l-.96 2.154a2 2 0 0 0 .35 2.173l2.352 2.544-.322 1.654C9.633 26.703 5 21.893 5 16m2.923-6.016L8.956 7.55A10.96 10.96 0 0 1 16 5c.826 0 1.63.091 2.404.264l.944 1.709-3.356 3.035-1.55.854h-2.655a2.012 2.012 0 0 0-1.844 1.218l-.651 1.547zm4.107 4.412-.818-.176.58-1.358h2.697c.303 0 .634-.091.917-.241l1.552-.858a2 2 0 0 0 .383-.279l3.365-3.04a2.01 2.01 0 0 0 .536-2.117A11 11 0 0 1 27 16c0 1.35-.244 2.645-.689 3.84l-5.792-3.563a1.9 1.9 0 0 0-.794-.282l-2.85-.386a1.98 1.98 0 0 0-1.915.853l-1.071-.003-.473-.975a1.99 1.99 0 0 0-1.386-1.088m13.409 7.256a11 11 0 0 1-7.927 5.245l.232-1.179a2.025 2.025 0 0 0-.491-1.741l-2.354-2.54 1.715-3.845 2.853.387z" clip-rule="evenodd"></path>-->
+                <!--      </svg>-->
+                <!--    </span>-->
+            </button>
+            <p class="footer-text">© 2025 V-Cut Salon.com </p>
+        </div>
+    </section>
+
 </div>
-
-
-
 

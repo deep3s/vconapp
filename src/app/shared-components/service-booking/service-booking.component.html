@@ -1,0 +1,14 @@
+<div class="service-card d-flex w-100 justify-content-between">
+    <div class="ls-section">
+        <div class="service-name">{{ serviceType.name }}</div>
+        <div class="service-duration pt-2">{{ serviceType.duration }}</div>
+        <div class="d-flex ">
+        <div class="service-price">{{ serviceType.price }}</div>
+        <div class="service-discount">Save {{ serviceType.discount }}</div>
+        </div>
+    </div>
+    <div class="rs-section">
+        <button class="book-button mt-3" (click)="onServiceClick(serviceType)">Book</button>
+    </div>
+</div>
+

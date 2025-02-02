@@ -1,0 +1,33 @@
+<div class="service-list">
+    <div class="section-heading-h2">{{ title }}</div>
+    <!--<div class="service-tabs">
+        <ul class="tab-list">
+            <li *ngFor="let tab of services"
+                class="tab-item"
+                [class.active]="tab === activeTab"
+                (click)="setActiveTab(tab)"
+                [title]="tab">
+                {{ tab }}
+            </li>
+        </ul>
+
+        <div class="tab-controls">
+            <button class="scroll-btn left" aria-label="Scroll left" (click)="scrollTabs('left')">
+                <span class="icon">&#8592;</span>
+            </button>
+            <button class="scroll-btn right" aria-label="Scroll right" (click)="scrollTabs('right')">
+                <span class="icon">&#8594;</span>
+            </button>
+        </div>
+
+    </div>-->
+
+    <div class="cards" *ngFor="let service of services" >
+        <service-booking *ngFor="let serviceType of service.types"  [serviceType]="serviceType"></service-booking>
+    </div>
+    <button class="see-all-button" (click)="toggleShowAll()">
+        {{ showAll ? 'Show Less' : 'See All' }}
+    </button>
+
+
+</div>

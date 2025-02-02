@@ -1,0 +1,14 @@
+@import "src/styles/variables";
+
+.salon-details-card {
+  box-shadow: 0 2px 12px 4px rgba(13, 22, 25, .078), 0 0 6px 2px #0d161905;
+  padding: 30px;
+
+  .deal-chip {
+    background-color: #edfbe9;
+    color: $CPDark;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+}
