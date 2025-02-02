@@ -1,0 +1,11 @@
+<div class="service-booking d-flex align-items-center">
+    <div>
+        <h3>{{ name }}</h3>
+        <p>{{ duration }}</p>
+        <div class="d-flex">
+            <p>{{ price | currency }}</p>
+            <p class="ml-3"> {{ discount }}</p>
+        </div>
+    </div>
+    <button (click)="bookService()" class="bg-gray">Book Now</button>
+</div>

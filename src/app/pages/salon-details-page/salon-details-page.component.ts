@@ -19,11 +19,9 @@ export class SalonDetailsPageComponent {
 
     salonDetails = {
         name: 'V-Cut Salon',
-        rating: 4.5,
-        tnr: 450,
         openUntil: '12:00 AM',
         ssa: 'akshyanagar',
-        sa:' No 1, Karthiey Complex, Ground floor, Yelenahalli, west, Akshaya Gardens, Akshayanagar, Bengaluru, Karnataka 560068',
+        sa:'Akshayanagar, Bengaluru, Karnataka 560068',
 
         reviews: [
             {title: 'Great Service', rating: 5},

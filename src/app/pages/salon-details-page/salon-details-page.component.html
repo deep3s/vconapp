@@ -8,39 +8,41 @@
     </div>
     <div>
         <h1 class="head">{{ salonDetails.name }}</h1>
-        <div class="d-flex align-items-center">
-            <span>{{ salonDetails.rating }}</span>
-            <span>{{ salonDetails.tnr }}</span>
-            <span>{{ salonDetails.openUntil }}</span>
-            <span> {{ salonDetails.tnr }} </span>
-            <span>{{ salonDetails.sa }}</span>
+        <div class="d-flex  justify-content-between">
+            <div class="d-flex ">
+                <rating-star [rating]="4.5" [tnr]="467"></rating-star>
+                <span>{{ salonDetails.openUntil }}</span>
+                <span>{{ salonDetails.sa }}</span>
+            </div>
 
-
-            <!-- Action Buttons -->
-            <ul class="action-buttons">
-                <li>
-                    <button class="share-button" aria-label="Share">
-                        <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32"
-                             height="32">
-                            <path d="M15.293 1.293a1 1 0 0 1 1.414 0l5.25 5.25a1 1 0 0 1-1.414 1.414L17 4.414V16a1 1 0 1 1-2 0V4.414l-3.543 3.543a1 1 0 1 1-1.414-1.414zM5.586 11.586A2 2 0 0 1 7 11h3a1 1 0 1 1 0 2H7v13h18V13h-3a1 1 0 1 1 0-2h3a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V13a2 2 0 0 1 .586-1.414"></path>
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button class="favorite-button" aria-label="Add to favorites" (click)="toggleFavorite()">
-                        <svg [ngClass]="{'favorite': isFavorite}" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 32 32" width="32" height="32">
-                            <path d="M13.488 26.603c.6.404 1.102.719 1.455.934.176.107.465.275.563.332.304.17.68.173.984.003.102-.06.394-.23.567-.335a40.466 40.466 0 0 0 5.862-4.356C26.072 20.343 29.5 16.21 29.5 11.5A7.5 7.5 0 0 0 16 7a7.5 7.5 0 0 0-13.5 4.5c0 4.71 3.428 8.843 6.581 11.68a40.5 40.5 0 0 0 4.407 3.423m-.903-19.958A5.5 5.5 0 0 0 4.5 11.5c0 3.79 2.822 7.407 5.919 10.194A38.5 38.5 0 0 0 16 25.84a38.466 38.466 0 0 0 5.581-4.145C24.678 18.907 27.5 15.29 27.5 11.5a5.5 5.5 0 0 0-10.577-2.115 1 1 0 0 1-1.846 0 5.5 5.5 0 0 0-2.492-2.74"></path>
-                        </svg>
-                    </button>
-                </li>
-            </ul>
+            <div>
+                <!-- Action Buttons -->
+                <ul class="action-buttons">
+                    <li>
+                        <button class="share-button" aria-label="Share">
+                            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32"
+                                 height="32">
+                                <path d="M15.293 1.293a1 1 0 0 1 1.414 0l5.25 5.25a1 1 0 0 1-1.414 1.414L17 4.414V16a1 1 0 1 1-2 0V4.414l-3.543 3.543a1 1 0 1 1-1.414-1.414zM5.586 11.586A2 2 0 0 1 7 11h3a1 1 0 1 1 0 2H7v13h18V13h-3a1 1 0 1 1 0-2h3a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V13a2 2 0 0 1 .586-1.414"></path>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="favorite-button" aria-label="Add to favorites" (click)="toggleFavorite()">
+                            <svg [ngClass]="{'favorite': isFavorite}" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 32 32" width="32" height="32">
+                                <path d="M13.488 26.603c.6.404 1.102.719 1.455.934.176.107.465.275.563.332.304.17.68.173.984.003.102-.06.394-.23.567-.335a40.466 40.466 0 0 0 5.862-4.356C26.072 20.343 29.5 16.21 29.5 11.5A7.5 7.5 0 0 0 16 7a7.5 7.5 0 0 0-13.5 4.5c0 4.71 3.428 8.843 6.581 11.68a40.5 40.5 0 0 0 4.407 3.423m-.903-19.958A5.5 5.5 0 0 0 4.5 11.5c0 3.79 2.822 7.407 5.919 10.194A38.5 38.5 0 0 0 16 25.84a38.466 38.466 0 0 0 5.581-4.145C24.678 18.907 27.5 15.29 27.5 11.5a5.5 5.5 0 0 0-10.577-2.115 1 1 0 0 1-1.846 0 5.5 5.5 0 0 0-2.492-2.74"></path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
 
     <!-- Image Gallery -->
-    <div class="image-gallery d-flex pb-5">
+    <div class="image-gallery d-flex">
         <img src="https://autumnsalon.in/wp-content/uploads/2024/07/Unisex-salon.jpg" alt="Salon Image 1"
              class="gallery-image1">
         <img src="https://apsaraunisexsalon.com/wp-content/uploads/2023/08/Unisex-Salon.jpg" alt="Salon Image 2"
@@ -53,20 +55,26 @@
             <!-- Services Section -->
             <div class="services-section ">
                 <h2 class="section-heading-h2">Services</h2>
+                <app-service-list></app-service-list>
+                <!--                <p class="service-header">Massage</p>-->
 
-                <p class="service-header">Massage</p>
-
-                <div class="cards">
-                    <div *ngFor="let service of (showAll ? services : services.slice(0, 4))" class="service-card">
-                        <h3 class="service-name">{{ service.name }}</h3>
-                        <div class="service-duration">{{ service.duration }}</div>
-                        <div class="service-info">
-                            <div class="service-price">{{ service.price }}</div>
-                            <div class="service-discount">Save {{ service.discount }}</div>
-                            <button class="book-button" (click)="onServiceClick(service)">Book</button>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="cards">-->
+<!--                    <div *ngFor="let service of (showAll ? services : services.slice(0, 4))" class="service-card">-->
+<!--                        <h3 class="service-name">{{ service.name }}</h3>-->
+<!--                        <div class="service-duration">{{ service.duration }}</div>-->
+<!--                        <div class="service-info">-->
+<!--                            <div class="service-price">{{ service.price }}</div>-->
+<!--                            <div class="service-discount">Save {{ service.discount }}</div>-->
+<!--                            <button class="book-button" (click)="onServiceClick(service)">Book</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <app-service-booking [name]="'Haircut'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
+                <app-service-booking [name]="'Message'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
+                <app-service-booking [name]="'Pedicure'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
+                <app-service-booking [name]="'Medicure'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
+                <app-service-booking [name]="'Waxing'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
+                <app-service-booking [name]="'Nail Art '" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
 
                 <!-- "See All" Button -->
                 <button class="see-all-button" (click)="toggleShowAll()">
@@ -316,7 +324,6 @@
             </button>
             <p class="footer-text">© 2025 V-Cut Salon.com </p>
         </div>
-
     </section>
 
 </div>

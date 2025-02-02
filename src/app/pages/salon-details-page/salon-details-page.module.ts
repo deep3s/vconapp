@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SalonDetailsPageRoutingModule } from './salon-details-page-routing.module';
 import { SalonDetailsPageComponent } from './salon-details-page.component';
+import {AppSharedModule} from "../../shared-components/app-shared.module";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { SalonDetailsPageComponent } from './salon-details-page.component';
   ],
   imports: [
     CommonModule,
-    SalonDetailsPageRoutingModule
+    SalonDetailsPageRoutingModule,
+    AppSharedModule
   ]
 })
 export class SalonDetailsPageModule { }

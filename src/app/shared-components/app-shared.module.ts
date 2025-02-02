@@ -17,11 +17,13 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import { RatingStarComponent } from './rating-star/rating-star.component';
 import { StarsComponent } from './stars/stars.component';
+import { ServiceListComponent } from './service-list/service-list.component';
+import { ServiceBookingComponent } from './service-booking/service-booking.component';
 
 @NgModule({
   declarations: [
     RatingStarComponent, 
-    StarsComponent
+    StarsComponent, ServiceListComponent, ServiceBookingComponent
   ],
   imports: [
     CommonModule,
@@ -44,10 +46,12 @@ import { StarsComponent } from './stars/stars.component';
     MatRadioModule,
   ],
   providers: [],
-  exports: [
-    RatingStarComponent,
-    StarsComponent
-  ],
+    exports: [
+        RatingStarComponent,
+        StarsComponent,
+        ServiceListComponent,
+        ServiceBookingComponent
+    ],
   bootstrap: []
 })
 export class AppSharedModule {
