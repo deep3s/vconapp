@@ -19,6 +19,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import { RatingStarComponent } from 'src/app/shared-components/rating-star/rating-star.component';
 import { AppSharedModule } from 'src/app/shared-components/app-shared.module';
+import {SalonCardsComponent} from "../../shared-components/salon-cards/salon-cards.component";
 
 // import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
@@ -30,11 +31,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 };
 
 @NgModule({
-  declarations: [
+    declarations: [
 
-  
-    HomePageComponent
-  ],
+        HomePageComponent,
+    ],
     imports: [
         CommonModule,
         AppSharedModule,
