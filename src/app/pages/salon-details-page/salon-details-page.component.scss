@@ -61,36 +61,6 @@ h2{
   }
 
 
-  .booking-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .header-text {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-
-  /* Progress Steps */
-  .progress-steps {
-    margin-top: 40px;
-    padding: 10px 0;
-  }
-
-  .progress-steps ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 10px;
-  }
-
-  .progress-steps ul li {
-    display: inline-block;
-  }
-
   .step-link {
     font-size: 16px;
     color: #007bff;
@@ -101,107 +71,12 @@ h2{
     text-decoration: underline;
   }
 
-  /* Services Section */
-  .services-section {
-    width: 100%;
-    gap: 50px;
-    flex: 1;
-    margin-right: 20px;
-  }
-
   /* Service Card */
-  .service-card {
-    background: #fff;
-    padding: 20px;
-    width: 900px;
-    display: grid;
-    grid-template-columns: 1fr;
-    border-radius: 8px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-    height: 100px;
-    margin-bottom: 20px; /* Adds space between the rows */
-    margin-right: 20px; /* Adds space between columns */
-    position: relative; /* Required for absolute positioning of button */
-  }
 
-  .service-card:hover {
-    background-color: #f0f0f0; /* Light gray background when hovered */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
-    cursor: pointer; /* Show a pointer cursor to indicate interactivity */
-  }
-
-  /* Selected Card Effect */
-  .service-card.selected {
-    border: 2px solid #007BFF; /* Highlight the card with a blue border */
-    background-color: #e7f1ff; /* Light blue background when selected */
-  }
-
-  /* Align price, discount, and book button in the same row */
-  .service-info {
-    display: flex;
-    align-items: center;
-    margin-top: -25px;
-    flex-wrap: wrap; /* Ensures wrapping on smaller screens */
-    gap: 10px;
-    margin-bottom: -30px;
-
-  }
-
-  /* Service Price */
-  .service-price {
-    font-size: 16px;
-    font-weight: normal;
-    color: black;
-  }
 
   /* Ensure discount is next to the price */
-  .service-discount {
-    font-size: 14px;
-    font-weight: normal;
-    color: green;
-    margin-left: 5px;
-  }
-
-  .service-duration {
-    margin-top: -13px;
-    font-size: 15px;
-    color: grey;
-  }
-
-  .service-name {
-    font-size: 15px;
-    font-weight: normal;
-    color: black;
-  }
-
-  .service-header {
-    font-weight: normal;
-    color: black;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    text-align: left;
-  }
 
 
-  .book-button:hover {
-    background-color: #0056b3;
-  }
-
-  /* Book Button - Positioned in Right-Center Corner */
-  .book-button {
-    position: absolute;
-    right: 10px; /* Aligns to the right */
-    top: 50%; /* Centers vertically */
-    transform: translateY(-50%); /* Ensures true center alignment */
-    background-color: whitesmoke;
-    color: black;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
 
 
   /* "See All" Button */
@@ -218,39 +93,11 @@ h2{
     visibility: visible;
   }
 
-  .service-header {
-    font-size: 20px;
-  }
-
   /* Fixed Card */
   .fixed-card {
-    position: relative; /* Start as absolute inside the services section */
-    right: 200px;
-    top: 300px; /* Start at the top of the services section */
-    width:100%;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: position 0.3s ease, top 0.3s ease;
-    margin-right: -400px;
-    height: fit-content;
-    margin-left: -300px;
+
   }
 
-  /* Ensure that fixed-card becomes fixed within the services section */
-  .page-container .services-section {
-    position: relative;
-  }
-
-  .fixed-card.fixed {
-    position: fixed; /* Become fixed when scrolling */
-    top: 100px; /* Adjust based on your layout */
-    left: calc(100% + 20px); /* Keeps the fixed card next to the service cards */
-  }
-
-  /* Title */
   .title {
     font-size: 20px;
     font-weight: bold;
@@ -274,51 +121,6 @@ h2{
   .location p {
     font-size: 14px;
     color: #555;
-  }
-
-  /* Buttons */
-  .deals-btn,
-  .book-btn {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  .deals-btn {
-    background: #f8c102;
-    color: black;
-  }
-
-  .book-btn {
-    background: #007bff;
-    color: white;
-  }
-
-  .book-btn:hover {
-    background: #0056b3;
-  }
-
-  .deals-btn:hover {
-    background: #e0a800;
-  }
-
-  /* Responsive Fix */
-  @media (max-width: 1024px) {
-    .page-container {
-      flex-direction: column;
-    }
-
-    .fixed-card {
-      position: relative;
-      width: 100%;
-      margin-top: 20px;
-      right: 0;
-      top: 0;
-    }
   }
 
   /* Team Title */

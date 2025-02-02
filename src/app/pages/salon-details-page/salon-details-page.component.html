@@ -42,7 +42,7 @@
 
 
     <!-- Image Gallery -->
-    <div class="image-gallery d-flex">
+    <div class="image-gallery d-flex ">
         <img src="https://autumnsalon.in/wp-content/uploads/2024/07/Unisex-salon.jpg" alt="Salon Image 1"
              class="gallery-image1">
         <img src="https://apsaraunisexsalon.com/wp-content/uploads/2023/08/Unisex-Salon.jpg" alt="Salon Image 2"
@@ -50,58 +50,17 @@
     </div>
 
 
-    <div>
-        <div class="d-flex">
+    <div class="pt-4">
+        <div class=" services-section d-flex w-100 mt-4">
             <!-- Services Section -->
-            <div class="services-section ">
-                <h2 class="section-heading-h2">Services</h2>
-                <app-service-list></app-service-list>
-                <!--                <p class="service-header">Massage</p>-->
+            <div class="w-75">
+                <service-list [services]="salonDetails.services" [title]="'Services'"></service-list>
 
-<!--                <div class="cards">-->
-<!--                    <div *ngFor="let service of (showAll ? services : services.slice(0, 4))" class="service-card">-->
-<!--                        <h3 class="service-name">{{ service.name }}</h3>-->
-<!--                        <div class="service-duration">{{ service.duration }}</div>-->
-<!--                        <div class="service-info">-->
-<!--                            <div class="service-price">{{ service.price }}</div>-->
-<!--                            <div class="service-discount">Save {{ service.discount }}</div>-->
-<!--                            <button class="book-button" (click)="onServiceClick(service)">Book</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <app-service-booking [name]="'Haircut'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
-                <app-service-booking [name]="'Message'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
-                <app-service-booking [name]="'Pedicure'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
-                <app-service-booking [name]="'Medicure'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
-                <app-service-booking [name]="'Waxing'" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
-                <app-service-booking [name]="'Nail Art '" [duration]="'30 mins'" [price]="400" [discount]="'25%'"></app-service-booking>
-
-                <!-- "See All" Button -->
-                <button class="see-all-button" (click)="toggleShowAll()">
-                    {{ showAll ? 'Show Less' : 'See All' }}
-                </button>
             </div>
-
+            <div class="w-25 ps-4">
+                <salon-details-card></salon-details-card>
+            </div>
             <!-- Fixed Card -->
-            <div class="card fixed-card">
-                <h2 class="section-heading-h2">V-Cut Salon</h2>
-                <p class="reviews">No reviews yet</p>
-
-                <button class="deals-btn">Deals</button>
-                <button class="book-btn" (click)="bookNow()">Book now</button>
-
-                <div class="status">
-                    <span [class.open]="isOpen" [class.closed]="!isOpen">● {{ isOpen ? 'Open' : 'Closed' }}</span>
-                    until 12:00 am
-                </div>
-
-                <div class="location">
-                    <p>Relax massage spa, 100ft Intermediate Ring Road, Koramangala, Bengaluru, Karnataka</p>
-                    <a href="https://maps.google.com/?daddr=Relax%20massage%20spa%2C%20100ft%20Intermediate%20Ring%20Road%2C%20Koramangala%2C%20Bengaluru%2C%20Karnataka"
-                       class="directions">Get directions</a>
-                    <button class="call-now-button" (click)="makeCall()">Call Now</button>
-                </div>
-            </div>
         </div>
 
 

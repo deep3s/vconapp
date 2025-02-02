@@ -14,8 +14,7 @@ interface Day {
 })
 export class SalonDetailsPageComponent {
     isFavorite = false; // State for favorite heart button
-    showAll = false; // Controls "Show All" services list visibility
-    isOpen = true; // State for salon's open/closed status (default to 'open')
+
 
     salonDetails = {
         name: 'V-Cut Salon',
@@ -34,20 +33,14 @@ export class SalonDetailsPageComponent {
         services: [
             {
                 name: 'Massage',
-                types: [
-                    {
-                        name: 'Swedish Massage',
-                        duration: '60 minutes',
-                        price: 50,
-                        discount: '25%'
-                    },
-                    {
-                        name: 'Deep Tissue Massage',
-                        duration: '90 minutes',
-                        price: 80,
-                        discount: '25%'
-                    }
-                ]
+                types:  [
+                    {id: 1, name: 'Female to Male Massage', duration: '30 mins', price: '₹2,010', discount: '33%'},
+                    {id: 2, name: 'Swedish Massage', duration: '30 mins', price: '₹1,500', discount: '25%'},
+                    {id: 3, name: 'Deep Tissue Massage', duration: '30 mins', price: '₹1,500', discount: '25%'},
+                    {id: 4, name: 'Therapeutic Massage', duration: '30 mins', price: '₹1,500', discount: '25%'},
+                    {id: 5, name: 'Reflexology', duration: '30 mins', price: '₹1,000', discount: '50%'},
+                    {id: 6, name: 'Aromatherapy Massage', duration: '45 mins', price: '₹2,200', discount: '20%'},
+                ],
             }
         ],
 
@@ -104,18 +97,7 @@ export class SalonDetailsPageComponent {
     ];
 
     // Sample services to be displayed in the UI
-    services = [
-        {id: 1, name: 'Female to Male Massage', duration: '30 mins', price: '₹2,010', discount: '33%'},
-        {id: 2, name: 'Swedish Massage', duration: '30 mins', price: '₹1,500', discount: '25%'},
-        {id: 3, name: 'Deep Tissue Massage', duration: '30 mins', price: '₹1,500', discount: '25%'},
-        {id: 4, name: 'Therapeutic Massage', duration: '30 mins', price: '₹1,500', discount: '25%'},
-        {id: 5, name: 'Reflexology', duration: '30 mins', price: '₹1,000', discount: '50%'},
-        {id: 6, name: 'Aromatherapy Massage', duration: '45 mins', price: '₹2,200', discount: '20%'},
-        {id: 7, name: 'Hot Stone Massage', duration: '60 mins', price: '₹2,800', discount: '15%'},
-        {id: 8, name: 'Balinese Massage', duration: '60 mins', price: '₹2,500', discount: '18%'},
-        {id: 9, name: 'Sports Massage', duration: '45 mins', price: '₹2,000', discount: '30%'},
-        {id: 10, name: 'Shiatsu Massage', duration: '60 mins', price: '₹3,000', discount: '10%'},
-    ];
+
 
     // Initialize openingDays with correct typing
     openingDays: Day[] = [
@@ -163,25 +145,9 @@ export class SalonDetailsPageComponent {
     }
 
     // Handle click on a service card
-    onServiceClick(service: any) {
-        console.log('Service clicked:', service);
-        this.router.navigate(['service-details'], {queryParams: {id: service.id}});
-    }
 
-    // Toggle "Show All" services list
-    toggleShowAll() {
-        this.showAll = !this.showAll;
-        console.log('Show all services:', this.showAll);
-    }
 
-    bookNow() {
-        console.log('Booking initiated!');
-        this.router.navigate(['/booking']);
-    }
 
-    makeCall() {
-        window.location.href = 'tel:+919876543210';  // Replace with actual number
-    }
 
     moveLeft() {
         if (this.currentIndex > 0) {

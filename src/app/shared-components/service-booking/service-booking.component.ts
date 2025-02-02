@@ -1,19 +1,24 @@
 import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-service-booking',
+  selector: 'service-booking',
   templateUrl: './service-booking.component.html',
   styleUrls: ['./service-booking.component.scss']
 })
 export class ServiceBookingComponent {
-  @Input() name: string = '';
-  @Input() duration: string = '';
-  @Input() price: number = 0;
-  @Input() discount: string = '';
-
+  @Input() serviceType: any;
+  constructor(private router: Router) {
+  }
   bookService() {
       console.log('Booking now...');
       // You can implement your logic here for booking
     }
+  onServiceClick(service: any) {
+    console.log('Service clicked:', service);
+    this.router.navigate(['service-details'], {queryParams: {id: service.id}});
+  }
+
+
 
 }

@@ -1,49 +1,50 @@
+.service-list {
+  .service-tabs {
+    display: flex;
+    flex-direction: column;
+  }
 
-.service-tabs {
-  display: flex;
-  flex-direction: column;
-}
+  .tab-list {
+    display: flex;
+    overflow-x: hidden;
+    padding: 10px;
+    list-style-type: none;
+    margin: 0;
+  }
 
-.tab-list {
-  display: flex;
-  overflow-x: hidden;
-  padding: 10px;
-  list-style-type: none;
-  margin: 0;
-}
+  .tab-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 20px;
+    user-select: none;
+  }
 
-.tab-item {
-  padding: 10px 20px;
-  cursor: pointer;
-  font-weight: normal;
-  font-size: 20px;
-  user-select: none;
-}
+  .tab-item.active {
+    color: #ff5722;
+  }
 
-.tab-item.active {
-  color: #ff5722;
-}
+  .tab-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
 
-.tab-controls {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
+  .scroll-btn {
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+  }
 
-.scroll-btn {
-  padding: 5px 10px;
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  font-weight: normal;
-  display: flex;
-  align-items: center;
-}
+  .scroll-btn:hover {
+    background-color: #e0e0e0;
+  }
 
-.scroll-btn:hover {
-  background-color: #e0e0e0;
-}
-
-.icon {
-  margin-right: 5px;
+  .icon {
+    margin-right: 5px;
+  }
 }

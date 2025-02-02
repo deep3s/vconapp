@@ -1,0 +1,56 @@
+@import "src/styles/variables";
+
+.service-card {
+  padding: 16px;
+  border: 1px solid $StrokeGrey;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: $LightBackgroundGrey; /* Light gray background when hovered */
+  }
+
+  .service-discount {
+    font-size: 14px;
+    color: green;
+    margin-left: 5px;
+  }
+
+  .service-duration {
+    margin-top: -13px;
+    font-size: 15px;
+    color: grey;
+  }
+
+  .service-name {
+    font-size: 15px;
+    font-weight: normal;
+    color: black;
+  }
+
+
+  /* Align price, discount, and book button in the same row */
+  .service-info {
+
+
+  }
+
+  /* Service Price */
+  .service-price {
+
+  }
+
+  /* Book Button - Positioned in Right-Center Corner */
+  .book-button {
+    padding: 4px 12px;
+    border: 1px solid $StrokeGrey;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $LightBackgroundGrey;
+    }
+  }
+}

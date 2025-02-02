@@ -1,0 +1,20 @@
+<div class="salon-details-card">
+    <div class="section-heading">V-Cut Salon</div>
+    <p class="reviews">No reviews yet</p>
+<div class="mb-3">
+    <span class="deal-chip ">Deals</span>
+</div>
+    <button class="app-button-primary w-100" (click)="makeCall()">Call Now</button>
+<div class="divider my-4"></div>
+    <div class="status">
+        <span [class.open]="isOpen" [class.closed]="!isOpen">● {{ isOpen ? 'Open' : 'Closed' }}</span>
+        until 12:00 am
+    </div>
+
+    <div class="location">
+        <p>Relax massage spa, 100ft Intermediate Ring Road, Koramangala, Bengaluru, Karnataka</p>
+        <a href="https://maps.google.com/?daddr=Relax%20massage%20spa%2C%20100ft%20Intermediate%20Ring%20Road%2C%20Koramangala%2C%20Bengaluru%2C%20Karnataka"
+           class="directions">Get directions</a>
+    </div>
+
+</div>
