@@ -24,4 +24,10 @@
     object-fit: cover;
     border-radius: 8px;
   }
+  .deal-chip {
+    background-color: $ExtraLightBackgroundGrey;
+    color:  $HighContrastCharcoal;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border-color:  $HighContrastCharcoal}
 }
