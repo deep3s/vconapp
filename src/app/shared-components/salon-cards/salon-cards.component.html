@@ -1,8 +1,11 @@
-<div class="salon-cards">
-    <div class="section-heading-h2">{{ title }}</div>
+<div class="salon-cards p-lg-5 ">
+    <div class="section-heading-h2 px-3 fw-bold clr-black">{{ title }}</div>
     <div class="d-flex justify-content-between w-100 ">
-        <div class="d-flex gap-3 border-3">
+        <div class="d-flex gap-3 ">
             <salon-card *ngFor="let salon of salons" [salon]="salon"></salon-card>
+            <salon-card *ngFor="let salon of recommendedSalon" [salon]="salon"></salon-card>
+            <salon-card *ngFor="let salon of newSalons" [salon]="salon"></salon-card>
+            <salon-card *ngFor="let salon of trendingSalons" [salon]="salon"></salon-card>
         </div>
     </div>
 </div>

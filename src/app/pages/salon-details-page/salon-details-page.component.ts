@@ -83,7 +83,7 @@ export class SalonDetailsPageComponent {
                     {rating: 4, title: 'Good experience,but could be better.'},
                     {
                         rating: 3,
-                        title: 'the service was okay, the place needs mainrenance.'
+                        title: 'the service was okay, the place needs maintenance.'
                     }
                 ],
                 locations: ['Dlf', 'Bangalore']

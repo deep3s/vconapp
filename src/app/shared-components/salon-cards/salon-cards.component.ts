@@ -8,4 +8,7 @@ import {Component, Input} from '@angular/core';
 export class SalonCardsComponent {
 @Input() salons: any;
 @Input() title: string;
+@Input() recommendedSalon: any;
+@Input() newSalons: any;
+@Input() trendingSalons: any;
 }
