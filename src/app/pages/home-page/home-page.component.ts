@@ -47,37 +47,37 @@ export class HomePageComponent implements OnInit {
     filteredLocations!: Observable<string[]>;
 
     // Carousel Data
-    cards = [
-
-        {
-            id: 1,
-            name: null,
-            address: "hulimavu",
-            nearby: "sai ram hospital",
-            imageUrls: "https://images.app.goo.gl/cD89ehzh5vWUSseg7"
-        },
-        {
-            id: 2,
-            name: null,
-            address: "jp nagar",
-            nearby: "style up",
-            imageUrls: "https://images.app.goo.gl/cHsk9x8RXHTdFSNG8"
-        },
-        {
-            id: 3,
-            name: null,
-            address: "hulimavu",
-            nearby: "muthoor finance",
-            imageUrls: "https://images.app.goo.gl/g5N81BH3URRkuGPP7"
-        },
-        {
-            id: 4,
-            name: null,
-            address: "DLF",
-            nearby: "venkateshwara",
-            imageUrls: "https://images.app.goo.gl/NwakhCNwhJTkHTyd7"
-        }
-    ];
+    // cards = [
+    //
+    //     {
+    //         id: 1,
+    //         name: null,
+    //         address: "hulimavu",
+    //         nearby: "sai ram hospital",
+    //         imageUrls: "https://images.app.goo.gl/cD89ehzh5vWUSseg7"
+    //     },
+    //     {
+    //         id: 2,
+    //         name: null,
+    //         address: "jp nagar",
+    //         nearby: "style up",
+    //         imageUrls: "https://images.app.goo.gl/cHsk9x8RXHTdFSNG8"
+    //     },
+    //     {
+    //         id: 3,
+    //         name: null,
+    //         address: "hulimavu",
+    //         nearby: "muthoot finance",
+    //         imageUrls: "https://images.app.goo.gl/g5N81BH3URRkuGPP7"
+    //     },
+    //     {
+    //         id: 4,
+    //         name: null,
+    //         address: "DLF",
+    //         nearby: "venkateshwara",
+    //         imageUrls: "https://images.app.goo.gl/NwakhCNwhJTkHTyd7"
+    //     }
+    // ];
 
     constructor(public vonService: VconService, public router: Router) {
     }
@@ -179,8 +179,9 @@ export class HomePageComponent implements OnInit {
 
     salons = [{
         name: 'V-cut Salon',
-        image: 'https://images.fresha.com/locations/location-profile-images/333200/304740/88306814-2894-45a1-a253-2778723d598c.jpg?class=width-small',
+        image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
         address: 'Hulimavu, Bangalore',
+        deals: 'Beauty Salon',
         distance: '12 km',
         services: [
             {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
@@ -197,9 +198,10 @@ export class HomePageComponent implements OnInit {
 
     },
         {
-            name: 'V-cut Salon',
+            name: 'Naturals Salon',
             image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
-            address: 'Hulimavu, Bangalore',
+            address: 'Jayanagar, Bangalore',
+            deals: 'Hair Salon',
             distance: '12 km',
             services: [
                 {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
@@ -222,9 +224,10 @@ export class HomePageComponent implements OnInit {
         },
 
         {
-            name: 'V-cut Salon',
+            name: 'EEva-Prestige Group',
             image: 'https://images.fresha.com/locations/location-profile-images/957847/1053050/7c4a51c9-edb7-4f84-b47b-64aec31c06b8.jpg?class=width-small',
-            address: 'Hulimavu, Bangalore',
+            address: 'Akshaynagar, Bangalore',
+            deals: 'Beauty Salon',
             distance: '12 km',
             services: [
                 {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
@@ -247,9 +250,309 @@ export class HomePageComponent implements OnInit {
         },
 
         {
-            name: 'V-cut Salon',
+            name: 'Relaxme Spa',
             image: 'https://images.fresha.com/locations/location-profile-images/304012/658244/a6d9a94c-52ca-4f05-875e-dd3fc568979c.jpg?class=width-small',
-            address: 'Hulimavu, Bangalore',
+            address: 'Kormangala, Bangalore',
+            deals: 'Massage',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+    ];
+
+    recommendedSalons = [{
+        name: 'V-cut Salon',
+        image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
+        address: 'Hulimavu, Bangalore',
+        deals: 'Beauty Salon',
+        distance: '12 km',
+        services: [
+            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+            {
+                name: 'Therapeutic Massage',
+                duration: '30 mins',
+                price: 1500,
+                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+            },
+            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+        ],
+
+    },
+        {
+            name: 'Naturals Salon',
+            image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
+            address: 'Jayanagar, Bangalore',
+            deals: 'Hair Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+        {
+            name: 'EEva-Prestige Group',
+            image: 'https://images.fresha.com/locations/location-profile-images/957847/1053050/7c4a51c9-edb7-4f84-b47b-64aec31c06b8.jpg?class=width-small',
+            address: 'Akshaynagar, Bangalore',
+            deals: 'Beauty Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+        {
+            name: 'Relaxme Spa',
+            image: 'https://images.fresha.com/locations/location-profile-images/304012/658244/a6d9a94c-52ca-4f05-875e-dd3fc568979c.jpg?class=width-small',
+            address: 'Kormangala, Bangalore',
+            deals: 'Massage',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+    ];
+
+    newSalons = [{
+        name: 'V-cut Salon',
+        image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
+        address: 'Hulimavu, Bangalore',
+        deals: 'Beauty Salon',
+        distance: '12 km',
+        services: [
+            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+            {
+                name: 'Therapeutic Massage',
+                duration: '30 mins',
+                price: 1500,
+                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+            },
+            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+        ],
+
+    },
+        {
+            name: 'Naturals Salon',
+            image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
+            address: 'Jayanagar, Bangalore',
+            deals: 'Hair Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+        {
+            name: 'EEva-Prestige Group',
+            image: 'https://images.fresha.com/locations/location-profile-images/957847/1053050/7c4a51c9-edb7-4f84-b47b-64aec31c06b8.jpg?class=width-small',
+            address: 'Akshaynagar, Bangalore',
+            deals: 'Beauty Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+        {
+            name: 'Relaxme Spa',
+            image: 'https://images.fresha.com/locations/location-profile-images/304012/658244/a6d9a94c-52ca-4f05-875e-dd3fc568979c.jpg?class=width-small',
+            address: 'Kormangala, Bangalore',
+            deals: 'Massage',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+    ];
+    trendingSalons = [{
+        name: 'V-cut Salon',
+        image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
+        address: 'Hulimavu, Bangalore',
+        deals: 'Beauty Salon',
+        distance: '12 km',
+        services: [
+            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+            {
+                name: 'Therapeutic Massage',
+                duration: '30 mins',
+                price: 1500,
+                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+            },
+            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+        ],
+
+    },
+        {
+            name: 'Naturals Salon',
+            image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
+            address: 'Jayanagar, Bangalore',
+            deals: 'Hair Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+        {
+            name: 'EEva-Prestige Group',
+            image: 'https://images.fresha.com/locations/location-profile-images/957847/1053050/7c4a51c9-edb7-4f84-b47b-64aec31c06b8.jpg?class=width-small',
+            address: 'Akshaynagar, Bangalore',
+            deals: 'Beauty Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
+
+        },
+
+        {
+            name: 'Relaxme Spa',
+            image: 'https://images.fresha.com/locations/location-profile-images/304012/658244/a6d9a94c-52ca-4f05-875e-dd3fc568979c.jpg?class=width-small',
+            address: 'Kormangala, Bangalore',
+            deals: 'Massage',
             distance: '12 km',
             services: [
                 {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},

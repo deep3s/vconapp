@@ -7,4 +7,7 @@ import {Component, Input} from '@angular/core';
 })
 export class SalonCardComponent {
 @Input() salon: any;
+@Input() recommendedSalon: any;
+@Input() newSalon: any;
+@Input() trendingSalons: any;
 }

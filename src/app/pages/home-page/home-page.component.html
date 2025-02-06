@@ -1,29 +1,28 @@
-<div class="container">
-   <rating-star [rating]="4.5" [tnr]="467"></rating-star>
-   <rating-star [rating]="4.8" [tnr]="500"></rating-star>
-   <rating-star [rating]="4.3" [tnr]="600"></rating-star>
-   <rating-star [rating]="4.5" [tnr]="467"></rating-star>
 
-    <salon-cards  [salons]="salons" [title]="'Venues Near By'" ></salon-cards>
+<div class="button-container fw-bold">
+    <button>For Business</button>
+    <button>Menu </button>
+</div>
 
+<div class="container py-4 ">
     <div class="row">
         <div class="custom-card">
             <mat-form-field appearance="outline" class="trt">
-                   <mat-label>Treatment</mat-label>
-                    <input
-                            type="text"
-                            matInput
-                            [formControl]="treatmentControl"
-                            [matAutocomplete]="autoTreatment"
-                    />
-                    <mat-autocomplete
-                        #autoTreatment="matAutocomplete"
-                        (optionSelected)="onOptionSelected($event)"
-                    >
-                        <mat-option *ngFor="let treatment of filteredTreatments | async" [value]="treatment">
-                            {{ treatment }}
-                        </mat-option>
-                    </mat-autocomplete>
+                <mat-label>Treatment</mat-label>
+                <input
+                        type="text"
+                        matInput
+                        [formControl]="treatmentControl"
+                        [matAutocomplete]="autoTreatment"
+                />
+                <mat-autocomplete
+                    #autoTreatment="matAutocomplete"
+                    (optionSelected)="onOptionSelected($event)"
+                >
+                    <mat-option *ngFor="let treatment of filteredTreatments | async" [value]="treatment">
+                        {{ treatment }}
+                    </mat-option>
+                </mat-autocomplete>
             </mat-form-field>
             <mat-form-field appearance="outline" class="loc">
                 <mat-label>Location</mat-label>
@@ -44,7 +43,7 @@
 
             <mat-form-field appearance="outline" class="date">
                 <mat-label>Date</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="date" />
+                <input matInput [matDatepicker]="picker" formControlName="date"/>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -65,16 +64,7 @@
     </div>
 </div>
 
-<div class="carousel-container">
-    <div class="card-container">
-
-        <div  (click)="redirectToDetails(card.id)" class="card" *ngFor="let card of cards">
-
-            <img mat-card-image [src]="card.imageUrls" [alt]="card.address">
-            <div class="card-content">
-                <h3 class="card-title">{{ card.name }}</h3>
-                <p class="card-description">{{ card.address }}</p>
-            </div>
-        </div>
-    </div>
-</div>
+<salon-cards [salons]="salons" [title]="'Recently Viewed'"></salon-cards>
+<salon-cards [recommendedSalon]="recommendedSalons" [title]="'Recommended Salons'"></salon-cards>
+<salon-cards [recommendedSalon]="newSalons" [title]="'New to V-cut'"></salon-cards>
+<salon-cards [recommendedSalon]="trendingSalons" [title]="'Trending Salons'"></salon-cards>
