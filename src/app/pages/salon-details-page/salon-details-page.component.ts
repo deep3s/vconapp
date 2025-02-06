@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, NgIterable} from '@angular/core';
 import {Router} from '@angular/router';
 
 // Define the Day type
@@ -14,7 +14,7 @@ interface Day {
 })
 export class SalonDetailsPageComponent {
     isFavorite = false; // State for favorite heart button
-
+    salons: any;
 
     salonDetails = {
         name: 'V-Cut Salon',
@@ -96,19 +96,6 @@ export class SalonDetailsPageComponent {
         {  name: 'Vcut Salon - Midtown', address: '789 Center St, Midtown', image: 'assets/images/midtown.jpg' },
     ];
 
-    // Sample services to be displayed in the UI
-
-
-    // Initialize openingDays with correct typing
-    openingDays: Day[] = [
-        {name: 'Monday', hours: '9:00 AM - 7:00 PM'},
-        {name: 'Tuesday', hours: '9:00 AM - 7:00 PM'},
-        {name: 'Wednesday', hours: '9:00 AM - 7:00 PM'},
-        {name: 'Thursday', hours: '9:00 AM - 7:00 PM'},
-        {name: 'Friday', hours: '9:00 AM - 7:00 PM'},
-        {name: 'Saturday', hours: '10:00 AM - 6:00 PM'},
-        {name: 'Sunday', hours: 'Closed'},
-    ];
     locations = [
         {name: 'Branch 1', address: '123 Main Street, City', image: 'assets/location1.jpg'},
         {name: 'Branch 2', address: '456 Elm Street, City', image: 'assets/location2.jpg'},
@@ -120,6 +107,16 @@ export class SalonDetailsPageComponent {
         {name: 'Branch 8', address: '505 Willow Avenue, City', image: 'assets/location8.jpg'},
         {name: 'Branch 9', address: '606 Redwood Drive, City', image: 'assets/location9.jpg'},
         {name: 'Branch 10', address: '707 Spruce Boulevard, City', image: 'assets/location10.jpg'}
+    ];
+
+    // Initialize openingDays with correct typing
+    openingDays: Day[] = [        {name: 'Monday', hours: '9:00 AM - 7:00 PM'},
+        {name: 'Tuesday', hours: '9:00 AM - 7:00 PM'},
+        {name: 'Wednesday', hours: '9:00 AM - 7:00 PM'},
+        {name: 'Thursday', hours: '9:00 AM - 7:00 PM'},
+        {name: 'Friday', hours: '9:00 AM - 7:00 PM'},
+        {name: 'Saturday', hours: '10:00 AM - 6:00 PM'},
+        {name: 'Sunday', hours: 'Closed'},
     ];
 
     currentIndex = 0; // Keeps track of the starting index for visible locations
@@ -140,11 +137,11 @@ export class SalonDetailsPageComponent {
     }
 
     // Navigate to home or close the page/modal
+
+
     close(): void {
         this.router.navigate(['home']); // Replace with actual home route
     }
-
-    // Handle click on a service card
 
 
 

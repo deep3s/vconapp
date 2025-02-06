@@ -2,13 +2,21 @@
     <div class="ls-section">
         <div class="service-name">{{ serviceType.name }}</div>
         <div class="service-duration pt-2">{{ serviceType.duration }}</div>
-        <div class="d-flex ">
-        <div class="service-price">{{ serviceType.price }}</div>
-        <div class="service-discount">Save {{ serviceType.discount }}</div>
+        <div class="d-flex">
+            <div class="service-price">{{ serviceType.price }}</div>
+            <div class="service-discount">Save {{ serviceType.discount }}</div>
         </div>
     </div>
+
     <div class="rs-section">
-        <button class="book-button mt-3" (click)="onServiceClick(serviceType)">Book</button>
+        <button class="book-button mt-3" *ngIf="buttonType === 'book'" (click)="onServiceClick(serviceType)">Book</button>
+        <button class="btn btn-light rounded-circle d-flex align-items-center justify-content-center"
+                *ngIf="buttonType === 'add'"
+                style="width: 36px; height: 36px; font-size: 20px;"
+                [ngClass]="{'btn-primary': isSelected(serviceType)}"
+                (click)="toggleService(serviceType)">
+            <span *ngIf="isSelected(serviceType)">✔</span>
+            <span *ngIf="!isSelected(serviceType)">+</span>
+        </button>
     </div>
 </div>
-
