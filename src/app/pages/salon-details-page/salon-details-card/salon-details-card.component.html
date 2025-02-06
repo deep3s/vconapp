@@ -1,20 +1,67 @@
 <div class="salon-details-card">
     <div class="section-heading">V-Cut Salon</div>
-    <p class="reviews">No reviews yet</p>
+    <rating-star [rating]="4.5" [tnr]="467"></rating-star>
 <div class="mb-3">
     <span class="deal-chip ">Deals</span>
 </div>
-    <button class="app-button-primary w-100" (click)="makeCall()">Call Now</button>
+    <button class="app-button-primary w-100" (click)="makeCall()">Book Now</button>
 <div class="divider my-4"></div>
-    <div class="status">
-        <span [class.open]="isOpen" [class.closed]="!isOpen">● {{ isOpen ? 'Open' : 'Closed' }}</span>
-        until 12:00 am
+
+    <div class="location-panel  bg-white">
+        <div class="hours-address">
+            <button class="toggle-button d-flex align-items-center justify-content-between w-100 border-0 bg-transparent p-2"
+                    (click)="toggleHours()">
+                <div class="status-info d-flex align-items-center gap-2">
+        <span class="status-icon text-success">
+          <svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <path fill-rule="evenodd"
+                  d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5M3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16m13-8a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"
+                  clip-rule="evenodd"></path>
+          </svg>
+        </span>
+                    <p class="opening-times m-0 fw-bold text-success">
+                        <span class="open-text">Open </span> <span class="closing-time text-muted"> until 7:00 pm</span>
+                    </p>
+                </div>
+                <span class="dropdown-icon">
+        <svg width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path fill-rule="evenodd"
+                d="M15.293 12.293a1 1 0 0 1 1.414 0l6.25 6.25a1 1 0 0 1-1.414 1.414L16 14.414l-5.543 5.543a1 1 0 0 1-1.414-1.414z"
+                clip-rule="evenodd"></path>
+        </svg>
+      </span>
+            </button>
+
+            <div class="hours-list mt-2" *ngIf="showHours">
+                <ul class="list-unstyled">
+                    <li class="d-flex justify-content-between align-items-center " *ngFor="let day of hours">
+                        <div class="d-flex align-items-center">
+                            <span class="status-indicator bg-success rounded-circle d-inline-block me-2" style="width: 10px; height: 10px;"></span>
+                            <span class="day fw-medium">{{ day.day }}</span>
+                        </div>
+                        <div>
+                            <span class="time text-muted">{{ day.time }}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="location-info mt-3">
+            <div class="d-flex align-items-center gap-2">
+      <span class="location-icon text-secondary">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 32 32">
+          <path
+                  d="M16 8a5 5 0 1 0 0 10 5 5 0 0 0 0-10m0 8a3 3 0 1 1 0-5.999A3 3 0 0 1 16 16m0-14A11.013 11.013 0 0 0 5 13c0 3.925 1.814 8.085 5.25 12.031a31.8 31.8 0 0 0 5.181 4.788 1 1 0 0 0 1.148 0 31.8 31.8 0 0 0 5.171-4.788C25.181 21.085 27 16.925 27 13A11.01 11.01 0 0 0 16 2m0 25.75C13.934 26.125 7 20.156 7 13a9 9 0 0 1 18 0c0 7.154-6.934 13.125-9 14.75">
+          </path>
+        </svg>
+      </span>
+                <p class="address m-0 small text-secondary"> No 1, Karthiey Complex, Ground floor, Yelenahalli, west, Akshaya Gardens, Akshayanagar, Bengaluru, Karnataka 560068</p>
+            </div>
+            <a href="https://maps.google.com/?daddr=(Prestige%20Song%20of%20the%20South)Begur%20Main%20Road%20Hobli%20Sy%20no%2019%2C%2018%2C%2016%2C%2014%20at%20Chandrashekarapura%20Village%2C%20Sy%20No.%2052%2F4%20South%2C%20Yelenahalli%2C%20Bengaluru%2C%20560068%2C%20Karnataka"
+               class="directions-link text-primary fw-bold text-decoration-none mt-2 d-block" target="_blank">Get directions</a>
+        </div>
     </div>
 
-    <div class="location">
-        <p>Relax massage spa, 100ft Intermediate Ring Road, Koramangala, Bengaluru, Karnataka</p>
-        <a href="https://maps.google.com/?daddr=Relax%20massage%20spa%2C%20100ft%20Intermediate%20Ring%20Road%2C%20Koramangala%2C%20Bengaluru%2C%20Karnataka"
-           class="directions">Get directions</a>
-    </div>
 
 </div>

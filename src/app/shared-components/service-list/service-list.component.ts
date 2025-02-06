@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'service-list',
@@ -8,22 +9,19 @@ import {Component, Input} from '@angular/core';
 export class ServiceListComponent {
   @Input() public services: any[];
   @Input() public title: string;
-  activeTab: string = 'Featured'; // Default active tab
-  showAll = false; // Controls "Show All" services list visibility
+  @Input() public buttonType: string;
+  @Input() public showAll = false; // Controls "Show All" services list visibility
+  @Input() public seeAll = true; // Controls "Show All" services list visibility
 
 
-  setActiveTab(tab: string): void {
-    this.activeTab = tab;
-  }
+  constructor(private router: Router) {}
 
-  scrollTabs(direction: string): void {
-    const tabList = document.querySelector('.tab-list') as HTMLElement;
-    const scrollAmount = direction === 'left' ? -100 : 100;
-    tabList.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  }
-  // Toggle "Show All" services list
+
   toggleShowAll() {
-    this.showAll = !this.showAll;
-    console.log('Show all services:', this.showAll);
+    if (!this.showAll) {
+      this.router.navigate(['/service-booking']); // Navigate to service booking page
+    } else {
+      this.showAll = false; // Collapse the list if "Show Less" is clicked
+    }
   }
 }

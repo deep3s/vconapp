@@ -29,7 +29,8 @@ import {SalonCardsComponent} from "./salon-cards/salon-cards.component";
         ServiceListComponent,
         ServiceBookingComponent,
         SalonCardComponent,
-        SalonCardsComponent
+        SalonCardsComponent,
+        ServiceBookingComponent
     ],
     imports: [
         CommonModule,

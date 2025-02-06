@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -8,17 +8,27 @@ import {Router} from "@angular/router";
 })
 export class ServiceBookingComponent {
   @Input() serviceType: any;
+  @Output() serviceSelected = new EventEmitter<unknown>();
+  @Input() public buttonType: string;
+  cart: any[] = [];
   constructor(private router: Router) {
   }
-  bookService() {
-      console.log('Booking now...');
-      // You can implement your logic here for booking
-    }
+
   onServiceClick(service: any) {
     console.log('Service clicked:', service);
     this.router.navigate(['service-details'], {queryParams: {id: service.id}});
   }
 
+  toggleService(service: any) {
+    if (this.isSelected(service)) {
+      this.cart = this.cart.filter(item => item !== service);
+    } else {
+      this.cart.push(service);
+    }
+  }
 
+  isSelected(service: any) {
+    return this.cart.includes(service);
+  }
 
 }
