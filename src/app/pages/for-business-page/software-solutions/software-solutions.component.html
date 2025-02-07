@@ -1,0 +1,16 @@
+<div class="sw-solutions d-flex flex-column">
+    <h2 class="head text-center fw-bold mb-4">A full solution to manage and grow your business</h2>
+    <div class="text-center fw-semibold mb-5">Packed with all the tools you need to boost sales, manage your calendar and retain clients so you can focus on what you do best</div>
+
+    <div class="solution-list row">
+        <div class="solution-item card mb-4 col-12 col-md-4" *ngFor="let solution of solutions">
+            <div class="card-body text-center">
+                <div class="icon-container fw-bold mb-3">
+                    <img [src]="solution.icon" alt="{{ solution.title }} icon" width="54" height="54">
+                </div>
+                <div class="fw-bolder fs-2 mb-2">{{ solution.title }}</div>
+                <div class="fw-semibold mb-2" >{{ solution.description }}</div>
+            </div>
+        </div>
+    </div>
+</div>

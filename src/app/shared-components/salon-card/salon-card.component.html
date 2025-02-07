@@ -1,15 +1,17 @@
-<div class="salon-card ">
-    <div class="salon-card-image">
-        <img src='{{salon.image}}' alt="salon Image">
-    </div>
+<div class="salon-card-container py-0 px-2" (click)="redirectToDetails()">
+    <div class="salon-card">
+        <div class="salon-card-image">
+            <img src='{{salon.image}}' alt="salon Image">
+        </div>
 
-    <div class="salon-card-content">
-        <div class="d-flex justify-content-between mt-3 salon-details-section">
-            <div>
-                <div class="section-heading-h3 fw-bold">{{ salon.name }}</div>
-                <div class="address fs-14 clr-grey">{{ salon.address }}</div>
-                <div class="mb-3">   <span class="deal-chip ">deals</span></div>
-
+        <div class="salon-card-content">
+            <div class="d-flex justify-content-between mt-3 salon-details-section">
+                <div>
+                    <div class="section-heading-h3 fw-bold">{{ salon.name }}</div>
+                    <rating-star [rating]="4.5" [tnr]="467"></rating-star>
+                    <div class="address fs-14 clr-grey px-2 py-10">{{ salon.address }}</div>
+                    <div class="mb-2 "><span class="deal-chip">{{salon.deals}}</span></div>
+                </div>
             </div>
         </div>
     </div>

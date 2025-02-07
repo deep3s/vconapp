@@ -1,91 +1,37 @@
-/* Services Section */
-.services-section {
-  width: 100%;
-  gap:50px;
-  flex: 1;
-  margin-right: 20px;
-}
 
-//.services-container {
-//  height:600px;
-//  max-height: 820px;
-//  margin-left: -10px;
-//  display: grid;
-//  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ensure cards are responsive */
-//  gap: 60px; /* Add space between cards */
-//  padding-right: 10px;
-//
-//}
-
-/* Service Card */
-.service-card {
-  background: #fff;
-  padding: 20px;
-  width: 900px;
-  display: grid;
-  grid-template-columns: 1fr;
-  border-radius: 8px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  height:100px;
-  margin-bottom: 20px; /* Adds space between the rows */
-  margin-right: 20px; /* Adds space between columns */
-  position: relative; /* Required for absolute positioning of button */
-}
-
-.service-card:hover {
-  background-color: #f0f0f0; /* Light gray background when hovered */
-  transform: scale(1.05); /* Slightly enlarge the card */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
-  cursor: pointer; /* Show a pointer cursor to indicate interactivity */
-}
-
-/* Selected Card Effect */
-.service-card.selected {
-  border: 2px solid #007BFF; /* Highlight the card with a blue border */
-  background-color: #e7f1ff; /* Light blue background when selected */
-}
-
-/* Align price, discount, and book button in the same row */
-.service-info {
+.categories-wrapper {
   display: flex;
-  align-items: center;
-  margin-top:-25px;
-  flex-wrap: wrap; /* Ensures wrapping on smaller screens */
-  gap: 10px;
-  margin-bottom: -30px;
-
+  gap: 1rem;
+  overflow-x: auto;  /* Enable horizontal scrolling */
+  scrollbar-width: none;
+  max-width: 80%;
 }
 
-/* Service Price */
-.service-price {
-  font-size: 16px;
-  font-weight: normal;
-  color: black;
+.categories-wrapper button {
+  flex-shrink: 0;  /* Prevent buttons from shrinking */
+  min-width: 120px;  /* Set a minimum width for buttons */
 }
 
-/* Ensure discount is next to the price */
-.service-discount {
-  font-size: 14px;
-  font-weight: normal;
-  color: green;
-  margin-left: 5px;
-}
-.service-duration{
-  margin-top: -13px;
-  font-size: 15px;
-  color: grey;
+.large-icon {
+  font-size: 2rem; // Adjust size as needed
 }
 
-.service-name{
-  font-size: 15px;
-  font-weight: normal;
-  color: black;
+button.btn-primary {
+  background-color: #6a0dad !important;
+  border-color: #6a0dad !important;
 }
 
-.service-header {
-  font-weight: normal;
-  color: black;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  text-align: left;
+.service-card {
+  padding: 16px;
+  border: 1px solid #BBBCBC;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #e2e2e2; /* Light gray background when hovered */
+  }
+}
+.address{
+  margin-top: -20px;
 }

@@ -1,3 +1,21 @@
+
+/* Style for the container */
+.button-container {
+ position: absolute;
+ top: 80px;  /* Adjust top distance from the header */
+ right: 10px;  /* Adjust right distance */
+ display: flex;
+ gap: 10px;  /* Add space between buttons */
+}
+
+/* Style for the buttons with curved borders and black borders */
+.button-container button {
+ border-radius: 25px;  /* Curved border for the buttons */
+ color: black;  /* Button text color */
+ border: 2px solid black;  /* Black border color with 2px thickness */
+ font-size: 16px;  /* Button text size */
+}
+
 mat-form-field{
   background-color: white;
   border: #359e00;
@@ -9,7 +27,6 @@ mat-form-field{
   content: "\23F0"; /* Unicode for the clock emoji (⏰) */
   font-family: "Segoe UI Symbol", "Noto Color Emoji", sans-serif; /* Ensure proper display of the emoji */
  }
-
 
  .trt{
   margin-left: 3px;
@@ -144,3 +161,7 @@ mat-form-field{
   transform: translateX(-50%);
  }
 }
+.title{
+ color: black;
+}
+

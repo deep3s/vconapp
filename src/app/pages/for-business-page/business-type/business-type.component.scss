@@ -1,0 +1,29 @@
+.business-type{
+  .business-card {
+    text-decoration: none;
+    color: inherit;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    width: 150px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .business-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .icon-box {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #28a745;
+  }
+}

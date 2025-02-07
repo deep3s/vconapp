@@ -29,7 +29,8 @@ import {SalonCardsComponent} from "./salon-cards/salon-cards.component";
         ServiceListComponent,
         ServiceBookingComponent,
         SalonCardComponent,
-        SalonCardsComponent
+        SalonCardsComponent,
+        ServiceBookingComponent
     ],
     imports: [
         CommonModule,
@@ -61,7 +62,6 @@ import {SalonCardsComponent} from "./salon-cards/salon-cards.component";
         SalonCardsComponent
     ],
     bootstrap: []
-
 })
 export class AppSharedModule {
 }

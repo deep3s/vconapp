@@ -1,0 +1,88 @@
+<div class="sw-review d-flex flex-column mt-3 p-3">
+    <div class="d-flex flex-row justify-content-between">
+        <!-- Review Section (on the left side) -->
+        <div class="review flex-shrink-0 me-4">
+            <!-- Use Angular's property binding for the image source -->
+            <img
+                    [src]="imageUrl"
+                    alt="Capterra top ratings and best review badge for salon software"
+                    width="156"
+                    height="135"
+                    class="mb-3"
+            >
+
+            <!-- Render the star rating using ngFor -->
+            <div class="d-flex mb-2">
+                <ng-container *ngFor="let star of stars">
+                    <span class="me-1" aria-hidden="true">
+                        <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24"
+                             height="24">
+                            <path d="m29.3 13.299-5.633 4.92 1.687 7.326a2 2 0 0 1-1.86 2.453 2 2 0 0 1-1.118-.285l-6.384-3.876-6.37 3.876a1.997 1.997 0 0 1-2.979-2.168l1.685-7.318-5.635-4.928A2 2 0 0 1 3.831 9.79l7.428-.644 2.9-6.92a1.994 1.994 0 0 1 2.943-.892c.327.218.582.528.734.891l2.908 6.921 7.425.644a1.998 1.998 0 0 1 1.757 2.531 2 2 0 0 1-.62.977z"></path>
+                        </svg>
+                    </span>
+                </ng-container>
+            </div>
+
+            <!-- Rating text -->
+            <span class="fw-semibold">5/5 on Capterra</span>
+        </div>
+
+        <!-- Carousel Section (on the right side) -->
+        <div class="carousel-wrapper flex-grow-1">
+            <div class="carousel-items">
+                <!-- Loop through the reviews and display them, only one at a time based on active class -->
+                <div class="carousel-item" *ngFor="let review of reviews; let i = index"
+                     [ngClass]="{'active': i === currentIndex}">
+                    <blockquote class="blockquote">
+                        <p>{{ review.text }}</p>
+                    </blockquote>
+                    <footer class="blockquote-footer">{{ review.name }}</footer>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="carousel-pagination">
+                <button *ngFor="let page of pages; let i = index"
+                        [class.active]="currentIndex === i"
+                        (click)="goToSlide(i)"
+                        class="btn-circle"></button>
+            </div>
+        </div>
+    </div>
+    <div class="divider my-4"></div>
+    <div class="stats-container d-flex  mt-3 p-3">
+        <!-- Title Section -->
+        <div class="row text-center mb-5 w-50">
+            <div class="col-12">
+                <h2 class="fw-bold mb-4">The top-rated destination for beauty and wellness</h2>
+                <h3 class="mb-5">One solution, one software. Trusted by the best in the beauty and wellness
+                    industry</h3>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="stats-sec d-flex w-50">
+            <div class="w-50">
+                <div class="mb-4">
+                    <div class="fW-bold ">120,000+</div>
+                    <div>partner businesses</div>
+                </div>
+                <div class="mb-4">
+                    <div class="fw-bold ">450,000+</div>
+                    <div>stylists and professionals</div>
+                </div>
+            </div>
+            <div class="w-50">
+                <div class="mb-4">
+                    <div class="fw-bold ">1 billion+</div>*
+                    <div>appointments booked</div>
+                </div>
+                <div class="mb-4">
+                    <div class="fw-bold ">120+</div>
+                    <div>countries with Fresha available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

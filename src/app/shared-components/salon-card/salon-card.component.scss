@@ -1,33 +1,57 @@
 @import "src/styles/variables";
 
+// Salon card styling
 .salon-card {
-  margin-bottom: 60px;
-
-  .salon-card-content h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
-
-  .salon-card-content p {
-    font-size: 1em;
-    color: #555;
-  }
+  background-color: #fff;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  position: relative;  // Ensure proper positioning for hover effects
 
 
   .salon-card-image {
     height: 200px;
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s ease; // Smooth transition for scaling effect
   }
 
   .salon-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    transition: transform 0.3s ease; // Ensures image scales smoothly on hover
   }
-  .deal-chip {
-    background-color: $ExtraLightBackgroundGrey;
-    color:  $HighContrastCharcoal;
-    padding: 4px 12px;
-    border-radius: 20px;
-    border-color:  $HighContrastCharcoal}
-}
+
+  &:hover .salon-card-image img {
+    transform: scale(1.05);  // Scale the image slightly on hover
+  }
+
+    .section-heading-h3 {
+      font-size: 1.5em;
+      font-weight: bold;
+      padding-left: 10px;
+    }
+
+    .address {
+      margin-top: -20px;
+      margin-bottom: 10px;
+      color: #777;
+    }
+
+    .deal-chip {
+      background-color: $ExtraLightBackgroundGrey;
+      color: $HighContrastCharcoal;
+      padding: 0px 4px;
+      border-radius: 20px;
+      border: 1px solid lavender;
+      margin-left: 5px;
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 1em;
+      color: #555;
+    }
+  }

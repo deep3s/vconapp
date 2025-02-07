@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+.filter input {
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 30px;
+  align-items: center;
+
+}
+
+.filter button {
+  align-items: center;
+}
+
+.filter {
+  margin-bottom: 30px;
+  width: 100%;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.activeCategory {
+  background: $LightBackgroundGrey;
+  border-radius: 6px;
+}

@@ -1,0 +1,31 @@
+<div class="partner-review py-5 text-center">
+    <h2 class="fw-bold fs-1 mb-4">See what our partners say</h2>
+
+    <div class="review position-relative bg-dark text-white p-4 justify-content-center w-100 ">
+        <!-- Profile Image (Top Half Overlapping) -->
+        <div class="position-absolute top-0 start-50 translate-middle">
+            <img [src]="imageUrl" class="circle-image" alt="Image">
+        </div>
+
+        <!-- Spacer for Overlapping Effect -->
+        <div class="pt-5"></div>
+
+        <!-- Testimonial Content -->
+        <div class="testimonial-text">{{testimonial}}</div>
+
+        <!-- Author Name -->
+        <p class="fw-bold p-3 fs-4">{{ name }}</p>
+
+        <!-- 5-Star Rating -->
+        <div class="d-flex justify-content-center ">
+            <span *ngFor="let star of stars" class="text-success pb-3 fs-1">★</span>
+        </div>
+    </div>
+    <div class="price text-center ">
+        <p class="Interested fw-bold ">Interested to find out more?</p>
+        <a class=" app-button-primary fs-5" href="/pricing" role="button">
+            <span>See pricing</span>
+        </a>
+    </div>
+
+</div>

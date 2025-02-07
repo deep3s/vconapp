@@ -1,0 +1,32 @@
+.partner-review{
+.bg-dark {
+  background-color: #111 !important;  // Dark background
+}
+
+.text-white {
+  color: #fff !important;  // White text
+}
+.review{
+  margin-top: 100px;
+  border-radius: 30px;
+}
+.circle-image {
+  width: 120px; /* Increased size */
+  height: 120px; /* Increased size */
+  border-radius: 50%; /* Ensures the image is circular */
+  object-fit: cover; /* Ensures the image covers the area inside the circle */
+}
+  .testimonial-text {
+    white-space: pre-line;  /* This preserves newlines in the text */
+    line-height: 1.5;  /* Optional: Adjust line height for better readability */
+font-size: 25px;
+    padding: 30px;
+  }
+.price{
+  margin-top: 90px;
+}
+  .Interested{
+    font-size: 50px;
+    padding-bottom:50px ;
+  }
+}
