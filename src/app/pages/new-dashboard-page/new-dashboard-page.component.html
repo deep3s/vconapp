@@ -1,0 +1,121 @@
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul class="nav flex-column">
+            <li><a href="#" class="active"><i class="bi bi-house-door"></i></a></li>
+            <li><a href="#"><i class="bi bi-calendar"></i></a></li>
+            <li><a href="#"><i class="bi bi-tag"></i></a></li>
+            <li><a href="#"><i class="bi bi-emoji-smile"></i></a></li>
+            <li><a href="#"><i class="bi bi-book"></i></a></li>
+            <li><a href="#"><i class="bi bi-person-badge"></i></a></li>
+            <li><a href="#"><i class="bi bi-megaphone"></i></a></li>
+            <li><a href="#"><i class="bi bi-people"></i></a></li>
+            <li><a href="#"><i class="bi bi-bar-chart"></i></a></li>
+            <li><a href="#"><i class="bi bi-grid"></i></a></li>
+            <li><a href="#"><i class="bi bi-gear"></i></a></li>
+        </ul>
+    </div>
+    <div class="col-md-6 top-right-card">
+        <div class="card empty-schedule">
+            <div class="card-title fw-bold">Upcoming Appointments</div>
+            <div>Next 7 days</div>
+            <div class="no-sales">
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="50px"
+                     height="50px" color="black">
+                    <path fill-rule="evenodd"
+                          d="M18.5 5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v20h1a1 1 0 1 1 0 2h-25a1 1 0 1 1 0-2h1v-8a1 1 0 0 1 1-1h6v-5a1 1 0 0 1 1-1h6zm0 7h-5v13h5zm2 13h5V6h-5zm-9 0v-7h-5v7z"
+                          clip-rule="evenodd"></path>
+                </svg>
+                <div style="color: black; font-weight: bold;">Your schedule is empty</div>
+                <div style="color: black">Make some appointments for schedule data to appear</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="d-flex gap-4 py-xxl-5 px-xxl-5">
+            <!-- Appointments Activity -->
+            <div class="apt-card">
+                <div class="card">
+                    <h5 class="card-title fw-bold">Appointments Activity</h5>
+                    <div *ngFor="let appointment of appointments" class="appointment">
+                        <div class="appointment-info d-flex">
+                            <div class="date fw-bold">
+                                <div>{{ appointment.date }}</div>
+                                <div>{{ appointment.month }}</div>
+                            </div>
+                            <div class="ser px-5">{{ appointment.time }} <span class="status"
+                                                                               [ngClass]="{'booked': appointment.status === 'BOOKED', 'started': appointment.status === 'STARTED'}">{{ appointment.status }}</span>
+                                <div class="fw-bold">{{ appointment.service }}</div>
+                                <div>{{ appointment.customer }}, {{ appointment.duration }}
+                                    with {{ appointment.staff }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price">₹{{ appointment.price }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Next Appointment -->
+            <div class="napt-card">
+                <div class="card">
+                    <h5 class="card-title fw-bold">Today's Next Appointments</h5>
+                    <div *ngIf="nextappointment[1]" class="appointment">
+                        <div class="da/mon fw-bold">
+                            <div>{{ nextappointment[1].date }}</div>
+                            <div>{{ nextappointment[1].month }}</div>
+                        </div>
+                        <div class="ser">{{ nextappointment[1].time }} <span class="status started">STARTED</span>
+                            <div class="fw-bold">{{ nextappointment[1].service }}</div>
+                            <div>{{ nextappointment[1].customer }}, {{ nextappointment[1].duration }}
+                                with {{ nextappointment[1].staff }}
+                            </div>
+                        </div>
+                        <div class="price">₹{{ nextappointment[1].price }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Services -->
+        <div class="d-flex gap-5 py-xxl-5 px-xxl-5">
+            <div class="card">
+                <h5 class="card-title">Top Services</h5>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>This Month</th>
+                        <th>Last Month</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let service of topServices">
+                        <td>{{ service.name }}</td>
+                        <td>{{ service.thisMonth }}</td>
+                        <td>{{ service.lastMonth }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Top Team Member -->
+            <div class="card">
+                <h5 class="card-title fw-bolder">Top Team Member</h5>
+                <div class="no-sales">
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="80"
+                         height="80" color="black">
+                        <path fill-rule="evenodd"
+                              d="M4 5a1 1 0 0 1 1 1v13.586l6.293-6.293a1 1 0 0 1 1.414 0L16 16.586 23.586 9H21a1 1 0 1 1 0-2h5a1 1 0 0 1 1 1v5a1 1 0 1 1-2 0v-2.586l-8.293 8.293a1 1 0 0 1-1.414 0L12 15.414l-7 7V25h23a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                    <div class="fw-bold">No sales this month</div>
+                    <div class="fw-medium ">Create some sales for sales data to appear</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

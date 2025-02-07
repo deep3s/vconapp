@@ -160,6 +160,8 @@ const routes: Routes = [
   { path: 'salon-details', loadChildren: () => import('../salon-details-page/salon-details-page.module').then(m => m.SalonDetailsPageModule) },
   { path: 'service-booking', loadChildren: () => import('../services-bookings-page/services-bookings-page.module').then(m => m.ServicesBookingsPageModule) },
   { path: 'search', loadChildren: () => import('../search-salons-page/search-salons-page.module').then(m => m.SearchSalonsPageModule) },
+  { path: 'dashboard', loadChildren: () => import('../dashboard-page/dashboard-page.module').then(m => m.DashboardPageModule) },
+  { path: 'new-dashboard', loadChildren: () => import('../new-dashboard-page/new-dashboard-page.module').then(m => m.NewDashboardPageModule) },
 ];
 
 @NgModule({

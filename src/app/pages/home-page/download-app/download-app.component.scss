@@ -1,0 +1,87 @@
+/* Main Container */
+.download-container {
+  display: flex;
+  align-items: center; /* Ensure alignment */
+  justify-content: space-between;
+  max-width: 100%;
+  margin: auto;
+  padding: 50px 0;
+}
+
+/* Left Section */
+.left-section {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding-left: 80px ;
+}
+
+.available {
+  font-weight: bold;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-left: 40px;
+}
+
+/* Styling the SVG icons */
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 58px;
+  font: var(--typography-display-m-bold, 700 60px / 44px Tartuffo);
+  margin-top: 10px;
+  color: black;
+  padding-left: 40px;
+
+}
+
+.book {
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 15px;
+  color: black;
+  max-width: 80%;
+  padding-left: 40px;
+
+}
+
+/* QR Code */
+.qr-container {
+  margin-top: 20px;
+  padding-left: 40px;
+
+}
+
+.qr-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Section */
+.right-section {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between images */
+}
+
+.studio-image-img {
+  width: 60%; /* Slightly smaller */
+  max-width: 230px; /* Control size */
+  height: auto;
+}
+
+

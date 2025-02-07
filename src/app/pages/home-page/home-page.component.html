@@ -1,11 +1,11 @@
-<div class="button-container fw-bold">
-    <button>For Business</button>
-    <button>Menu</button>
+<div class=" deal-container mb-2 ">
+    <span class="deal-chip">For Business</span>
+    <span class="deal-chip">Menu</span>
+
 </div>
 
-<div class="container">
-
-    <div class="container py-4 ">
+<div class="container pb-5">
+    <div class="container py-5 px-5 ">
         <div class="row">
             <div class="custom-card">
                 <mat-form-field appearance="outline" class="trt">
@@ -64,8 +64,15 @@
             </div>
         </div>
     </div>
-</div>
+
 <salon-cards [salons]="salons" [title]="'Recently Viewed'"></salon-cards>
 <salon-cards [recommendedSalon]="recommendedSalons" [title]="'Recommended Salons'"></salon-cards>
-<salon-cards [recommendedSalon]="newSalons" [title]="'New to V-cut'"></salon-cards>
-<salon-cards [recommendedSalon]="trendingSalons" [title]="'Trending Salons'"></salon-cards>
+<salon-cards [newSalons]="newSalons" [title]="'New to V-cut'"></salon-cards>
+<salon-cards [trendingSalons]="trendingSalons" [title]="'Trending Salons'"></salon-cards>
+<download-app></download-app>
+    <div class="title px-5 fw-bold clr-black">Reviews</div>
+<review-cards></review-cards>
+    <top-rated></top-rated>
+    <div class="business pt-5"></div>
+    <browse-city></browse-city>
+</div>

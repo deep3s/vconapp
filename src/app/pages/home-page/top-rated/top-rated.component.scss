@@ -1,0 +1,50 @@
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.text-blue-600 {
+  color: #1d4ed8;
+  font-weight: bold;
+  font-size: 100px;
+}
+.title{
+  padding-top: 120px;
+  font-weight: bold;
+  font-size: 40px;
+  color: black;
+}
+.subtitle{
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.text-center {
+  text-align: center;
+  font-weight: bold;
+}
+
+.top-num{
+  font-weight:bold;
+  font-size: 3rem; /* Medium size for headers */
+  opacity: 0.8; /* Simulate transparency */
+  color:black;
+}
+
+.top-text {
+  font-weight: 600;
+  font-size: 1.2rem; /* Medium size */
+  margin-top: 10px; /* Space between number and text */
+  color: black;
+}
