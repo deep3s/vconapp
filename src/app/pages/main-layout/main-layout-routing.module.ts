@@ -162,6 +162,7 @@ const routes: Routes = [
   { path: 'search', loadChildren: () => import('../search-salons-page/search-salons-page.module').then(m => m.SearchSalonsPageModule) },
   { path: 'dashboard', loadChildren: () => import('../dashboard-page/dashboard-page.module').then(m => m.DashboardPageModule) },
   { path: 'new-dashboard', loadChildren: () => import('../new-dashboard-page/new-dashboard-page.module').then(m => m.NewDashboardPageModule) },
+  { path: 'edit', loadChildren: () => import('../edit-service-page/edit-service-page.module').then(m => m.EditServicePageModule) },
 ];
 
 @NgModule({
