@@ -119,6 +119,7 @@ export class SalonDetailsPageComponent {
         {name: 'Sunday', hours: 'Closed'},
     ];
 
+
     currentIndex = 0; // Keeps track of the starting index for visible locations
     visibleLocations = this.locations.slice(0, 5); // Initial visible locations
 

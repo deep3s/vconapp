@@ -5,7 +5,7 @@
     <div class="cards" *ngFor="let service of services" >
         <service-booking *ngFor="let serviceType of service.types"  [buttonType]="buttonType" [serviceType]="serviceType"></service-booking>
     </div>
-    <button class="see-all-button" (click)="toggleShowAll()" *ngIf="seeAll">
+    <button class="app-button-primary" (click)="toggleShowAll()" *ngIf="seeAll">
         {{ showAll ? 'Show Less' : 'See All' }}
     </button>
 </div>

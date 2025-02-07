@@ -1,0 +1,75 @@
+
+.carousel-wrapper {
+  position: relative; /* Make the wrapper a position reference */
+  width: 100%; /* Full width for the carousel */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.carousel-items {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.carousel-item {
+  flex: 1;
+  opacity: 0; /* Initially hide the items */
+  transition: opacity 0.5s ease;
+  width: 100%; /* Make each item take up full width */
+}
+
+.carousel-item.active {
+  opacity: 1; /* Show only the active review */
+}
+.stats-sec{
+  padding-left: 100px;
+
+}
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev-btn {
+  left: 10px; /* Position left button on the left */
+}
+
+.next-btn {
+  right: 10px; /* Position right button on the right */
+}
+
+.carousel-pagination {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-circle {
+  width: 12px;
+  height: 12px;
+  margin: 0 4px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn-circle.active {
+  background-color: #000;
+}
+
+.stats-container{
+  background-color:#e2e2e2;
+}
+@media (max-width: 768px) {
+  .col-md-3 {
+    width: 100%; /* Stack items vertically on smaller screens */
+  }
+}

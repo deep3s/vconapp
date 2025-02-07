@@ -177,7 +177,9 @@ export class HomePageComponent implements OnInit {
         this.router.navigateByUrl("/salon-details");
     }
 
-    salons = [{
+    salons = [
+
+        {
         name: 'V-cut Salon',
         image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
         address: 'Hulimavu, Bangalore',
@@ -277,7 +279,8 @@ export class HomePageComponent implements OnInit {
 
     ];
 
-    recommendedSalons = [{
+    recommendedSalons = [
+        {
         name: 'V-cut Salon',
         image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
         address: 'Hulimavu, Bangalore',
@@ -377,7 +380,8 @@ export class HomePageComponent implements OnInit {
 
     ];
 
-    newSalons = [{
+    newSalons = [
+        {
         name: 'V-cut Salon',
         image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
         address: 'Hulimavu, Bangalore',
@@ -476,7 +480,8 @@ export class HomePageComponent implements OnInit {
         },
 
     ];
-    trendingSalons = [{
+    trendingSalons = [
+        {
         name: 'V-cut Salon',
         image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
         address: 'Hulimavu, Bangalore',
