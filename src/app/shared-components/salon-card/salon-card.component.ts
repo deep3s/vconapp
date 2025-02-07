@@ -12,7 +12,8 @@ export class SalonCardComponent {
 @Input() newSalon: any;
 @Input() trendingSalons: any;
 
-constructor(private  router: Router) {
+
+constructor(private router:  Router) {
 }
 
   redirectToDetails() {

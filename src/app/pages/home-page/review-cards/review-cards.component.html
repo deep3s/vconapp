@@ -1,0 +1,16 @@
+<div class="reviews-container ">
+    <div *ngFor="let review of reviews" class="review-card">
+        <div class="stars">
+            <span *ngFor="let star of [].constructor(review.stars); let i = index">★</span>
+        </div>
+        <h3 class="text-lg font-semibold">{{ review.title }}</h3>
+        <p class="text-gray-600 mt-2">{{ review.content }}</p>
+        <div class="flex items-center mt-4 d-flex">
+            <img [src]="review.imageUrl" alt="Reviewer" class="w-12 h-12 rounded-full">
+            <div class="ml-3">
+                <p class="text-gray-800 font-semibold position-relative b-13px">{{ review.name }}</p>
+                <p class=" address clr-grey  text-sm">{{ review.address }}</p>
+            </div>
+        </div>
+    </div>
+</div>

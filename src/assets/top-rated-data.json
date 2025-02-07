@@ -1,0 +1,22 @@
+{
+  "title": "The top-rated destination for beauty and wellness",
+  "subtitle": "One solution, one software. Trusted by the best in the beauty and wellness industry",
+  "highlight": {
+    "number": "1 billion+",
+    "description": "Appointments booked on V-Cut"
+  },
+  "stats": [
+    {
+      "number": "120,000+",
+      "label": "partner businesses"
+    },
+    {
+      "number": "120+ countries",
+      "label": "using Fresha"
+    },
+    {
+      "number": "450,000+",
+      "label": "stylists and professionals"
+    }
+  ]
+}

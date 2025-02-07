@@ -1,0 +1,136 @@
+@import "src/styles/variables";
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  width: 80px;
+  background: #0e0e0e;
+  height: 100vh;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  font-size: 24px;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #007BFF;
+  border-radius: 10px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 15px;
+
+}
+
+.appointment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  border-bottom: 1px solid #ddd;
+  &:hover {
+    background: $LightBackgroundGrey;
+  }
+}
+
+.appointment:last-child {
+  border-bottom: none;
+}
+
+.status {
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.booked {
+  color: blue;
+  font-weight: bold;
+}
+
+.started {
+  color: green;
+  font-weight: bold;
+
+}
+
+.price {
+  font-weight: bold;
+  color: #333;
+}
+
+.no-sales {
+  text-align: center;
+  padding: 20px;
+  color: gray;
+}
+
+.no-sales i {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+.top-right-card {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 350px; /* Adjust width as needed */
+}
+
+.empty-schedule {
+  text-align: start;
+}
+
+.apt-card {
+  top: 20px;
+  right: 20px;
+  width: 500px; /* Reduce width */
+  height: 240px;
+}
+.napt-card {
+  top: 20px;
+  left: 20px;
+  width: 500px; /* Reduce width */
+  height: 500px;
+}
+.fw-bold, .fw-medium{
+  color: black;
+}

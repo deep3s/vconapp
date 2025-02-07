@@ -30,6 +30,7 @@ import {SalonCardsComponent} from "./salon-cards/salon-cards.component";
         ServiceBookingComponent,
         SalonCardComponent,
         SalonCardsComponent,
+        SalonCardsComponent,
         ServiceBookingComponent
     ],
     imports: [

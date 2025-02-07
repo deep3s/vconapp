@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SearchSalonsPageRoutingModule } from './search-salons-page-routing.module';
 import { SearchSalonsPageComponent } from './search-salons-page.component';
 import { SalonDetailsCardComponent } from './salon-details-card/salon-details-card.component';
+import {AppSharedModule} from "../../shared-components/app-shared.module";
 
 
 @NgModule({
@@ -11,9 +12,10 @@ import { SalonDetailsCardComponent } from './salon-details-card/salon-details-ca
     SearchSalonsPageComponent,
     SalonDetailsCardComponent
   ],
-  imports: [
-    CommonModule,
-    SearchSalonsPageRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        SearchSalonsPageRoutingModule,
+        AppSharedModule
+    ]
 })
 export class SearchSalonsPageModule { }
