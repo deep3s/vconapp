@@ -1,0 +1,70 @@
+<div class="business-details-page">
+    <div class="container">
+        <div class="page-body">
+            <div class="heading-section d-flex align-items-center justify-content-end">
+                <button class="app-button-secondary me-3">Close</button>
+                <button class="app-button-primary">Save</button>
+            </div>
+            <div class="section-heading mb-5">Edit business details</div>
+            <div class="section-heading-h2 mb-5">Edit business details</div>
+            <div class="clr-grey">Choose the name displayed on your online booking profile, sales receipts and messages to clients.</div>
+
+
+            <form [formGroup]="businessDetailsForm" class="user-profile-form" (ngSubmit)="onSubmitBusinessDetails()">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 mt-4 pb-3">
+                                <div class="form-group">
+                                    <label class="input-label fw-bold" for="businessName">Business name</label>
+                                    <input formControlName="businessName" id="businessName" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.businessName.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.businessName.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.businessName.errors.required">Title is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4 pb-3">
+                                <div class="note">Your country is set to India with INR currency.</div>
+                            </div>
+                            <div class="col-12 pb-3">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <app-select
+                                                [title]="'Service type'"
+                                                [items]="warning_1"
+                                                (onValueChange)="applyPrev($event)"
+                                                [selectedValue]="selectedWarning1"></app-select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <app-select
+                                                [title]="'Menu Category'"
+                                                [items]="warning_2"
+                                                [selectedValue]="selectedWarning2"></app-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 pb-3">
+                                <div class="form-group">
+                                    <label class="input-label fw-bold" for="description">Description</label>
+                                    <textarea formControlName="description" id="description" name="description"
+                                              class="app-text-box app-text-area form-control" maxlength="250" rows="6"
+                                              [ngClass]="{ 'is-invalid': submitted && fmp.description.errors }"
+                                              type="text"></textarea>
+                                    <div *ngIf="submitted && fmp.email.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.description.errors.required">Description is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

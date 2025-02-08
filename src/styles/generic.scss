@@ -723,12 +723,12 @@
   &:focus {
     outline: 0 none;
     outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem $GreyMedium;
+    box-shadow: 0 0 0 0.1rem $StrokeGrey;
     //border: 1px solid $GreyMedium;
   }
 
   &:hover {
-    border: 1px solid $GreyMedium;
+    border: 1px solid $StrokeGrey;
   }
 
   &::placeholder {
@@ -1155,7 +1155,7 @@ input {
 
         outline: 0 none;
         outline-offset: 0;
-        box-shadow: 0 0 0 0.2rem $CPLightPrimary_2;
+        box-shadow: 0 0 0 0.1rem $StrokeGrey;
         border: 1px solid $CPPrimary;
       }
     }
@@ -1243,6 +1243,7 @@ input {
 
 .form-control {
   &.app-text-box {
+    transition: all 0.2s ease-in-out;
     &:focus {
       // outline: 3px solid $StrokeGrey !important;
       /*-moz-appearance: none !important;
@@ -1251,7 +1252,7 @@ input {
       box-shadow: 0 0 0 1px $Charcoal;*/
       outline: 0 none;
       outline-offset: 0;
-      box-shadow: 0 0 0 0.2rem $GreyMedium;
+      box-shadow: 0 0 0 0.1rem $StrokeGrey;
       //border: 1px solid $GreyMedium;
     }
   }
