@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardPageComponent } from './dashboard-page.component';
+import { DownloadAppComponent } from './download-app.component';
 
-describe('DashboardPageComponent', () => {
-  let component: DashboardPageComponent;
-  let fixture: ComponentFixture<DashboardPageComponent>;
+describe('DownloadAppComponent', () => {
+  let component: DownloadAppComponent;
+  let fixture: ComponentFixture<DownloadAppComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardPageComponent ]
+      declarations: [ DownloadAppComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DashboardPageComponent);
+    fixture = TestBed.createComponent(DownloadAppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

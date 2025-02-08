@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 
 // @ts-ignore
 import {VconService} from "src/app/services/vcon/vcon.service";
+import {ReviewCardsComponent} from "./review-cards/review-cards.component";
 
 @Component({
     selector: 'app-home-page',
@@ -282,7 +283,7 @@ export class HomePageComponent implements OnInit {
     recommendedSalons = [
         {
         name: 'V-cut Salon',
-        image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
+        image: 'https://images.fresha.com/locations/location-profile-images/36756/1876918/958f0636-f31d-4572-a297-becec37fb03f.jpg?class=venue-gallery-small&class=width-small',
         address: 'Hulimavu, Bangalore',
         deals: 'Beauty Salon',
         distance: '12 km',
@@ -580,6 +581,17 @@ export class HomePageComponent implements OnInit {
         },
 
     ];
+    reviews = [
+        {
+            name: 'Lucy',
+            location: 'London, UK',
+            image: '/assets/_next/static/images/lucy-dd851e4ecc40b9b59b624cdccc1aedb6.jpg',
+            rating: 5,
+            title: 'The best booking system',
+            comment: 'Great experience, easy to book. Paying for treatments is so convenient — no cash or cards needed!'
+        }
+    ];
+    protected readonly ReviewCardsComponent = ReviewCardsComponent;
 }
 
 

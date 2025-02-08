@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgxUiLoaderService} from "ngx-ui-loader";
 
 @Component({
-  selector: 'app-dashboard-page',
+  selector: 'dashboard-page',
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss']
 })

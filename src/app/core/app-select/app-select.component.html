@@ -1,0 +1,15 @@
+<div class="input-label fw-bold">{{title}}</div>
+<div class="app-ngs-container category mb-4 ">
+    <ng-select class="app-multi-select"
+               [searchable]="false" placeholder="select"
+               (change)="onChange()"
+               [items]="items"
+               [(ngModel)]="selectedValue"
+               bindLabel="name" bindValue="name">
+        <ng-template ng-label-tmp let-item="item">
+            <span class="app-ngs-color"
+                  [style]="{'background-color': item.color}"></span>
+            <span class="app-ngs-value">{{ item.name }}</span>
+        </ng-template>
+    </ng-select>
+</div>

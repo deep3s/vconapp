@@ -163,6 +163,9 @@ const routes: Routes = [
   { path: 'for-business', loadChildren: () => import('../for-business-page/for-business-page.module').then(m => m.ForBusinessPageModule) },
   { path: 'sales', loadChildren: () => import('../sales-page/sales-page.module').then(m => m.SalesPageModule) },
   { path: 'catlog', loadChildren: () => import('../catlog-page/catlog-page.module').then(m => m.CatlogPageModule) },
+  { path: 'dashboard', loadChildren: () => import('../dashboard-page/dashboard-page.module').then(m => m.DashboardPageModule) },
+  { path: 'new-dashboard', loadChildren: () => import('../new-dashboard-page/new-dashboard-page.module').then(m => m.NewDashboardPageModule) },
+  { path: 'edit', loadChildren: () => import('../edit-service-page/edit-service-page.module').then(m => m.EditServicePageModule) },
 ];
 
 @NgModule({
