@@ -38,8 +38,8 @@ export class EditServicePageComponent implements OnInit {
     return this.userForm.controls;
   }
 
-  applyPrev() {
-
+  applyPrev(selectedValue: any) : void {
+    console.log(selectedValue);
   }
 
   onSubmitPhotoProfile() {

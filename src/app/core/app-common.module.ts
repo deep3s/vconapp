@@ -22,6 +22,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {PinnedMenuComponent} from './pinned-menu/pinned-menu.component';
 import {AppSubmenuComponent} from './app-submenu/app-submenu.component';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import { AppSelectComponent } from './app-select/app-select.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -32,37 +34,40 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
     NoDataAvailableComponent,
     PinnedMenuComponent,
     AppSubmenuComponent,
+    AppSelectComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    ClickOutsideModule,
-    MatTabsModule,
-    MatCheckboxModule,
-    MatExpansionModule,
-    FormsModule,
-    MatDialogModule,
-    ClipboardModule,
-    MatDatepickerModule,
-    MatTooltipModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatMomentDateModule,
-    FormsModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatRadioModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        ClickOutsideModule,
+        MatTabsModule,
+        MatCheckboxModule,
+        MatExpansionModule,
+        FormsModule,
+        MatDialogModule,
+        ClipboardModule,
+        MatDatepickerModule,
+        MatTooltipModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatMomentDateModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatRadioModule,
+        NgSelectModule,
+    ],
   providers: [],
-  exports: [
-    AppFooterComponent,
-    AppTableComponent,
-    BreadcrumbsComponent,
-    NotificationsComponent,
-    NoDataAvailableComponent,
-    PinnedMenuComponent,
-    AppSubmenuComponent,
-  ],
+    exports: [
+        AppFooterComponent,
+        AppTableComponent,
+        BreadcrumbsComponent,
+        NotificationsComponent,
+        NoDataAvailableComponent,
+        PinnedMenuComponent,
+        AppSubmenuComponent,
+        AppSelectComponent,
+    ],
   bootstrap: []
 })
 export class AppCommonModule {

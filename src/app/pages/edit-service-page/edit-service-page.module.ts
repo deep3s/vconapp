@@ -8,6 +8,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
+import {AppCommonModule} from "../../core/app-common.module";
 
 
 
@@ -17,6 +18,7 @@ import {NgSelectModule} from "@ng-select/ng-select";
   ],
     imports: [
         CommonModule,
+        AppCommonModule,
         EditServicePageRoutingModule,
         MatDatepickerModule,
         MatFormFieldModule,

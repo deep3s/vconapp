@@ -29,39 +29,17 @@
                             <div class="col-12 pb-3">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="label-info fw-bold">Service type</div>
-                                        <div class="app-ngs-container category mb-4 ">
-                                            <ng-select class="app-multi-select"
-                                                       [searchable]="false" placeholder="select"
-                                                       (change)="applyPrev()"
-                                                       [items]="warning_1"
-                                                       [(ngModel)]="selectedWarning1"
-                                                       bindLabel="name" bindValue="name">
-                                                <ng-template ng-label-tmp let-item="item">
-                                                                            <span class="app-ngs-color"
-                                                                                  [style]="{'background-color': item.color}"></span>
-                                                    <span class="app-ngs-value">{{ item.name }}</span>
-                                                </ng-template>
-                                            </ng-select>
-                                        </div>
+                                        <app-select
+                                                [title]="'Service type'"
+                                                [items]="warning_1"
+                                                (onValueChange)="applyPrev($event)"
+                                                [selectedValue]="selectedWarning1"></app-select>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="label-info fw-bold">Menu Category</div>
-                                        <div class="app-ngs-container category mb-4">
-                                            <ng-select class="app-multi-select"
-                                                       [searchable]="false"
-                                                       placeholder="select "
-                                                       (change)="applyPrev()"
-                                                       [items]="warning_2"
-                                                       [(ngModel)]="selectedWarning2"
-                                                       bindLabel="name" bindValue="name">
-                                                <ng-template ng-label-tmp let-item="item">
-                                                                            <span class="app-ngs-color"
-                                                                                  [style]="{'background-color': item.color}"></span>
-                                                    <span class="app-ngs-value">{{ item.name }}</span>
-                                                </ng-template>
-                                            </ng-select>
-                                        </div>
+                                        <app-select
+                                                [title]="'Menu Category'"
+                                                [items]="warning_2"
+                                                [selectedValue]="selectedWarning2"></app-select>
                                     </div>
                                 </div>
                             </div>
@@ -87,56 +65,22 @@
                 <div class="section-heading-h3 fw-bold mt-5 fs-4">Pricing and Duration</div>
                 <div class="row mt-3">
                     <div class="col-md-4 ">
-                        <div class="label-info ">Duration</div>
-                        <div class="app-ngs-container category mb-4 ">
-                            <ng-select class="app-multi-select"
-                                       [searchable]="false" placeholder="select"
-                                       (change)="applyPrev()"
-                                       [items]="warning_1"
-                                       [(ngModel)]="selectedWarning1"
-                                       bindLabel="name" bindValue="name">
-                                <ng-template ng-label-tmp let-item="item">
-                                                                            <span class="app-ngs-color"
-                                                                                  [style]="{'background-color': item.color}"></span>
-                                    <span class="app-ngs-value">{{ item.name }}</span>
-                                </ng-template>
-                            </ng-select>
-                        </div>
+                        <app-select
+                                [title]="'Duration'"
+                                [items]="warning_2"
+                                [selectedValue]="selectedWarning2"></app-select>
                     </div>
                     <div class="col-md-4">
-                        <div class="label-info">Price type</div>
-                        <div class="app-ngs-container category mb-4 ">
-                            <ng-select class="app-multi-select"
-                                       [searchable]="false" placeholder="select"
-                                       (change)="applyPrev()"
-                                       [items]="warning_1"
-                                       [(ngModel)]="selectedWarning1"
-                                       bindLabel="name" bindValue="name">
-                                <ng-template ng-label-tmp let-item="item">
-                                                                            <span class="app-ngs-color"
-                                                                                  [style]="{'background-color': item.color}"></span>
-                                    <span class="app-ngs-value">{{ item.name }}</span>
-                                </ng-template>
-                            </ng-select>
-                        </div>
+                        <app-select
+                                [title]="'Price type'"
+                                [items]="warning_2"
+                                [selectedValue]="selectedWarning2"></app-select>
                     </div>
                     <div class="col-md-4">
-                        <div class="label-info">Price</div>
-                        <div class="app-ngs-container category mb-4">
-                            <ng-select class="app-multi-select"
-                                       [searchable]="false"
-                                       placeholder="select "
-                                       (change)="applyPrev()"
-                                       [items]="warning_2"
-                                       [(ngModel)]="selectedWarning2"
-                                       bindLabel="name" bindValue="name">
-                                <ng-template ng-label-tmp let-item="item">
-                                                                            <span class="app-ngs-color"
-                                                                                  [style]="{'background-color': item.color}"></span>
-                                    <span class="app-ngs-value">{{ item.name }}</span>
-                                </ng-template>
-                            </ng-select>
-                        </div>
+                        <app-select
+                                [title]="'Price'"
+                                [items]="warning_2"
+                                [selectedValue]="selectedWarning2"></app-select>
                     </div>
                 </div>
             </div>
@@ -151,38 +95,16 @@
                 <div class="description">Automatically add blocked time or processing time after each appointment</div>
                 <div class="row mt-3">
                     <div class="col-md-4 ">
-                        <div class="label-info ">Type</div>
-                        <div class="app-ngs-container category mb-4 ">
-                            <ng-select class="app-multi-select"
-                                       [searchable]="false" placeholder="select"
-                                       (change)="applyPrev()"
-                                       [items]="warning_1"
-                                       [(ngModel)]="selectedWarning1"
-                                       bindLabel="name" bindValue="name">
-                                <ng-template ng-label-tmp let-item="item">
-                                                                            <span class="app-ngs-color"
-                                                                                  [style]="{'background-color': item.color}"></span>
-                                    <span class="app-ngs-value">{{ item.name }}</span>
-                                </ng-template>
-                            </ng-select>
-                        </div>
+                        <app-select
+                                [title]="'Type'"
+                                [items]="warning_2"
+                                [selectedValue]="selectedWarning2"></app-select>
                     </div>
                     <div class="col-md-4">
-                        <div class="label-info">Duration</div>
-                        <div class="app-ngs-container category mb-4 ">
-                            <ng-select class="app-multi-select"
-                                       [searchable]="false" placeholder="select"
-                                       (change)="applyPrev()"
-                                       [items]="warning_1"
-                                       [(ngModel)]="selectedWarning1"
-                                       bindLabel="name" bindValue="name">
-                                <ng-template ng-label-tmp let-item="item">
-                                                                            <span class="app-ngs-color"
-                                                                                  [style]="{'background-color': item.color}"></span>
-                                    <span class="app-ngs-value">{{ item.name }}</span>
-                                </ng-template>
-                            </ng-select>
-                        </div>
+                        <app-select
+                                [title]="'Duration'"
+                                [items]="warning_2"
+                                [selectedValue]="selectedWarning2"></app-select>
                     </div>
                 </div>
             </div>
