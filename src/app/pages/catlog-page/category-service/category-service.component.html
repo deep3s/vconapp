@@ -1,0 +1,24 @@
+<div class="border rounded p-3 my-2 d-flex justify-content-between align-items-center service-item">
+    <div>
+        <div class="fw-bold mb-3">{{ service.name }}</div>
+        <small>{{ service.duration }}</small>
+    </div>
+    <div class="d-flex">
+        <div class="fw-bold">₹ {{ service.price }}</div>
+        <div class="dropdown ps-3">
+            <button class="btn btn-light border-0 p-0" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" (click)="editService(service)">Edit</a></li>
+                <li><a class="dropdown-item" href="#" (click)="deleteService(service)">Duplicate</a></li>
+                <li><a class="dropdown-item" href="#" (click)="archiveService(service)">Quick booking link</a></li>
+                <li><a class="dropdown-item" href="#" (click)="editService(service)">Archive</a>
+                </li>
+                <li><a class="dropdown-item text-danger" href="#" (click)="deleteService(service)">Permanently delete</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

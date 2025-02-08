@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {Component, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'app-services-bookings-page',
@@ -8,7 +8,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 })
 export class ServicesBookingsPageComponent {
     @ViewChild('categoryWrapper') categoryWrapper!: ElementRef;
-
+    @Output() onServiceSelect = new EventEmitter<any>(); // Output event
+    cartServices: any = [];
     categories = [
         'Featured',
         'Hair Chemical Treatment',
@@ -23,49 +24,127 @@ export class ServicesBookingsPageComponent {
     ];
     // All services as before...
     services = [
-        { name: 'Eyebrows', category: 'Featured', duration: '15 mins', price: 60, discount: '25%' },
-        { name: 'Hair Cut(Men)', category: 'Featured', duration: '15 mins', price: 60, discount: '25%' },
-        { name: 'Forehead / Chin', category: 'Featured', duration: '15 mins', price: 60, discount: '25%' },
-        { name: 'Lower Lip', category: 'Featured', duration: '15 mins', price: 60, discount: '25%' },
-        { name: 'Upper Lip', category: 'Featured', duration: '15 mins', price: 60, discount: '25%' },
+        {name: 'Eyebrows', category: 'Featured', duration: '15 mins', price: 60, discount: '25%'},
+        {name: 'Hair Cut(Men)', category: 'Featured', duration: '15 mins', price: 60, discount: '25%'},
+        {name: 'Forehead / Chin', category: 'Featured', duration: '15 mins', price: 60, discount: '25%'},
+        {name: 'Lower Lip', category: 'Featured', duration: '15 mins', price: 60, discount: '25%'},
+        {name: 'Upper Lip', category: 'Featured', duration: '15 mins', price: 60, discount: '25%'},
 
-        { name: 'Hair Spa- Salon Services Absolut Repair Molecular', category: 'Hair Chemical Treatment', duration: '10 mins', price: 40, discount: '25%' },
-        { name: 'Keratin/MK Botox Service', category: 'Hair Chemical Treatment', duration: '10 mins', price: 40, discount: '25%' },
-        { name: 'Root Touch Up With Ammonia', category: 'Hair Chemical Treatment', duration: '10 mins', price: 40, discount: '25%' },
-        { name: 'Root Touch Up With Ammonia free', category: 'Hair Chemical Treatment', duration: '10 mins', price: 40, discount: '25%' },
-        { name: 'Root Touch Up With Ammonia long re-growth', category: 'Hair Chemical Treatment', duration: '10 mins', price: 40, discount: '25%' },
+        {
+            name: 'Hair Spa- Salon Services Absolut Repair Molecular',
+            category: 'Hair Chemical Treatment',
+            duration: '10 mins',
+            price: 40,
+            discount: '25%'
+        },
+        {
+            name: 'Keratin/MK Botox Service',
+            category: 'Hair Chemical Treatment',
+            duration: '10 mins',
+            price: 40,
+            discount: '25%'
+        },
+        {
+            name: 'Root Touch Up With Ammonia',
+            category: 'Hair Chemical Treatment',
+            duration: '10 mins',
+            price: 40,
+            discount: '25%'
+        },
+        {
+            name: 'Root Touch Up With Ammonia free',
+            category: 'Hair Chemical Treatment',
+            duration: '10 mins',
+            price: 40,
+            discount: '25%'
+        },
+        {
+            name: 'Root Touch Up With Ammonia long re-growth',
+            category: 'Hair Chemical Treatment',
+            duration: '10 mins',
+            price: 40,
+            discount: '25%'
+        },
 
-        { name: 'Basic hair do', category: 'Hair do', duration: '25-30 mins', price: 310, discount: '25%' },
+        {name: 'Basic hair do', category: 'Hair do', duration: '25-30 mins', price: 310, discount: '25%'},
 
-        { name: 'Short hair 5899', category: 'Short hair', duration: '25-30 mins', price: 310, discount: '25%' },
-        { name: 'Cysteine / Keratin WASHBLOWDRY', category: 'Short hair', duration: '25-30 mins', price: 310, discount: '25%' },
+        {name: 'Short hair 5899', category: 'Short hair', duration: '25-30 mins', price: 310, discount: '25%'},
+        {
+            name: 'Cysteine / Keratin WASHBLOWDRY',
+            category: 'Short hair',
+            duration: '25-30 mins',
+            price: 310,
+            discount: '25%'
+        },
 
-        { name: 'Package For Women (1)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%' },
-        { name: 'Package For Women (2)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%' },
-        { name: 'Package For Women (3)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%' },
-        { name: 'Package For Women (4)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%' },
-        { name: 'Package For Women (5)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%' },
-        { name: 'Women Premium Grooming Package', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%' },
-        { name: 'Hair Cut(Men) + Clean Up', category: 'Packages For Men', duration: '25-30 mins', price: 300, discount: '25%' },
+        {name: 'Package For Women (1)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%'},
+        {name: 'Package For Women (2)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%'},
+        {name: 'Package For Women (3)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%'},
+        {name: 'Package For Women (4)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%'},
+        {name: 'Package For Women (5)', category: 'Packages For Women', duration: '5 mins', price: 50, discount: '25%'},
+        {
+            name: 'Women Premium Grooming Package',
+            category: 'Packages For Women',
+            duration: '5 mins',
+            price: 50,
+            discount: '25%'
+        },
+        {
+            name: 'Hair Cut(Men) + Clean Up',
+            category: 'Packages For Men',
+            duration: '25-30 mins',
+            price: 300,
+            discount: '25%'
+        },
 
-        { name: 'Package For Men (1)', category: 'Packages For Men', duration: '25-30 mins', price: 300, discount: '25%' },
-        { name: 'Package For Men (2)', category: 'Packages For Men', duration: '25-30 mins', price: 300, discount: '25%' },
-        { name: 'Package For Men (3)', category: 'Packages For Men', duration: '25-30 mins', price: 300, discount: '25%' },
-        { name: 'Package For Men (4)', category: 'Packages For Men', duration: '25-30 mins', price: 300, discount: '25%' },
-        { name: 'Package For Men (5)', category: 'Packages For Men', duration: '25-30 mins', price: 300, discount: '25%' },
+        {
+            name: 'Package For Men (1)',
+            category: 'Packages For Men',
+            duration: '25-30 mins',
+            price: 300,
+            discount: '25%'
+        },
+        {
+            name: 'Package For Men (2)',
+            category: 'Packages For Men',
+            duration: '25-30 mins',
+            price: 300,
+            discount: '25%'
+        },
+        {
+            name: 'Package For Men (3)',
+            category: 'Packages For Men',
+            duration: '25-30 mins',
+            price: 300,
+            discount: '25%'
+        },
+        {
+            name: 'Package For Men (4)',
+            category: 'Packages For Men',
+            duration: '25-30 mins',
+            price: 300,
+            discount: '25%'
+        },
+        {
+            name: 'Package For Men (5)',
+            category: 'Packages For Men',
+            duration: '25-30 mins',
+            price: 300,
+            discount: '25%'
+        },
 
-        { name: 'Short Hair Cut', category: 'Hair color', duration: '20 mins', price: 5899, discount: '25%' },
-        { name: 'Short Hair Cut', category: 'Hair color', duration: '20 mins', price: 5899, discount: '25%' },
+        {name: 'Short Hair Cut', category: 'Hair color', duration: '20 mins', price: 5899, discount: '25%'},
+        {name: 'Short Hair Cut', category: 'Hair color', duration: '20 mins', price: 5899, discount: '25%'},
 
-        { name: 'Short Hair Cut', category: 'hair-spa', duration: '20 mins', price: 5899, discount: '25%' },
-        { name: 'Short Hair Cut', category: 'waxing', duration: '20 mins', price: 5899, discount: '25%' },
-        { name: 'Short Hair Cut', category: 'threading', duration: '20 mins', price: 5899, discount: '25%' },
+        {name: 'Short Hair Cut', category: 'hair-spa', duration: '20 mins', price: 5899, discount: '25%'},
+        {name: 'Short Hair Cut', category: 'waxing', duration: '20 mins', price: 5899, discount: '25%'},
+        {name: 'Short Hair Cut', category: 'threading', duration: '20 mins', price: 5899, discount: '25%'},
     ];
     salonDetails = {
         name: 'V-Cut Salon',
         openUntil: '12:00 AM',
         ssa: 'akshyanagar',
-        sa:'Akshayanagar, Bengaluru, Karnataka 560068',
+        sa: 'Akshayanagar, Bengaluru, Karnataka 560068',
 
         reviews: [
             {title: 'Great Service', rating: 5},
@@ -78,7 +157,7 @@ export class ServicesBookingsPageComponent {
         services: [
             {
                 name: 'Massage',
-                types:  [
+                types: [
                     {id: 1, name: 'Female to Male Massage', duration: '30 mins', price: '₹2,010', discount: '33%'},
                     {id: 2, name: 'Swedish Massage', duration: '30 mins', price: '₹1,500', discount: '25%'},
                     {id: 3, name: 'Deep Tissue Massage', duration: '30 mins', price: '₹1,500', discount: '25%'},
@@ -139,6 +218,7 @@ export class ServicesBookingsPageComponent {
     selectedCategory = 'Featured'; // Default to 'Featured' category
     // Cart functionality
     cart: any[] = [];
+
     // Filtered services
     get filteredServices() {
         return this.services.filter(service => service.category === this.selectedCategory);
@@ -177,5 +257,16 @@ export class ServicesBookingsPageComponent {
     // Select Category
     selectCategory(category: string) {
         this.selectedCategory = category;
+    }
+
+    // Function to emit event when service is added
+    addService(service: any) {
+        if(!this.cartServices.find(cs => cs.name === service.name)) {
+            this.cartServices.push(service);
+        }
+
+    }
+    removeService(service: any) {
+        this.cartServices = this.cartServices.filter(cs=> cs.name !== service.name);
     }
 }

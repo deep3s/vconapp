@@ -9,7 +9,7 @@ export class CatlogPageComponent implements OnInit {
   searchTerm: string = '';
 
   categories: any = [
-    { name: 'All categories', count: 6,categorieId:1,},
+    { name: 'All categories', count: 7,categorieId:1,},
     {
       name: 'Hair & styling', count: 4, categorieId: 1, active: true,
       services: [
@@ -24,9 +24,11 @@ export class CatlogPageComponent implements OnInit {
         {name: 'manicure', duration: '45min', price: 100},
       ]
     },
-    { name: 'Eyebrows & eyelashes', count: 1,categorieId:1 ,
+    { name: 'Eyebrows & eyelashes', count: 2,categorieId:1 ,
       services: [
         {name: 'classic fill', duration: '45min', price: 40},
+        {name: 'classic fill', duration: '45min', price: 40},
+
       ]
     }
 
@@ -62,4 +64,50 @@ export class CatlogPageComponent implements OnInit {
 
     this.categories[0].services = allServices;
   }
+
+  quickBooking() {
+    console.log("Quick Booking Link Clicked");
+    // Add your logic here
+  }
+
+  setMenuOrder() {
+    console.log("Set Menu Order Clicked");
+    // Add your logic here
+  }
+
+  openSettings() {
+    console.log("Settings Clicked");
+    // Add your logic here
+  }
+
+  downloadPDF() {
+    console.log("Download PDF Clicked");
+    // Add your logic here (generate/download PDF)
+  }
+
+  downloadExcel() {
+    console.log("Download Excel Clicked");
+    // Add your logic here (generate/download Excel)
+  }
+  addSingleService() {
+    console.log("Adding Single Service");
+    // Add your logic here
+  }
+
+  addPackage() {
+    console.log("Adding Package");
+    // Add your logic here
+  }
+
+  addCategory() {
+    console.log("Adding Category");
+    // Add your logic here
+  }
+
+  // Apply Filters from Modal
+  applyFilters() {
+    console.log("Filters Applied");
+    // Implement filter logic (fetch services based on selection)
+  }
+
 }
