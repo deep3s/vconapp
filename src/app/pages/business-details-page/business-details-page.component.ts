@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MANAGE_SETTINGS_CONSTANTS} from "../../shared/manageSetting-constants";
+import {BusinessSetupService} from "../../services/business-setup/business-setup.service";
 
 @Component({
   selector: 'app-business-details-page',
@@ -18,21 +19,19 @@ export class BusinessDetailsPageComponent {
   selectedWarning1: any = {};
   selectedWarning2: any = {};
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private businessSetupService: BusinessSetupService) {
     // console.log(data);
   }
 
   ngOnInit(): void {
     this.businessDetailsForm = this.formBuilder.group({
-      businessName: [{value: 'V cut',}],
-      fileName: [{value: '', disabled: true}],
-      description: [{value: '',}],
-      note: [{value: '',}],
-      facebookLink: [{value: '',}],
-      instaLink: [{value: '',}],
-      twitterLink: [{value: '',}],
-      websiteLink: [{value: '',}],
-      subject: [{value: '', disabled: true}],
+      businessName: [],
+      note: [],
+      facebookLink: [],
+      instaLink: [],
+      twitterLink: [],
+      websiteLink: [],
     });
   }
 
@@ -46,6 +45,12 @@ export class BusinessDetailsPageComponent {
   }
 
   onSubmitBusinessDetails() {
+    let businessDetails = {businessName: this.businessDetailsForm.value.businessName};
 
+    this.businessSetupService.saveBusinessDetails(businessDetails).subscribe((data: any) => {
+      console.log(data);
+    }, (err: any) => {
+      console.log(err)
+    });
   }
 }
