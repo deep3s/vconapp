@@ -5,6 +5,7 @@ import { BusinessDetailsPageRoutingModule } from './business-details-page-routin
 import { BusinessDetailsPageComponent } from './business-details-page.component';
 import {AppCommonModule} from "../../core/app-common.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatRadioModule} from "@angular/material/radio";
 
 
 @NgModule({
@@ -16,6 +17,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         BusinessDetailsPageRoutingModule,
         AppCommonModule,
         FormsModule,
+        MatRadioModule,
+        AppCommonModule,
         ReactiveFormsModule
     ]
 })

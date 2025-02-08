@@ -28,7 +28,10 @@ export class BusinessDetailsPageComponent {
       fileName: [{value: '', disabled: true}],
       description: [{value: '',}],
       note: [{value: '',}],
-      assetDate: [{value: '',}],
+      facebookLink: [{value: '',}],
+      instaLink: [{value: '',}],
+      twitterLink: [{value: '',}],
+      websiteLink: [{value: '',}],
       subject: [{value: '', disabled: true}],
     });
   }
