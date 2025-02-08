@@ -178,4 +178,5 @@ export class ServicesBookingsPageComponent {
     selectCategory(category: string) {
         this.selectedCategory = category;
     }
+
 }
