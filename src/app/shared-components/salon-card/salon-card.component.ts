@@ -12,6 +12,7 @@ export class SalonCardComponent {
 @Input() newSalon: any;
 @Input() trendingSalons: any;
 
+
 constructor(private router:  Router) {
 }
 

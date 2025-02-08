@@ -1,0 +1,45 @@
+.sw-solutions{
+  margin-top: 100px;
+}
+.head{
+  font-size: 60px;
+}
+.solution-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Reduced gap between cards */
+}
+
+.solution-item {
+  background-color: #f7f7f7; /* Grey background inside cards */
+  border: 1px solid #ddd; /* Optional border */
+  padding: 10px; /* Reduced padding for smaller cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  height: 300px; /* Set a fixed height for consistency */
+}
+
+.solution-item .card-body {
+  padding: 10px; /* Reduced padding inside card body */
+}
+
+.solution-item img {
+  margin-bottom: 12px; /* Reduced margin for smaller image size */
+}
+
+.solution-item p {
+  margin-bottom: 8px; /* Reduced margin between paragraphs */
+}
+
+/* Three cards per row on larger screens */
+@media (min-width: 768px) {
+  .solution-item {
+    flex: 0 0 30%; /* Reduced width for smaller cards */
+  }
+}
+
+/* Stack cards vertically on smaller screens */
+@media (max-width: 768px) {
+  .solution-item {
+    flex: 0 0 100%; /* Full width on smaller screens */
+  }
+}

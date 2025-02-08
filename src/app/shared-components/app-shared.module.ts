@@ -63,8 +63,6 @@ import {SalonCardsComponent} from "./salon-cards/salon-cards.component";
         SalonCardsComponent
     ],
     bootstrap: []
-
-
 })
 export class AppSharedModule {
 }
