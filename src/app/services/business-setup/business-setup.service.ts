@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class BusinessSetupService {
   apiBaseUrl='http://localhost:8080';
-  businessDetailsUrl=`${this.apiBaseUrl}/api/business-setup/business-details`;
+  businessDetailsUrl=`${this.apiBaseUrl}/businessSetup`;
   constructor(private http: HttpClient) { }
 
   saveBusinessDetails(businessDetails: any): Observable<any> {

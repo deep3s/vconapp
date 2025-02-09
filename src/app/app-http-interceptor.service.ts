@@ -16,7 +16,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
     // Add your headers here
     const modifiedRequest = request.clone({
       setHeaders: {
-        "x-api-key": "yogKnT5UNT4gFMtaLEURq81xGuV6sOKm7RsBpXao",
+        //"x-api-key": "yogKnT5UNT4gFMtaLEURq81xGuV6sOKm7RsBpXao",
       },
     });
 
