@@ -2,8 +2,11 @@
     <div class="section-heading-h2">{{ title }}</div>
 
 
-    <div class="cards" *ngFor="let service of services" >
-        <service-booking *ngFor="let serviceType of service.types"  [buttonType]="buttonType" [serviceType]="serviceType"></service-booking>
+    <div class="cards" *ngFor="let service of services">
+        <service-booking *ngFor="let serviceType of service.types" [buttonType]="buttonType" [serviceType]="serviceType"
+                         (onServiceSelect)="addService($event)"
+                         (onServiceRemove)="removeService($event)"
+        ></service-booking>
     </div>
     <button class="app-button-primary" (click)="toggleShowAll()" *ngIf="seeAll">
         {{ showAll ? 'Show Less' : 'See All' }}

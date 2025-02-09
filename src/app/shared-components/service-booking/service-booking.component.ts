@@ -8,9 +8,10 @@ import {Router} from "@angular/router";
 })
 export class ServiceBookingComponent {
   @Input() serviceType: any;
-  @Output() serviceSelected = new EventEmitter<unknown>();
+  @Output() onServiceSelect = new EventEmitter<unknown>();
   @Input() public buttonType: string;
   cart: any[] = [];
+  @Output() onServiceRemove = new EventEmitter<unknown>();
   constructor(private router: Router) {
   }
 
@@ -25,6 +26,13 @@ export class ServiceBookingComponent {
     } else {
       this.cart.push(service);
     }
+  }
+
+  addService(service: any) {
+    this.onServiceSelect.emit(service);
+  }
+  removeService(service: any) {
+    this.onServiceRemove.emit(service);
   }
 
   isSelected(service: any) {

@@ -1,56 +1,18 @@
-
 <div class="container mt-4">
     <h2 class="fw-bold">Select Services</h2>
     <!-- Services List -->
-    <div class="row">
-        <div class="col-md-7">
+    <div class="d-flex  gap-5 ">
+        <div class="col-md-7 ">
             <service-list [services]="salonDetails.services" [buttonType]="'add'"
                           [seeAll]="false"
-                          [title]="'Services'"></service-list>
+                          [title]="'Services'"
+                          (onServiceSelect)="addService($event)"
+                          (onServiceRemove)="removeService($event)"
+            ></service-list>
         </div>
-
         <!-- Cart Section -->
-        <div class="col-md-4 offset-md-1 p-3 border rounded">
-            <div class="d-flex ">
-                <a class="location-link" target="_blank"
-                   href="/a/eeva-prestige-song-of-the-south-bengaluru-prestige-song-of-the-south-begur-main-road-hobli-sy-no-19-18-16-14-at-chandrashekarapura-village-sy-no-52-4-south-yelenahalli-e7wd6jbu">
-                    <div class="location-card">
-                        <div class="image-wrapper">
-                            <picture>
-                                <img src="https://images.fresha.com/locations/location-profile-images/333200/423778/c1dc38da-cf38-4246-bb12-49ec24c61fed.jpg?class=thumb"
-                                     alt="EEVa- Prestige Song of the South - (Prestige Song of the South) Begur Main Road Hobli Sy no 19, 18, 16, 14 at Chandrashekarapura Village, Sy No. 52/4 South, Yelenahalli, Akshayanagar, Bengaluru, Karnataka"
-                                     class="location-image"
-                                     loading="lazy">
-                            </picture>
-                        </div>
-                    </div>
-                </a>
-                <div class="ms-3">
-                    <div class="fw-bold fs-5">V-Cut Salon</div>
-                    <rating-star [rating]="4.5" [tnr]="467"></rating-star>
-                    <div class="address small text-secondary">Akshayanagar, Bengaluru, Karnataka 560068</div>
-                </div>
-            </div>
-            <div *ngIf="cart.length === 0" class="text-muted mt-3">No services added to cart.</div>
-
-            <div *ngFor="let item of cart" class="d-flex justify-content-between mt-3">
-                <div>
-                    <div class="fw-semibold">{{ item.name }}</div>
-                    <div class="text-muted">{{ item.duration }}</div>
-                </div>
-                <div class="fw-medium">
-                    ₹{{ item.price }}
-                    <!-- Display the saved amount -->
-                    <div class="text-success">Save ₹{{ (item.price * 0.25) | number:'1.0-0' }}</div>
-                </div>
-            </div>
-
-            <div class="fw-bold d-flex justify-content-between">
-                <span>Total</span>
-                <span>₹{{ getTotal() }}</span>
-            </div>
-
-            <button class="btn btn-dark w-100 mt-3">Continue</button>
+        <div>
+            <salon-cart [addedServices]="cartServices "></salon-cart>
         </div>
     </div>
 </div>

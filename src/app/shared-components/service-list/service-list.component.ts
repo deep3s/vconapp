@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output,} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,7 +13,15 @@ export class ServiceListComponent {
   @Input() public showAll = false; // Controls "Show All" services list visibility
   @Input() public seeAll = true; // Controls "Show All" services list visibility
 
-
+  @Output() onServiceSelect = new EventEmitter<any>(); // Output event
+  @Output() onServiceRemove = new EventEmitter<any>();
+  // Function to emit event when service is added
+  addService(service: any) {
+    this.onServiceSelect.emit(service);
+  }
+  removeService(service: any) {
+    this.onServiceRemove.emit(service);
+  }
   constructor(private router: Router) {}
 
 

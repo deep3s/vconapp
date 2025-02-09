@@ -15,8 +15,8 @@
                 style="width: 36px; height: 36px; font-size: 20px;"
                 [ngClass]="{'btn-primary': isSelected(serviceType)}"
                 (click)="toggleService(serviceType)">
-            <span *ngIf="isSelected(serviceType)">✔</span>
-            <span *ngIf="!isSelected(serviceType)">+</span>
+            <span *ngIf="isSelected(serviceType)" (click)="removeService(serviceType)">✔</span>
+            <span *ngIf="!isSelected(serviceType)" (click)="addService(serviceType)">+</span>
         </button>
     </div>
 </div>

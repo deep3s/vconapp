@@ -1,0 +1,125 @@
+<div class="business-details-page">
+    <div class="container">
+        <div class="page-body">
+            <div class="heading-section d-flex align-items-center justify-content-end mt-5">
+                <button class="app-button-secondary me-3">Close</button>
+                <button class="app-button-primary" (click)="onSubmitBusinessDetails()">Save</button>
+            </div>
+            <div class="section-heading mb-5">Edit business details</div>
+            <div class="section-heading-h2 no-mb">Business info</div>
+            <div class="clr-grey">Choose the name displayed on your online booking profile, sales receipts and messages to clients.</div>
+
+
+            <form [formGroup]="businessDetailsForm" class="user-profile-form" (ngSubmit)="onSubmitBusinessDetails()">
+                <div class="row">
+                    <div class="col-12 mb-5">
+                        <div class="row">
+                            <div class="col-12 mt-4">
+                                <div class="form-group">
+                                    <label class="input-label fw-bold" for="businessName">Business name</label>
+                                    <input formControlName="businessName" id="businessName" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.businessName.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.businessName.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.businessName.errors.required">Title is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4 pb-3">
+                                <div class="note">Your country is set to India with INR currency.</div>
+                                <div class="divider my-5" ></div>
+                                <div class="mt-4 tax-section">
+                                    <div class="section-heading-h2 no-mb">Tax calculation</div>
+                                    <div class="clr-grey mb-4">Choose how to apply taxes to prices in sales and reporting calculation.</div>
+                                    <mat-radio-group aria-label="Select an option">
+                                        <div><mat-radio-button value="1">Retail prices include tax</mat-radio-button></div>
+                                        <div><mat-radio-button value="2">Retail prices exclude tax</mat-radio-button></div>
+
+                                    </mat-radio-group>
+                                </div>
+                                <div class="divider my-5" ></div>
+                            </div>
+                            <div class="col-12">
+
+                                <div class="section-heading-h2 no-mb">Language settings</div>
+                                <div class="clr-grey mb-4">Choose the default language for clients and team members.</div>
+
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <app-select
+                                                [title]="'Team default language'"
+                                                [items]="warning_1"
+                                                (onValueChange)="applyPrev($event)"
+                                                [selectedValue]="selectedWarning1"></app-select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <app-select
+                                                [title]="'Client default language'"
+                                                [items]="warning_2"
+                                                [selectedValue]="selectedWarning2"></app-select>
+                                    </div>
+                                </div>
+
+                                <div class="note">Team members and clients can override the language displayed to them in their settings.</div>
+                                <div class="divider my-5" ></div>
+
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="form-group">
+                                    <label class="input-label fw-bold" for="facebookLink">Facebook</label>
+                                    <input formControlName="facebookLink" id="facebookLink" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.facebookLink.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.facebookLink.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.facebookLink.errors.required">Title is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="form-group">
+                                    <label class="input-label fw-bold" for="instaLink">Instagram</label>
+                                    <input formControlName="instaLink" id="instaLink" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.instaLink.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.instaLink.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.instaLink.errors.required">Title is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="form-group">
+                                    <label class="input-label fw-bold" for="twitterLink">X (Twitter)</label>
+                                    <input formControlName="twitterLink" id="twitterLink" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.twitterLink.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.twitterLink.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.twitterLink.errors.required">Title is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="form-group">
+                                    <label class="input-label fw-bold" for="websiteLink">Website</label>
+                                    <input formControlName="websiteLink" id="websiteLink" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.websiteLink.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.websiteLink.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.websiteLink.errors.required">Title is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

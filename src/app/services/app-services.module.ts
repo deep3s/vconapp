@@ -8,12 +8,17 @@ import {RegionService} from "./region/region.service";
 import {UnelectedService} from './un-elected/unelected.service';
 import {ElectionService} from "./election/election.service";
 import {VconService} from "./vcon/vcon.service";
+import {BusinessSetupService} from "./business-setup/business-setup.service";
 
 @NgModule({
     declarations: [],
     imports: [HttpClientModule],
-    providers: [MyEmailAlertsService, CompanyAndIndustryService, ElectionService,
-        RegionService, OverviewService, UnelectedService, CallElectionService,VconService],
+    providers: [
+        MyEmailAlertsService, CompanyAndIndustryService, ElectionService,
+        RegionService, OverviewService, UnelectedService, CallElectionService,
+        VconService,
+        BusinessSetupService
+    ],
 })
 export class AppServicesModule {
 }

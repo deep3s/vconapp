@@ -61,9 +61,11 @@
   border-radius: 16px;
   border: 3px solid #f0f0f0;
 }
-.app-container-page{
+
+.app-container-page {
   margin: 100px;
 }
+
 .app-main-page {
   background: $ExtraLightBackgroundGrey;
 
@@ -288,6 +290,10 @@
   font-size: 1.625rem !important;
   line-height: 36px;
   margin-bottom: 20px !important;
+
+  &.no-mb {
+    margin-bottom: 0 !important;
+  }
 }
 
 .section-heading-h3 {
@@ -300,7 +306,7 @@
   line-height: 1rem !important;
 }
 
-.mat-button-toggle-checked{
+.mat-button-toggle-checked {
   background: $CPPrimary !important;
   color: white !important;
 }
@@ -564,20 +570,29 @@
   }
 }
 
-.app-button-primary {
-  color: white;
-  background: $CPPrimary;
-  // padding: 5px 30px;
-  border: 1px solid $CPPrimary;
-  //border-radius: 8px;
+.app-button {
   font-family: $CPSemiBoldFont;
-  //transition: all 0.3s ease-in-out;
-  //border: 1px solid #6366F1;
   padding: 0.75rem 1.25rem;
+  line-height: 1;
   font-size: 1rem;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
-  box-shadow 0.2s;
-  border-radius: 6px;
+  border: 2px solid $CPPrimary;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+
+  &.btn-md {
+    padding: 10px 12px;
+  }
+
+  &.btn-sm {
+    padding: 8px 12px;
+  }
+}
+
+.app-button-primary {
+  @extend .app-button;
+
+  background: $CPPrimary;
+  color: white;
 
   &:focus,
   &:active {
@@ -585,8 +600,8 @@
   }
 
   &:hover {
-    border: 1px solid $CPPrimaryHover;
-    background: $CPPrimaryHover;
+    border: 2px solid $CPBurgundy;
+    background: $CPBurgundy;
   }
 
   &.icon {
@@ -596,20 +611,15 @@
 
   &.disabled {
     background: $StrokeGrey;
-    border: 1px solid $StrokeGrey;
+    border: 2px solid $StrokeGrey;
   }
 }
 
 .app-button-secondary {
+  @extend .app-button;
+
   color: $CPPrimary;
-  padding: 8px 12px;
-  line-height:1;
-  font-size: 14px;
-  border: 1px solid $CPPrimary;
-  border-radius: 4px;
   background: white;
-  font-family: $CPMediumRegularFont;
-  transition: all 0.3s ease-in-out;
 
   &.icon {
     padding-right: 12px;
@@ -622,8 +632,8 @@
   }
 
   &:hover {
-    border: 1px solid $CPRed;
-    color: $CPRed;
+    border: 2px solid $CPBurgundy;
+    color: $CPBurgundy;
   }
 
   &.disabled {
@@ -723,12 +733,12 @@
   &:focus {
     outline: 0 none;
     outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem $GreyMedium;
+    box-shadow: 0 0 0 0.1rem $StrokeGrey;
     //border: 1px solid $GreyMedium;
   }
 
   &:hover {
-    border: 1px solid $GreyMedium;
+    border: 1px solid $StrokeGrey;
   }
 
   &::placeholder {
@@ -1155,7 +1165,7 @@ input {
 
         outline: 0 none;
         outline-offset: 0;
-        box-shadow: 0 0 0 0.2rem $CPLightPrimary_2;
+        box-shadow: 0 0 0 0.1rem $StrokeGrey;
         border: 1px solid $CPPrimary;
       }
     }
@@ -1243,6 +1253,8 @@ input {
 
 .form-control {
   &.app-text-box {
+    transition: all 0.2s ease-in-out;
+
     &:focus {
       // outline: 3px solid $StrokeGrey !important;
       /*-moz-appearance: none !important;
@@ -1251,7 +1263,7 @@ input {
       box-shadow: 0 0 0 1px $Charcoal;*/
       outline: 0 none;
       outline-offset: 0;
-      box-shadow: 0 0 0 0.2rem $GreyMedium;
+      box-shadow: 0 0 0 0.1rem $StrokeGrey;
       //border: 1px solid $GreyMedium;
     }
   }
@@ -1328,9 +1340,11 @@ i {
     top: 18px;
   }
 }
-.cellClassRules{
+
+.cellClassRules {
   background-color: aqua;
 }
+
 .ag-root-wrapper-body.ag-layout-normal {
   height: auto !important;
 }
@@ -1395,11 +1409,13 @@ i {
   font-weight: 500;
   //border-bottom: 2px solid $StrokeGrey;
 }
+
 .application .ag-theme-material-table {
   .ag-root-wrapper {
     border-radius: 5px;
   }
 }
+
 .ag-theme-material {
   .ag-root-wrapper {
     border-radius: 5px;
@@ -1673,6 +1689,7 @@ i {
 
   .ag-row-selected {
     background: $CPPrimary !important;
+
     &:not(.ag-row-hover) {
       &:hover {
         background: red !important; // Maintain the same background color or another style
@@ -1697,11 +1714,13 @@ i {
       border: none !important;
 
       &:hover {
-          color: $TextGrey
+        color: $TextGrey
       }
+
       &:focus {
         color: $TextGrey
-    }
+      }
+
       &:first-child {
         padding-left: 15px;
       }
@@ -1756,10 +1775,12 @@ i {
     background: $LightBackgroundGrey;
 
   }
+
   .ag-row-hover:not(.ag-row-selected)::before,
   .ag-row-hover.ag-full-width-row.ag-row-group::before {
     background: $LightBackgroundGrey !important;
   }
+
   .ag-row-hover.ag-row-selected::before {
     background: $CPPrimary
   }
@@ -3084,7 +3105,6 @@ mat-dialog-container.mat-dialog-container {
 .cdk-global-scrollblock {
   overflow: visible !important; /* Disable the blocking behavior */
 }
-
 
 
 //

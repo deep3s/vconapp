@@ -1,0 +1,9 @@
+@import "src/styles/variables";
+.business-details-page {
+  .note {
+    background: $LightBackgroundGrey;
+    border-radius: 6px;
+    box-shadow: 0 0 0 0.1rem $StrokeGrey;
+    padding: 8px 12px;
+  }
+}

@@ -1,0 +1,37 @@
+
+.categories-wrapper {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;  /* Enable horizontal scrolling */
+  scrollbar-width: none;
+  max-width: 80%;
+}
+
+.categories-wrapper button {
+  flex-shrink: 0;  /* Prevent buttons from shrinking */
+  min-width: 120px;  /* Set a minimum width for buttons */
+}
+
+.large-icon {
+  font-size: 2rem; // Adjust size as needed
+}
+
+button.btn-primary {
+  background-color: #6a0dad !important;
+  border-color: #6a0dad !important;
+}
+
+.service-card {
+  padding: 16px;
+  border: 1px solid #BBBCBC;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #e2e2e2; /* Light gray background when hovered */
+  }
+}
+.address{
+  margin-top: -20px;
+}

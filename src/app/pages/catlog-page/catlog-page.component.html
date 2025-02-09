@@ -1,6 +1,6 @@
 <div class="d-flex">
     <!-- Sidebar -->
-    <div class="d-flex flex-column p-3 border-end" style="width: 250px; min-height: 100vh;">
+    <div class="d-flex flex-column p-3 border-end sidebar">
         <p class="fw-bold">Catalog</p>
         <a href="#" class="d-block py-2 text-decoration-none active">Service menu</a>
         <a href="#" class="d-block py-2 text-decoration-none">Memberships</a>
@@ -10,60 +10,122 @@
         <a href="#" class="d-block py-2 text-decoration-none">Stock orders</a>
         <a href="#" class="d-block py-2 text-decoration-none">Suppliers</a>
     </div>
-    <div class="container">
-        <!-- Main Content -->
+
+    <!-- Main Content (Scrollable) -->
+    <div class="container main-content">
         <div class="flex-grow-1 p-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h3 class="fw-bold">Service menu</h3>
                 <div class="d-flex gap-2">
-                    <button class="app-button-primary">Options</button>
-                    <button class="app-button-primary">Add</button>
+                    <div class="dropdown">
+                        <button class="app-button-secondary border border-black p-1" type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <i class="bi bi-three-dots-vertical fs-5"></i> <!-- Bootstrap Icons -->
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" (click)="quickBooking()">Quick Booking Link</a></li>
+                            <li><a class="dropdown-item" href="#" (click)="setMenuOrder()">Set Menu Order</a></li>
+                            <li><a class="dropdown-item" href="#" (click)="openSettings()">Settings</a></li>
+                            <li><a class="dropdown-item" href="#" (click)="downloadPDF()">Download PDF</a></li>
+                            <li><a class="dropdown-item" href="#" (click)="downloadExcel()">Download Excel</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown ">
+                        <button class="app-button-secondary border border-black p-2 " type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            + <span class="ps-2">Add</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" (click)="addSingleService()">Single Service</a></li>
+                            <li><a class="dropdown-item" href="#" (click)="addPackage()">Package</a></li>
+                            <li><a class="dropdown-item" href="#" (click)="addCategory()">Category</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <p>View and manage the services offered by your business. <a href="#" class="text-primary">Learn more</a>
             </p>
 
-            <!-- Search and Filters -->
+
+            <!-- Search and Filters --><!-- Search and Filters -->
             <div class="filter d-flex gap-2">
                 <input type="text" class="form-control" placeholder="Search service name">
-                <button class="app-button-primary mt-1 mb-1">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+
+                <!-- Button to Open Modal -->
+                <button class="btn btn-secondary mt-1 mb-1" data-bs-toggle="modal" data-bs-target="#filterModal">
+                    <svg class="fil" viewBox="0 0 24 24">
                         <path d="M7 4a1 1 0 0 1 1 1v11h2a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m9 0a1 1 0 0 1 1 1v5h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m9 0a1 1 0 0 1 1 1v15h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m-9 10a1 1 0 0 1 1 1v12a1 1 0 1 1-2 0V15a1 1 0 0 1 1-1m-9 6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m18 4a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"/>
                     </svg>
                 </button>
-                <button class=" mng app-button-primary">Manage order</button>
+
+                <button class="mng app-button-secondary">Manage order</button>            </div>
+
+            <!-- Bootstrap Modal -->
+            <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="filterModalLabel">Filters</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Status:</label>
+                                <select id="status" class="form-select">
+                                    <option value="All statuses">All statuses</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Archived">Archived</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="type" class="form-label">Type:</label>
+                                <select id="type" class="form-select">
+                                    <option value="">All types</option>
+                                    <option value="service">Services</option>
+                                    <option value="package">Packages</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="team-member" class="form-label">Team Member:</label>
+                                <select id="team-member" class="form-select">
+                                    <option value="">Any team member</option>
+                                    <option value="3480975">Joshna MJ</option>
+                                    <option value="3480976">Wendy Smith (Demo)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="app-button-primary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="app-button-primary" (click)="applyFilters()">Apply</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+
+        </div>
+
+        <!-- Categories & Services List -->
+        <div class="d-flex">
             <!-- Categories -->
-            <div class="d-flex">
-                <div class="p-3 border rounded me-4 w-25" >
-                    <div class="section-heading-h3 fw-bold mb-3">Categories</div>
-                    <div class="py-2 px-3 d-flex align-items-center justify-content-between"
-                         [ngClass]="{'activeCategory': category.active}"
-                         (click)="selectCategory(category)"
-                         *ngFor="let category of categories">
-                        <div>{{category.name}}</div>
-                        <div> ({{category.count}})</div>
-                    </div>
+            <div class="p-3 border rounded me-4 w-25">
+                <div class="section-heading-h3 fw-bold mb-3">Categories</div>
+                <div class="py-2 px-3 d-flex align-items-center justify-content-between"
+                     [ngClass]="{'activeCategory': category.active}"
+                     (click)="selectCategory(category)"
+                     *ngFor="let category of categories">
+                    <div>{{ category.name }}</div>
+                    <div> ({{ category.count }})</div>
                 </div>
-
-                <!-- Services List -->
-                <div class="w-75">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="fw-bold">{{selectedCategory.name}}</h5>
-                        <button class="app-button-secondary">Actions</button>
-                    </div>
-                    <div *ngFor="let service of selectedCategory.services"
-                            class="border rounded p-3 my-2 d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="fw-bold mb-3">{{service.name}}</div>
-                            <small>{{service.duration}}</small>
-                        </div>
-                        <div class="fw-bold">{{service.price}}</div>
-                    </div>
-
-                </div>
+            </div>
+            <div class="w-75">
+            <category-services [category]="selectedCategory"></category-services>
             </div>
         </div>
     </div>
 </div>
+
