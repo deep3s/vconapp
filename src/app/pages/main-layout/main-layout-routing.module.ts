@@ -167,6 +167,7 @@ const routes: Routes = [
   { path: 'new-dashboard', loadChildren: () => import('../new-dashboard-page/new-dashboard-page.module').then(m => m.NewDashboardPageModule) },
   { path: 'edit', loadChildren: () => import('../edit-service-page/edit-service-page.module').then(m => m.EditServicePageModule) },
   { path: 'business-details', loadChildren: () => import('../business-details-page/business-details-page.module').then(m => m.BusinessDetailsPageModule) },
+  { path: 'business-setup', loadChildren: () => import('../business-setup-page/business-setup-page.module').then(m => m.BusinessSetupPageModule) },
 ];
 
 @NgModule({
