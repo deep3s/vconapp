@@ -1,0 +1,110 @@
+<div class="container w-50 p-3">
+    <div class="text-center mt-3">
+        <div class="text-secondary">Add a new location</div>
+        <div class="fw-bold fs-3 mb-4">About your location</div>
+    </div>
+
+    <div class="business-location bg-white border rounded p-3 fw-semibold fs-14 ">
+        Business location
+        <div class="divider"></div>
+
+        <div class="business-location">
+            <label class="input-label fw-bold" for="businessName">Where is your business located?</label>
+            <input formControlName="businessName" id="businessName" name="title"
+                   class="app-text-box form-control" maxlength="200">
+
+            <div class="location mt-3 bg-white border rounded p-3 w-100 fw-semibold">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="fw-semibold fs-16">Address</div>
+                        <div class="description fw-medium fs-16">Sundar Ram Shetty Nagar, Arekere Main Road</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fw-semibold fs-16">Apt./Suite etc</div>
+                        <div class="description fw-medium fs-16 clr-blue">+Add</div>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-between">
+                        <div>
+                            <div class="fw-semibold fs-16">District</div>
+                            <div class="description fw-medium fs-16">Bilekahalli</div>
+                        </div>
+                        <div class="fw-bold fs-5 clr-blue">Edit</div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="fw-semibold fs-16">City</div>
+                        <div class="description fw-medium fs-16">Bengaluru</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fw-semibold fs-16">Region</div>
+                        <div class="description fw-medium fs-16">Karnataka, Bangalore Division</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fw-semibold fs-16">Postcode</div>
+                        <div class="description fw-medium fs-16">560076</div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="fw-semibold fs-16">Country</div>
+                        <div class="description fw-medium fs-16">India</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fw-semibold fs-16">Direction</div>
+                        <div class="description fw-medium fs-16 clr-blue">+Add</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <mat-checkbox>I don't have a business address (mobile and online service only)</mat-checkbox>
+            </div>
+        </div>
+    </div>
+
+    <div class="map mt-4">
+        <div class="map-location bg-white border rounded p-3 fw-semibold fs-14">
+            Map location
+            <div class="input-label fw-bold">Drag the map so the pin matches the exact location of your business location.</div>
+            <div class="divider"></div>
+        </div>
+    </div>
+
+    <div class="business-location bg-white border rounded p-3 fw-semibold fs-16 mt-4">
+        Billing details for clients sale
+        <div class="description fs-18 fw-medium">
+            These details will appear on the client’s sale receipt for this location as well as the information you’ve configured in your
+            <span class="clr-blue">Receipt Template</span> settings.
+        </div>
+        <div class="divider"></div>
+
+        <div class="business-location">
+            <div class="location mt-3 bg-white border rounded p-3 fw-semibold">
+                <div class="row justify-content-between">
+                    <div class="col-md-6">
+                        <div class="fw-semibold fs-16">Company Name</div>
+                        <div class="description fw-medium fs-16">V-Cut Arekere</div>
+                    </div>
+                    <div class="col-md-6 text-end fw-bold fs-5 clr-blue">Edit</div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="fw-semibold fs-16">Address</div>
+                        <div class="description fw-medium fs-16">Sundar Ram Shetty Nagar, Arekere Main Road, Bengaluru, 560076, Karnataka</div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="fw-semibold fs-16">Note</div>
+                        <div class="description fw-medium fs-16 clr-blue">+Add</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

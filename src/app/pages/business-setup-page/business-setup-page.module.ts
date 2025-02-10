@@ -3,17 +3,28 @@ import { CommonModule } from '@angular/common';
 
 import { BusinessSetupPageRoutingModule } from './business-setup-page-routing.module';
 import { BusinessSetupPageComponent } from './business-setup-page.component';
-import { BusinessSetupComponent } from './business-setup/business-setup.component';
+import { BusinessLocationAddressComponent } from './business-location-address/business-location-address.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { LocationTimingsComponent } from './location-timings/location-timings.component';
+import { EditLocationComponent } from './edit-location/edit-location.component';
+import { EditBillingDetailsComponent } from './edit-billing-details/edit-billing-details.component';
 
 
 @NgModule({
   declarations: [
     BusinessSetupPageComponent,
-    BusinessSetupComponent
+    BusinessLocationAddressComponent,
+    LocationTimingsComponent,
+    EditLocationComponent,
+    EditBillingDetailsComponent
   ],
-  imports: [
-    CommonModule,
-    BusinessSetupPageRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        BusinessSetupPageRoutingModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        FormsModule
+    ]
 })
 export class BusinessSetupPageModule { }

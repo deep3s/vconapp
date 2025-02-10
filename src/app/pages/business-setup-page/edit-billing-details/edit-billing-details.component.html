@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="bg-white border rounded p-3 fw-semibold fs-14 w-40">
+        <h4 class="mb-3">Edit billing details</h4>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="useLocation">
+            <label class="form-check-label" for="useLocation">
+                Use location name and address for client sales receipts
+            </label>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Company name</label>
+            <input type="text" class="form-control" [(ngModel)]="companyName">
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <label class="form-label">Address</label>
+                <input type="text" class="form-control" [(ngModel)]="address">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Apt./Suite etc</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" [(ngModel)]="city">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">State</label>
+                <input type="text" class="form-control" [(ngModel)]="state">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Postcode</label>
+                <input type="text" class="form-control" [(ngModel)]="postcode">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Invoice note</label>
+            <textarea class="form-control fw-medium" rows="3" [(ngModel)]="invoiceNote">Other Info</textarea>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-light me-2">Cancel</button>
+            <button class="btn btn-dark">Save</button>
+        </div>
+    </div>
+</div>
