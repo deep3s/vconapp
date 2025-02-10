@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
     selector: 'app-sales-page',
@@ -9,9 +10,7 @@ export class SalesPageComponent {
     selectedRowIndex: number | null = null;
     selectedSidebarItem: string | null = null;
     disableNext: boolean = false;
-    selectedDate: string = new Date().toISOString().split('T')[0]; // Default to today
-    showCalendar: boolean = false;
-    @ViewChild('dateInput') dateInput!: ElementRef; // Reference to the input field
+    selectedDate: Date = new Date();
 
     sidebarItems = [
         'Daily sales summary',
@@ -39,7 +38,14 @@ export class SalesPageComponent {
         {type: 'Cash', collected: 3000, refunded: 500},
         {type: 'Card', collected: 4500, refunded: 1000},
     ];
-
+    services = [
+        { name: 'Manicure', price: 25 },
+        { name: 'Hair Color', price: 57 },
+        { name: 'Haircut', price: 40 },
+        { name: 'Balayage', price: 150 },
+        { name: 'Classic Fill', price: 60 },
+        { name: 'Blow Dry', price: 35 }
+    ];
 
     selectRow(event: Event) {
         const target = event.target as HTMLElement;
@@ -51,32 +57,33 @@ export class SalesPageComponent {
     selectSidebarItem(item: string) {
         this.selectedSidebarItem = item;
     }
-
-
-    setToday() {
-        this.selectedDate = new Date().toISOString().split('T')[0];
-        this.showCalendar = false;
-    }
-
-    openDatePicker() {
-        this.dateInput.nativeElement.showPicker(); // Open the native date picker
-    }
-
-    onDateChange(event: Event) {
-        const input = event.target as HTMLInputElement;
-        this.selectedDate = input.value; // Update the selected date
-    }
-
     prevDate() {
-        const current = new Date(this.selectedDate);
-        current.setDate(current.getDate() - 1);
-        this.selectedDate = current.toISOString().split('T')[0];
+        this.selectedDate.setDate(this.selectedDate.getDate() - 1);
+        this.selectedDate = new Date(this.selectedDate);
     }
 
     nextDate() {
-        const current = new Date(this.selectedDate);
-        current.setDate(current.getDate() + 1);
-        this.selectedDate = current.toISOString().split('T')[0];
+        this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        this.selectedDate = new Date(this.selectedDate);
+    }
+
+    setToday() {
+        this.selectedDate = new Date();
+    }
+
+    onDateChange(event: any) {
+        if (event.value) {
+            this.selectedDate = event.value;
+        }
+    }
+    isPanelOpen = false;
+
+    openPanel() {
+        this.isPanelOpen = true;
+    }
+
+    closePanel() {
+        this.isPanelOpen = false;
     }
 
 }

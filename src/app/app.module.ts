@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from "ngx-ui-loader";
 import { AppRoutingModule } from "./app-routing.module";
@@ -30,7 +32,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||
   window.navigator.userAgent.indexOf("Trident/") > -1; // Remove this line to use Angular Universal
-
 export function loggerCallback(logLevel: LogLevel, message: string) {
   console.log(message);
 }
@@ -103,8 +104,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      MatInputModule
     ],
   providers: [
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
@@ -130,6 +135,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MsalService,
     MsalGuard,
     MsalBroadcastService,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })

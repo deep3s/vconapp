@@ -23,9 +23,6 @@ tbody tr:hover {
   background-color: #f0f0f0;
   cursor: pointer;
 }
-.date-container {
-  position: relative;
-}
 
 .dropdown-menu {
   position: absolute !important;
@@ -41,3 +38,68 @@ tbody tr:hover {
     background-color: black;
   }
 }
+.date-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Ensures the datepicker dropdown appears below the button */
+::ng-deep .cdk-overlay-pane {
+  margin-top: 200px;
+  margin-left: -500px;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 1050; /* Ensures it stays above other elements */
+}
+
+/* Optional: Adjust the padding and spacing */
+.date-container .px-3 {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu {
+  display: none;
+  opacity: 0;
+}
+
+.show {
+  display: block !important;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+.border-start-primary {
+  border-left: 4px solid #87CEFA !important;
+}
+
+.type {
+  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.type:hover {
+  color: white !important;
+  background-color: #007bff !important;
+}
+
+.nav-tabs .nav-link {
+  transition: background-color 0.3s, color 0.3s;
+  &:hover {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white !important; /* White text on hover */
+  }
+}
+

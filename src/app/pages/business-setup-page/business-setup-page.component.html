@@ -1,1 +1,11 @@
-<p>business-setup-page works!</p>
+<business-location-details></business-location-details>
+<div class="text-center mt-5">
+    <div class="text-secondary">Add a new location</div>
+    <div class="section-heading fw-bold">Choose your main business type</div>
+</div>
+<business-type [multiSelect]="false"></business-type>
+<div class="text-center mt-5">
+    <div class="text-secondary">Add a new location</div>
+    <div class="section-heading fw-bold">Choose your secondary business types</div>
+</div>
+<business-type [multiSelect]="true"></business-type>

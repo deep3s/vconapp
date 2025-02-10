@@ -12,7 +12,6 @@
             </ul>
         </nav>
     </div>
-
     <!-- Main Content -->
     <div class="content flex-grow-1 p-4">
         <div class="d-flex justify-content-between flex-wrap align-items-center border-bottom pb-2">
@@ -21,13 +20,115 @@
                 <p>View, filter, and export the transactions and cash movement for the day.</p>
             </div>
             <div class="btn-group">
-                <button class="btn btn-outline-secondary">Export</button>
-                <button class="btn btn-dark">Add New</button>
+                <div class="dropdown">
+                    <button class="app-button-secondary dropdown-toggle" type="button" id="exportDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Export
+                    </button>
+                    <ul class="dropdown-menu" id="dropdownMenu">
+                        <li><a class="dropdown-item" href="#">CSV</a></li>
+                        <li><a class="dropdown-item" href="#">PDF</a></li>
+                        <li><a class="dropdown-item" href="#">Excel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Add Button -->
+                <button class="app-button-secondary ms-3" data-bs-toggle="offcanvas" data-bs-target="#servicePanel">
+                    Add New
+                </button>
+
+                <!-- Offcanvas Sliding Panel -->
+                <div class="offcanvas offcanvas-end w-50" id="servicePanel">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- Add Services Section -->
+                            <div class="col-md-6 border-end">
+                                <button type="button" class="btn-close mt-4" data-bs-dismiss="offcanvas"></button>
+
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title">Add Services</h5>
+                                </div>
+
+                                <div class="position-sticky top-0 bg-white p-2 z-1">
+                                    <input type="text" class="form-control ps-5" placeholder="Search">
+                                    <span class="position-absolute top-50 start-0 translate-middle-y ps-4">
+                                        <svg fill="currentColor" viewBox="0 0 32 32" width="18" height="18">
+                                        <path d="M14.5 5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19M3 14.5C3 8.149 8.149 3 14.5 3S26 8.149 26 14.5c0 2.816-1.012 5.395-2.692 7.394l5.4 5.399a1 1 0 0 1-1.415 1.414l-5.399-5.399c-2 1.68-4.578 2.692-7.394 2.692C8.149 26 3 20.851 3 14.5"></path>
+                                    </svg>
+                                    </span>
+                                </div>
+
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Quick Sale</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Appointments</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Products</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Memberships</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Gift cards</a></li>
+                                </ul>
+
+                                <div class="offcanvas-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3" *ngFor="let service of services">
+                                            <div class="card border-start-primary shadow-sm">
+                                                <div class="card-body">
+                                                    <div class="card-title mb-1">{{ service.name }}</div>
+                                                    <div class="text-muted mb-0">₹{{ service.price }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cart Section -->
+                            <div class="col-md-6">
+                                <div class="d-flex flex-row flex-grow-1">
+                                    <div id="selected-customer-card" class="card p-3 w-100">
+                                        <button id="button-selected-customer-card" class="btn btn-outline-secondary" type="button" aria-pressed="false">
+                                        </button>
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="align-self-center">
+                                                <div class="d-flex flex-column gap-2">
+                                                    <div class="d-flex flex-column flex-grow-1">
+                                                        <p class="fw-medium">Add client</p>
+                                                        <p class="text-muted small">Leave empty for walk-ins</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <div class="avatar">
+                                                        <div class="rounded-circle bg-light p-2">
+                                                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 32 32">
+                                                                <path fill-rule="evenodd" d="M5 12.5a8.5 8.5 0 1 1 13.006 7.209c2.671.874 4.964 2.512 6.76 4.648a1 1 0 1 1-1.531 1.286C20.835 22.79 17.48 21 13.5 21s-7.335 1.79-9.734 4.643a1 1 0 0 1-1.531-1.286c1.795-2.136 4.088-3.774 6.759-4.648A8.5 8.5 0 0 1 5 12.5M13.5 6a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13" clip-rule="evenodd"></path>
+                                                                <path d="M29 14a1 1 0 1 0-2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0-2h-2z"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="text-center p-4">
+                                    <img src="https://cdn-partners.fresha.com/assets-v2/8ba88272c2cc71eef307.png"
+                                         alt="Empty cart" width="64">
+                                    <div class="section-heading-h2 mt-3">Your cart is empty</div>
+                                    <p>Tap an item to add to cart or add an existing client for smart
+                                        recommendations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Date Navigation -->
-        <div class="date-container d-flex border rounded-pill w-25 bg-white mb-4 mt-4 align-items-center position-relative">
+        <div class="date-container d-flex border rounded-pill w-25 bg-white my-3 align-items-center">
             <!-- Left Arrow -->
             <button class="btn border-0 rounded-pill px-3" (click)="prevDate()">
                 <i class="bi bi-chevron-left"></i>
@@ -40,23 +141,18 @@
 
             <!-- Selected Date (Click to Open Calendar) -->
             <div class="flex-grow-1 text-center">
-                <button class="btn border-0 fw-bold w-100" (click)="openDatePicker()">
-                    {{ selectedDate }}
+                <button class="btn border-0 fw-bold w-100" (click)="picker.open()">
+                    {{ selectedDate | date: 'EEEE d MMM, yyyy' }}
                 </button>
-
-                <!-- Hidden Native Date Picker -->
-                <input #dateInput type="date" class="d-none" [value]="selectedDate" (change)="onDateChange($event)">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" class="d-none">
+                <mat-datepicker #picker></mat-datepicker>
             </div>
 
             <!-- Right Arrow -->
-            <button class="btn border-0 rounded-pill px-3" [disabled]="disableNext" (click)="nextDate()">
+            <button class="btn border-0 rounded-pill px-3" (click)="nextDate()">
                 <i class="bi bi-chevron-right"></i>
             </button>
         </div>
-
-
-
-
 
         <div class=" d-flex">
             <!-- Transaction Summary -->
@@ -73,8 +169,8 @@
                                 <th>Gross Total</th>
                             </tr>
                             </thead>
-                            <tbody (click)="selectRow($event)">
-                            <tr *ngFor="let item of transactionSummary; let i = index"
+                            <tbody  (click)="selectRow($event)">
+                            <tr class="type" *ngFor="let item of transactionSummary; let i = index"
                                 [class.table-hovered]="selectedRowIndex === i">
                                 <td>{{ item.type }}</td>
                                 <td>{{ item.salesQty }}</td>
@@ -106,8 +202,8 @@
                                 <th>Refunds Paid</th>
                             </tr>
                             </thead>
-                            <tbody (click)="selectRow($event)">
-                            <tr *ngFor="let item of cashSummary; let i = index"
+                            <tbody  (click)="selectRow($event)">
+                            <tr  class="type" *ngFor="let item of cashSummary; let i = index"
                                 [class.table-hovered]="selectedRowIndex === i">
                                 <td>{{ item.type }}</td>
                                 <td>{{ item.collected | currency:'INR' }}</td>
@@ -128,123 +224,5 @@
 </div>
 
 
-<!--
-<div class="sales d-flex">
-    &lt;!&ndash; Sidebar &ndash;&gt;
-    <div class="sidebar">
-        <nav class="custom-col">
-            <div class="position-sticky">
-                <ul class="nav flex-column text-white">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Daily sales summary</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Appointments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Payments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Gift cards sold</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Memberships sold</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
 
-    &lt;!&ndash; Main Content &ndash;&gt;
-    <div class="content">
-        <div class="divider d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 ">
-            <div>
-                <h2>Daily Sales</h2>
-                <p>View, filter and export the transactions and cash movement for the day.</p>
-            </div>
-            <div class="btn-group">
-                <button class="btn btn-outline-secondary">Export</button>
-                <button class="btn btn-dark">Add new</button>
-            </div>
-        </div>
 
-        <div class="mb-4 mt-4 bg-light-grey">
-            <button class="btn btn-light">Today</button>
-            <input type="date" class="form-control d-inline-block w-auto">
-        </div>
-
-        <div class="d-flex">
-            &lt;!&ndash; Transaction Summary &ndash;&gt;
-            <div class="w-50 pe-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Transaction summary</h5>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Item type</th>
-                                <th>Sales qty</th>
-                                <th>Refund qty</th>
-                                <th>Gross total</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let item of transactionSummary; let i = index"
-                                (click)="selectRow(i)"
-                                [class.selected]="selectedRowIndex === i">
-                                <td>{{ item.type }}</td>
-                                <td>{{ item.salesQty }}</td>
-                                <td>{{ item.refundQty }}</td>
-                                <td>{{ item.grossTotal | currency:'INR' }}</td>
-                            </tr>
-                            <tr class="fw-bold">
-                                <td>Total Sales</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>₹0.00</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            &lt;!&ndash; Cash Movement Summary &ndash;&gt;
-            <div class="w-50">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Cash movement summary</h5>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Payment type</th>
-                                <th>Payments collected</th>
-                                <th>Refunds paid</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let item of cashSummary; let i = index"
-                                (click)="selectRow(i)"
-                                [class.selected]="selectedRowIndex === i">
-                                <td>{{ item.type }}</td>
-                                <td>{{ item.collected | currency:'INR' }}</td>
-                                <td>{{ item.refunded | currency:'INR' }}</td>
-                            </tr>
-                            <tr class="fw-bold">
-                                <td>Total Sales</td>
-                                <td>0</td>
-                                <td>₹0.00</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
--->

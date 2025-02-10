@@ -13,19 +13,22 @@ import { BusinessTypeComponent } from './business-type/business-type.component';
 
 
 @NgModule({
-  declarations: [
-    ForBusinessPageComponent,
-    SoftwareDetailsComponent,
-    SoftwareReviewsComponent,
-    SoftwareSolutionsComponent,
-    OnlineBookingComponent,
-    AutomatedMarketingComponent,
-    PartnerReviewComponent,
-    BusinessTypeComponent
-  ],
-  imports: [
-    CommonModule,
-    ForBusinessPageRoutingModule
-  ]
+    declarations: [
+        ForBusinessPageComponent,
+        SoftwareDetailsComponent,
+        SoftwareReviewsComponent,
+        SoftwareSolutionsComponent,
+        OnlineBookingComponent,
+        AutomatedMarketingComponent,
+        PartnerReviewComponent,
+        BusinessTypeComponent
+    ],
+    exports: [
+        BusinessTypeComponent
+    ],
+    imports: [
+        CommonModule,
+        ForBusinessPageRoutingModule
+    ]
 })
 export class ForBusinessPageModule { }

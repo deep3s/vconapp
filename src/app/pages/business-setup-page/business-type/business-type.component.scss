@@ -1,0 +1,30 @@
+.category-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  position: relative;
+
+  &:hover {
+    border-color: black;
+  }
+}
+.category-box .icon i {
+  font-size: 24px;
+}
+.category-box.selected {
+  border-color: #6c63ff;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+.category-box .checkmark {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #6c63ff;
+}
