@@ -27,6 +27,9 @@ export class BusinessDetailsPageComponent {
   ngOnInit(): void {
     this.businessDetailsForm = this.formBuilder.group({
       businessName: [],
+      businessOwner: [],
+      businessEmail: [],
+      businessPhone: [],
       note: [],
       facebookLink: [],
       instaLink: [],
@@ -45,7 +48,7 @@ export class BusinessDetailsPageComponent {
   }
 
   onSubmitBusinessDetails() {
-    let businessDetails = {businessName: this.businessDetailsForm.value.businessName};
+    let businessDetails = {...this.businessDetailsForm.value};
 
     this.businessSetupService.saveBusinessDetails(businessDetails).subscribe((data: any) => {
       console.log(data);

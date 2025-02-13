@@ -25,6 +25,36 @@
                                         <div *ngIf="fmp.businessName.errors.required">Title is required</div>
                                     </div>
                                 </div>
+                                <div class="form-group mt-4">
+                                    <label class="input-label fw-bold" for="businessOwner">Business Owner</label>
+                                    <input formControlName="businessOwner" id="businessOwner" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.businessOwner.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.businessOwner.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.businessOwner.errors.required">Title is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-4">
+                                    <label class="input-label fw-bold" for="businessEmail">Business Email</label>
+                                    <input formControlName="businessEmail" id="businessEmail" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.businessEmail.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.businessEmail.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.businessEmail.errors.required">Title is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-4">
+                                    <label class="input-label fw-bold" for="businessPhone">Business Phone</label>
+                                    <input formControlName="businessPhone" id="businessPhone" name="title"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.businessPhone.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.businessPhone.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.businessPhone.errors.required">Title is required</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 mt-4 pb-3">
                                 <div class="note">Your country is set to India with INR currency.</div>

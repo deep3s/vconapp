@@ -1,0 +1,149 @@
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: Arial, sans-serif;
+}
+
+.schedule-table th, .schedule-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.schedule-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #a0c4ff;
+}
+
+.edit-icon {
+  cursor: pointer;
+  font-size: 16px;
+  color: #6c757d;
+}
+
+.time-slot {
+  background-color: #eef2ff;
+  border-radius: 10px;
+  min-width: 60px;
+  cursor: pointer;
+  position: relative;
+}
+
+.time-slot:hover {
+  background-color: #d0d4ff;
+}
+//
+///* Dropdown Styling */
+//.dropdown {
+//  position: absolute;
+//  top: 100%;
+//  left: 50%;
+//  transform: translateX(-50%);
+//  background: white;
+//  border:
+//
+//
+//
+//
+//
+//
+//  1px solid #ddd;
+//  border-radius: 8px;
+//  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//  width: 150px;
+//  z-index: 10;
+//}
+//
+.dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+}
+
+.dropdown ul li {
+  padding: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dropdown ul li:hover {
+  background-color: #f1f1f1;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Edit container */
+.edit-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Edit icon styles */
+.edit-icon {
+  cursor: pointer;
+  padding: 5px;
+  font-size: 18px;
+}
+
+/* Dropdown Menu */
+.edit-dropdown {
+  position: absolute;
+  top: 100%; /* Position it under the icon */
+  left: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 8px 0;
+  width: 200px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dropdown list styles */
+.edit-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.edit-dropdown ul li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.edit-dropdown ul li:hover {
+  background: #f0f0f0;
+}

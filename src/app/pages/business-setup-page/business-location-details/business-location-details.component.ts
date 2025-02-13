@@ -10,7 +10,7 @@ import {BusinessSetupService} from "../../../services/business-setup/business-se
 })
 export class BusinessLocationDetailsComponent {
 
-  businessDetailsForm: FormGroup;
+  businessLocationForm: FormGroup;
   submitted = false;
 
   warning_1: any = MANAGE_SETTINGS_CONSTANTS.Warning_1
@@ -25,7 +25,7 @@ export class BusinessLocationDetailsComponent {
   }
 
   ngOnInit(): void {
-    this.businessDetailsForm = this.formBuilder.group({
+    this.businessLocationForm = this.formBuilder.group({
       locName: [],
       locContactLink: [],
       locEmailLink: [],
@@ -34,12 +34,12 @@ export class BusinessLocationDetailsComponent {
 
   // convenience getter for easy access to form fields
   get fmp(): any {
-    return this.businessDetailsForm.controls;
+    return this.businessLocationForm.controls;
   }
 
 
-  onSubmitBusinessDetails() {
-    console.log(this.businessDetailsForm.value);
+  onSubmitBusinessLocation() {
+    console.log(this.businessLocationForm.value);
     /* let businessDetails = {businessName: this.businessDetailsForm.value.businessName};
 
      this.businessSetupService.saveBusinessDetails(businessDetails).subscribe((data: any) => {

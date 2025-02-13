@@ -168,6 +168,8 @@ const routes: Routes = [
   { path: 'edit', loadChildren: () => import('../edit-service-page/edit-service-page.module').then(m => m.EditServicePageModule) },
   { path: 'business-details', loadChildren: () => import('../business-details-page/business-details-page.module').then(m => m.BusinessDetailsPageModule) },
   { path: 'business-setup', loadChildren: () => import('../business-setup-page/business-setup-page.module').then(m => m.BusinessSetupPageModule) },
+  { path: 'business-location', loadChildren: () => import('../business-location-page/business-location-page.module').then(m => m.BusinessLocationPageModule) },
+  { path: 'Scheduled-shifts', loadChildren: () => import('../scheduled-shifts-page/scheduled-shifts-page.module').then(m => m.ScheduledShiftsPageModule) },
 ];
 
 @NgModule({

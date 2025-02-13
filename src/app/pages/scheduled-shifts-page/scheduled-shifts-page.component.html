@@ -1,0 +1,115 @@
+<div class="container py-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="fw-semibold">Scheduled Shifts</h1>
+        <div class="d-flex">
+            <!-- Options Dropdown -->
+            <div class="dropdown me-2">
+                <button class="app-button-secondary dropdown-toggle" type="button" id="optionsDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Options
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="optionsDropdown">
+                    <li><a class="dropdown-item" href="#">Scheduling settings</a></li>
+                </ul>
+            </div>
+
+            <!-- Add Button -->
+            <button class="app-button-primary" (click)="onAdd()">Add</button>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-end mt-5">
+        <div class="date-container d-flex border rounded-pill w-50 ">        <!-- Left Arrow -->
+            <button class="btn border-0 rounded-pill px-3" (click)="prevDate()">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+
+            <!-- Today Button -->
+            <button class="btn border-0 fw-bold px-3" (click)="setToday()">
+                Today
+            </button>
+
+            <!-- Selected Date (Click to Open Calendar) -->
+            <div class="flex-grow-1 text-center">
+                <button class="btn border-0 fw-bold w-100" (click)="picker.open()">
+                    {{ selectedDate | date: 'EEEE d MMM, yyyy' }}
+                </button>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" class="d-none">
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
+
+            <!-- Right Arrow -->
+            <button class="btn border-0 rounded-pill px-3" (click)="nextDate()">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+    <!--    <div class="schedule-container">-->
+    <!--        <div class="header-row fw-bold">-->
+    <!--            <div style="width: 150px;">Team member <span class="text-primary">Change</span></div>-->
+    <!--            <div style="flex: 1;">Mon, 10 Mar <br><small class="text-muted">18h</small></div>-->
+    <!--            <div style="flex: 1;">Tue, 11 Mar <br><small class="text-muted">18h</small></div>-->
+    <!--            <div style="flex: 1;">Wed, 12 Mar <br><small class="text-muted">18h</small></div>-->
+    <!--            <div style="flex: 1;">Thu, 13 Mar <br><small class="text-muted">18h</small></div>-->
+    <!--            <div style="flex: 1;">Fri, 14 Mar <br><small class="text-muted">18h</small></div>-->
+    <!--            <div style="flex: 1;">Sat, 15 Mar <br><small class="text-muted">14h</small></div>-->
+    <!--            <div style="flex: 1;">Sun, 16 Mar <br><small class="text-muted">0min</small></div>-->
+    <!--        </div>-->
+
+    <table class="schedule-table mt-5">
+        <thead>
+        <tr>
+            <th>Team member <a href="#" class="change">Change</a></th>
+            <th *ngFor="let day of weekDays">
+                {{ day.date }} <br> <small>{{ day.hours }}</small>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let member of members; let memberIndex = index">
+            <td class="profile">
+                <div class="profile-content">
+                    <img [src]="member.avatar" class="avatar" alt="avatar">
+                    <div>
+                        <div class="name">{{ member.name }}</div>
+                        <small class="text-muted">{{ member.hours }}</small>
+                    </div>
+                </div>
+
+                <!-- Edit Icon -->
+                <div class="edit-container">
+                    <span class="edit-icon" (click)="toggleEditDropdown(memberIndex, $event)">✏️</span>
+
+                    <!-- Edit Dropdown Menu (Positioned Under the Icon) -->
+                    <div class="edit-dropdown mt-2" *ngIf="selectedEditMemberIndex === memberIndex">
+                        <ul>
+                            <li (click)="setRegularShifts()">Set regular shifts</li>
+                            <li (click)="unassignFromLocation()">Unassign from location</li>
+                            <li (click)="editTeamMember()">Edit team member</li>
+                            <li (click)="deleteAllShifts()">Delete all shifts</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </td>
+
+            <td *ngFor="let slot of member.slots; let slotIndex = index"
+                class="time-slot"
+                (click)="toggleDropdown($event, memberIndex, slotIndex)">
+                <div class="slot-content">{{ slot }}</div>
+
+                <!-- Time Slot Dropdown -->
+                <div class="dropdown mt-2" *ngIf="selectedMemberIndex === memberIndex && selectedSlotIndex === slotIndex">
+                    <ul>
+                        <li (click)="editDay()">Edit this day</li>
+                        <li (click)="setRegularShifts()">Set regular shifts</li>
+                        <li (click)="addTimeOff()">Add time off</li>
+                        <li (click)="deleteShift()">Delete this shift</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+
+    </table>
+</div>
