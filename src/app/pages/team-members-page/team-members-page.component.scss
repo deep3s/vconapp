@@ -1,0 +1,16 @@
+.table th, .table td {
+  vertical-align: middle;
+}
+.circle {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.search-bar {
+  flex: 1;
+  max-width: 500px;
+}
+.btn-outline-secondary {
+  white-space: nowrap;
+}
