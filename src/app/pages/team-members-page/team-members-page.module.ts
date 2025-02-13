@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TeamMembersPageRoutingModule } from './team-members-page-routing.module';
 import { TeamMembersPageComponent } from './team-members-page.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { TeamMembersPageComponent } from './team-members-page.component';
   ],
   imports: [
     CommonModule,
-    TeamMembersPageRoutingModule
+    TeamMembersPageRoutingModule,
+    FormsModule
   ]
 })
 export class TeamMembersPageModule { }

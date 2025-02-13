@@ -3,7 +3,7 @@
         <div class="fs-4 fw-bold mb-0 d-flex">Team Members</div>
         <div class="d-flex align-items-center">
             <div class="dropdown me-2" (click)="toggleDropdown($event, 'optionsDropdown')">
-                <button class="app-button-secondary dropdown-toggle" id="optionsButton">Options</button>
+                <button class="app-button-secondary border dropdown-toggle" id="optionsButton">Options</button>
                 <ul class="dropdown-menu mt-3" [ngClass]="{'show': dropdowns['optionsDropdown']}">
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="#" (click)="copyShareLink($event)">
@@ -75,151 +75,174 @@
         </div>
 
     </div>
-    <div class="d-flex align-items-center bg-light p-3 rounded mt-3">
-        <!-- Search Bar -->
-        <div class="input-group me-2">
-    <span class="input-group-text bg-white border-0">
-      <i class="bi bi-search"></i>
-    </span>
-            <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search team members"
-            />
+    <div class="d-flex align-items-center bg-light p-2 rounded mt-4">
+        <div class="position-relative w-50">
+            <svg class="position-absolute top-50 start-0 translate-middle-y ms-2" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="20px" width="20px">
+                <path fill-rule="evenodd"
+                      d="M14.5 5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19M3 14.5C3 8.149 8.149 3 14.5 3S26 8.149 26 14.5c0 2.816-1.012 5.395-2.692 7.394l5.4 5.399a1 1 0 0 1-1.415 1.414l-5.399-5.399c-2 1.68-4.578 2.692-7.394 2.692C8.149 26 3 20.851 3 14.5"
+                      clip-rule="evenodd"></path>
+            </svg>
+            <input type="text" class="form-control ps-5  rounded-pill" placeholder="Search Team Members">
         </div>
 
-        <!-- Filters Button -->
-        <button class="btn btn-outline-secondary me-2">
-            <i class="bi bi-funnel"></i> Filters
-        </button>
-
-        <!-- Custom Order Dropdown -->
-        <div class="dropdown ms-auto">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                <i class="bi bi-list"></i> Custom order
+        <div class="ms-auto d-flex">
+            <button class="app-button-secondary  rounded-pill border d-flex align-items-center  me-5"  data-bs-toggle="offcanvas" data-bs-target="#filterPanel">
+                <i class="bi bi-funnel me-1"></i> Filters
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="20px"
+                     width="20px">
+                    <path fill-rule="evenodd"
+                          d="M7 4a1 1 0 0 1 1 1v11h2a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m9 0a1 1 0 0 1 1 1v5h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m9 0a1 1 0 0 1 1 1v15h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m-9 10a1 1 0 0 1 1 1v12a1 1 0 1 1-2 0V15a1 1 0 0 1 1-1m-9 6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m18 4a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
+                          clip-rule="evenodd">
+                    </path>
+                </svg>
             </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Ascending</a></li>
-                <li><a class="dropdown-item" href="#">Descending</a></li>
-                <li><a class="dropdown-item" href="#">Alphabetical</a></li>
-            </ul>
-        </div>
-    </div>
-    <div
-            class="container mt-3"
-            style="background-color: #f8f9fc; padding: 15px; border-radius: 8px; width: 100%;"
-    >
-        <!-- Top Bar -->
-        <div class="d-flex align-items-center justify-content-between">
-            <!-- Search Box -->
-            <div
-                    class="d-flex align-items-center"
-                    style="background: white; border-radius: 20px; border: 1px solid #ddd; padding: 5px 12px; width: 300px;"
-            >
-                <i class="bi bi-search" style="color: gray; margin-right: 8px;"></i>
-                <input
-                        type="text"
-                        class="form-control border-0 shadow-none"
-                        placeholder="Search team members"
-                        style="width: 100%;"
-                />
+
+            <!-- Offcanvas Sliding Panel (Right Side) -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="filterPanel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold">All filters</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="accordion" id="filterAccordion">
+                        <!-- Locations -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#locationFilter">
+                                    <i class="bi bi-geo-alt me-2"></i> Locations
+                                </button>
+                            </h2>
+                            <div id="locationFilter" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <input type="text" class="form-control" placeholder="Search locations">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Type -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#typeFilter">
+                                    <i class="bi bi-calendar me-2"></i> Type
+                                </button>
+                            </h2>
+                            <div id="typeFilter" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <select class="form-select">
+                                        <option>All Types</option>
+                                        <option>Type 1</option>
+                                        <option>Type 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#statusFilter">
+                                    <i class="bi bi-list me-2"></i> Status
+                                </button>
+                            </h2>
+                            <div id="statusFilter" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <select class="form-select">
+                                        <option>All Status</option>
+                                        <option>Active</option>
+                                        <option>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Buttons -->
+                <div class="offcanvas-footer p-3 d-flex justify-content-between border-top">
+                    <button class="btn btn-outline-dark">Clear filters</button>
+                    <button class="btn btn-dark">Apply</button>
+                </div>
             </div>
 
-            <!-- Filters Button -->
-            <button
-                    class="btn d-flex align-items-center"
-                    style="background: white; border: 1px solid #ddd; border-radius: 20px; padding: 5px 15px; margin-left: 10px;"
-            >
-                <i class="bi bi-funnel" style="margin-right: 5px;"></i> Filters
-            </button>
-
-            <!-- Sorting Dropdown -->
             <div class="dropdown">
-                <button
-                        class="btn dropdown-toggle d-flex align-items-center"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        style="background: white; border: 1px solid #ddd; border-radius: 20px; padding: 5px 15px;"
-                >
-                    Updated at (newest first) <i class="bi bi-list" style="margin-left: 5px;"></i>
+                <button class="app-button-secondary border rounded-pill dropdown-toggle::after { display: none !important; }"
+                        type="button" data-bs-toggle="dropdown">
+                    {{ selectedOption }}
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="20px"
+                         width="20px">
+                        <path fill-rule="evenodd"
+                              d="M5 8a1 1 0 0 1 1-1h17a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1m18 5a1 1 0 0 1 1 1v9.586l3.293-3.293a1 1 0 0 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 0 1 1.414-1.414L22 23.586V14a1 1 0 0 1 1-1M5 16a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1m0 8a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1"
+                              clip-rule="evenodd">
+                        </path>
+                    </svg>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Newest First</a></li>
-                    <li><a class="dropdown-item" href="#">Oldest First</a></li>
+                    <li *ngFor="let option of options">
+                        <a class="dropdown-item" (click)="selectOption(option)">{{ option }}</a>
+                    </li>
                 </ul>
             </div>
-        </div>
 
-        <!-- Table -->
-        <div class="table-responsive mt-3">
-            <table class="table align-middle">
-                <thead>
-                <tr>
-                    <th><input type="checkbox" /></th>
-                    <th>Name <i class="bi bi-arrow-up-down"></i></th>
-                    <th>Contact</th>
-                    <th>Rating <i class="bi bi-arrow-up-down"></i></th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><input type="checkbox" /></td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <div
-                                    class="rounded-circle d-flex justify-content-center align-items-center"
-                                    style="width: 40px; height: 40px; background-color: #4caf50; color: white; font-weight: bold;"
-                            >
-                                T
-                            </div>
-                            <span class="ms-2 fw-bold">Tejaswini G</span>
-                        </div>
-                    </td>
-                    <td>
-                        <a href="mailto:vcon.tejaswinig@gmail.com">vcon.tejaswinig@gmail.com</a><br />
-                        <span class="text-primary">+91 73384 92236</span>
-                    </td>
-                    <td>No reviews yet</td>
-                    <td>
-                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            Actions
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">View</a></li>
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" /></td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img
-                                    src="https://randomuser.me/api/portraits/women/44.jpg"
-                                    class="rounded-circle"
-                                    style="width: 40px; height: 40px;"
-                            />
-                            <span class="ms-2 fw-bold">Wendy Smith (Demo)</span>
-                        </div>
-                    </td>
-                    <td>No email</td>
-                    <td>No reviews yet</td>
-                    <td>
-                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            Actions
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">View</a></li>
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
         </div>
+    </div>
+
+    <div class="container mt-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>Name <span><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                    width="20px" height="20px">
+                    <path fill-rule="evenodd"
+                          d="M15.293 6.626a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L16 8.748l-4.293 4.292a1 1 0 1 1-1.414-1.414zm-5 12.334a1 1 0 0 1 1.414 0L16 23.252l4.293-4.292a1 1 0 1 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 0 1 0-1.414"
+                          clip-rule="evenodd">
+                    </path>
+                </svg></span>
+                </th>
+                <th>Contact</th>
+                <th>Rating <span><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                      width="20px" height="20px">
+                    <path fill-rule="evenodd"
+                          d="M15.293 6.626a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L16 8.748l-4.293 4.292a1 1 0 1 1-1.414-1.414zm-5 12.334a1 1 0 0 1 1.414 0L16 23.252l4.293-4.292a1 1 0 1 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 0 1 0-1.414"
+                          clip-rule="evenodd"></path></svg></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+                <td><input type="checkbox"></td>
+                <td class="d-flex align-items-center">
+                    <img *ngIf="user.image; else defaultImage" [src]="user.image" class="rounded-circle border me-2"
+                         width="40" height="40">
+                    <ng-template #defaultImage>
+                        <img src="../img-uni1.jpg" class="rounded-circle border me-2" width="40" height="40">
+                    </ng-template>
+                    <span class="fw-bold">{{ user.name }}</span>
+                </td>
+                <td>
+                    <a href="mailto:{{ user.email }}" class="text-primary">{{ user.email }}</a> <br>
+                    <a href="tel:{{ user.phone }}" class="text-primary">{{ user.phone }}</a>
+                </td>
+                <td class="text-muted">No reviews yet</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="app-button-secondary border rounded-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                            <li><a class="dropdown-item" href="#">View Calender</a></li>
+                            <li><a class="dropdown-item" href="#">View schedule shifts</a></li>
+                            <li><a class="dropdown-item" href="#">Add time off</a></li>
+                            <li><a class="dropdown-item" href="#">Archive</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>
+
