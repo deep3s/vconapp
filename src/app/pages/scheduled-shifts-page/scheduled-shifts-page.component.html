@@ -12,25 +12,28 @@
                     <li><a class="dropdown-item" href="#">Scheduling settings</a></li>
                 </ul>
             </div>
-
             <!-- Add Button -->
-            <button class="app-button-primary" (click)="onAdd()">Add</button>
+            <button class="app-button-primary"
+
+
+            >Add</button>
         </div>
     </div>
-    <div class="container d-flex justify-content-end mt-5">
-        <div class="date-container d-flex border rounded-pill w-50 ">        <!-- Left Arrow -->
-            <button class="btn border-0 rounded-pill px-3" (click)="prevDate()">
+
+    <!-- Date Selector -->
+    <div class="container d-flex justify-content-end mt-4">
+        <div class="d-flex border rounded-pill w-50 align-items-center">
+            <!-- Left Arrow -->
+            <button class="btn border-0 px-3" (click)="prevDate()">
                 <i class="bi bi-chevron-left"></i>
             </button>
 
             <!-- Today Button -->
-            <button class="btn border-0 fw-bold px-3" (click)="setToday()">
-                Today
-            </button>
+            <button class="btn border-0 fw-bold px-3" (click)="setToday()">Today</button>
 
-            <!-- Selected Date (Click to Open Calendar) -->
-            <div class="flex-grow-1 text-center">
-                <button class="btn border-0 fw-bold w-100" (click)="picker.open()">
+            <!-- Selected Date -->
+            <div class="flex-grow-1 text-center position-relative">
+                <button class="btn border-0 fw-bold w-100" (click)="openDatePicker($event)">
                     {{ selectedDate | date: 'EEEE d MMM, yyyy' }}
                 </button>
                 <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" class="d-none">
@@ -38,78 +41,88 @@
             </div>
 
             <!-- Right Arrow -->
-            <button class="btn border-0 rounded-pill px-3" (click)="nextDate()">
+            <button class="btn border-0 px-3" (click)="nextDate()">
                 <i class="bi bi-chevron-right"></i>
             </button>
         </div>
     </div>
-    <!--    <div class="schedule-container">-->
-    <!--        <div class="header-row fw-bold">-->
-    <!--            <div style="width: 150px;">Team member <span class="text-primary">Change</span></div>-->
-    <!--            <div style="flex: 1;">Mon, 10 Mar <br><small class="text-muted">18h</small></div>-->
-    <!--            <div style="flex: 1;">Tue, 11 Mar <br><small class="text-muted">18h</small></div>-->
-    <!--            <div style="flex: 1;">Wed, 12 Mar <br><small class="text-muted">18h</small></div>-->
-    <!--            <div style="flex: 1;">Thu, 13 Mar <br><small class="text-muted">18h</small></div>-->
-    <!--            <div style="flex: 1;">Fri, 14 Mar <br><small class="text-muted">18h</small></div>-->
-    <!--            <div style="flex: 1;">Sat, 15 Mar <br><small class="text-muted">14h</small></div>-->
-    <!--            <div style="flex: 1;">Sun, 16 Mar <br><small class="text-muted">0min</small></div>-->
-    <!--        </div>-->
 
-    <table class="schedule-table mt-5">
+    <!-- Tooltip (Initially Hidden) -->
+    <div *ngIf="tooltipVisible" [ngStyle]="{'top.px': tooltipY, 'left.px': tooltipX}"
+         class="position-fixed bg-dark text-light border p-2 rounded shadow-sm">
+        <p class="fw-bold">{{ tooltipData.date }}</p>
+        <p><span class="badge bg-success me-1"></span> Bookable: {{ tooltipData.bookable }}h</p>
+        <p><span class="badge bg-danger me-1"></span> Non-bookable: {{ tooltipData.nonBookable }}h</p>
+    </div>
+
+    <!-- Schedule Table -->
+    <table class="table mt-4 text-center">
         <thead>
         <tr>
-            <th>Team member <a href="#" class="change">Change</a></th>
-            <th *ngFor="let day of weekDays">
-                {{ day.date }} <br> <small>{{ day.hours }}</small>
+            <th class="text-start">
+                Team member
+                <a href="#" class="text-primary ms-2">Change</a>
+            </th>
+            <th *ngFor="let day of weekDays" class="position-relative" (click)="showShiftDetails($event, day)">
+                {{ day.date }} <br>
+                <small class="text-muted">{{ day.hours }}</small>
             </th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let member of members; let memberIndex = index">
-            <td class="profile">
-                <div class="profile-content">
-                    <img [src]="member.avatar" class="avatar" alt="avatar">
-                    <div>
-                        <div class="name">{{ member.name }}</div>
-                        <small class="text-muted">{{ member.hours }}</small>
-                    </div>
+            <td class="d-flex align-items-center">
+                <img [src]="member.avatar" class="rounded-circle me-2" style="width: 40px; height: 40px;" alt="avatar">
+                <div>
+                    <div class="fw-bold">{{ member.name }}</div>
+                    <small class="text-muted">{{ member.hours }}</small>
                 </div>
 
                 <!-- Edit Icon -->
-                <div class="edit-container">
-                    <span class="edit-icon" (click)="toggleEditDropdown(memberIndex, $event)">✏️</span>
-
-                    <!-- Edit Dropdown Menu (Positioned Under the Icon) -->
-                    <div class="edit-dropdown mt-2" *ngIf="selectedEditMemberIndex === memberIndex">
-                        <ul>
-                            <li (click)="setRegularShifts()">Set regular shifts</li>
-                            <li (click)="unassignFromLocation()">Unassign from location</li>
-                            <li (click)="editTeamMember()">Edit team member</li>
-                            <li (click)="deleteAllShifts()">Delete all shifts</li>
-                        </ul>
-                    </div>
+                <div class="ms-auto">
+                    <span class="text-primary cursor-pointer" (click)="toggleEditDropdown(memberIndex, $event)">✏️</span>
                 </div>
-
             </td>
 
             <td *ngFor="let slot of member.slots; let slotIndex = index"
-                class="time-slot"
+                class="position-relative cursor-pointer"
                 (click)="toggleDropdown($event, memberIndex, slotIndex)">
-                <div class="slot-content">{{ slot }}</div>
 
-                <!-- Time Slot Dropdown -->
-                <div class="dropdown mt-2" *ngIf="selectedMemberIndex === memberIndex && selectedSlotIndex === slotIndex">
-                    <ul>
-                        <li (click)="editDay()">Edit this day</li>
-                        <li (click)="setRegularShifts()">Set regular shifts</li>
-                        <li (click)="addTimeOff()">Add time off</li>
-                        <li (click)="deleteShift()">Delete this shift</li>
+                <div *ngIf="slot; else emptySlot" class="hours p-2 border rounded">
+                    {{ slot }}
+                </div>
+
+                <!-- Empty Slot with Add Button -->
+                <ng-template #emptySlot>
+                    <button class="app-button-secondary btn-sm">+</button>
+                </ng-template>
+
+                <!-- Dropdown for Shift Actions -->
+                <div class="position-absolute bg-white border shadow-sm rounded p-2"
+                     *ngIf="selectedMemberIndex === memberIndex && selectedSlotIndex === slotIndex">
+                    <ul class="list-unstyled m-0 p-0">
+                        <li class="p-2 cursor-pointer" (click)="editDay()">Edit this day</li>
+                        <li class="p-2 cursor-pointer" (click)="setRegularShifts()">Set regular shifts</li>
+                        <li class="p-2 cursor-pointer" (click)="addTimeOff()">Add time off</li>
+                        <li class="p-2 cursor-pointer text-danger" (click)="deleteShift()">Delete this shift</li>
                     </ul>
                 </div>
             </td>
         </tr>
         </tbody>
-
-
     </table>
+
+    <!-- Shift Info -->
+    <div class="d-flex bg-light p-3 rounded mt-4">
+        <div class="me-2">
+            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24">
+                <path fill-rule="evenodd" d="M22.555 3.262a11 11 0 0 0-6.482-1.926c-5.973.138-10.766 5.1-10.74 11.066a10.94 10.94 0 0 0 4.221 8.596 2.05 2.05 0 0 1 .78 1.592v.746a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-.749a2.03 2.03 0 0 1 .792-1.602 11 11 0 0 0-.571-17.723m-1.131 1.65a9 9 0 0 0-5.304-1.576c-4.877.112-8.81 4.175-8.787 9.058a8.94 8.94 0 0 0 3.452 7.028 4.048 4.048 0 0 1 1.549 3.158v.756h8v-.752a4.02 4.02 0 0 1 1.56-3.174 9 9 0 0 0-.47-14.498M11.333 27.336a1 1 0 0 0 0 2h10a1 1 0 1 0 0-2z" clip-rule="evenodd"></path>
+                <path d="M17.513 5.45a1 1 0 1 0-.334 1.972 4.99 4.99 0 0 1 4.081 4.071 1 1 0 0 0 1.971-.339 6.99 6.99 0 0 0-5.718-5.704"></path>
+            </svg>
+        </div>
+        <p class="m-0">
+            The team roster shows your availability for bookings and is not linked to your business opening hours.
+            To set your opening hours, <a href="/setup/locations/1550852/opening-hours/edit" class="text-primary">click here.</a>
+        </p>
+    </div>
 </div>
