@@ -1,0 +1,93 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <div class="section-heading-h3">
+            <h2 class="fw-bold">Appointments</h2>
+            <div class="text-secondary">View, filter and export appointments booked by your clients.</div>
+        </div>
+        <div class="btn">
+            <button class="btn btn-outline-secondary">Export ▼</button>
+        </div>
+    </div>
+    <!-- Search and Filter Row -->
+    <div class="d-flex gap-3 align-items-center bg-light p-3 rounded mb-3 mt-5">
+        <div class="position-relative w-25">
+            <svg class="position-absolute top-50 start-0 translate-middle-y ms-2" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="20px" width="20px">
+                <path fill-rule="evenodd"
+                      d="M14.5 5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19M3 14.5C3 8.149 8.149 3 14.5 3S26 8.149 26 14.5c0 2.816-1.012 5.395-2.692 7.394l5.4 5.399a1 1 0 0 1-1.415 1.414l-5.399-5.399c-2 1.68-4.578 2.692-7.394 2.692C8.149 26 3 20.851 3 14.5"
+                      clip-rule="evenodd"></path>
+            </svg>
+            <input type="text" class="form-control ps-5" placeholder="Search by Reference or Client">
+        </div>
+
+        <div>
+            <button class="app-button-secondary border  rounded-pill me-2">
+                <i class="bi bi-calendar"></i> Month to date
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20">
+                    <path fill-rule="evenodd"
+                          d="M10 2a1 1 0 0 1 1 1v1h10V3a1 1 0 1 1 2 0v1h3a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3V3a1 1 0 0 1 1-1M9 6H6v4h20V6h-3v1a1 1 0 1 1-2 0V6H11v1a1 1 0 1 1-2 0zm17 6H6v14h20z"
+                          clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <button class="app-button-secondary border  rounded-pill me-2">
+                <i class="bi bi-funnel"></i> Filters
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20">
+                    <path fill-rule="evenodd"
+                          d="M7 4a1 1 0 0 1 1 1v11h2a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m9 0a1 1 0 0 1 1 1v5h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m9 0a1 1 0 0 1 1 1v15h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m-9 10a1 1 0 0 1 1 1v12a1 1 0 1 1-2 0V15a1 1 0 0 1 1-1m-9 6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m18 4a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
+                          clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <button class="app-button-secondary border  rounded-pill me-2 ">
+                <i class="bi bi-sort-up-alt"></i> Scheduled Date (newest first)
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20">
+                    <path fill-rule="evenodd"
+                          d="M5 8a1 1 0 0 1 1-1h17a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1m18 5a1 1 0 0 1 1 1v9.586l3.293-3.293a1 1 0 0 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 0 1 1.414-1.414L22 23.586V14a1 1 0 0 1 1-1M5 16a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1m0 8a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1"
+                          clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Appointments Table -->
+    <div class="table-responsive ">
+        <table class="table table-hover">
+            <thead>
+            <tr class="text-secondary">
+                <th>Ref #</th>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Created by</th>
+                <th>Created Date</th>
+                <th>Scheduled Date</th>
+                <th>Duration</th>
+                <th>Location</th>
+                <th>Team Member</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let appointment of appointments">
+                <td><a href="#" class="text-primary text-decoration-none">{{ appointment.ref }}</a></td>
+                <td>{{ appointment.client }}</td>
+                <td>{{ appointment.service }}</td>
+                <td>{{ appointment.createdBy }}</td>
+                <td>{{ appointment.createdDate }}</td>
+                <td>{{ appointment.scheduledDate }}</td>
+                <td>{{ appointment.duration }}</td>
+                <td>{{ appointment.location }}</td>
+                <td>{{ appointment.teamMember }}</td>
+                <td>₹{{ appointment.price.toFixed(2) }}</td>
+                <td>
+            <span class="badge rounded-pill px-3 py-2" [ngClass]="getStatusClass(appointment.status)">
+              {{ appointment.status }}
+            </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="text-secondary text-center">Showing {{ appointments.length }} results</p>
+</div>
+
+

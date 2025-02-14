@@ -4,12 +4,34 @@
             <button class="app-button-secondary me-4">Close</button>
             <button class="app-button-primary">Save</button>
         </div>
-        <div class=" section-heading-h2">Edit service</div>
+        <div class=" section-heading-h2 fw-bold fs-2">Edit service
+
+
+        </div>
     </div>
-    <div class="details-section d-flex">
-        <div class="left-section w-25"></div>
+    <div class="details-section d-flex gap-5">
+        <div class="left-section h-100 w-25 bg-white border rounded p-3">
+            <!-- Main Categories -->
+            <div *ngFor="let detail of details"
+                 class="py-2 px-3 d-flex align-items-center justify-content-between rounded"
+                 [ngClass]="{'active-details': detail.active}"
+                 (click)="selectDetails(detail)">
+                <div class="">{{ detail.name }}</div>
+            </div>
+
+            <hr class="my-2">
+
+            <!-- Settings Section -->
+            <div class="fw-bold text-dark px-3 py-2 fw-bold">Settings</div>
+            <div *ngFor="let setting of settings"
+                 class="py-2 px-3 d-flex align-items-center justify-content-between rounded"
+                 [ngClass]="{'active-details': setting.active}"
+                 (click)="selectDetails(setting)">
+                <div>{{ setting.name }}</div>
+            </div>
+        </div>
         <div class="right-section w-75">
-            <div class="section-heading-h3 fw-bold fs-4">Basic Service</div>
+            <div class="section-heading-h3 fw-bold fs-4 ">Basic Service</div>
             <form [formGroup]="userForm" class="user-profile-form" (ngSubmit)="onSubmitPhotoProfile()">
                 <div class="row">
                     <div class="col-12">
@@ -84,8 +106,15 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-between align-bottom pb-3  ">
-                <button class="app-button-secondary">Add Variant
+            <div class="d-flex justify-content-between align-bottom pb-3 ">
+                <button class="app-button-secondary ">
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="25px"
+                         width="25px" >
+                        <path fill-rule="evenodd"
+                              d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5M3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16m13-6a1 1 0 0 1 1 1v4h4a1 1 0 1 1 0 2h-4v4a1 1 0 1 1-2 0v-4h-4a1 1 0 1 1 0-2h4v-4a1 1 0 0 1 1-1"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                    Add Variant
                 </button>
                 <a href="" class="advanced ">Advanced Options</a>
             </div>

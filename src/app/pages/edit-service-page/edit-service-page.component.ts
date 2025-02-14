@@ -45,4 +45,27 @@ export class EditServicePageComponent implements OnInit {
   onSubmitPhotoProfile() {
 
   }
+
+  details: any = [
+    {name: 'Basic details', active: true},
+    {name: 'Team members'},
+    {name: 'Resources'}
+  ];
+
+  settings: any = [
+    {name: 'Online booking'},
+    {name: 'Forms',},
+    {name: 'Commissions'},
+    {name: 'Settings'}
+  ];
+
+  selectedDetails: any = this.details[0];
+
+  selectDetails(selected: any) {
+    this.details.forEach(item => item.active = false);
+    this.settings.forEach(item => item.active = false);
+
+    selected.active = true;
+    this.selectedDetails = selected;
+  }
 }

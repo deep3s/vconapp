@@ -259,6 +259,7 @@ export class ServicesBookingsPageComponent {
         this.selectedCategory = category;
     }
 
+
     // Function to emit event when service is added
     addService(service: any) {
         if(!this.cartServices.find(cs => cs.name === service.name)) {

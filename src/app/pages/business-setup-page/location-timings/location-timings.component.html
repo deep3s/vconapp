@@ -1,0 +1,32 @@
+<div class="container w-50 p-3">
+    <div class="text-center mt-3">
+        <div class="text-secondary">Add a new location</div>
+        <div class="fw-bold fs-3 mb-4">Opening hours</div>
+    </div>
+
+    <div class="bg-white border rounded p-3">
+        <div *ngFor="let day of days; let i = index" class="d-flex align-items-center border-bottom py-3">
+
+            <!-- Checkbox & Day Name -->
+            <div class="col-3 d-flex align-items-center gap-2">
+                <input type="checkbox" [(ngModel)]="day.open" class="form-check-input" (change)="toggleDay(i)">
+                <span class="fw-bold">{{ day.name }}</span>
+            </div>
+
+            <!-- Time Selectors -->
+            <div class="col-6 d-flex align-items-center gap-2">
+                <select class="form-select" [(ngModel)]="day.openingTime" [attr.disabled]="!day.open ? true : null">
+                    <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+                </select>
+                <span class="fw-bold">-</span>
+                <select class="form-select" [(ngModel)]="day.closingTime" [attr.disabled]="!day.open ? true : null">
+                    <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+                </select>
+            </div>
+
+            <!-- Add Button -->
+            <button class="btn btn-outline-primary border-0 fs-5" [disabled]="!day.open">+</button>
+        </div>
+    </div>
+</div>
+
