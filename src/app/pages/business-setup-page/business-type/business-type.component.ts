@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'business-type',
@@ -6,7 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./business-type.component.scss']
 })
 export class BusinessTypeComponent {
-  @Input() multiSelect: boolean = false; // Single or multi-selection
+  @Input() multiSelect: boolean = false;
+  @Output() selectedBusinessType = new EventEmitter<any>(); // Emit selected categories
 
   categories = [
     {name: 'Hair Salon', icon: 'bi bi-scissors'},
@@ -32,7 +33,6 @@ export class BusinessTypeComponent {
 
   selectCategory(category: any) {
     if (this.multiSelect) {
-      // Multi-select: Allow up to 5 selections
       const index = this.selectedCategories.indexOf(category);
       if (index === -1) {
         if (this.selectedCategories.length < 5) {
@@ -42,17 +42,28 @@ export class BusinessTypeComponent {
         this.selectedCategories.splice(index, 1);
       }
     } else {
-      // Single-select
       this.selectedCategories = [category];
     }
+
+    this.emitSelection();
   }
 
   updateOtherCategory(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     this.otherCategory = inputElement.value;
+    this.emitSelection();
   }
 
   isOtherSelected(): boolean {
     return this.selectedCategories.some(c => c.name === 'Other');
+  }
+
+  // Emit selected categories to parent
+  emitSelection() {
+    const selectedData = this.isOtherSelected()
+        ? [...this.selectedCategories, { name: 'Other', value: this.otherCategory }]
+        : this.selectedCategories;
+
+    this.selectedBusinessType.emit(selectedData);
   }
 }

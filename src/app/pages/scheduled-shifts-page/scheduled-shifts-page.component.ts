@@ -104,9 +104,10 @@ export class ScheduledShiftsPageComponent {
     this.selectedDate = new Date();
   }
 
-  // onAdd() {
-  //   this.router.navigate(['/business-setup']);
-  // }
+  onAdd() {
+    this.router.navigate(['/business-setup']);
+  }
+
   tooltipVisible = false;
   tooltipX = 0;
   tooltipY = 0;
