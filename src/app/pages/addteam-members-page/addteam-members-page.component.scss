@@ -1,0 +1,26 @@
+.active-details {
+  background-color: #f0f0ff; /* Light blue highlight */
+}
+.profile{
+  margin-left: 60px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.color-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent;
+  display: inline-block;
+}
+
+.color-circle:hover {
+  transform: scale(1.1);
+}
+
+.selected {
+  border: 3px solid blue;
+}

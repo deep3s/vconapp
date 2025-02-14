@@ -171,6 +171,7 @@ const routes: Routes = [
   { path: 'sales-appointment', loadChildren: () => import('../sales-appointment-page/sales-appointment-page.module').then(m => m.SalesAppointmentPageModule) },
   { path: 'settings', loadChildren: () => import('../settings-page/settings-page.module').then(m => m.SettingsPageModule) },
   { path: 'team-members', loadChildren: () => import('../team-members-page/team-members-page.module').then(m => m.TeamMembersPageModule) },
+  { path: 'add-team', loadChildren: () => import('../addteam-members-page/addteam-members-page.module').then(m => m.AddteamMembersPageModule) },
 ];
 
 @NgModule({
