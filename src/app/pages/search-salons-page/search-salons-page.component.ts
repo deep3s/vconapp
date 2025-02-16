@@ -9,7 +9,8 @@ import {Router} from "@angular/router";
 export class SearchSalonsPageComponent {
     latitude: number;
     longitude: number;
-    salons = [{
+    salons = [
+        {
         name: 'V-cut Salon',
         image: 'https://images.fresha.com/locations/location-profile-images/333200/304740/88306814-2894-45a1-a253-2778723d598c.jpg?class=width-small',
         address: 'Hulimavu, Bangalore',

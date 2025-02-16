@@ -9,10 +9,19 @@
         <div class="divider"></div>
 
         <div class="business-location">
-            <label class="input-label fw-bold" for="businessName">Where is your business located?</label>
-            <input formControlName="businessName" id="businessName" name="title"
-                   class="app-text-box form-control" maxlength="200">
-
+            <label class="input-label fw-bold">Where is your business located?</label>
+            <!--<input formControlName="businessName" id="businessName" name="title"
+                   class="app-text-box form-control" maxlength="200">-->
+            <div class="w-100">
+                <input type="text" class="app-text-box form-control w-100"
+                       matInput [formControl]="searchControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of suggestions | async" [value]="option"
+                    (click)="selectSuggestion(option)">
+                        {{ option }}
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
             <div class="location mt-3 bg-white border rounded p-3 w-100 fw-semibold">
                 <div class="row">
                     <div class="col-md-4">

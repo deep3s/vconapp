@@ -1,27 +1,26 @@
 <div class="d-flex justify-content-center">
-<div class="bus-type  w-50 ">
-    <div class="container mt-4">
-        <div class="row g-3">
-            <div class="col-md-3 col-sm-4 col-6" *ngFor="let category of categories" (click)="selectCategory(category)">
-                <div class="category-box" [class.selected]="selectedCategories.includes(category)">
-                    <div class="icon">
-                        <i [class]="category.icon"></i>
-                    </div>
-                    <p>{{ category.name }}</p>
-                    <div class="checkmark" *ngIf="selectedCategories.includes(category)">
-                        <i class="bi bi-check-circle-fill"></i>
+    <div class="bus-type  w-50 ">
+        <div class="container mt-4">
+            <div class="row g-3">
+                <div class="col-md-3 col-sm-4 col-6" *ngFor="let category of categories"
+                     (click)="selectCategory(category)">
+                    <div class="category-box" [class.selected]="selectedCategories.includes(category)">
+                        <div class="icon">
+                            <i [class]="category.icon"></i>
+                        </div>
+                        <p>{{ category.name }}</p>
+                        <div class="checkmark" *ngIf="selectedCategories.includes(category)">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Show input field when 'Other' is selected -->
-        <div *ngIf="isOtherSelected()" class="mt-3">
-            <label class="form-label">Other business type</label>
-            <input type="text" class="form-control" (input)="updateOtherCategory($event)">
+            <!-- Show input field when 'Other' is selected -->
+            <div *ngIf="isOtherSelected()" class="mt-3">
+                <label class="form-label">Other business type</label>
+                <input type="text" class="form-control" (input)="updateOtherCategory($event)">
+            </div>
         </div>
     </div>
-
-
-</div>
 </div>

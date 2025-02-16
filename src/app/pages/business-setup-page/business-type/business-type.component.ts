@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class BusinessTypeComponent {
   @Input() multiSelect: boolean = false;
-  @Output() selectedBusinessType = new EventEmitter<any>(); // Emit selected categories
+  @Output() businessTypesSelected = new EventEmitter<any>(); // Emit selected categories
 
   categories = [
     {name: 'Hair Salon', icon: 'bi bi-scissors'},
@@ -64,6 +64,6 @@ export class BusinessTypeComponent {
         ? [...this.selectedCategories, { name: 'Other', value: this.otherCategory }]
         : this.selectedCategories;
 
-    this.selectedBusinessType.emit(selectedData);
+    this.businessTypesSelected.emit(selectedData);
   }
 }

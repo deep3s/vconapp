@@ -32,6 +32,7 @@
                                    type="text"/>
                             <div *ngIf="submitted && fmp.locContactLink.errors" class="invalid-feedback">
                                 <div *ngIf="fmp.locContactLink.errors.required">Location contact number is required</div>
+                                <div *ngIf="fmp.locContactLink.errors.invalidPhoneNumber">Phone number is not valid</div>
                             </div>
                         </div>
                     </div>
@@ -44,9 +45,10 @@
                                type="text"/>
                         <div *ngIf="submitted && fmp.locEmailLink.errors" class="invalid-feedback">
                             <div *ngIf="fmp.locEmailLink.errors.required">Location email address is required</div>
+                            <div *ngIf="fmp.locEmailLink.errors.email">Email is not valid</div>
                         </div>
                     </div>
-                    <div style="display: flex;">
+                    <div class="d-flex justify-content-end">
                         <button class="app-button-primary mt-3" style="margin-left: auto;" (click)="onSubmitBusinessLocation()">Save</button>
                     </div>
                 </div>
