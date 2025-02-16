@@ -1,4 +1,4 @@
-<div class="container w-50 p-3">
+<div class="container w-50 p-3 business-location-address">
 <!--    <div class="text-center mt-3">-->
 <!--        <div class="text-secondary">Add a new location</div>-->
 <!--        <div class="fw-bold fs-3 mb-4">About your location</div>-->
@@ -16,9 +16,9 @@
                 <input type="text" class="app-text-box form-control w-100"
                        matInput [formControl]="searchControl" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of suggestions | async" [value]="option"
-                    (click)="selectSuggestion(option)">
-                        {{ option }}
+                    <mat-option *ngFor="let location of suggestions | async" [value]="location"
+                                (click)="selectSuggestion(location, $event)">
+                        {{ location.description }}
                     </mat-option>
                 </mat-autocomplete>
             </div>
@@ -79,6 +79,8 @@
             Map location
             <div class="input-label fw-bold">Drag the map so the pin matches the exact location of your business location.</div>
             <div class="divider"></div>
+
+            <div id="map" class="map-section"></div>
         </div>
     </div>
 

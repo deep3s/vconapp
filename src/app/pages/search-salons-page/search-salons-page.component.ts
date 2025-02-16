@@ -112,7 +112,7 @@ export class SearchSalonsPageComponent {
         }, 500)
     }
 
-    initMap1(lat:number, lng:number) {
+    initMap(lat:number, lng:number) {
         // @ts-ignore
         const map = new mappls.Map('map', {center: [lat, lng]});
         map.setZoom(15);
@@ -131,7 +131,7 @@ export class SearchSalonsPageComponent {
                 (position) => {
                     this.latitude = position.coords.latitude;
                     this.longitude = position.coords.longitude;
-                    this.initMap1(this.latitude, this.longitude);
+                    this.initMap(this.latitude, this.longitude);
                     console.error('Current location:', this.latitude, this.longitude);
 
                 },
