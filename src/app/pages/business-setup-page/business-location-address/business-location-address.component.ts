@@ -34,7 +34,13 @@ export class BusinessLocationAddressComponent implements OnInit {
   initMap(lat:number, lng:number) {
     // @ts-ignore
     const map = new mappls.Map('map', {center: [lat, lng]});
-    map.setZoom(20);
+    map.setZoom(17);
+
+    // @ts-ignore
+    const marker = new mappls.Marker({
+      map: map,
+      position: {lat, lng}
+    });
     // @ts-ignore
     mappls.setStyle('grey-day');
   }
