@@ -168,12 +168,10 @@ const routes: Routes = [
   { path: 'edit', loadChildren: () => import('../edit-service-page/edit-service-page.module').then(m => m.EditServicePageModule) },
   { path: 'business-details', loadChildren: () => import('../business-details-page/business-details-page.module').then(m => m.BusinessDetailsPageModule) },
   { path: 'business-setup', loadChildren: () => import('../business-setup-page/business-setup-page.module').then(m => m.BusinessSetupPageModule) },
-
-  { path: 'business-location', loadChildren: () => import('../business-location-page/business-location-page.module').then(m => m.BusinessLocationPageModule) },
-  { path: 'Scheduled-shifts', loadChildren: () => import('../scheduled-shifts-page/scheduled-shifts-page.module').then(m => m.ScheduledShiftsPageModule) },
-
-  { path: 'sales-appointment', loadChildren: () => import('../sales-appointment-page/sales-appointment-page.module').then(m => m.SalesAppointmentPageModule) }
-
+  { path: 'sales-appointment', loadChildren: () => import('../sales-appointment-page/sales-appointment-page.module').then(m => m.SalesAppointmentPageModule) },
+  { path: 'settings', loadChildren: () => import('../settings-page/settings-page.module').then(m => m.SettingsPageModule) },
+  { path: 'team-members', loadChildren: () => import('../team-members-page/team-members-page.module').then(m => m.TeamMembersPageModule) },
+  { path: 'add-team', loadChildren: () => import('../addteam-members-page/addteam-members-page.module').then(m => m.AddteamMembersPageModule) },
 ];
 
 @NgModule({

@@ -1,4 +1,3 @@
-
 <div class="business-setup mt-5">
     <div class="p-4 position-relative">
         <!-- Header Section -->
@@ -12,12 +11,13 @@
             <div class="flex-grow-1"></div>
 
             <!-- Next/Submit Button (Always on Right) -->
-            <button class="btn btn-primary" (click)="nextStep()" *ngIf="step < 3">
+            <button class="btn btn-primary" (click)="nextStep()" *ngIf="step < 7">
                 Next step
             </button>
-            <button class="btn btn-success" (click)="submitForm()" *ngIf="step === 3">
+            <button class="btn btn-success" (click)="submitForm()" *ngIf="step === 7">
                 Submit
             </button>
+
         </div>
 
         <!-- Progress Bar -->
@@ -51,28 +51,31 @@
             <div *ngIf="step === 3">
                 <business-type [multiSelect]="true"></business-type>
             </div>
+            <div *ngIf="step === 4">
+                <business-location-address></business-location-address>
+            </div>
+<!--            <div *ngIf="step === 5">-->
+<!--                <edit-location></edit-location>-->
+<!--            </div>-->
+<!--            <div *ngIf="step === 6">-->
+<!--                <edit-billing-details></edit-billing-details>-->
+<!--            </div>-->
+            <div *ngIf="step === 5">
+                <location-timings></location-timings>
+            </div>
         </div>
-
-        <business-location-address></business-location-address>
-        <edit-location></edit-location>
-        <edit-billing-details></edit-billing-details>
-        <location-timings></location-timings>
-
-
-
     </div>
 </div>
-
-<!--<business-location-details></business-location-details>-->
-<!--<div class="text-center mt-5">-->
-<!--    <div class="text-secondary">Add a new location</div>-->
-<!--    <div class="section-heading fw-bold">Choose your main business type</div>-->
-<!--</div>-->
-<!--<business-type [multiSelect]="false"></business-type>-->
-<!--<div class="text-center mt-5">-->
-<!--    <div class="text-secondary">Add a new location</div>-->
-<!--    <div class="section-heading fw-bold">Choose your secondary business types</div>-->
-<!--</div>-->
-<!--<business-type [multiSelect]="true"></business-type>-->
+    <!--<business-location-details></business-location-details>-->
+    <!--<div class="text-center mt-5">-->
+    <!--    <div class="text-secondary">Add a new location</div>-->
+    <!--    <div class="section-heading fw-bold">Choose your main business type</div>-->
+    <!--</div>-->
+    <!--<business-type [multiSelect]="false"></business-type>-->
+    <!--<div class="text-center mt-5">-->
+    <!--    <div class="text-secondary">Add a new location</div>-->
+    <!--    <div class="section-heading fw-bold">Choose your secondary business types</div>-->
+    <!--</div>-->
+    <!--<business-type [multiSelect]="true"></business-type>-->
 
 

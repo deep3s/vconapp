@@ -21,7 +21,7 @@ export class BusinessSetupPageComponent {
     console.log("Moving to next step:", this.step);
     console.log("Stored Data:", this.formData); // Check if data is updated
 
-    if (this.step < 3) {
+    if (this.step < 5) {
       this.step++;
     }
   }
@@ -62,13 +62,16 @@ export class BusinessSetupPageComponent {
       case 1: return "Add a new location";
       case 2: return "Choose your main business type";
       case 3: return "Choose your secondary business types";
+      case 4: return "About business location address";
+      case 5: return "Opening hours";
       default: return "";
     }
   }
 
   getProgress(): number {
-    return (this.step - 1) * 50; // Progress bar updates dynamically
+    return (this.step / 5) * 100;
   }
+
 }
 
 

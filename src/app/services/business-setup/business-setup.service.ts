@@ -13,4 +13,5 @@ export class BusinessSetupService {
   saveBusinessDetails(businessDetails: any): Observable<any> {
     return this.http.post<any>(`${this.businessDetailsUrl}`, businessDetails);
   }
+
 }

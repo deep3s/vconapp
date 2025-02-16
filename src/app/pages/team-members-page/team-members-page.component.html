@@ -1,0 +1,248 @@
+<div class="container mt-4 w-50">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="fs-4 fw-bold mb-0 d-flex">Team Members</div>
+        <div class="d-flex align-items-center">
+            <div class="dropdown me-2" (click)="toggleDropdown($event, 'optionsDropdown')">
+                <button class="app-button-secondary border dropdown-toggle" id="optionsButton">Options</button>
+                <ul class="dropdown-menu mt-3" [ngClass]="{'show': dropdowns['optionsDropdown']}">
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#" (click)="copyShareLink($event)">
+                        <span class="me-2">
+                        <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16"
+                             height="16">
+                        <path fill-rule="evenodd"
+                              d="m18.453 7.174-2.458 2.458a1 1 0 1 1-1.415-1.414l2.475-2.475.034-.032a6.513 6.513 0 0 1 9.2 9.2l-3.568 3.557a6.5 6.5 0 0 1-4.596 1.909 6.5 6.5 0 0 1-4.596-1.909 1 1 0 1 1 1.417-1.411 4.485 4.485 0 0 0 6.358 0l3.522-3.51a4.513 4.513 0 0 0-6.373-6.373m-4.578 6.449a4.49 4.49 0 0 0-3.179 1.32l-3.522 3.51a4.512 4.512 0 0 0 6.374 6.373l2.458-2.458a1 1 0 0 1 1.414 1.414l-2.475 2.475-.034.032a6.512 6.512 0 0 1-9.2-9.2l3.568-3.557a6.5 6.5 0 0 1 4.596-1.909 6.49 6.49 0 0 1 4.596 1.909 1 1 0 0 1-1.417 1.411 4.5 4.5 0 0 0-3.179-1.32"
+                              clip-rule="evenodd"></path>
+                        </svg>
+                         </span>Create Share Link
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+        <span class="me-2">
+            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
+                <path fill-rule="evenodd"
+                      d="M10 8a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H11a1 1 0 0 1-1-1m0 8a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H11a1 1 0 0 1-1-1m0 8a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H11a1 1 0 0 1-1-1"
+                      clip-rule="evenodd"></path>
+                <path d="M5.5 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M5.5 17.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M5.5 25.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"></path>
+            </svg>
+        </span>
+                            Change Order
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+        <span class="me-2">
+            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
+                <path d="M16 10a6 6 0 1 0 6 6 6.006 6.006 0 0 0-6-6m0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8m13.743-6.599a1 1 0 0 0-.487-.675l-3.729-2.125-.015-4.202a1 1 0 0 0-.353-.76 14 14 0 0 0-4.59-2.584 1 1 0 0 0-.808.074L16 5.23l-3.765-2.106a1 1 0 0 0-.809-.075 14 14 0 0 0-4.585 2.594 1 1 0 0 0-.353.759l-.02 4.206-3.728 2.125a1 1 0 0 0-.486.675 13.3 13.3 0 0 0 0 5.195 1 1 0 0 0 .486.675l3.729 2.125.015 4.202a1 1 0 0 0 .354.76 14 14 0 0 0 4.59 2.584 1 1 0 0 0 .807-.074L16 26.77l3.765 2.106a1.009 1.009 0 0 0 .809.073 14 14 0 0 0 4.585-2.592 1 1 0 0 0 .354-.759l.018-4.206 3.729-2.125a1 1 0 0 0 .486-.675 13.3 13.3 0 0 0-.003-5.19m-1.875 4.364-3.572 2.031a1 1 0 0 0-.375.375c-.072.125-.148.258-.226.383a1 1 0 0 0-.152.526l-.02 4.031c-.96.754-2.029 1.357-3.17 1.788L16.75 24.89a1 1 0 0 0-.489-.125h-.478a1 1 0 0 0-.513.125l-3.605 2.013a12 12 0 0 1-3.18-1.779L8.471 21.1a1 1 0 0 0-.152-.527 7 7 0 0 1-.225-.383 1 1 0 0 0-.375-.383l-3.575-2.036a11.3 11.3 0 0 1 0-3.532l3.565-2.035a1 1 0 0 0 .375-.375c.072-.125.149-.258.226-.383.1-.157.152-.34.153-.526l.018-4.031c.96-.754 2.03-1.357 3.172-1.788L15.25 7.11a1 1 0 0 0 .512.125h.456a1 1 0 0 0 .512-.125l3.605-2.013a12 12 0 0 1 3.18 1.779l.014 4.025a1 1 0 0 0 .152.527c.078.126.154.25.225.383.089.159.218.291.375.383l3.575 2.036c.188 1.17.19 2.364.006 3.536z"></path>
+            </svg>
+        </span>
+                            Team Settings
+                        </a>
+                    </li>
+                    <div class="divider"></div>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                      <span class="me-2">
+                         <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16"
+                              height="16">
+                         <path d="M6 22.5c0 1.375.898 2.5 2 2.5a1.78 1.78 0 0 0 1.277-.582 1 1 0 0 1 1.446 1.382A3.76 3.76 0 0 1 8 27c-2.206 0-4-2.019-4-4.5S5.794 18 8 18a3.76 3.76 0 0 1 2.723 1.2 1 1 0 0 1-1.446 1.383A1.78 1.78 0 0 0 8 20c-1.102 0-2 1.125-2 2.5m9.95-1.086c-.5-.145-1.018-.294-1.306-.48-.156-.102-.154-.125-.14-.238a.57.57 0 0 1 .25-.459c.575-.39 1.917-.216 2.477-.07a1.001 1.001 0 1 0 .519-1.934c-.265-.07-2.625-.653-4.105.345a2.57 2.57 0 0 0-1.125 1.868c-.25 1.985 1.706 2.551 2.875 2.889 1.508.436 1.64.615 1.598.949-.04.301-.158.417-.268.491-.575.383-1.896.195-2.444.045a1.002 1.002 0 0 0-.539 1.93c.62.162 1.258.246 1.9.25.727 0 1.537-.125 2.186-.558a2.6 2.6 0 0 0 1.148-1.903c.274-2.164-1.79-2.768-3.026-3.125m10.386-3.355a1.003 1.003 0 0 0-1.278.605L23.5 23.026l-1.559-4.362a1 1 0 1 0-1.883.672l2.5 7a1 1 0 0 0 1.883 0l2.5-7a1 1 0 0 0-.605-1.277M27 11v3a1 1 0 0 1-2 0v-2h-6a1 1 0 0 1-1-1V5H7v9a1 1 0 1 1-2 0V5a2 2 0 0 1 2-2h12a1 1 0 0 1 .707.293l7 7A1 1 0 0 1 27 11m-3.414-1L20 6.414V10z"></path>
+                          </svg>
+                          </span>
+                            CSV
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <span class="me-2">
+                            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16"
+                                 height="16">
+                            <path fill-rule="evenodd"
+                                  d="M5.586 3.586A2 2 0 0 1 7 3h12a1 1 0 0 1 .707.293l7 7A1 1 0 0 1 27 11v5a1 1 0 1 1-2 0v-4h-6a1 1 0 0 1-1-1V5H7v11a1 1 0 1 1-2 0V5a2 2 0 0 1 .586-1.414M20 6.414 23.586 10H20zm3.166 15.658c-.089.076-.164.229-.164.46 0-.005 0 .012 0 0 .011.012.042.035.117.077.237.135.592.233 1.138.378l.03.008c.464.123 1.098.291 1.608.602C26.49 23.96 27 24.57 27 25.5c0 .943-.405 1.677-1.102 2.124-.624.4-1.38.501-2.023.501h-.003a4.15 4.15 0 0 1-2.47-.823 1 1 0 0 1 1.196-1.604c.37.276.818.425 1.278.427.481 0 .788-.086.944-.186a.33.33 0 0 0 .122-.125A.7.7 0 0 0 25 25.5c0 .004 0-.004 0 0 0-.061 0-.106-.145-.195-.228-.139-.578-.244-1.112-.385l-.088-.024c-.447-.118-1.044-.275-1.524-.548a2.3 2.3 0 0 1-.784-.697A2 2 0 0 1 21 22.5c0-.769.298-1.46.865-1.947.55-.472 1.272-.678 2.013-.678a4.15 4.15 0 0 1 2.47.823 1 1 0 0 1-1.196 1.604 2.15 2.15 0 0 0-1.278-.427c-.384 0-.602.106-.708.197M5.9 20.2a1 1 0 0 1 1.4.2l1.45 1.933L10.2 20.4a1 1 0 0 1 1.6 1.2L10 24l1.8 2.4a1 1 0 0 1-1.6 1.2l-1.45-1.933L7.3 27.6a1 1 0 1 1-1.6-1.2L7.5 24l-1.8-2.4a1 1 0 0 1 .2-1.4M15 20a1 1 0 0 1 1 1v5h2.5a1 1 0 1 1 0 2H15a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1"
+                                  clip-rule="evenodd"></path>
+                             </svg>
+                            </span>
+                            Excel
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <button class="app-button-primary">Add</button>
+        </div>
+
+    </div>
+    <div class="d-flex align-items-center bg-light p-2 rounded mt-4">
+        <div class="position-relative w-50">
+            <svg class="position-absolute top-50 start-0 translate-middle-y ms-2" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="20px" width="20px">
+                <path fill-rule="evenodd"
+                      d="M14.5 5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19M3 14.5C3 8.149 8.149 3 14.5 3S26 8.149 26 14.5c0 2.816-1.012 5.395-2.692 7.394l5.4 5.399a1 1 0 0 1-1.415 1.414l-5.399-5.399c-2 1.68-4.578 2.692-7.394 2.692C8.149 26 3 20.851 3 14.5"
+                      clip-rule="evenodd"></path>
+            </svg>
+            <input type="text" class="form-control ps-5  rounded-pill" placeholder="Search Team Members">
+        </div>
+
+        <div class="ms-auto d-flex">
+            <button class="app-button-secondary  rounded-pill border d-flex align-items-center  me-5"  data-bs-toggle="offcanvas" data-bs-target="#filterPanel">
+                <i class="bi bi-funnel me-1"></i> Filters
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="20px"
+                     width="20px">
+                    <path fill-rule="evenodd"
+                          d="M7 4a1 1 0 0 1 1 1v11h2a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m9 0a1 1 0 0 1 1 1v5h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m9 0a1 1 0 0 1 1 1v15h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V5a1 1 0 0 1 1-1m-9 10a1 1 0 0 1 1 1v12a1 1 0 1 1-2 0V15a1 1 0 0 1 1-1m-9 6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m18 4a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"
+                          clip-rule="evenodd">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Offcanvas Sliding Panel (Right Side) -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="filterPanel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold">All filters</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="accordion" id="filterAccordion">
+                        <!-- Locations -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#locationFilter">
+                                    <i class="bi bi-geo-alt me-2"></i> Locations
+                                </button>
+                            </h2>
+                            <div id="locationFilter" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <input type="text" class="form-control" placeholder="Search locations">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Type -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#typeFilter">
+                                    <i class="bi bi-calendar me-2"></i> Type
+                                </button>
+                            </h2>
+                            <div id="typeFilter" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <select class="form-select">
+                                        <option>All Types</option>
+                                        <option>Type 1</option>
+                                        <option>Type 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#statusFilter">
+                                    <i class="bi bi-list me-2"></i> Status
+                                </button>
+                            </h2>
+                            <div id="statusFilter" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <select class="form-select">
+                                        <option>All Status</option>
+                                        <option>Active</option>
+                                        <option>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Buttons -->
+                <div class="offcanvas-footer p-3 d-flex justify-content-between border-top">
+                    <button class="btn btn-outline-dark">Clear filters</button>
+                    <button class="btn btn-dark">Apply</button>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="app-button-secondary border rounded-pill dropdown-toggle::after { display: none !important; }"
+                        type="button" data-bs-toggle="dropdown">
+                    {{ selectedOption }}
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="20px"
+                         width="20px">
+                        <path fill-rule="evenodd"
+                              d="M5 8a1 1 0 0 1 1-1h17a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1m18 5a1 1 0 0 1 1 1v9.586l3.293-3.293a1 1 0 0 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 0 1 1.414-1.414L22 23.586V14a1 1 0 0 1 1-1M5 16a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1m0 8a1 1 0 0 1 1-1h7a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1"
+                              clip-rule="evenodd">
+                        </path>
+                    </svg>
+                </button>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let option of options">
+                        <a class="dropdown-item" (click)="selectOption(option)">{{ option }}</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>Name <span><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                    width="20px" height="20px">
+                    <path fill-rule="evenodd"
+                          d="M15.293 6.626a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L16 8.748l-4.293 4.292a1 1 0 1 1-1.414-1.414zm-5 12.334a1 1 0 0 1 1.414 0L16 23.252l4.293-4.292a1 1 0 1 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 0 1 0-1.414"
+                          clip-rule="evenodd">
+                    </path>
+                </svg></span>
+                </th>
+                <th>Contact</th>
+                <th>Rating <span><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                      width="20px" height="20px">
+                    <path fill-rule="evenodd"
+                          d="M15.293 6.626a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L16 8.748l-4.293 4.292a1 1 0 1 1-1.414-1.414zm-5 12.334a1 1 0 0 1 1.414 0L16 23.252l4.293-4.292a1 1 0 1 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 0 1 0-1.414"
+                          clip-rule="evenodd"></path></svg></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+                <td><input type="checkbox"></td>
+                <td class="d-flex align-items-center">
+                    <img *ngIf="user.image; else defaultImage" [src]="user.image" class="rounded-circle border me-2"
+                         width="40" height="40">
+                    <ng-template #defaultImage>
+                        <img src="../img-uni1.jpg" class="rounded-circle border me-2" width="40" height="40">
+                    </ng-template>
+                    <span class="fw-bold">{{ user.name }}</span>
+                </td>
+                <td>
+                    <a href="mailto:{{ user.email }}" class="text-primary">{{ user.email }}</a> <br>
+                    <a href="tel:{{ user.phone }}" class="text-primary">{{ user.phone }}</a>
+                </td>
+                <td class="text-muted">No reviews yet</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="app-button-secondary border rounded-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                            <li><a class="dropdown-item" href="#">View Calender</a></li>
+                            <li><a class="dropdown-item" href="#">View schedule shifts</a></li>
+                            <li><a class="dropdown-item" href="#">Add time off</a></li>
+                            <li><a class="dropdown-item" href="#">Archive</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
