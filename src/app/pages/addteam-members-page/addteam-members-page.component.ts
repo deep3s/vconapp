@@ -9,21 +9,21 @@ import {FormGroup} from "@angular/forms";
 export class AddteamMembersPageComponent {
   personal: any = [
     {name: 'Profile', active: true},
-    {name: 'Addresses'},
-    {name: 'Emergency Contacts'}
+    {name: 'Addresses',active: false},
+    {name: 'Emergency Contacts',active: false},
   ];
 
   workspace: any = [
-    {name: 'Services'},
-    {name: 'Locations'},
-    {name: 'Settings'}
+    {name: 'Services',active: false},
+    {name: 'Locations',active: false},
+    {name: 'Settings',active: false}
   ];
 
   pay: any = [
-    {name: 'Wages and timesheets'},
-    {name:'Commissions'},
-    {name:'Pay runs'}
-      ];
+    {name: 'Wages and timesheets',active: false},
+    {name:'Commissions',active: false},
+    {name:'Pay runs',active: false}
+  ];
 
   selectedDetails: any = this.personal[0];
 

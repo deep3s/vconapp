@@ -16,9 +16,9 @@
                 <input type="text" class="app-text-box form-control w-100"
                        matInput [formControl]="searchControl" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of suggestions | async" [value]="option"
-                    (click)="selectSuggestion(option)">
-                        {{ option }}
+                    <mat-option *ngFor="let location of suggestions | async" [value]="location"
+                                (click)="selectSuggestion(location)">
+                        {{ location.placeName + ' - ' + location.placeAddress }}
                     </mat-option>
                 </mat-autocomplete>
             </div>

@@ -20,7 +20,7 @@ export class MapplsService {
         const params = new HttpParams().set('query', query); // Adjust region if needed
 
         return this.http.get<any>(this.apiUrl, { params }).pipe(
-            map(response => response.suggestedLocations.map((location: any) => location.placeName + ' - ' + location.placeAddress))
+            map(response => response.suggestedLocations.map((location: any) => location))
         );
     }
 }

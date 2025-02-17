@@ -41,7 +41,7 @@ export class BusinessLocationAddressComponent implements OnInit {
   }
 
   selectSuggestion(suggestion: any) {
-    this.searchControl.setValue(suggestion);
+    //this.searchControl.setValue(suggestion);
   }
 
 
