@@ -1,0 +1,58 @@
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px; /* Set a fixed width for the sidebar */
+  background-color: #343a40; /* Dark background for the sidebar */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 20px; /* Spacing between the list items */
+}
+
+.sidebar ul li a {
+  display: block;
+  color: #fff;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
+}
+
+.sidebar ul li a:hover {
+  background-color: #007bff; /* Blue color on hover */
+  transform: scale(1.1); /* Slight scaling effect on hover */
+}
+
+.sidebar ul li a.active {
+  background-color: #007bff; /* Active state with blue color */
+}
+
+.sidebar ul li a i {
+  font-size: 1.5em; /* Icon size */
+}
+
+/* Optional: Add a subtle shadow to the sidebar */
+.sidebar {
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensures the content is not hidden behind the sidebar */
+.content {
+  margin-left: 80px; /* Push the content to the right to accommodate the sidebar */
+  padding: 20px;
+}
+.router-outlet {
+  margin-top: 20px;
+}

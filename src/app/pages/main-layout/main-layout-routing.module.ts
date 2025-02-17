@@ -172,6 +172,8 @@ const routes: Routes = [
   { path: 'settings', loadChildren: () => import('../settings-page/settings-page.module').then(m => m.SettingsPageModule) },
   { path: 'team-members', loadChildren: () => import('../team-members-page/team-members-page.module').then(m => m.TeamMembersPageModule) },
   { path: 'add-team', loadChildren: () => import('../addteam-members-page/addteam-members-page.module').then(m => m.AddteamMembersPageModule) },
+  { path: 'payments', loadChildren: () => import('../payments-page/payments-page.module').then(m => m.PaymentsPageModule) },
+  { path: 'navigation', loadChildren: () => import('../navigation-menu-page/navigation-menu-page.module').then(m => m.NavigationMenuPageModule) },
 ];
 
 @NgModule({

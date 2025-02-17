@@ -16,6 +16,7 @@ import { CategoryServiceComponent } from './category-service/category-service.co
   imports: [
     CommonModule,
     CatlogPageRoutingModule
-  ]
+  ],
+  exports: [CatlogPageComponent]
 })
 export class CatlogPageModule { }
