@@ -1,58 +1,94 @@
-/* Sidebar Styles */
+/* Sidebar Container */
 .sidebar {
-  position: fixed;
+  position: fixed; /* Keep sidebar fixed on the left */
   top: 0;
   left: 0;
+  bottom: 0;
+  width: 80px;
   height: 100vh;
-  width: 80px; /* Set a fixed width for the sidebar */
-  background-color: #343a40; /* Dark background for the sidebar */
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  margin-bottom: 20px; /* Spacing between the list items */
-}
-
-.sidebar ul li a {
-  display: block;
-  color: #fff;
-  font-size: 24px;
+/* Nav item setup */
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
   padding: 10px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
 }
 
-.sidebar ul li a:hover {
-  background-color: #007bff; /* Blue color on hover */
-  transform: scale(1.1); /* Slight scaling effect on hover */
+/* Icon container setup (for positioning) */
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
 }
 
-.sidebar ul li a.active {
-  background-color: #007bff; /* Active state with blue color */
+/* Icon style */
+.bi {
+  font-size: 24px;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
 }
 
-.sidebar ul li a i {
-  font-size: 1.5em; /* Icon size */
+/* Initially hide the text and position it next to the icon */
+.icon-text {
+  opacity: 0;
+  position: absolute;
+  left: 90px; /* Position text outside of the sidebar */
+  margin-left: 10px;
+  white-space: nowrap;
+  pointer-events: none; /* Prevent interaction with hidden text */
+  transition: opacity 0.3s ease-in-out;
 }
 
-/* Optional: Add a subtle shadow to the sidebar */
-.sidebar {
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+/* Show the text when hovering over the icon */
+.nav-link:hover .icon-text {
+  opacity: 1; /* Make text appear */
 }
 
-/* Ensures the content is not hidden behind the sidebar */
-.content {
-  margin-left: 80px; /* Push the content to the right to accommodate the sidebar */
-  padding: 20px;
+/* Optional: Add active state styling */
+.sidebar .nav-link.active {
+  background-color: #495057;
+  color: #f8f9fa;
 }
-.router-outlet {
-  margin-top: 20px;
-}
+
+///* Sidebar Styles */
+//.sidebar {
+//  position: fixed;
+//  background-color: #343a40; /* Dark background for the sidebar */
+//  padding-top: 10px;
+//  padding-bottom: 10px;
+//  text-align: center;
+//  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+//}
+//
+//.sidebar ul li {
+//  margin-bottom: 20px; /* Spacing between the list items */
+//}
+//
+//.sidebar ul li a {
+//  display: block;
+//  color: #fff;
+//  font-size: 24px;
+//  padding: 10px;
+//  border-radius: 8px;
+//  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
+//}
+//
+//.sidebar ul li a:hover {
+//  background-color: #007bff; /* Blue color on hover */
+//  transform: scale(1.1); /* Slight scaling effect on hover */
+//}
+//
+//.sidebar ul li a i {
+//  font-size: 1.5em; /* Icon size */
+//}
