@@ -174,6 +174,10 @@ const routes: Routes = [
   { path: 'add-team', loadChildren: () => import('../addteam-members-page/addteam-members-page.module').then(m => m.AddteamMembersPageModule) },
   { path: 'payments', loadChildren: () => import('../payments-page/payments-page.module').then(m => m.PaymentsPageModule) },
   { path: 'navigation', loadChildren: () => import('../navigation-menu-page/navigation-menu-page.module').then(m => m.NavigationMenuPageModule) },
+  { path: 'catalog-membership', loadChildren: () => import('../catalog-memberships-page/catalog-memberships-page.module').then(m => m.CatalogMembershipsPageModule) },
+  { path: 'catalog-products', loadChildren: () => import('../catalog-products-page/catalog-products-page.module').then(m => m.CatalogProductsPageModule) },
+  { path: 'scheduled-shift', loadChildren: () => import('../scheduled-shift-page/scheduled-shift-page.module').then(m => m.ScheduledShiftPageModule) },
+
 ];
 
 @NgModule({
