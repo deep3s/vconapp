@@ -9,7 +9,8 @@ import {Router} from "@angular/router";
 export class SearchSalonsPageComponent {
     latitude: number;
     longitude: number;
-    salons = [{
+    salons = [
+        {
         name: 'V-cut Salon',
         image: 'https://images.fresha.com/locations/location-profile-images/333200/304740/88306814-2894-45a1-a253-2778723d598c.jpg?class=width-small',
         address: 'Hulimavu, Bangalore',
@@ -111,7 +112,7 @@ export class SearchSalonsPageComponent {
         }, 500)
     }
 
-    initMap1(lat:number, lng:number) {
+    initMap(lat:number, lng:number) {
         // @ts-ignore
         const map = new mappls.Map('map', {center: [lat, lng]});
         map.setZoom(15);
@@ -130,7 +131,7 @@ export class SearchSalonsPageComponent {
                 (position) => {
                     this.latitude = position.coords.latitude;
                     this.longitude = position.coords.longitude;
-                    this.initMap1(this.latitude, this.longitude);
+                    this.initMap(this.latitude, this.longitude);
                     console.error('Current location:', this.latitude, this.longitude);
 
                 },

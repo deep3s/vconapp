@@ -41,15 +41,15 @@
         <!-- Step Content -->
         <div class="mt-4">
             <div *ngIf="step === 1">
-                <business-location-details></business-location-details>
+                <business-location-details (locationBasicsSaved)="updateLocationData($event)"></business-location-details>
             </div>
 
             <div *ngIf="step === 2">
-                <business-type [multiSelect]="false"></business-type>
+                <business-type [multiSelect]="false" (businessTypesSelected)="updateMainBusinessType($event)"></business-type>
             </div>
 
             <div *ngIf="step === 3">
-                <business-type [multiSelect]="true"></business-type>
+                <business-type [multiSelect]="true" (businessTypesSelected)="updateSecondaryBusinessTypes($event)"></business-type>
             </div>
             <div *ngIf="step === 4">
                 <business-location-address></business-location-address>

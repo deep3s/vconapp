@@ -9,6 +9,8 @@ import {UnelectedService} from './un-elected/unelected.service';
 import {ElectionService} from "./election/election.service";
 import {VconService} from "./vcon/vcon.service";
 import {BusinessSetupService} from "./business-setup/business-setup.service";
+import {MapplsService} from "./mappls/mappls.service";
+import {OlaMapsService} from "./olamaps/olamaps.service";
 
 @NgModule({
     declarations: [],
@@ -17,7 +19,7 @@ import {BusinessSetupService} from "./business-setup/business-setup.service";
         MyEmailAlertsService, CompanyAndIndustryService, ElectionService,
         RegionService, OverviewService, UnelectedService, CallElectionService,
         VconService,
-        BusinessSetupService
+        BusinessSetupService, MapplsService, OlaMapsService
     ],
 })
 export class AppServicesModule {
