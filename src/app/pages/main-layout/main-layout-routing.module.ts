@@ -174,6 +174,7 @@ const routes: Routes = [
   { path: 'add-team', loadChildren: () => import('../addteam-members-page/addteam-members-page.module').then(m => m.AddteamMembersPageModule) },
   { path: 'google-login', loadChildren: () => import('../google-login-page/google-login-page.module').then(m => m.GoogleLoginPageModule) },
   { path: 'customer-login', loadChildren: () => import('../customer-login-page/customer-login-page.module').then(m => m.CustomerLoginPageModule) },
+  { path: 'professional-login', loadChildren: () => import('../professional-login-page/professional-login-page.module').then(m => m.ProfessionalLoginPageModule) },
 ];
 
 @NgModule({

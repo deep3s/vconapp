@@ -27,14 +27,14 @@ export class AddteamMembersPageComponent {
 
   selectedDetails: any = this.personal[0];
 
-  selectDetails(selected: any) {
-    this.personal.forEach(item => item.active = false);
-    this.workspace.forEach(item => item.active = false);
-    this.pay.forEach(item => item.active = false);
-
-    selected.active = true;
-    this.selectedDetails = selected;
-  }
+  // selectDetails(selected: any) {
+  //   this.personal.forEach(item => item.active = false);
+  //   this.workspace.forEach(item => item.active = false);
+  //   this.pay.forEach(item => item.active = false);
+  //
+  //   selected.active = true;
+  //   this.selectedDetails = selected;
+  // }
 
   submitted = false;
   userForm: FormGroup;
@@ -64,4 +64,16 @@ export class AddteamMembersPageComponent {
   employmentTypes = ['Employee', 'Self-employeed'];
   showHint = true;
 
+  selectedDetail: any = this.personal[0]; // Default to "Profile"
+  address = { street: '', city: '', state: '' };
+
+  selectDetails(detail: any) {
+    [...this.personal, ...this.workspace, ...this.pay].forEach(item => item.active = false);
+    detail.active = true;
+    this.selectedDetail = detail;
+  }
+
+  addAddress() {
+    console.log('Address added:', this.address);
+  }
 }

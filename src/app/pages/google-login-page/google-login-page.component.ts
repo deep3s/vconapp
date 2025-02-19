@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-google-login-page',
+  selector: 'google-login-page',
   templateUrl: './google-login-page.component.html',
   styleUrls: ['./google-login-page.component.scss']
 })
