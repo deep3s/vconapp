@@ -10,9 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    SalesPageComponent
-  ],
+  declarations: [SalesPageComponent],
+  exports: [SalesPageComponent],
   imports: [
     CommonModule,
     SalesPageRoutingModule,

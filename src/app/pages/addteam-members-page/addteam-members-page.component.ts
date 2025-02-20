@@ -9,32 +9,32 @@ import {FormGroup} from "@angular/forms";
 export class AddteamMembersPageComponent {
   personal: any = [
     {name: 'Profile', active: true},
-    {name: 'Addresses'},
-    {name: 'Emergency Contacts'}
+    {name: 'Addresses',active: false},
+    {name: 'Emergency Contacts',active: false},
   ];
 
   workspace: any = [
-    {name: 'Services'},
-    {name: 'Locations'},
-    {name: 'Settings'}
+    {name: 'Services',active: false},
+    {name: 'Locations',active: false},
+    {name: 'Settings',active: false}
   ];
 
   pay: any = [
-    {name: 'Wages and timesheets'},
-    {name:'Commissions'},
-    {name:'Pay runs'}
-      ];
+    {name: 'Wages and timesheets',active: false},
+    {name:'Commissions',active: false},
+    {name:'Pay runs',active: false}
+  ];
 
   selectedDetails: any = this.personal[0];
 
-  selectDetails(selected: any) {
-    this.personal.forEach(item => item.active = false);
-    this.workspace.forEach(item => item.active = false);
-    this.pay.forEach(item => item.active = false);
-
-    selected.active = true;
-    this.selectedDetails = selected;
-  }
+  // selectDetails(selected: any) {
+  //   this.personal.forEach(item => item.active = false);
+  //   this.workspace.forEach(item => item.active = false);
+  //   this.pay.forEach(item => item.active = false);
+  //
+  //   selected.active = true;
+  //   this.selectedDetails = selected;
+  // }
 
   submitted = false;
   userForm: FormGroup;
@@ -64,4 +64,16 @@ export class AddteamMembersPageComponent {
   employmentTypes = ['Employee', 'Self-employeed'];
   showHint = true;
 
+  selectedDetail: any = this.personal[0]; // Default to "Profile"
+  address = { street: '', city: '', state: '' };
+
+  selectDetails(detail: any) {
+    [...this.personal, ...this.workspace, ...this.pay].forEach(item => item.active = false);
+    detail.active = true;
+    this.selectedDetail = detail;
+  }
+
+  addAddress() {
+    console.log('Address added:', this.address);
+  }
 }

@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'dashboard-page',
   templateUrl: './new-dashboard-page.component.html',
+  standalone: true,
+  imports: [
+    NgClass
+  ],
   styleUrls: ['./new-dashboard-page.component.scss']
 })
 export class NewDashboardPageComponent {

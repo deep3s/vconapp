@@ -36,6 +36,27 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
     },
   ];
 
+  catalogMenus = [
+    {
+      name: "Service menu",
+      icon: "design_services",
+      tabUrl: "/catlog",
+      tabName: "Service menu",
+    },
+    {
+      name: "Memberships",
+      icon: "card_membership",
+      tabUrl: "/catalog-membership",
+      tabName: "Memberships",
+    },
+    {
+      name: "Products",
+      icon: "category",
+      tabUrl: "/catalog-products",
+      tabName: "Products",
+    },
+  ];
+
   toolsMenus = [
     {
       name: "Apple Tracker",
@@ -48,6 +69,35 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
       icon: "panorama",
       tabUrl: "/publisher",
       tabName: "",
+    },
+  ];
+
+  salesMenus = [
+    {
+      name: "Daily sales",
+      icon: "bar_chart",
+      tabUrl: "/sales",
+      tabName: "Daily sales",
+    },
+    {
+      name: "Appointments",
+      icon: "event",
+      tabUrl: "/sales-appointment",
+      tabName: "Transactions",
+    },
+  ];
+  teamMenus = [
+    {
+      name: "Team members",
+      icon: "group",
+      tabUrl: "/team-members",
+      tabName: "Team members",
+    },
+    {
+      name: "Scheduled shifts",
+      icon: "manage_accounts",
+      tabUrl: "/scheduled-shift",
+      tabName: "Scheduled shifts",
     },
   ];
 
@@ -70,6 +120,15 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
       tabUrl: "/ers/overview",
       tabName: "ERS",
     }
+  ];
+  settingsMenus = [
+    {
+      name: "Settings",
+      icon: "settings",
+      tabUrl: "/settings",
+      tabName: "General Settings",
+    },
+
   ];
 
   electionReportingSystemMenus = [
@@ -162,46 +221,68 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
     if (this.insightSearchText) {
       this.dashboardMenus = [
         {
+          name: "Catalog",
+          group: [
+            ...this.catalogMenus.filter((item) =>
+                item.name.toLowerCase().includes(this.insightSearchText.toLowerCase())
+            ),
+          ],
+        },
+        {
+          name: "Sales",
+          group: [
+            ...this.salesMenus.filter((item) =>
+                item.name.toLowerCase().includes(this.insightSearchText.toLowerCase())
+            ),
+          ],
+        },
+
+        {
+          name: "Team",  // Added Team
+          group: [
+            ...this.teamMenus.filter((item) =>
+                item.name.toLowerCase().includes(this.insightSearchText.toLowerCase())
+            ),
+          ],
+        },
+        {
           name: "Tools",
           group: [
-            ...this.toolsMenus.filter(
-              (item) =>
-                item.name
-                  .toLowerCase()
-                  .indexOf(this.insightSearchText.toLowerCase()) >= 0
+            ...this.toolsMenus.filter((item) =>
+                item.name.toLowerCase().includes(this.insightSearchText.toLowerCase())
             ),
           ],
         },
         {
           name: "ERS",
           group: [
-            ...this.electionReportingSystemMenus.filter(
-              (item) =>
-                item.name
-                  .toLowerCase()
-                  .indexOf(this.insightSearchText.toLowerCase()) >= 0
+            ...this.electionReportingSystemMenus.filter((item) =>
+                item.name.toLowerCase().includes(this.insightSearchText.toLowerCase())
             ),
           ],
         },
+
         {
           name: "Administration",
           group: [
-            ...this.adminMenus.filter(
-              (item) =>
-                item.name
-                  .toLowerCase()
-                  .indexOf(this.insightSearchText.toLowerCase()) >= 0
+            ...this.adminMenus.filter((item) =>
+                item.name.toLowerCase().includes(this.insightSearchText.toLowerCase())
             ),
           ],
         },
         {
           name: "Help",
           group: [
-            ...this.helpMenus.filter(
-              (item) =>
-                item.name
-                  .toLowerCase()
-                  .indexOf(this.insightSearchText.toLowerCase()) >= 0
+            ...this.helpMenus.filter((item) =>
+                item.name.toLowerCase().includes(this.insightSearchText.toLowerCase())
+            ),
+          ],
+        },
+        {
+          name: "Settings",
+          group: [
+            ...this.settingsMenus.filter((item) =>
+                item.name.toLowerCase().includes(this.insightSearchText.toLowerCase())
             ),
           ],
         },
@@ -211,8 +292,8 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
       }, 300);
       return;
     }
-    
-    this.rearrangeDashboardMenus()
+
+    this.rearrangeDashboardMenus();
   }
 
   openDashboardMenu(event): void {
@@ -267,19 +348,28 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
   }
 
   rearrangeDashboardMenus() {
-   // alert(window.innerWidth);
-    this.dashboardMenus = //1024 //1140
-      window.innerWidth > 1140 ? [
-        { name: "Tools", group: [...this.toolsWithERSMenus] },
-        { name: "Administration", group: [...this.adminMenus] },
-        { name: "Help", group: [...this.helpMenus] },
-      ] :
-        [
-          { name: "Tools", group: [...this.toolsMenus] },
-          { name: "ERS", group: [...this.electionReportingSystemMenus] },
-          { name: "Administration", group: [...this.adminMenus] },
-          { name: "Help", group: [...this.helpMenus] },
-        ];
+    this.dashboardMenus =
+        window.innerWidth > 1140
+            ? [
+              { name: "Catalog", group: [...this.catalogMenus] },
+              { name: "Sales", group: [...this.salesMenus] },
+              { name: "Team", group: [...this.teamMenus] },  // Added Team
+              { name: "Tools", group: [...this.toolsWithERSMenus] },
+              { name: "Administration", group: [...this.adminMenus] },
+              { name: "Help", group: [...this.helpMenus] },
+              { name: "Settings", group: [...this.settingsMenus] },
+            ]
+            : [
+              { name: "Catalog", group: [...this.catalogMenus] },
+              { name: "Sales", group: [...this.salesMenus] },
+              { name: "Team", group: [...this.teamMenus] },  // Added Team
+              { name: "Tools", group: [...this.toolsMenus] },
+              { name: "ERS", group: [...this.electionReportingSystemMenus] },
+              { name: "Administration", group: [...this.adminMenus] },
+              { name: "Help", group: [...this.helpMenus] },
+              { name: "Settings", group: [...this.settingsMenus] },
+            ];
+
     setTimeout(() => {
       this.lobAccordion.openAll();
     }, 300);

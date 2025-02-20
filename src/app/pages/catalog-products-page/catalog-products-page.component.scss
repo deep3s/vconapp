@@ -1,0 +1,72 @@
+/* Full Page Background */
+.full-page {
+  height: 100vh;
+  background: linear-gradient(to right, #fff, #d8b4fe);
+}
+
+/* Wrapper to keep content aligned */
+.content-wrapper {
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Image Container */
+.image-container {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between images */
+}
+
+/* Main Image */
+.main-image {
+  height: 700px;
+  width: 700px;
+  border-radius: 15px;
+}
+
+/* Small Image (Positioned next to Main Image) */
+.small-image {
+  height: 600px;
+  width: 500px;
+  border-radius: 10px;
+  margin-left: -550px;
+  margin-top: 100px;
+}
+
+/* Fade-in Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .content-wrapper {
+    text-align: center;
+  }
+
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-image,
+  .small-image {
+    width: 80%;
+    height: auto;
+  }
+}
+
+/* Check Icon */
+.check-icon {
+  font-size: 1.2rem;
+  color: green;
+}

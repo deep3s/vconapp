@@ -29,6 +29,7 @@ import {
 } from "@azure/msal-browser";
 import { AppHttpInterceptor } from "./app-http-interceptor.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NewDashboardPageComponent} from "./pages/new-dashboard-page/new-dashboard-page.component";
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||
   window.navigator.userAgent.indexOf("Trident/") > -1; // Remove this line to use Angular Universal
@@ -106,7 +107,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         ReactiveFormsModule,
       MatDatepickerModule,
       MatNativeDateModule,
-      MatInputModule
+      MatInputModule,
+      NewDashboardPageComponent,
     ],
   providers: [
 
