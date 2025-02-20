@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {debounceTime, Observable, switchMap} from "rxjs";
 import {FormControl} from "@angular/forms";
-import {map, startWith} from "rxjs/operators";
+import { OlaMaps } from 'olamaps-web-sdk'
 import {MapplsService} from "../../../services/mappls/mappls.service";
 import {OlaMapsService} from "../../../services/olamaps/olamaps.service";
 
@@ -13,7 +13,9 @@ import {OlaMapsService} from "../../../services/olamaps/olamaps.service";
 export class BusinessLocationAddressComponent implements OnInit {
   locationSearchResults: any = [];
   selectedLocation = '';
-
+  olaMaps = new OlaMaps({
+    apiKey: 'qOmAe8G8Tbky3bmGXYNM1SwmNyFoC5Oy9T5KW9a4',
+  })
   searchControl = new FormControl('');
   options: string[] = [];
   suggestions:  Observable<any[]>;
@@ -33,16 +35,30 @@ export class BusinessLocationAddressComponent implements OnInit {
 
   initMap(lat:number, lng:number) {
     // @ts-ignore
-    const map = new mappls.Map('map', {center: [lat, lng]});
-    map.setZoom(17);
+    /*const map = new mappls.Map('map', {center: [lat, lng]});*/
+    const map =
+    this.olaMaps.init({
+      style: "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
+      container: 'map',
+      center: [lng, lat],
+      zoom: 16,
+    })
+    //map.setZoom(17);
 
     // @ts-ignore
-    const marker = new mappls.Marker({
+    /*const marker = new mappls.Marker({
       map: map,
       position: {lat, lng}
-    });
+    });*/
+    const olaIcon = document.createElement('div')
+    olaIcon.classList.add('olalogo');
+
+    this.olaMaps
+        .addMarker({ element: olaIcon, offset: [0, -10], anchor: 'bottom', color: 'red' })
+        .setLngLat([lng, lat])
+        .addTo(map)
     // @ts-ignore
-    mappls.setStyle('grey-day');
+    // mappls.setStyle('grey-day');
   }
 
   selectSuggestion(suggestion: any, event: any) {

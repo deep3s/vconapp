@@ -2,6 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strictNullChecks": false,
+    "skipLibCheck": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -9,7 +11,7 @@
     "noImplicitOverride": true,
     "allowSyntheticDefaultImports": true,
     "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
