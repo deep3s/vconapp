@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {BusinessSetupService} from "../../services/business-setup/business-setup.service";
 
 @Component({
     selector: 'app-business-setup-page',
@@ -15,6 +16,9 @@ export class BusinessSetupPageComponent {
         mainBusinessType: null,
         secondaryBusinessTypes: []
     };
+
+    constructor(private businessSetupService: BusinessSetupService) {
+    }
 
     // Next Step: Store data before moving forward
     nextStep() {
@@ -75,6 +79,15 @@ export class BusinessSetupPageComponent {
 
     getProgress(): number {
         return (this.step / 5) * 100;
+    }
+
+    onSubmitLocationDetails() {
+        this.businessSetupService.saveBusinessDetails(this.businessLocationDetails)
+            .pipe().subscribe((data: any) => {
+            console.log(data);
+        }, (err: any) => {
+            console.log(err)
+        });
     }
 
 

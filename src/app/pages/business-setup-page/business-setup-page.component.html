@@ -1,9 +1,9 @@
-<div class="business-setup mt-5">
+<div class="business-setup">
     <div class="p-4 position-relative">
         <!-- Header Section -->
         <div class="d-flex justify-content-between align-items-center">
             <!-- Previous Button (Appears from Step 2 onwards) -->
-            <button *ngIf="step > 1" (click)="prevStep()" class="btn btn-secondary">
+            <button *ngIf="step > 1" (click)="prevStep()" class="app-button-secondary">
                 Previous
             </button>
 
@@ -11,10 +11,10 @@
             <div class="flex-grow-1"></div>
 
             <!-- Next/Submit Button (Always on Right) -->
-            <button class="btn btn-primary" (click)="nextStep()" *ngIf="step < 7">
+            <button class="app-button-primary" (click)="nextStep()" *ngIf="step < 7" >
                 Next step
             </button>
-            <button class="btn btn-success" (click)="submitForm()" *ngIf="step === 7">
+            <button class="app-button-primary" (click)="submitForm()" *ngIf="step === 7">
                 Submit
             </button>
 
@@ -31,7 +31,7 @@
 
 
         <!-- Title & Subtitle -->
-        <div class="text-center flex-grow-1">
+        <div class="text-center flex-grow-1 mt-5">
             <p class="text-secondary">Add a new location</p>
             <p class="fw-bold h5">
                 {{ getStepTitle() }}
@@ -52,7 +52,7 @@
                 <business-type [multiSelect]="true" (businessTypesSelected)="updateSecondaryBusinessTypes($event)"></business-type>
             </div>
             <div *ngIf="step === 4">
-                <business-location-address></business-location-address>
+                <business-location-address [businessLocationDetails]="businessLocationDetails.locationDetails"></business-location-address>
             </div>
 <!--            <div *ngIf="step === 5">-->
 <!--                <edit-location></edit-location>-->

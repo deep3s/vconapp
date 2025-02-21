@@ -1,72 +1,120 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {debounceTime, Observable, switchMap} from "rxjs";
 import {FormControl} from "@angular/forms";
-import { OlaMaps } from 'olamaps-web-sdk'
-import {MapplsService} from "../../../services/mappls/mappls.service";
-import {OlaMapsService} from "../../../services/olamaps/olamaps.service";
+import {OlaMaps} from 'olamaps-web-sdk'
+import {OlaMapsService} from "src/app/services/olamaps/olamaps.service";
+import {MatDialog} from "@angular/material/dialog";
+import {EditLocationComponent} from "../edit-location/edit-location.component";
+import {EditBillingDetailsComponent} from "../edit-billing-details/edit-billing-details.component";
 
 @Component({
-  selector: 'business-location-address',
-  templateUrl: './business-location-address.component.html',
-  styleUrls: ['./business-location-address.component.scss']
+    selector: 'business-location-address',
+    templateUrl: './business-location-address.component.html',
+    styleUrls: ['./business-location-address.component.scss']
 })
 export class BusinessLocationAddressComponent implements OnInit {
-  locationSearchResults: any = [];
-  selectedLocation = '';
-  olaMaps = new OlaMaps({
-    apiKey: 'qOmAe8G8Tbky3bmGXYNM1SwmNyFoC5Oy9T5KW9a4',
-  })
-  searchControl = new FormControl('');
-  options: string[] = [];
-  suggestions:  Observable<any[]>;
-
-  constructor(private mapplsService: MapplsService,
-              private olaMapsService: OlaMapsService) {
-  }
-
-  ngOnInit() {
-    this.initMap( 12.8886, 77.6121);
-
-    this.suggestions = this.searchControl.valueChanges.pipe(
-        debounceTime(300), // Wait 300ms after user stops typing
-        switchMap(filterValue => this.olaMapsService.getSuggestions(filterValue || ''))
-    )
-  }
-
-  initMap(lat:number, lng:number) {
-    // @ts-ignore
-    /*const map = new mappls.Map('map', {center: [lat, lng]});*/
-    const map =
-    this.olaMaps.init({
-      style: "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
-      container: 'map',
-      center: [lng, lat],
-      zoom: 16,
+    @Input() businessLocationDetails: any;
+    locationSearchResults: any = [];
+    selectedLocationDetails: any = null;
+    isAddressAvailable = false;
+    olaMaps = new OlaMaps({
+        apiKey: 'qOmAe8G8Tbky3bmGXYNM1SwmNyFoC5Oy9T5KW9a4',
     })
-    //map.setZoom(17);
+    searchControl = new FormControl('');
+    options: string[] = [];
+    suggestions: Observable<any[]>;
 
-    // @ts-ignore
-    /*const marker = new mappls.Marker({
-      map: map,
-      position: {lat, lng}
-    });*/
-    const olaIcon = document.createElement('div')
-    olaIcon.classList.add('olalogo');
+    constructor(public dialog: MatDialog,
+                private olaMapsService: OlaMapsService) {
+    }
 
-    this.olaMaps
-        .addMarker({ element: olaIcon, offset: [0, -10], anchor: 'bottom', color: 'red' })
-        .setLngLat([lng, lat])
-        .addTo(map)
-    // @ts-ignore
-    // mappls.setStyle('grey-day');
-  }
+    ngOnInit() {
+        this.suggestions = this.searchControl.valueChanges.pipe(
+            debounceTime(300), // Wait 300ms after user stops typing
+            switchMap(filterValue => this.olaMapsService.getSuggestions(filterValue || ''))
+        )
+    }
 
-  selectSuggestion(suggestion: any, event: any) {
-    event.stopPropagation();
+    openEditAddressModal(): void {
+        const editAddressDialogRef = this.dialog.open(EditLocationComponent, {
+            width: '700px',
+            data: this.selectedLocationDetails
+        });
 
-    this.initMap(suggestion.location.lat, suggestion.location.lng);
-    //this.searchControl.setValue(suggestion);
-  }
+        editAddressDialogRef.afterClosed().subscribe(result => {
+            if (result?.locationDetails) {
+                this.selectedLocationDetails = {...result?.locationDetails};
+            }
+        });
+    }
+
+    openEditBillingDetailsModal(): void {
+        const editBillingDetailsDialogRef = this.dialog.open(EditBillingDetailsComponent, {
+            width: '700px',
+            data: this.businessLocationDetails
+        });
+
+        editBillingDetailsDialogRef.afterClosed().subscribe(result => {
+            if (result?.billingDetails) {
+                this.businessLocationDetails = {...result.billingDetails};
+            }
+        });
+    }
+
+    initMap(lat: number, lng: number) {
+        // @ts-ignore
+        /*const map = new mappls.Map('map', {center: [lat, lng]});*/
+        const map =
+            this.olaMaps.init({
+                style: "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
+                container: 'map',
+                center: [lng, lat],
+                zoom: 16,
+            })
+        //map.setZoom(17);
+
+        // @ts-ignore
+        /*const marker = new mappls.Marker({
+          map: map,
+          position: {lat, lng}
+        });*/
+        const olaIcon = document.createElement('div')
+        olaIcon.classList.add('olalogo');
+
+        this.olaMaps
+            .addMarker({element: olaIcon, offset: [0, -10], anchor: 'bottom', color: 'red'})
+            .setLngLat([lng, lat])
+            .addTo(map)
+        // @ts-ignore
+        // mappls.setStyle('grey-day');
+    }
+
+    selectSuggestion(suggestion: any, event: any) {
+        event.stopPropagation();
+
+        this.searchControl.setValue(suggestion.description);
+
+        this.getPlaceDetails(suggestion);
+    }
+
+    getPlaceDetails(suggestion: any) {
+        this.olaMapsService.getPlaceDetails(suggestion.place_id).pipe().subscribe((placeDetails: any) => {
+            this.selectedLocationDetails = {...placeDetails, description: suggestion.description};
+            this.businessLocationDetails = {
+                ...this.businessLocationDetails??{},
+                address: placeDetails.address,
+                apt: placeDetails.apt,
+                city: placeDetails.city,
+                state: placeDetails.state,
+                postCode: placeDetails.postCode
+            };
+            this.isAddressAvailable = true;
+            setTimeout(() => {
+                this.initMap(suggestion.location.lat, suggestion.location.lng);
+            }, 100);
+
+        });
+    }
 
 
 }

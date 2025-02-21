@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center align-items-center vh-100">
+<div class="p-4 edit-billing-details">
     <div class="bg-white border rounded p-3 fw-semibold fs-14 w-40">
 <!--        <div class="mb-3">Edit billing details</div>-->
 
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-8 mb-3">
                     <label class="form-label">Address</label>
-                    <input formControlName="businessName" id="address" name="title"
+                    <input formControlName="address" id="address" name="title"
                            class="app-text-box form-control" maxlength="200"
                            [ngClass]="{ 'is-invalid': submitted && fmp.address.errors }"
                            type="text"/>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label class="form-label">Apt./Suite etc</label>
-                    <input formControlName="businessName" id="apt" name="title"
+                    <input formControlName="apt" id="apt" name="title"
                            class="app-text-box form-control" maxlength="200"
                            [ngClass]="{ 'is-invalid': submitted && fmp.apt.errors }"
                            type="text"/>
@@ -45,7 +45,7 @@
 
             <div class="mb-3">
                 <label class="form-label">City</label>
-                <input formControlName="businessName" id="city" name="title"
+                <input formControlName="city" id="city" name="title"
                        class="app-text-box form-control" maxlength="200"
                        [ngClass]="{ 'is-invalid': submitted && fmp.city.errors }"
                        type="text"/>
@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label">State</label>
-                    <input formControlName="businessName" id="state" name="title"
+                    <input formControlName="state" id="state" name="title"
                            class="app-text-box form-control" maxlength="200"
                            [ngClass]="{ 'is-invalid': submitted && fmp.state.errors }"
                            type="text"/>
@@ -67,19 +67,19 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Postcode</label>
-                    <input formControlName="businessName" id="post" name="title"
+                    <input formControlName="postCode" id="postCode" name="title"
                            class="app-text-box form-control" maxlength="200"
-                           [ngClass]="{ 'is-invalid': submitted && fmp.postcode.errors }"
+                           [ngClass]="{ 'is-invalid': submitted && fmp.postCode.errors }"
                            type="text"/>
-                    <div *ngIf="submitted && fmp.postcode.errors" class="invalid-feedback">
-                        <div *ngIf="fmp.postcode.errors.required">Title is required</div>
+                    <div *ngIf="submitted && fmp.postCode.errors" class="invalid-feedback">
+                        <div *ngIf="fmp.postCode.errors.required">Title is required</div>
                     </div>
                 </div>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Invoice note</label>
-                <textarea class="form-control fw-medium" rows="3" [(ngModel)]="invoiceNote">Other Info</textarea>
+                <textarea class="form-control fw-medium" rows="3" formControlName="invoiceNote"></textarea>
             </div>
 
             <div class="d-flex justify-content-end">

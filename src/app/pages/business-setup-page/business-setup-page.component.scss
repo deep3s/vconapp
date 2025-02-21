@@ -1,3 +1,9 @@
+@import 'src/styles/variables';
+
 .custom-progress {
-  height: 2px; /* Adjust thickness */
+  height: 3px; /* Adjust thickness */
+
+  .progress-bar {
+    background-color: $CPPrimaryHover;
+  }
 }

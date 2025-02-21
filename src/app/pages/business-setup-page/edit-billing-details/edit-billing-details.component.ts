@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {BusinessSetupService} from "../../../services/business-setup/business-setup.service";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'edit-billing-details',
@@ -16,18 +17,20 @@ export class EditBillingDetailsComponent {
 
 
   constructor(private formBuilder: FormBuilder,
-              private editBilling: BusinessSetupService) {
+              private editBilling: BusinessSetupService,
+              @Inject(MAT_DIALOG_DATA) public businessLocationDetails: any) {
     // console.log(data);
   }
 
   ngOnInit(): void {
     this.editBillingForm = this.formBuilder.group({
-      companyName: [],
-      address: [],
-      apt: [],
-      city: [],
-      state: [],
-      postcode: [],
+      businessLocName: this.businessLocationDetails.businessLocName,
+      address: this.businessLocationDetails?.address,
+      apt: this.businessLocationDetails?.apt,
+      city: this.businessLocationDetails?.city,
+      state: this.businessLocationDetails?.state,
+      postCode:this.businessLocationDetails?.postCode,
+      invoiceNote: ''
     });
   }
 

@@ -28,7 +28,7 @@ export class BusinessLocationDetailsComponent {
 
     ngOnInit(): void {
         this.businessLocationForm = this.formBuilder.group({
-            locName: ['',  [Validators.required]],
+            businessLocName: ['',  [Validators.required]],
             locContactLink: ['',  [Validators.required, phoneNumberValidator]],
             locEmailLink: ['',  [Validators.required, Validators.email]],
         });
@@ -46,13 +46,6 @@ export class BusinessLocationDetailsComponent {
         if (this.businessLocationForm.valid) {
             this.locationBasicsSaved.emit(this.businessLocationForm.value);
         }
-        /* let businessDetails = {businessName: this.businessDetailsForm.value.businessName};
-
-         this.businessSetupService.saveBusinessDetails(businessDetails).subscribe((data: any) => {
-           console.log(data);
-         }, (err: any) => {
-           console.log(err)
-         });*/
     }
 
 }
