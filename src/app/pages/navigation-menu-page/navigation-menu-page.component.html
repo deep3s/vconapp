@@ -1,0 +1,22 @@
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column align-items-center p-3 bg-dark text-white" style="height: 100vh; width: 80px;">
+        <ul class="nav flex-column p-0">
+            <li class="nav-item" *ngFor="let item of menuItems">
+                <a routerLink="{{ item.route }}" class="nav-link" (click)="setActiveItem(item)" [ngClass]="{'active': activeItem === item}">
+                    <div class="icon-container">
+                        <!-- Always visible icon -->
+                        <i class="bi" [ngClass]="item.icon"></i>
+                        <!-- Hovered text -->
+                        <span class="icon-text">{{ item.name }}</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content flex-grow-1 p-3" style="margin-left: 80px;">
+        <router-outlet></router-outlet> <!-- Dynamic content will be rendered here based on the route -->
+    </div>
+</div>

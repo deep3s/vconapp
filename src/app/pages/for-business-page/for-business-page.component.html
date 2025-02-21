@@ -1,5 +1,39 @@
 <div class="container">
-<software-details></software-details>
+    <div class="d-flex justify-content-end align-items-center gap-3">
+        <!-- Sign Up -->
+        <a routerLink="/google-login" class="app-button-secondary">Sign Up</a>
+
+        <!-- Login -->
+        <a routerLink="/google-login" class="app-button-secondary">Log In</a>
+
+        <!-- Pricing -->
+        <a routerLink="pricing" class="app-button-secondary">Pricing</a>
+
+        <!-- Menu Dropdown -->
+        <div class="dropdown">
+            <button class="app-button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Menu
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/google-login">Login</a></li>
+                <li><a class="dropdown-item" href="#">Pricing</a></li>
+                <li><a class="dropdown-item" href="#">Download the app</a></li>
+                <li><a class="dropdown-item" href="#">Support for business</a></li>
+                <li><a class="dropdown-item" href="#">🇬🇧 English</a></li>
+                <div class="divider"></div>
+                <li><a class="dropdown-item" href="#"  role="menuitem" tabindex="-1">For Customers</a></li>
+
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Router Outlet to Load Components -->
+    <div class="mt-3">
+        <router-outlet></router-outlet>
+    </div>
+
+    <software-details></software-details>
 <software-reviews></software-reviews>
 <software-solutions></software-solutions>
     <online-booking></online-booking>

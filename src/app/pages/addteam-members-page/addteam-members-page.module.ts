@@ -5,6 +5,7 @@ import { AddteamMembersPageRoutingModule } from './addteam-members-page-routing.
 import { AddteamMembersPageComponent } from './addteam-members-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {CatlogPageComponent} from "../catlog-page/catlog-page.component";
 
 
 @NgModule({
@@ -17,6 +18,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
         ReactiveFormsModule,
         MatDatepickerModule,
         FormsModule
-    ]
+    ],
+    exports: [AddteamMembersPageComponent]
+
 })
 export class AddteamMembersPageModule { }

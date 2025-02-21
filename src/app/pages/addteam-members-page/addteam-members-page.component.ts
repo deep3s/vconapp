@@ -66,6 +66,7 @@ export class AddteamMembersPageComponent {
 
   selectedDetail: any = this.personal[0]; // Default to "Profile"
   address = { street: '', city: '', state: '' };
+  showAddressName: boolean = true;
 
   selectDetails(detail: any) {
     [...this.personal, ...this.workspace, ...this.pay].forEach(item => item.active = false);

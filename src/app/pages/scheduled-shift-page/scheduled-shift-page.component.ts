@@ -1,13 +1,12 @@
-import {Component, HostListener, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDatepicker} from "@angular/material/datepicker";
-
 @Component({
-  selector: 'app-scheduled-shifts-page',
-  templateUrl: './scheduled-shifts-page.component.html',
-  styleUrls: ['./scheduled-shifts-page.component.scss']
+  selector: 'app-scheduled-shift-page',
+  templateUrl: './scheduled-shift-page.component.html',
+  styleUrls: ['./scheduled-shift-page.component.scss']
 })
-export class ScheduledShiftsPageComponent {
+export class ScheduledShiftPageComponent {
   constructor(private router: Router) {}
 
   selectedDate: Date = new Date();
