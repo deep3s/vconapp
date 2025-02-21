@@ -4,67 +4,67 @@
     <span class="deal-chip">Menu</span>
 
 </div>
-
+<search-bar></search-bar>
 <div class="container pb-5">
-    <div class="container py-5 px-5 ">
-        <div class="row">
-            <div class="custom-card">
-                <mat-form-field appearance="outline" class="trt">
-                    <mat-label>Treatment</mat-label>
-                    <input
-                            type="text"
-                            matInput
-                            [formControl]="treatmentControl"
-                            [matAutocomplete]="autoTreatment"
-                    />
-                    <mat-autocomplete
-                        #autoTreatment="matAutocomplete"
-                        (optionSelected)="onOptionSelected($event)"
-                    >
-                        <mat-option *ngFor="let treatment of filteredTreatments | async" [value]="treatment">
-                            {{ treatment }}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="loc">
-                    <mat-label>Location</mat-label>
-                    <input
-                            type="text"
-                            matInput
-                            [formControl]="locationControl"
-                            [matAutocomplete]="autoLocation"
-                    />
-                    <mat-autocomplete
-                        #autoLocation="matAutocomplete"
-                        (optionSelected)="onLocationSelected($event)">
-                        <mat-option *ngFor="let location of filteredLocations | async" [value]="location">
-                            {{ location }}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
+<!--    <div class="container py-5 px-5 ">-->
+<!--        <div class="row">-->
+<!--            <div class="custom-card">-->
+<!--                <mat-form-field appearance="outline" class="trt">-->
+<!--                    <mat-label>Treatment</mat-label>-->
+<!--                    <input-->
+<!--                            type="text"-->
+<!--                            matInput-->
+<!--                            [formControl]="treatmentControl"-->
+<!--                            [matAutocomplete]="autoTreatment"-->
+<!--                    />-->
+<!--                    <mat-autocomplete-->
+<!--                        #autoTreatment="matAutocomplete"-->
+<!--                        (optionSelected)="onOptionSelected($event)"-->
+<!--                    >-->
+<!--                        <mat-option *ngFor="let treatment of filteredTreatments | async" [value]="treatment">-->
+<!--                            {{ treatment }}-->
+<!--                        </mat-option>-->
+<!--                    </mat-autocomplete>-->
+<!--                </mat-form-field>-->
+<!--                <mat-form-field appearance="outline" class="loc">-->
+<!--                    <mat-label>Location</mat-label>-->
+<!--                    <input-->
+<!--                            type="text"-->
+<!--                            matInput-->
+<!--                            [formControl]="locationControl"-->
+<!--                            [matAutocomplete]="autoLocation"-->
+<!--                    />-->
+<!--                    <mat-autocomplete-->
+<!--                        #autoLocation="matAutocomplete"-->
+<!--                        (optionSelected)="onLocationSelected($event)">-->
+<!--                        <mat-option *ngFor="let location of filteredLocations | async" [value]="location">-->
+<!--                            {{ location }}-->
+<!--                        </mat-option>-->
+<!--                    </mat-autocomplete>-->
+<!--                </mat-form-field>-->
 
-                <mat-form-field appearance="outline" class="date">
-                    <mat-label>Date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="date"/>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+<!--                <mat-form-field appearance="outline" class="date">-->
+<!--                    <mat-label>Date</mat-label>-->
+<!--                    <input matInput [matDatepicker]="picker" formControlName="date"/>-->
+<!--                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--                    <mat-datepicker #picker></mat-datepicker>-->
+<!--                </mat-form-field>-->
 
-                <mat-form-field appearance="outline" class="time">
-                    <mat-label>Time</mat-label>
-                    <mat-select formControlName="time">
-                        <mat-option *ngFor="let time of timeList" [value]="time">
-                            {{ time }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+<!--                <mat-form-field appearance="outline" class="time">-->
+<!--                    <mat-label>Time</mat-label>-->
+<!--                    <mat-select formControlName="time">-->
+<!--                        <mat-option *ngFor="let time of timeList" [value]="time">-->
+<!--                            {{ time }}-->
+<!--                        </mat-option>-->
+<!--                    </mat-select>-->
+<!--                </mat-form-field>-->
 
-                <div>
-                    <button mat-raised-button class="custom-button" (click)="onSearch()">Search</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--                <div>-->
+<!--                    <button mat-raised-button class="custom-button" (click)="onSearch()">Search</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
 <salon-cards [salons]="salons" [title]="'Recently Viewed'"></salon-cards>
 <salon-cards [recommendedSalon]="recommendedSalons" [title]="'Recommended Salons'"></salon-cards>
