@@ -1,0 +1,121 @@
+<div class="container mt-4">
+    <div class="d-flex align-items-center justify-content-between bg-white shadow px-3 py-2 search-container">
+        <!-- Search Input Container -->
+        <div class=" position-relative">
+            <div class=" d-flex align-items-center">
+                <div (click)="toggleDropdown()" class="bi bi-search text-muted"></div>
+                <input
+                    #searchInput
+                    type="text"
+                    class="form-control search-input"
+                    placeholder="What are you looking for?"
+                    [(ngModel)]="searchQuery"
+                    (focus)="toggleDropdown()"
+                    (input)="toggleDropdown()"
+                    (blur)="hideDropdown()">
+            </div>
+
+            <!-- Dropdown -->
+            <div class="dropdown-menu-custom" *ngIf="showDropdown">
+                <div class="dropdown-header">All treatments</div>
+                <div class="dropdown-header">Top categories</div>
+
+                <div *ngFor="let category of filteredCategories" class="dropdown-item-custom" (click)="selectCategory(category.name)">
+                    <img [src]="category.icon" class="icon-img" alt="Icon">
+                    <span>{{ category.name }}</span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Dropdown List -->
+        <div *ngIf="showDropdown"
+             class="dd position-absolute bg-white shadow rounded p-2">
+            <ul class="list-unstyled">
+                <li *ngFor="let item of dropdownItems" class=" p-2 border-bottom" (click)="selectItem(item)">
+                    {{ item }}
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- Divider -->
+        <div class="vr mx-3"></div>
+
+        <!-- Location -->
+        <div class="d-flex align-items-center mx-2" (click)="getCurrentLocation()" style="cursor: pointer;">
+            <i class="bi bi-geo-alt text-muted"></i>
+            <span class="ms-1">{{ locationInput }}</span>
+        </div>
+
+        <!-- Divider -->
+        <div class="vr mx-3"></div>
+
+        <!-- Date Picker (Custom) -->
+        <div class="d-flex align-items-center mx-2 position-relative">
+            <i class="bi bi-calendar text-muted" (click)="toggleDateDropdown()" style="cursor: pointer;"></i>
+            <span class="ms-1" (click)="toggleDateDropdown()" style="cursor: pointer;">{{ dateInput }}</span>
+
+            <!-- Custom Calendar Dropdown -->
+            <div *ngIf="showDateDropdown" class="date-dropdown position-absolute bg-white shadow-lg rounded p-3"
+                 style="top: 50px; width: 350px; z-index: 1050;">
+                <mat-calendar class="w-100" [(selected)]="selectedDate" (selectedChange)="onDateChange($event)">
+                </mat-calendar>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="vr mx-3"></div>
+
+        <!-- Time Picker (Custom) -->
+        <div class="d-flex align-items-center mx-2 position-relative">
+            <i class="bi bi-clock text-muted" (click)="toggleTimeDropdown()" style="cursor: pointer;"></i>
+            <span class="ms-1" (click)="toggleTimeDropdown()" style="cursor: pointer;">{{ timeInput }}</span>
+
+            <!-- Custom Time Dropdown -->
+            <div *ngIf="showTimeDropdown" class="time-dropdown position-absolute bg-white shadow-lg p-3 rounded"
+                 style="top: 40px; min-width: 300px; z-index: 1050;">
+
+                <!-- Time Selection Buttons -->
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button class="btn btn-sm w-100"
+                            [ngClass]="timeInput === 'Any time' ? 'btn-primary' : 'btn-outline-secondary'"
+                            (click)="selectTimeOption('Any time')">Any time
+                    </button>
+
+                    <button class="btn btn-sm w-100"
+                            [ngClass]="timeInput === 'Morning' ? 'btn-primary' : 'btn-outline-secondary'"
+                            (click)="selectTimeOption('Morning')">Morning
+                    </button>
+
+                    <button class="btn btn-sm w-100"
+                            [ngClass]="timeInput === 'Afternoon' ? 'btn-primary' : 'btn-outline-secondary'"
+                            (click)="selectTimeOption('Afternoon')">Afternoon
+                    </button>
+
+                    <button class="btn btn-sm w-100"
+                            [ngClass]="timeInput === 'Evening' ? 'btn-primary' : 'btn-outline-secondary'"
+                            (click)="selectTimeOption('Evening')">Evening
+                    </button>
+                </div>
+
+                <!-- Time Inputs (From - To) -->
+                <div class="row gx-2">
+                    <div class="col">
+                        <label for="fromTime" class="form-label small fw-bold">From</label>
+                        <input id="fromTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.from">
+                    </div>
+                    <div class="col">
+                        <label for="toTime" class="form-label small fw-bold">To</label>
+                        <input id="toTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.to">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Search Button -->
+        <button class="search btn btn-warning ms-3">Search</button>
+    </div>
+</div>

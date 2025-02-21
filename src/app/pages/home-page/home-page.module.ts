@@ -24,6 +24,7 @@ import {DownloadAppComponent} from './download-app/download-app.component';
 import { ReviewCardsComponent } from './review-cards/review-cards.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
 import { BrowseCityComponent } from './browse-city/browse-city.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 // import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
@@ -42,6 +43,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         ReviewCardsComponent,
         TopRatedComponent,
         BrowseCityComponent,
+        SearchBarComponent,
     ],
     imports: [
         CommonModule,
