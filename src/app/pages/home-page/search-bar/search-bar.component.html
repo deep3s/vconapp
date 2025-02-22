@@ -1,32 +1,39 @@
 <div class="container mt-4">
     <div class="d-flex align-items-center justify-content-between bg-white shadow px-3 py-2 search-container">
         <!-- Search Input Container -->
-        <div class=" position-relative">
-            <div class=" d-flex align-items-center">
-                <div (click)="toggleDropdown()" class="bi bi-search text-muted"></div>
-                <input
-                    #searchInput
-                    type="text"
-                    class="form-control search-input"
-                    placeholder="What are you looking for?"
-                    [(ngModel)]="searchQuery"
-                    (focus)="toggleDropdown()"
-                    (input)="toggleDropdown()"
-                    (blur)="hideDropdown()">
+        <div class="position-relative">
+            <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="M380-320q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+                <div class="input-group border rounded p-1">
+                    <input
+                        #searchInput
+                        type="text"
+                        class="form-control border-0 shadow-none"
+                        placeholder="What are you looking for?"
+                        [(ngModel)]="searchQuery"
+                        (focus)="toggleDropdown()"
+                        (input)="toggleDropdown()"
+                        (blur)="hideDropdown()">
+                </div>
             </div>
 
             <!-- Dropdown -->
-            <div class="dropdown-menu-custom" *ngIf="showDropdown">
-                <div class="dropdown-header">All treatments</div>
-                <div class="dropdown-header">Top categories</div>
+            <div class="dropdown-menu-custom shadow rounded p-2 bg-white position-absolute w-100 overflow-auto"
+                                  style="max-height: 250px; scrollbar-width: none;" *ngIf="showDropdown">
+            <h6 class="dropdown-header cursor-pointer text-dark" (click)="showAllCategories($event)">All Treatments</h6>
+            <h6 class="dropdown-header cursor-pointer text-dark" (click)="showTopCategories($event)">Top Categories</h6>
 
-                <div *ngFor="let category of filteredCategories" class="dropdown-item-custom" (click)="selectCategory(category.name)">
-                    <img [src]="category.icon" class="icon-img" alt="Icon">
-                    <span>{{ category.name }}</span>
-                </div>
+            <div *ngFor="let category of filteredCategories"
+                 class="dropdown-item d-flex align-items-center p-2"
+                 (click)="selectCategory(category.name)">
+                <span class="material-symbols-rounded me-2">{{ category.icon }}</span>
+                <span>{{ category.name }}</span>
             </div>
         </div>
 
+        </div>
 
 
         <!-- Dropdown List -->
@@ -44,17 +51,35 @@
         <div class="vr mx-3"></div>
 
         <!-- Location -->
-        <div class="d-flex align-items-center mx-2" (click)="getCurrentLocation()" style="cursor: pointer;">
-            <i class="bi bi-geo-alt text-muted"></i>
-            <span class="ms-1">{{ locationInput }}</span>
+        <div class="d-flex align-items-center text-muted" style="cursor: pointer;">
+            <!-- Location Icon -->
+            <svg (click)="getCurrentLocation()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                <path d="M480-186q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 79q-14 0-28-5t-25-15q-65-60-115-117t-83.5-110.5q-33.5-53.5-51-103T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 45-17.5 94.5t-51 103Q698-301 648-244T533-127q-11 10-25 15t-28 5Zm0-453Zm0 80q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Z"/>
+            </svg>
+
+            <!-- Unified Input for both Current Location & Autocomplete -->
+            <input id="locationInput" type="text" class="app-text-box form-control w-100"
+                   matInput [formControl]="searchControl" [matAutocomplete]="auto"
+                   placeholder="Enter Location or use Current Location" (blur)="hideDropdown()">
+
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let location of suggestions | async" [value]="location.description"
+                            (click)="selectSuggestion(location)">
+                    {{ location.description }}
+                </mat-option>
+            </mat-autocomplete>
         </div>
+
+
+
 
         <!-- Divider -->
         <div class="vr mx-3"></div>
 
         <!-- Date Picker (Custom) -->
-        <div class="d-flex align-items-center mx-2 position-relative">
-            <i class="bi bi-calendar text-muted" (click)="toggleDateDropdown()" style="cursor: pointer;"></i>
+        <div class="d-flex align-items-center mx-2 position-relative date-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
+            <i class=" text-muted" (click)="toggleDateDropdown()" style="cursor: pointer;"></i>
             <span class="ms-1" (click)="toggleDateDropdown()" style="cursor: pointer;">{{ dateInput }}</span>
 
             <!-- Custom Calendar Dropdown -->
@@ -69,53 +94,51 @@
         <div class="vr mx-3"></div>
 
         <!-- Time Picker (Custom) -->
-        <div class="d-flex align-items-center mx-2 position-relative">
-            <i class="bi bi-clock text-muted" (click)="toggleTimeDropdown()" style="cursor: pointer;"></i>
-            <span class="ms-1" (click)="toggleTimeDropdown()" style="cursor: pointer;">{{ timeInput }}</span>
+        <div class="d-flex align-items-center mx-2 position-relative time-toggle">
+            <!-- Clock Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                <path d="M520-496v-144q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640v159q0 8 3 15.5t9 13.5l132 132q11 11 28 11t28-11q11-11 11-28t-11-28L520-496ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/>
+            </svg>
+
+            <!-- Time Input (Clickable) -->
+            <span class="ms-1 text-muted" (click)="toggleTimeDropdown()" style="cursor: pointer;">
+        {{ timeInput }}
+    </span>
 
             <!-- Custom Time Dropdown -->
-            <div *ngIf="showTimeDropdown" class="time-dropdown position-absolute bg-white shadow-lg p-3 rounded"
-                 style="top: 40px; min-width: 300px; z-index: 1050;">
+            <div *ngIf="showTimeDropdown"
+                 class="time-dropdown position-absolute bg-white shadow-lg p-3 rounded"
+                 style="top: 40px; min-width: 300px; z-index: 1050;"
+                 (blur)="closeDropdown($event)">
 
+            <!-- Time Selection Buttons -->
                 <!-- Time Selection Buttons -->
                 <div class="d-flex flex-wrap gap-2 mb-3">
-                    <button class="btn btn-sm w-100"
-                            [ngClass]="timeInput === 'Any time' ? 'btn-primary' : 'btn-outline-secondary'"
-                            (click)="selectTimeOption('Any time')">Any time
-                    </button>
-
-                    <button class="btn btn-sm w-100"
-                            [ngClass]="timeInput === 'Morning' ? 'btn-primary' : 'btn-outline-secondary'"
-                            (click)="selectTimeOption('Morning')">Morning
-                    </button>
-
-                    <button class="btn btn-sm w-100"
-                            [ngClass]="timeInput === 'Afternoon' ? 'btn-primary' : 'btn-outline-secondary'"
-                            (click)="selectTimeOption('Afternoon')">Afternoon
-                    </button>
-
-                    <button class="btn btn-sm w-100"
-                            [ngClass]="timeInput === 'Evening' ? 'btn-primary' : 'btn-outline-secondary'"
-                            (click)="selectTimeOption('Evening')">Evening
+                    <button class="btn btn-sm"
+                            [ngClass]="selectedTimeRange.from === timeSlots[option].from ? 'btn-custom-green' : 'btn-outline-secondary'"
+                            *ngFor="let option of ['Any time', 'Morning', 'Afternoon', 'Evening']"
+                            (click)="selectTimeOption(option)">
+                        {{ option }}
                     </button>
                 </div>
 
+
                 <!-- Time Inputs (From - To) -->
-                <div class="row gx-2">
+                <div class="row  gx-2">
                     <div class="col">
-                        <label for="fromTime" class="form-label small fw-bold">From</label>
-                        <input id="fromTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.from">
+                        <label for="fromTime" class="form-label small fw-bold"></label>
+                        <input id="fromTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.from" (change)="updateTimeInput()">
                     </div>
                     <div class="col">
-                        <label for="toTime" class="form-label small fw-bold">To</label>
-                        <input id="toTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.to">
+                        <label for="toTime" class="form-label small fw-bold"></label>
+                        <input id="toTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.to" (change)="updateTimeInput()">
                     </div>
                 </div>
             </div>
         </div>
 
-
         <!-- Search Button -->
-        <button class="search btn btn-warning ms-3">Search</button>
+        <button class="search btn-warning app-button-primary ms-3" (click)="onSubmitBusinessLocation()">Search</button>
+
     </div>
 </div>

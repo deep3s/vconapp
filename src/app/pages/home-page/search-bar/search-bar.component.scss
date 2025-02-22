@@ -1,6 +1,8 @@
+@import "src/styles/variables";
 .search-container {
-  border: 20px solid #000; // Black border like your reference
-  background-color: black;
+  border: 10px solid #2c2b2be6; // Black border like your reference
+  border-radius: 20px;
+  background-color: #353434;
 }
 
 .remove-default-icon::-webkit-calendar-picker-indicator {
@@ -28,11 +30,13 @@ mat-calendar {
 .time-dropdown .btn {
   border-radius: 20px;
 }
-.search{
+
+.search {
   width: 10%;
- background-color: #fd7e14 !important; /* Bootstrap Orange */
+  background-color: #fd7e14 !important; /* Bootstrap Orange */
 }
-.dd{
+
+.dd {
   margin-top: 300px;
   background-color: white;
 }
@@ -83,3 +87,46 @@ mat-calendar {
   height: 30px;
   margin-right: 10px;
 }
+.material-symbols-rounded {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 24px;
+  margin-right: 8px;
+}
+.dropdown-item {
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background: #f8f9fa; // Light grey hover
+  }
+}
+
+.dropdown-menu-custom {
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.dropdown-item:hover {
+  background: #f8f9fa;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.btn-custom-green {
+  background-color: $CPDark;
+  border-color: #359e00 !important;
+  color: white !important;
+  &:hover {
+    background-color: #2d8700 !important; /* Slightly darker on hover */
+    border-color: #2d8700 !important;
+  }
+}
+
+

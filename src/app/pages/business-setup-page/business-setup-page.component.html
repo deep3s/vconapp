@@ -39,31 +39,26 @@
         </div>
 
         <!-- Step Content -->
-        <div class="mt-4">
-            <div *ngIf="step === 1">
-                <business-location-details (locationBasicsSaved)="updateLocationData($event)"></business-location-details>
-            </div>
-
-            <div *ngIf="step === 2">
-                <business-type [multiSelect]="false" (businessTypesSelected)="updateMainBusinessType($event)"></business-type>
-            </div>
-
-            <div *ngIf="step === 3">
-                <business-type [multiSelect]="true" (businessTypesSelected)="updateSecondaryBusinessTypes($event)"></business-type>
-            </div>
-            <div *ngIf="step === 4">
-                <business-location-address></business-location-address>
-            </div>
-<!--            <div *ngIf="step === 5">-->
-<!--                <edit-location></edit-location>-->
-<!--            </div>-->
-<!--            <div *ngIf="step === 6">-->
-<!--                <edit-billing-details></edit-billing-details>-->
-<!--            </div>-->
-            <div *ngIf="step === 5">
-                <location-timings></location-timings>
-            </div>
+        <div *ngIf="step === 1">
+            <business-location-details (locationBasicsSaved)="updateLocationData($event)"></business-location-details>
         </div>
+
+        <div *ngIf="step === 2">
+            <business-type [multiSelect]="false" (businessTypesSelected)="updateMainBusinessType($event)"></business-type>
+        </div>
+
+        <div *ngIf="step === 3">
+            <business-type [multiSelect]="true" (businessTypesSelected)="updateSecondaryBusinessTypes($event)"></business-type>
+        </div>
+
+        <div *ngIf="step === 4">
+            <business-location-address></business-location-address>
+        </div>
+
+        <div *ngIf="step === 5">
+            <location-timings></location-timings>
+        </div>
+
     </div>
 </div>
 

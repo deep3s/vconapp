@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
     styleUrls: ['./business-setup-page.component.scss']
 })
 export class BusinessSetupPageComponent {
-    step: number = 4; // Default step
+    step: number = 1; // Default step
     locationSearchResults: any = [];
 
     // Object to store form data
