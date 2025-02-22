@@ -40,7 +40,7 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
     {
       name: "Service menu",
       icon: "design_services",
-      tabUrl: "/catlog",
+      tabUrl: "/catalog",
       tabName: "Service menu",
     },
     {

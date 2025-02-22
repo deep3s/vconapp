@@ -9,9 +9,9 @@ export class CatlogPageComponent implements OnInit {
   searchTerm: string = '';
 
   categories: any = [
-    { name: 'All categories', count: 7,categorieId:1,},
+    { name: 'All categories', count: 7,categoryId:1,},
     {
-      name: 'Hair & styling', count: 4, categorieId: 1, active: true,
+      name: 'Hair & styling', count: 4, categoryId: 1, active: true,
       services: [
         {name: 'Haircut', duration: '45min', price: 40},
         {name: 'Hair Color', duration: '1h 15min', price: 57},
@@ -19,12 +19,12 @@ export class CatlogPageComponent implements OnInit {
         {name: 'Balayage', duration: '2h 30min', price: 150}
       ]
     },
-    { name: 'Nails', count: 1 ,categorieId:1,
+    { name: 'Nails', count: 1 ,categoryId:1,
       services: [
         {name: 'manicure', duration: '45min', price: 100},
       ]
     },
-    { name: 'Eyebrows & eyelashes', count: 2,categorieId:1 ,
+    { name: 'Eyebrows & eyelashes', count: 2,categoryId:1 ,
       services: [
         {name: 'classic fill', duration: '45min', price: 40},
         {name: 'classic fill', duration: '45min', price: 40},
