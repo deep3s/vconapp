@@ -719,6 +719,17 @@
     }
   }
 
+  &.no-border {
+    border: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: none;
+      border-radius: 0;
+    }
+  }
+
   &.disabled {
     background: #bbbcbc3b;
     pointer-events: none;

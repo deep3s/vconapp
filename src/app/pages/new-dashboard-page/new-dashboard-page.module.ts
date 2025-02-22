@@ -7,12 +7,11 @@ import { NewDashboardPageComponent } from './new-dashboard-page.component';
 
 @NgModule({
   declarations: [
-
+    NewDashboardPageComponent,
   ],
   imports: [
     CommonModule,
     NewDashboardPageRoutingModule,
-    NewDashboardPageComponent
   ]
 })
 export class NewDashboardPageModule { }

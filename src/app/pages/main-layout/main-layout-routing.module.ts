@@ -199,7 +199,15 @@ const routes: Routes = [
             },
             {
                 path: 'business-details',
+                loadChildren: () => import('../business-setup-details-page/business-setup-details-page.module').then(m => m.BusinessSetupDetailsPageModule)
+            },
+            {
+                path: 'business-details-edit',
                 loadChildren: () => import('../business-details-page/business-details-page.module').then(m => m.BusinessDetailsPageModule)
+            },
+            {
+                path: 'client-sources',
+                loadChildren: () => import('../business-setup-client-sources-page/business-setup-client-sources-page.module').then(m => m.BusinessSetupClientSourcesPageModule)
             },
             {
                 path: 'business-setup',

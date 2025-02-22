@@ -6,6 +6,10 @@
   border-radius: 20px;
   background-color: #353434;
   padding: 10px;
+
+  input.form-control {
+    min-width: 200px;
+  }
 }
 
 /* Remove Default Calendar Icon */
