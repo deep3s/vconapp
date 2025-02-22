@@ -1,13 +1,13 @@
 
 
-<div class="container mt-4 w-50">
+<div class="mt-4">
     <form [formGroup]="businessLocationForm" class="user-profile-form" (ngSubmit)="onSubmitBusinessLocation()">
         <div class="bus-loc">
-            <div class="card p-2">
+            <div class="card p-4">
                 <div class=" section-heading-h2">Basics</div>
                 <div class="divider"></div>
                 <div class="w-100 mt-3">
-                    <div class="form-group mb-2">
+                    <div class="form-group mb-4">
                         <label class="input-label fw-bold">Business Location Name</label>
                         <input formControlName="businessLocName" id="businessLocName" name="businessLocName"
                                class="app-text-box form-control" maxlength="200"
@@ -18,8 +18,8 @@
                         </div>
                     </div>
 
-                    <div class="mb-2">
-                        <label class="input-label fw-bold mb-2">Location contact number</label>
+                    <div class="mb-4">
+                        <label class="input-label fw-bold">Location contact number</label>
                         <div class="input-group">
                             <select class="form-select form-select-sm w-25 bg-light" id="countryCode" required>
                                 <option value="+1">+1</option>
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="form-group ">
-                        <label class="input-label fw-bold mb-2">Location email address</label>
+                        <label class="input-label fw-bold">Location email address</label>
                         <input formControlName="locEmailLink" id="locEmailLink" name="locEmailLink"
                                class="app-text-box form-control" maxlength="200"
                                [ngClass]="{ 'is-invalid': submitted && fmp.locEmailLink.errors }"

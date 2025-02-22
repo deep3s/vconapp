@@ -10,7 +10,7 @@ import {phoneNumberValidator} from "src/app/core/validators/phone-number-validat
     styleUrls: ['./business-location-details.component.scss']
 })
 export class BusinessLocationDetailsComponent {
-  @Output() locationBasicsSaved = new EventEmitter();
+    @Output() locationBasicsSaved = new EventEmitter();
 
     businessLocationForm: FormGroup;
     submitted = false;

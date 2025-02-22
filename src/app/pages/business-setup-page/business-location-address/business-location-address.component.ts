@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {debounceTime, Observable, switchMap} from "rxjs";
 import {FormControl} from "@angular/forms";
 import {OlaMaps} from 'olamaps-web-sdk'
@@ -13,8 +13,9 @@ import {EditBillingDetailsComponent} from "../edit-billing-details/edit-billing-
     styleUrls: ['./business-location-address.component.scss']
 })
 export class BusinessLocationAddressComponent implements OnInit {
-    @Input() businessLocationDetails: any;
-    locationSearchResults: any = [];
+    @Input() businessBillingDetails: any;
+    @Output() locationAddressSaved: EventEmitter<any> = new EventEmitter();
+    @Output() locationBillingSaved: EventEmitter<any> = new EventEmitter();
     selectedLocationDetails: any = null;
     isAddressAvailable = false;
     olaMaps = new OlaMaps({
@@ -44,19 +45,26 @@ export class BusinessLocationAddressComponent implements OnInit {
         editAddressDialogRef.afterClosed().subscribe(result => {
             if (result?.locationDetails) {
                 this.selectedLocationDetails = {...result?.locationDetails};
+                this.saveDataToBusinessSetupPage();
             }
         });
+    }
+
+    saveDataToBusinessSetupPage(): void {
+        this.locationAddressSaved.emit(this.selectedLocationDetails);
+        this.locationBillingSaved.emit(this.businessBillingDetails);
     }
 
     openEditBillingDetailsModal(): void {
         const editBillingDetailsDialogRef = this.dialog.open(EditBillingDetailsComponent, {
             width: '700px',
-            data: this.businessLocationDetails
+            data: this.businessBillingDetails
         });
 
         editBillingDetailsDialogRef.afterClosed().subscribe(result => {
             if (result?.billingDetails) {
-                this.businessLocationDetails = {...result.billingDetails};
+                this.businessBillingDetails = {...result.businessBillingDetails};
+                this.saveDataToBusinessSetupPage();
             }
         });
     }
@@ -100,8 +108,8 @@ export class BusinessLocationAddressComponent implements OnInit {
     getPlaceDetails(suggestion: any) {
         this.olaMapsService.getPlaceDetails(suggestion.place_id).pipe().subscribe((placeDetails: any) => {
             this.selectedLocationDetails = {...placeDetails, description: suggestion.description};
-            this.businessLocationDetails = {
-                ...this.businessLocationDetails??{},
+            this.businessBillingDetails = {
+                ...this.businessBillingDetails??{},
                 address: placeDetails.address,
                 apt: placeDetails.apt,
                 city: placeDetails.city,
@@ -112,6 +120,7 @@ export class BusinessLocationAddressComponent implements OnInit {
             setTimeout(() => {
                 this.initMap(suggestion.location.lat, suggestion.location.lng);
             }, 100);
+            this.saveDataToBusinessSetupPage();
 
         });
     }

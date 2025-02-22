@@ -2,21 +2,24 @@
     <div class="bg-white border rounded p-3 fw-semibold fs-14 w-40">
 <!--        <div class="mb-3">Edit billing details</div>-->
 
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="useLocation">
-            <label class="form-check-label" for="useLocation">
-                Use location name and address for client sales receipts
-            </label>
-        </div>
-        <form [formGroup]="editBillingForm" class="user-profile-form" (ngSubmit)="onSubmitBillingDetails()">
+
+        <form [formGroup]="editBillingForm" class="user-profile-form" (ngSubmit)="saveBillingDetails()">
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox"
+                       formControlName="useLocationForBilling"
+                       id="useLocationForBilling">
+                <label class="form-check-label" for="useLocationForBilling">
+                    Use location name and address for client sales receipts
+                </label>
+            </div>
             <div class="mb-3">
-                <label class="form-label">Company name</label>
-                <input formControlName="businessName" id="companyName" name="title"
+                <label class="form-label">Business location name</label>
+                <input formControlName="businessLocName" id="businessLocName" name="title"
                        class="app-text-box form-control" maxlength="200"
-                       [ngClass]="{ 'is-invalid': submitted && fmp.companyName.errors }"
+                       [ngClass]="{ 'is-invalid': submitted && fmp.businessLocName.errors }"
                        type="text"/>
-                <div *ngIf="submitted && fmp.companyName.errors" class="invalid-feedback">
-                    <div *ngIf="fmp.companyName.errors.required"></div>
+                <div *ngIf="submitted && fmp.businessLocName.errors" class="invalid-feedback">
+                    <div *ngIf="fmp.businessLocName.errors.required"></div>
                 </div>
             </div>
 
@@ -83,8 +86,8 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <button class="btn btn-light me-2">Cancel</button>
-                <button class="btn btn-dark">Save</button>
+                <button class="app-button-secondary me-3" (click)="closeModal()">Cancel</button>
+                <button class="app-button-primary">Save</button>
             </div>
         </form>
     </div>
