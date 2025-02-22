@@ -194,6 +194,10 @@ const routes: Routes = [
                 loadChildren: () => import('../edit-service-page/edit-service-page.module').then(m => m.EditServicePageModule)
             },
             {
+                path: 'business-locations',
+                loadChildren: () => import('../business-location-page/business-location-page.module').then(m => m.BusinessLocationPageModule)
+            },
+            {
                 path: 'business-details',
                 loadChildren: () => import('../business-details-page/business-details-page.module').then(m => m.BusinessDetailsPageModule)
             },
@@ -253,7 +257,6 @@ const routes: Routes = [
             },
         ],
     },
-
 ];
 
 @NgModule({

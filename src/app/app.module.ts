@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from "ngx-ui-loader";
 import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
+import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import {
   MSAL_GUARD_CONFIG,
@@ -29,7 +29,7 @@ import {
 } from "@azure/msal-browser";
 import { AppHttpInterceptor } from "./app-http-interceptor.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NewDashboardPageComponent} from "./pages/new-dashboard-page/new-dashboard-page.component";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||
   window.navigator.userAgent.indexOf("Trident/") > -1; // Remove this line to use Angular Universal
@@ -108,7 +108,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       MatDatepickerModule,
       MatNativeDateModule,
       MatInputModule,
-      NewDashboardPageComponent,
+      DragDropModule
     ],
   providers: [
 

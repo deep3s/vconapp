@@ -1,0 +1,58 @@
+<div class="container mt-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Client sources</h4>
+        <div class="d-flex">
+            <!-- Options Button with Dropdown -->
+            <div class="dropdown me-2">
+                <button class="app-button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    Options
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" (click)="changeOrder()">Change Order</a></li>
+                </ul>
+            </div>
+            <!-- Add Button (Triggers Modal) -->
+            <button class="app-button-primary" data-bs-toggle="modal" data-bs-target="#addClientSourceModal">Add</button>
+        </div>
+    </div>
+
+    <p class="text-muted">Manage sources to track how clients found your business.</p>
+
+    <div class="list-group">
+        <div
+                *ngFor="let source of clientSources"
+                class="list-group-item d-flex justify-content-between align-items-center"
+        >
+            <div>
+                <strong>{{ source.name }}</strong>
+                <p class="text-success mb-0" style="font-size: 14px;">Active</p>
+            </div>
+            <i class="bi bi-lock-fill text-muted"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Add Client Source Modal -->
+<div class="modal fade" id="addClientSourceModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">Add client sources</h3>
+                <div>
+                    <button type="button" class="app-button-secondary me-2" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="app-button-primary" (click)="addClientSource()" data-bs-dismiss="modal">Add</button>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><strong>Client source name</strong></label>
+                <input type="text" class="form-control" placeholder="e.g. Location promotion" [(ngModel)]="newSource">
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="activeCheckbox" [(ngModel)]="isActive" checked>
+                <label class="form-check-label" for="activeCheckbox">Active</label>
+            </div>
+        </div>
+    </div>
+</div>
