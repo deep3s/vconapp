@@ -52,30 +52,32 @@ export class SearchBarComponent {
   toggleDropdown(): void {
     this.showDropdown = true;
   }
-
-
   showAllCategories(event: Event): void {
-    event.stopPropagation(); // Prevent dropdown from closing
+    event.stopPropagation();
     this.filteredCategories = [...this.allCategories];
     this.showDropdown = true;
   }
 
   showTopCategories(event: Event): void {
-    event.stopPropagation(); // Prevent dropdown from closing
+    event.stopPropagation();
     this.filteredCategories = [...this.topCategories];
     this.showDropdown = true;
   }
 
   selectCategory(categoryName: string): void {
     this.searchQuery = categoryName;
-    this.showDropdown = false; // Close dropdown after selection
+    setTimeout(() => {
+      this.showDropdown = false;
+    }, 200);
   }
+
 
   hideDropdown(): void {
     setTimeout(() => {
       this.showDropdown = false;
-    }, 200); // Small delay to allow clicks before hiding
+    }, 200); // Delay to allow category selection before closing
   }
+
   dropdownItems: string[] ;
 
   dateInput: string = 'Select Date';
@@ -176,18 +178,27 @@ export class SearchBarComponent {
   closeDropdown(event: Event) {
     const target = event.target as HTMLElement;
 
+    // Prevent closing when clicking inside the category dropdown
+    if (target.closest('.dropdown-menu-custom') || target.closest('.search-input')) {
+      return; // Don't close if inside dropdown or input
+    }
+
+    // Close time dropdown if clicked outside
     if (!target.closest('.time-dropdown') && !target.closest('.time-toggle')) {
       this.showTimeDropdown = false;
     }
 
+    // Close date dropdown if clicked outside
     if (!target.closest('.date-dropdown') && !target.closest('.date-toggle')) {
       this.showDateDropdown = false;
     }
 
+    // Close category dropdown if clicked outside
     if (!target.closest('.category-dropdown') && !target.closest('.category-toggle')) {
       this.showDropdown = false;
     }
   }
+
 
 
 }

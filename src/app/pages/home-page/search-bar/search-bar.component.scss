@@ -1,14 +1,19 @@
 @import "src/styles/variables";
+
+/* Search Container */
 .search-container {
-  border: 10px solid #2c2b2be6; // Black border like your reference
+  border: 2px solid #2c2b2be6; // Black border
   border-radius: 20px;
   background-color: #353434;
+  padding: 10px;
 }
 
+/* Remove Default Calendar Icon */
 .remove-default-icon::-webkit-calendar-picker-indicator {
-  display: none; // Removes default calendar icon
+  display: none !important;
 }
 
+/* Date Picker Dropdown */
 .date-dropdown {
   border: 1px solid #ddd;
   padding: 20px;
@@ -22,34 +27,23 @@ mat-calendar {
   width: 100%;
 }
 
-
+/* Form Controls */
 .form-control {
   font-size: 0.875rem;
 }
 
+/* Time Dropdown */
 .time-dropdown .btn {
   border-radius: 20px;
 }
 
+/* Search Button */
 .search {
   width: 10%;
   background-color: #fd7e14 !important; /* Bootstrap Orange */
 }
 
-.dd {
-  margin-top: 300px;
-  background-color: white;
-}
-
-
-.search-input {
-  border: none;
-  outline: none;
-  flex-grow: 1;
-  padding-left: 10px;
-  font-size: 16px;
-}
-
+/* General Dropdown Styling */
 .dropdown-menu-custom {
   position: absolute;
   top: 100%;
@@ -61,15 +55,18 @@ mat-calendar {
   padding: 10px 0;
   max-height: 400px;
   overflow-y: auto;
-  z-index: 10;
+  z-index: 1050; /* Ensures it's above other elements */
+  border: 1px solid #ccc;
 }
 
+/* Dropdown Headers */
 .dropdown-header {
   font-weight: bold;
   color: #6c757d;
   padding: 10px 15px;
 }
 
+/* Dropdown Items */
 .dropdown-item-custom {
   display: flex;
   align-items: center;
@@ -82,51 +79,66 @@ mat-calendar {
   background: #f8f9fa;
 }
 
+/* Icons Inside Dropdown */
 .icon-img {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
+
+/* Material Symbols */
 .material-symbols-rounded {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   font-size: 24px;
   margin-right: 8px;
 }
+
+/* Standard Dropdown Items */
 .dropdown-item {
   transition: background 0.3s ease-in-out;
   cursor: pointer;
-  &:hover {
-    background: #f8f9fa; // Light grey hover
-  }
-}
-
-.dropdown-menu-custom {
-  z-index: 1000;
-  max-height: 300px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-}
-
-.dropdown-item {
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
 }
 
 .dropdown-item:hover {
-  background: #f8f9fa;
+  background: #f8f9fa; // Light grey hover
 }
 
+/* Ensures Clickable Cursor */
 .cursor-pointer {
   cursor: pointer;
 }
+
+/* Custom Button Styling */
 .btn-custom-green {
   background-color: $CPDark;
   border-color: #359e00 !important;
   color: white !important;
+
   &:hover {
     background-color: #2d8700 !important; /* Slightly darker on hover */
     border-color: #2d8700 !important;
   }
 }
 
+/* Adjust Dropdown Position if Overlapping */
+.dd {
+  margin-top: 10px; /* Reduce margin to avoid excessive spacing */
+  background-color: white;
+}
 
+/* Search Input Styling */
+.search-input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+/* Ensures Dropdown Doesn't Cut Off */
+.dropdown-menu-custom {
+  z-index: 1050;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}

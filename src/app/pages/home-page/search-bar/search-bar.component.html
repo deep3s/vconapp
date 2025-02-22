@@ -15,24 +15,26 @@
                         [(ngModel)]="searchQuery"
                         (focus)="toggleDropdown()"
                         (input)="toggleDropdown()"
-                        (blur)="hideDropdown()">
+                        (click)="toggleDropdown()"
+                    >
                 </div>
             </div>
 
             <!-- Dropdown -->
             <div class="dropdown-menu-custom shadow rounded p-2 bg-white position-absolute w-100 overflow-auto"
-                                  style="max-height: 250px; scrollbar-width: none;" *ngIf="showDropdown">
-            <h6 class="dropdown-header cursor-pointer text-dark" (click)="showAllCategories($event)">All Treatments</h6>
-            <h6 class="dropdown-header cursor-pointer text-dark" (click)="showTopCategories($event)">Top Categories</h6>
+                 style="max-height: 250px; scrollbar-width: none;"
+                 *ngIf="showDropdown">
 
-            <div *ngFor="let category of filteredCategories"
-                 class="dropdown-item d-flex align-items-center p-2"
-                 (click)="selectCategory(category.name)">
-                <span class="material-symbols-rounded me-2">{{ category.icon }}</span>
-                <span>{{ category.name }}</span>
+                <h6 class="dropdown-header cursor-pointer text-dark" (click)="showAllCategories($event)">All Treatments</h6>
+                <h6 class="dropdown-header cursor-pointer text-dark" (click)="showTopCategories($event)">Top Categories</h6>
+
+                <div *ngFor="let category of filteredCategories"
+                     class="dropdown-item d-flex align-items-center p-2"
+                     (click)="selectCategory(category.name)">
+                    <span class="material-symbols-rounded me-2">{{ category.icon }}</span>
+                    <span>{{ category.name }}</span>
+                </div>
             </div>
-        </div>
-
         </div>
 
 
@@ -53,7 +55,8 @@
         <!-- Location -->
         <div class="d-flex align-items-center text-muted" style="cursor: pointer;">
             <!-- Location Icon -->
-            <svg (click)="getCurrentLocation()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+            <svg (click)="getCurrentLocation()" xmlns="http://www.w3.org/2000/svg" height="24px"
+                 viewBox="0 -960 960 960" width="24px" fill="#5f6368">
                 <path d="M480-186q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 79q-14 0-28-5t-25-15q-65-60-115-117t-83.5-110.5q-33.5-53.5-51-103T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 45-17.5 94.5t-51 103Q698-301 648-244T533-127q-11 10-25 15t-28 5Zm0-453Zm0 80q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Z"/>
             </svg>
 
@@ -71,14 +74,14 @@
         </div>
 
 
-
-
         <!-- Divider -->
         <div class="vr mx-3"></div>
 
         <!-- Date Picker (Custom) -->
         <div class="d-flex align-items-center mx-2 position-relative date-toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/>
+            </svg>
             <i class=" text-muted" (click)="toggleDateDropdown()" style="cursor: pointer;"></i>
             <span class="ms-1" (click)="toggleDateDropdown()" style="cursor: pointer;">{{ dateInput }}</span>
 
@@ -111,7 +114,7 @@
                  style="top: 40px; min-width: 300px; z-index: 1050;"
                  (blur)="closeDropdown($event)">
 
-            <!-- Time Selection Buttons -->
+                <!-- Time Selection Buttons -->
                 <!-- Time Selection Buttons -->
                 <div class="d-flex flex-wrap gap-2 mb-3">
                     <button class="btn btn-sm"
@@ -127,11 +130,13 @@
                 <div class="row  gx-2">
                     <div class="col">
                         <label for="fromTime" class="form-label small fw-bold"></label>
-                        <input id="fromTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.from" (change)="updateTimeInput()">
+                        <input id="fromTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.from"
+                               (change)="updateTimeInput()">
                     </div>
                     <div class="col">
                         <label for="toTime" class="form-label small fw-bold"></label>
-                        <input id="toTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.to" (change)="updateTimeInput()">
+                        <input id="toTime" type="time" class="form-control" [(ngModel)]="selectedTimeRange.to"
+                               (change)="updateTimeInput()">
                     </div>
                 </div>
             </div>

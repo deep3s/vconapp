@@ -51,7 +51,7 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
         {
             name: "Client sources",
             icon: "price_check",
-            tabUrl: "/pricing-setup",
+            tabUrl: "/client-sources",
             tabName: "Client sources",
         },
     ];
