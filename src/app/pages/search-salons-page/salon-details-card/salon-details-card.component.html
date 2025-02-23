@@ -16,7 +16,8 @@
         <div class="divider my-2"></div>
 
         <div class="services-section w-100">
-            <div *ngFor="let service of salon.services" class="service-card mb-2">
+            <div *ngFor="let service of salon.services" class="service-card mb-2"
+                 (click)="bookSalon()">
                 <div class="d-flex justify-content-between">
                     <div>
                         <div class="service-name fw-bold">{{ service.name }}</div>
