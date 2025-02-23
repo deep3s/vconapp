@@ -7,10 +7,12 @@ import {Router} from "@angular/router";
   styleUrls: ['./business-location-page.component.scss']
 })
 export class BusinessLocationPageComponent {
+  showModal = false;
   dropdowns = {
     optionsDropdown: false,
     actionsDropdown: false
   };
+
   constructor(private router: Router) {}
 
   details = [
@@ -18,13 +20,13 @@ export class BusinessLocationPageComponent {
     { name: 'Locations', active: false },
     { name: 'Client sources', active: false }
   ];
+
   settings = [
     { name: 'Service menu', active: false },
     { name: 'Product list', active: false },
     { name: 'Memberships', active: false },
     { name: 'Client list', active: false }
   ];
-
 
   selectDetails(item: any) {
     this.details.forEach(detail => detail.active = false);
@@ -43,7 +45,6 @@ export class BusinessLocationPageComponent {
   navigateToBusinessSetup() {
     this.router.navigate(['./business-setup']); // Change the route path accordingly
   }
-
 
   toggleDropdown(event: Event, dropdown: keyof typeof this.dropdowns) {
     event.stopPropagation();
@@ -76,4 +77,14 @@ export class BusinessLocationPageComponent {
     this.dropdowns.actionsDropdown = false;
   }
 
+  /*** Modal Functions ***/
+  openModal(event: Event) {
+    event.preventDefault();
+    this.showModal = true;
+    this.dropdowns.optionsDropdown = false; // Close dropdown when opening modal
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
 }

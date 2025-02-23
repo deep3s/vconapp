@@ -56,4 +56,5 @@ export class BusinessDetailsPageComponent {
       console.log(err)
     });
   }
+
 }

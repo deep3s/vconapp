@@ -52,4 +52,139 @@
   .para{
     margin-top: -20px;
   }
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  /* Modal Container */
+  .modal-container {
+    background: white;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 900px;
+    display: flex;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+  }
+
+  /* Background Gradient */
+  .modal-background {
+    position: absolute;
+    inset: 0 0 0 50%;
+    background: linear-gradient(135deg, #D3F5E2, #66D3D3);
+  }
+
+  /* Modal Content */
+  .modal-content {
+    width: 50%;
+    padding: 40px;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .modal-content p,
+  .modal-content ul {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .modal-content ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .modal-content ul li {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  /* Call-to-action Button */
+  .start-button {
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* Image on Right */
+  .modal-image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .modal-image img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .close-button {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 15px; /* Adjust as needed */
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+    background: white; /* Ensure visibility */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1100; /* Ensure it's above everything */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
 }

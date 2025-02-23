@@ -54,12 +54,45 @@
                         </button>
                         <ul class="dropdown-menu" [ngClass]="{'show': dropdowns.optionsDropdown}">
                             <li>
-                                <a class="dropdown-item" href="#" (click)="copyShareLink($event)">Create Share Link</a>
+                                <a class="dropdown-item" href="#" (click)="openModal($event)">Create Share Link</a>
                             </li>
                         </ul>
                     </div>
                     <button class="app-button-primary" (click)="navigateToBusinessSetup()">Add</button>
                 </div>
+
+                <!-- Modal -->
+                <div *ngIf="showModal" class="modal-overlay">
+                    <div class="modal-container">
+
+                        <!-- Close Button -->
+                        <span class="close-button" (click)="closeModal()">&times;</span>
+
+                        <!-- Background Gradient -->
+                        <div class="modal-background"></div>
+
+                        <!-- Modal Content -->
+                        <div class="modal-content">
+                            <div class="section-heading-h2 fw-bold">To create a link for the entire service menu, publish your Fresha profile</div>
+                            <div class="section-heading-h2">Join the world’s largest beauty and wellness marketplace</div>
+
+                            <ul>
+                                <li>✅ Get your business listed on the Fresha app</li>
+                                <li>✅ Reach thousands of new clients who visit Fresha every day</li>
+                                <li>✅ Free up time and get your clients self-booking online 24/7</li>
+                            </ul>
+
+                            <!-- CTA Button -->
+                            <button class="start-button">Start now</button>
+                        </div>
+
+                        <!-- Right-side Image -->
+                        <div class="modal-image">
+                            <img src="assets/fresha-modal.png" alt="Fresha Modal Preview">
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
