@@ -17,7 +17,6 @@
             <button class="app-button-primary" (click)="saveBusinessLocationInfo()" *ngIf="step === 5">
                 Submit
             </button>
-
         </div>
 
         <!-- Progress Bar -->
@@ -44,6 +43,7 @@
                 <div class="mt-4">
                     <div *ngIf="step === 1">
                         <business-location-details
+                                [locationInfo]="businessLocationDetails.locationInfo"
                                 (locationBasicsSaved)="updateLocationInfo($event)"></business-location-details>
                     </div>
 

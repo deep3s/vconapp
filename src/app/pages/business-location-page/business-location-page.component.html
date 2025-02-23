@@ -49,33 +49,39 @@
                 </div>
                 <div class="d-flex">
                     <!-- Options Button with Dropdown -->
-                    <div class="dropdown me-3" (click)="toggleDropdown($event, 'optionsDropdown')">
-                        <button class="app-button-secondary dropdown-toggle" id="optionsButton">
-                            Options
-                        </button>
-                        <ul class="dropdown-menu" [ngClass]="{'show': dropdowns.optionsDropdown}">
-                            <li>
-                                <a class="dropdown-item" href="#" (click)="openModal($event)">Create Share Link</a>
-                            </li>
-                        </ul>
+                    <div class="row">
+                        <div class="col">
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="button" class="app-button-secondary me-3"
+                                        ngbDropdownToggle>
+                                    Options
+                                </button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button ngbDropdownItem>
+                                        <a class="dropdown-item" href="#" >Create Share Link</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button class="app-button-primary" (click)="navigateToBusinessSetup()">Add</button>
+
+                    <button class="app-button-primary " (click)="navigateToBusinessSetup()">Add</button>
                 </div>
 
-                <!-- Modal -->
+                <!--&lt;!&ndash; Modal &ndash;&gt;
                 <div *ngIf="showModal" class="modal-overlay">
                     <div class="modal-container">
 
-                        <!-- Close Button -->
-                        <span class="close-button" (click)="closeModal()">&times;</span>
-
-                        <!-- Background Gradient -->
+                        &lt;!&ndash; Background Gradient &ndash;&gt;
                         <div class="modal-background"></div>
 
-                        <!-- Modal Content -->
+                        &lt;!&ndash; Modal Content &ndash;&gt;
                         <div class="modal-content">
-                            <div class="section-heading-h2 fw-bold">To create a link for the entire service menu, publish your Fresha profile</div>
-                            <div class="section-heading-h2">Join the world’s largest beauty and wellness marketplace</div>
+                            <div class="section-heading-h2 fw-bold">To create a link for the entire service menu,
+                                publish your Fresha profile
+                            </div>
+                            <div class="section-heading-h2">Join the world’s largest beauty and wellness marketplace
+                            </div>
 
                             <ul>
                                 <li>✅ Get your business listed on the Fresha app</li>
@@ -83,17 +89,17 @@
                                 <li>✅ Free up time and get your clients self-booking online 24/7</li>
                             </ul>
 
-                            <!-- CTA Button -->
+                            &lt;!&ndash; CTA Button &ndash;&gt;
                             <button class="start-button">Start now</button>
                         </div>
 
-                        <!-- Right-side Image -->
+                        &lt;!&ndash; Right-side Image &ndash;&gt;
                         <div class="modal-image">
                             <img src="assets/fresha-modal.png" alt="Fresha Modal Preview">
                         </div>
                     </div>
                 </div>
-
+-->
             </div>
 
 
@@ -112,25 +118,25 @@
                     </div>
                     <div class="col-2 d-flex justify-content-end">
                         <!-- Actions Button with Dropdown -->
-                        <div class="dropdown" (click)="toggleDropdown($event, 'actionsDropdown')">
-                            <button class="app-button-secondary rounded-pill dropdown-toggle">
-                                Actions
-                            </button>
-                            <ul class="dropdown-menu" [ngClass]="{'show': dropdowns.actionsDropdown}">
-                                <li>
-                                    <a class="dropdown-item" href="#"
-                                       (click)="viewLocation(businessLocation.id)">View</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item text-danger" href="#"
-                                       (click)="deleteLocation(businessLocation.id)">Delete Location</a>
-                                </li>
-                            </ul>
+                        <div class="row">
+                            <div class="col">
+                                <div ngbDropdown class="d-inline-block">
+                                    <button type="button" class="app-button-secondary"
+                                            ngbDropdownToggle>
+                                        Action
+                                    </button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                        <button ngbDropdownItem (click)="viewLocation(businessLocation)">Edit</button>
+                                        <button ngbDropdownItem>Delete Location</button>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>

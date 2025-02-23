@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {BusinessSetupService} from "../../services/business-setup/business-setup.service";
 import {BusinessLocationService} from "../../services/business-location/business-location.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-business-setup-page',
@@ -21,10 +22,15 @@ export class BusinessSetupPageComponent {
     };
 
     constructor(private businessSetupService: BusinessSetupService,
+                private router: Router,
                 private businessLocationService: BusinessLocationService) {
+        this.getBusinessSetupFromRouteData();
+    }
+    getBusinessSetupFromRouteData(): void {
+        const navigation = this.router.getCurrentNavigation();
+        this.businessLocationDetails = navigation?.extras.state;
     }
 
-    // Next Step: Store data before moving forward
     nextStep() {
         if (this.step < 5) {
             this.step++;
@@ -104,7 +110,6 @@ export class BusinessSetupPageComponent {
             console.log(err)
         });
     }
-
 
 }
 

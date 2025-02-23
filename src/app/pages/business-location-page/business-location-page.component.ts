@@ -1,6 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {Router} from "@angular/router";
 import {BusinessLocationService} from "../../services/business-location/business-location.service";
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-business-location-page',
@@ -10,11 +11,8 @@ import {BusinessLocationService} from "../../services/business-location/business
 export class BusinessLocationPageComponent {
     businessLocations: any = [];
     showModal = false;
-    dropdowns = {
-        optionsDropdown: false,
-        actionsDropdown: false
-    };
-
+    imports: [NgbDropdownModule];
+    businessSetup: any = {};
     details = [
         {name: 'Business details', active: false},
         {name: 'Locations', active: false},
@@ -28,25 +26,13 @@ export class BusinessLocationPageComponent {
         {name: 'Client list', active: false}
     ];
 
+
     navigateToBusinessSetup() {
         this.router.navigate(['./business-setup']); // Change the route path accordingly
     }
 
-    toggleDropdown(event: Event, dropdown: keyof typeof this.dropdowns) {
-        event.stopPropagation();
-        // Close other dropdowns
-        Object.keys(this.dropdowns).forEach(key => {
-            if (key !== dropdown) {
-                this.dropdowns[key as keyof typeof this.dropdowns] = false;
-            }
-        });
-        // Toggle the clicked dropdown
-        this.dropdowns[dropdown] = !this.dropdowns[dropdown];
-    }
-
-    viewLocation(event: Event) {
-        event.preventDefault();
-        alert('View Location Clicked!'); // Replace with actual view logic
+    viewLocation(businessLocation:any) {
+        this.router.navigate(['./business-setup'],{state: businessLocation}); // Change the route path accordingly
     }
 
 
@@ -71,35 +57,17 @@ export class BusinessLocationPageComponent {
     }
 
     copyShareLink(event: Event) {
-        event.preventDefault(); // Prevents page reload
-        const shareLink = "https://yourwebsite.com/share"; // Replace with actual link
+        event.preventDefault(); // Prevents any unintended behavior
+        const shareLink = "https://yourwebsite.com/share"; // Replace with the actual share link
         navigator.clipboard.writeText(shareLink).then(() => {
             alert("Share link copied!");
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
         });
     }
 
-    deleteLocation(event: Event) {
-        event.preventDefault();
-        if (confirm('Are you sure you want to delete this location?')) {
-            alert('Location Deleted!'); // Replace with actual delete logic
-        }
+    editBusinessDetails(): void {
+        this.router.navigate(['business-setup'], { state: this.businessSetup });
     }
 
-    // Close dropdown when clicking outside
-    @HostListener('document:click', ['$event'])
-    closeDropdown() {
-        this.dropdowns.optionsDropdown = false;
-        this.dropdowns.actionsDropdown = false;
-    }
-
-    /*** Modal Functions ***/
-    openModal(event: Event) {
-        event.preventDefault();
-        this.showModal = true;
-        this.dropdowns.optionsDropdown = false; // Close dropdown when opening modal
-    }
-
-    closeModal() {
-        this.showModal = false;
-    }
 }
