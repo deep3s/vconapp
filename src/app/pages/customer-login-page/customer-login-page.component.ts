@@ -3,19 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { BusinessSetupService } from "../../services/business-setup/business-setup.service";
 import { Router } from "@angular/router";
-import {style} from "@angular/animations";
 
 declare var google: any; // Declare Google object for TypeScript
-
 
 @Component({
   selector: 'customer-login-page',
   templateUrl: './customer-login-page.component.html',
   styleUrls: ['./customer-login-page.component.scss']
 })
-
-
-
 export class CustomerLoginPageComponent implements OnInit {
   businessDetailsForm: FormGroup;
   submitted = false;

@@ -6,7 +6,6 @@
         </div>
         <div class="section-heading-h2 fw-bold fs-1">Add Team Member</div>
     </div>
-
     <div class="details-section d-flex gap-5">
         <!-- Left Menu -->
         <div class="left-section h-100 w-25 bg-white border rounded p-3 mt-3">
@@ -38,228 +37,601 @@
         </div>
 
         <!-- Right Section: Dynamic Content -->
+
         <div class="right-section w-75">
-            <div class="section-heading-h3 fw-bold fs-4 mt-3 ms-5">{{ selectedDetail.name }}</div>
 
-            <!-- Profile Section -->
-            <div *ngIf="selectedDetail?.name === 'Profile'" class="ms-5">
-                <p class="clr-grey">Manage your team member's personal profile</p>
-                <div class="d-flex align-items-center">
-                    <button class="profile btn btn-light position-relative rounded-circle p-3 border-0">
-                        <svg width="150" height="150" viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M28.865 26.5c-1.904-3.291-4.837-5.651-8.261-6.77a9 9 0 1 0-9.208 0c-3.424 1.117-6.357 3.477-8.261 6.77a1 1 0 1 0 1.731 1C7.221 23.43 11.384 21 16 21s8.779 2.43 11.134 6.5A1.001 1.001 0 0 0 29 26.872a1 1 0 0 0-.136-.372M9 12a7 7 0 1 1 7 7 7.01 7.01 0 0 1-7-7"/>
-                        </svg>
-                    </button>
-                </div>
+            <form [formGroup]="addTeamMemberForm" class="user-profile-form" (ngSubmit)="onSubmitAddTeamMember()">
 
-                <!-- First Name and Last Name -->
-                <div class="row mt-4">
-                    <div class="col-md-5">
-                        <label class="fw-bold">First Name*</label>
-                        <input class="form-control form-control-lg" type="text">
-                    </div>
-                    <div class="col-md-5">
-                        <label class="fw-bold">Last Name*</label>
-                        <input class="form-control form-control-lg" type="text">
-                    </div>
-                </div>
 
-                <!-- Email and Phone Number Section -->
-                <div class="row mt-4">
-                    <!-- Email -->
-                    <div class="col-md-5" *ngIf="true"> <!-- Adjust condition if needed -->
-                        <div class="form-group">
-                            <label class="fw-bold" for="email">Email*</label>
-                            <input formControlName="email" id="email" name="email"
-                                   class="form-control form-control-lg" maxlength="200"
-                                   [ngClass]="{ 'is-invalid': submitted && fmp.email.errors }"
-                                   type="text"/>
-                            <div *ngIf="submitted && fmp.email.errors" class="invalid-feedback">
-                                <div *ngIf="fmp.email.errors.required">Email is required</div>
-                            </div>
-                        </div>
+                <!-- Profile Section -->
+                <div *ngIf="selectedDetail?.name === 'Profile'" class="ms-5">
+                    <div class="heading-section fw-bold fs-4 mt-2">Profile</div>
+                    <div class="clr-grey">Manage your team member's personal profile</div>
+                    <div class="d-flex align-items-center">
+                        <button class="profile btn btn-light position-relative rounded-circle p-3 border-0">
+                            <svg width="150" height="150" viewBox="0 0 32 32" fill="currentColor">
+                                <path d="M28.865 26.5c-1.904-3.291-4.837-5.651-8.261-6.77a9 9 0 1 0-9.208 0c-3.424 1.117-6.357 3.477-8.261 6.77a1 1 0 1 0 1.731 1C7.221 23.43 11.384 21 16 21s8.779 2.43 11.134 6.5A1.001 1.001 0 0 0 29 26.872a1 1 0 0 0-.136-.372M9 12a7 7 0 1 1 7 7 7.01 7.01 0 0 1-7-7"/>
+                            </svg>
+                        </button>
                     </div>
 
-                    <!-- Phone Number -->
-                    <div class="col-md-5" *ngIf="showPhoneNumber">
-                        <div class="form-group">
-                            <label class="fw-bold">Phone number</label>
-                            <div class="d-flex">
-                                <select class="form-select w-25">
-                                    <option selected>+91</option>
-                                    <option>+1</option>
-                                    <option>+44</option>
-                                </select>
-                                <input formControlName="phoneNumber" name="phoneNumber"
-                                       class="form-control form-control-lg ms-2" maxlength="15"
-                                       type="text"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Additional Phone Number and Country -->
-                <div class="row mt-4">
-                    <!-- Additional Phone Number -->
-                    <div class="col-md-5" *ngIf="true">
-                        <div class="form-group">
-                            <label class="fw-bold">Additional phone number</label>
-                            <div class="d-flex">
-                                <select class="form-select w-25">
-                                    <option selected>+91</option>
-                                    <option>+1</option>
-                                    <option>+44</option>
-                                </select>
-                                <input formControlName="additionalPhoneNumber" name="additionalPhoneNumber"
-                                       class="form-control form-control-lg ms-2" maxlength="15"
-                                       type="text"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Country -->
-                    <div class="col-md-5">
-                        <label for="countrySelect" class="form-label"><strong>Country</strong></label>
-                        <select id="countrySelect" class="form-select" [(ngModel)]="selectedCountry">
-                            <option value="" disabled selected>Select country</option>
-                            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Birthday and Year -->
-                <div class="row mt-4">
-                    <!-- Birthday -->
-                    <div class="col-md-3">
-                        <label for="birthday" class="form-label"><strong>Birthday</strong></label>
-                        <input *ngIf="showBirthday" type="date" id="birthday" class="form-control">
-                    </div>
-
-                    <!-- Year -->
-                    <div class="col-md-2">
-                        <label for="year" class="form-label"><strong>Year</strong></label>
-                        <input *ngIf="showYear" type="number" id="year" class="form-control" placeholder="Year"
-                               min="1900">
-                    </div>
-
-                    <!-- Calendar Color -->
-                    <div class="container mt-3">
-                        <label class="form-label"><strong>Calendar color</strong></label>
-                        <div class="d-flex flex-wrap">
-                            <div *ngFor="let color of colors"
-                                 class="color-circle"
-                                 [ngStyle]="{'background-color': color}"
-                                 [ngClass]="{'selected': selectedColor === color}"
-                                 (click)="selectColor(color)">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <hr class="w-100">
-
-                <!-- Job Title -->
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="fw-bold" for="businessName">Job Title</label>
-                            <input formControlName="businessName" id="businessName" name="title"
+                    <!-- First Name and Last Name -->
+                    <div class="row mt-4">
+                        <div class="col-md-5">
+                            <label class="input-label fw-bold">First Name</label>
+                            <input formControlName="firstName" id="firstName" name="firstName"
                                    class="app-text-box form-control" maxlength="200"
-                                   [ngClass]="{ 'is-invalid': submitted && fmp.businessName.errors }"
+                                   [ngClass]="{ 'is-invalid': submitted && fmp.firstName.errors }"
                                    type="text"/>
-                            <div *ngIf="submitted && fmp.businessName.errors" class="invalid-feedback">
-                                <div *ngIf="fmp.businessName.errors.required">Title is required</div>
+                            <div *ngIf="submitted && fmp.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="fmp.firstName.errors.required">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <label class="input-label fw-bold">Last Name</label>
+                            <input formControlName="lastName" id="lastName" name="lastName"
+                                   class="app-text-box form-control" maxlength="200"
+                                   [ngClass]="{ 'is-invalid': submitted && fmp.lastName.errors }"
+                                   type="text"/>
+                            <div *ngIf="submitted && fmp.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="fmp.lastName.errors.required">Last Name is required</div>
                             </div>
                         </div>
                     </div>
-                    <div class="clr-grey fw-lighter fs-16 pb-5">Visible to clients online</div>
-                </div>
 
-                <hr class="w-100">
-
-                <!-- Work Details -->
-                <div class="row mt-4">
-                    <div class="section-heading-h3 fw-bold fs-5">Work Details</div>
-                    <div class="clr-grey">Manage your team members' start date and employment details</div>
-
-                    <!-- Start and End Dates -->
+                    <!-- Email and Phone Number Section -->
                     <div class="row mt-4">
-                        <!-- Start -->
+                        <!-- Email -->
+                        <div class="col-md-5"> <!-- Adjust condition if needed -->
+                            <div class="form-group">
+                                <label class="fw-bold" for="email">Email*</label>
+                                <input formControlName="email" id="email" name="email"
+                                       class="form-control form-control-lg" maxlength="200"
+                                       [ngClass]="{ 'is-invalid': submitted && fmp.email.errors }"
+                                       type="text"/>
+                                <div *ngIf="submitted && fmp.email.errors" class="invalid-feedback">
+                                    <div *ngIf="fmp.email.errors.required">Email is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="col-md-4">
+                            <label class="input-label fw-bold mb-2">Phone number</label>
+                            <div class="input-group">
+                                <select class="form-select form-select-sm w-25 bg-light" id="countryCode" required>
+                                    <option value="+1">+1</option>
+                                    <option value="+44">+44</option>
+                                    <option value="+91" selected>+91</option>
+                                </select>
+                                <input formControlName="locContactLink" id="locContactLink" name="locContactLink"
+                                       class="app-text-box form-control w-75" maxlength="200"
+                                       [ngClass]="{ 'is-invalid': submitted && fmp.locContactLink.errors }"
+                                       type="text"/>
+                                <div *ngIf="submitted && fmp.locContactLink.errors" class="invalid-feedback">
+                                    <div *ngIf="fmp.locContactLink.errors.required">Phone number is
+                                        required
+                                    </div>
+                                    <div *ngIf="fmp.locContactLink.errors.invalidPhoneNumber">Phone number is not
+                                        valid
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Phone Number and Country -->
+                    <div class="row mt-4">
+                        <!-- Additional Phone Number -->
+                        <div class="col-md-5">
+                            <label class="input-label fw-bold mb-2">Additional phone number</label>
+                            <div class="input-group">
+                                <select class="form-select form-select-sm w-25 bg-light" id="acountryCode" required>
+                                    <option value="+1">+1</option>
+                                    <option value="+44">+44</option>
+                                    <option value="+91" selected>+91</option>
+                                </select>
+                                <input formControlName="addContactLink" id="addContactLink" name="locContactLink"
+                                       class="app-text-box form-control w-75" maxlength="200"
+                                       [ngClass]="{ 'is-invalid': submitted && fmp.locContactLink.errors }"
+                                       type="text"/>
+                                <div *ngIf="submitted && fmp.locContactLink.errors" class="invalid-feedback">
+                                    <div *ngIf="fmp.locContactLink.errors.required">Additional phone number is
+                                        required
+                                    </div>
+                                    <div *ngIf="fmp.locContactLink.errors.invalidPhoneNumber">Phone number is not
+                                        valid
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Country -->
+                        <div class="col-md-5">
+                            <label for="country" class="fw-bold">Country</label>
+                            <select formControlName="country" id="country" class="form-select form-control-lg mt-3"
+                                    [ngClass]="{ 'is-invalid': submitted && fmp.country.errors }">
+                                <option value="" disabled selected>Select Country</option>
+                                <option *ngFor="let country of countries" [ngValue]="country">{{ country }}</option>
+                            </select>
+
+                            <!-- Validation error message -->
+                            <div *ngIf="submitted && fmp.country.errors" class="invalid-feedback">
+                                <div *ngIf="fmp.country.errors.required">Select a country</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Birthday and Year -->
+                    <div class="row mt-4">
+                        <!-- Birthday -->
                         <div class="col-md-3">
-                            <label for="birthday" class="form-label"><strong>Start date</strong></label>
-                            <input *ngIf="showBirthday" type="date" id="start" class="form-control">
+                            <label for="birthday" class="form-label"><strong>Birthday</strong></label>
+                            <input type="date" id="birthday" class="form-control">
                         </div>
 
                         <!-- Year -->
                         <div class="col-md-2">
                             <label for="year" class="form-label"><strong>Year</strong></label>
-                            <input *ngIf="showYear" type="number" id="syear" class="form-control" placeholder="Year"
+                            <input type="number" id="year" class="form-control" placeholder="Year"
                                    min="1900">
+                        </div>
+
+                        <!-- Calendar Color -->
+                        <div class="container mt-3">
+                            <label class="form-label"><strong>Calendar color</strong></label>
+                            <div class="d-flex flex-wrap">
+                                <div *ngFor="let color of colors"
+                                     class="color-circle"
+                                     [ngStyle]="{'background-color': color}"
+                                     [ngClass]="{'selected': selectedColor === color}"
+                                     (click)="selectColor(color)">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row mt-4">
-                        <!-- End -->
-                        <div class="col-md-3">
-                            <label for="birthday" class="form-label"><strong>End date</strong></label>
-                            <input *ngIf="showBirthday" type="date" id="end" class="form-control">
-                        </div>
+                    <hr class="w-100">
 
-                        <!-- Year -->
-                        <div class="col-md-2">
-                            <label for="year" class="form-label"><strong>Year</strong></label>
-                            <input *ngIf="showYear" type="number" id="eyear" class="form-control" placeholder="Year"
-                                   min="1900">
-                        </div>
-                    </div>
-
-                    <!-- Employment Type and Team Member ID -->
+                    <!-- Job Title -->
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <label class="form-label"><strong>Employment type</strong></label>
-                            <select class="form-select">
-                                <option selected disabled>Select an option</option>
-                                <option *ngFor="let type of employmentTypes" [value]="type">{{ type }}</option>
-                            </select>
+                            <div class="form-group">
+                                <label class="fw-bold" for="jobTitle">Job Title</label>
+                                <input formControlName="jobTitle" id="jobTitle" name="jobTitle"
+                                       class="form-control form-control-lg" maxlength="200"
+                                       [ngClass]="{ 'is-invalid': submitted && fmp.jobTitle.errors }"
+                                       type="text"/>
+                                <div *ngIf="submitted && fmp.jobTitle.errors" class="invalid-feedback">
+                                    <div *ngIf="fmp.jobTitle.errors.required">Job Title is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clr-grey fw-lighter fs-16 pb-5">Visible to clients online</div>
+                    </div>
+
+                    <hr class="w-100 mb-5">
+
+                    <!-- Work Details -->
+                    <div class="row mt-4">
+                        <div class="section-heading-h3 fw-bold fs-5">Work Details</div>
+                        <div class="clr-grey">Manage your team members' start date and employment details</div>
+
+                        <!-- Start and End Dates -->
+                        <div class="row mt-4">
+                            <!-- Start -->
+                            <div class="col-md-3">
+                                <label for="birthday" class="form-label"><strong>Start date</strong></label>
+                                <input type="date" id="start" class="form-control">
+                            </div>
+
+                            <!-- Year -->
+                            <div class="col-md-2">
+                                <label for="year" class="form-label"><strong>Year</strong></label>
+                                <input type="number" id="syear" class="form-control" placeholder="Year" min="1900">
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <!-- End -->
+                            <div class="col-md-3">
+                                <label for="birthday" class="form-label"><strong>End date</strong></label>
+                                <input type="date" id="end" class="form-control">
+                            </div>
+
+                            <!-- Year -->
+                            <div class="col-md-2">
+                                <label for="year" class="form-label"><strong>Year</strong></label>
+                                <input type="number" id="eyear" class="form-control" placeholder="Year"
+                                       min="1900">
+                            </div>
+                        </div>
+
+                        <!-- Employment Type and Team Member ID -->
+                        <div class="row mt-4">
+                            <div class="col-md-5">
+                                <label for="employmentTypes" class="fw-bold">Employment Type</label>
+                                <select formControlName="employmentTypes" id="employmentTypes"
+                                        class="form-select form-control-lg mt-3"
+                                        [ngClass]="{ 'is-invalid': submitted && fmp.employmentTypes.errors }">
+                                    <option value="" disabled selected>Select Employment Type</option>
+                                    <option *ngFor="let employmentType of employmentTypes"
+                                            [value]="employmentType">{{ employmentType }}
+                                    </option>
+                                </select>
+
+                                <!-- Validation error message -->
+                                <div *ngIf="submitted && fmp.employmentTypes.errors" class="invalid-feedback">
+                                    <div *ngIf="fmp.employmentTypes.errors.required">Select an employment type</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- Address Form -->
-            <div *ngIf="selectedDetail?.name === 'Addresses'" class="mt-3 p-3 ">
-                <div class="container mb-5">
-                    <div class="text-secondary ">Manage your team member's correspondence addresses.</div>
-                    <button class="btn btn-outline-secondary d-flex align-items-center">
-                    <span class="me-2">
-                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20">
-                    <path fill-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5M3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16m13-6a1 1 0 0 1 1 1v4h4a1 1 0 1 1 0 2h-4v4a1 1 0 1 1-2 0v-4h-4a1 1 0 1 1 0-2h4v-4a1 1 0 0 1 1-1" clip-rule="evenodd"></path>
-                    </svg>
-                    </span>
-                        Add an address
-                    </button>
+                <!-- Address Form -->
+                <div *ngIf="selectedDetail?.name === 'Addresses'" class="mt-3 p-3">
+                    <div class="container mb-5">
+                        <div class="heading-section fw-bold fs-4 mt-2">Addresses</div>
+                        <div class="text-secondary">Manage your team member's correspondence addresses.</div>
+                        <button class="app-button-secondary border rounded-pill d-flex align-items-center"
+                                data-bs-toggle="modal" data-bs-target="#addressModal">
+                        <span class="me-2">
+                         <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20"
+                              height="20">
+                             <path fill-rule="evenodd"
+                                   d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5M3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16m13-6a1 1 0 0 1 1 1v4h4a1 1 0 1 1 0 2h-4v4a1 1 0 1 1-2 0v-4h-4a1 1 0 1 1 0-2h4v-4a1 1 0 0 1 1-1"
+                                   clip-rule="evenodd">
+                             </path>
+                            </svg>
+                         </span>
+                            Add an address
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Emergency Contacts Section -->
-            <div *ngIf="selectedDetail?.name === 'Emergency Contacts'" class="mt-3 p-3 border rounded bg-white">
-                <h4>Emergency Contacts</h4>
-                <p>Manage emergency contacts for this team member.</p>
-                <button class="btn btn-success">Add Contact</button>
-            </div>
+                <!-- Modal -->
+                <div class="modal fade mt-5 " id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered  w-75">
+                        <div class="modal-content p-3 mt-5">
+                            <div class="modal-header border-0"> <!-- Removed the divider -->
+                                <div class="modal-title fs-5 fw-bold" id="addressModalLabel">Add address</div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3" *ngIf="showAddressName">
+                                    <label class="input-label fw-bold">Address Name</label>
+                                    <input formControlName="addressName" id="addressName" name="addressName"
+                                           class="app-text-box form-control" maxlength="200"
+                                           [ngClass]="{ 'is-invalid': submitted && fmp.addressName.errors }"
+                                           type="text"/>
+                                    <div *ngIf="submitted && fmp.addressName.errors" class="invalid-feedback">
+                                        <div *ngIf="fmp.addressName.errors.required">Address Name is required</div>
+                                    </div>
+                                </div>
 
-            <!-- Roles & Permissions -->
-            <div *ngIf="selectedDetail?.name === 'Roles & Permissions'" class="mt-3 p-3 border rounded bg-white">
-                <h4>Roles & Permissions</h4>
-                <p>Manage roles and permissions for this team member.</p>
-            </div>
+                                <div class="mb-3">
+                                    addressName
+                                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-geo-alt"></i>
+                        </span>
+                                        <input type="text" class="form-control" id="address">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-0 w-100 d-flex mt-5"> <!-- Removed the divider -->
+                                <button type="button" class="app-button-secondary border" data-bs-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button type="button" class="app-button-secondary border">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Compensation -->
-            <div *ngIf="selectedDetail?.name === 'Compensation'" class="mt-3 p-3 border rounded bg-white">
-                <h4>Compensation</h4>
-                <p>Manage salary and benefits for this team member.</p>
-            </div>
+
+                <!-- Emergency Contacts Section -->
+                <div *ngIf="selectedDetail?.name === 'Emergency Contacts'" class="mt-3 p-3">
+                    <div class="container mb-5">
+                        <div class="heading-section fw-bold fs-4 mt-2">Emergency Contacts</div>
+                        <div class="text-secondary">Manage your team members' emergency contacts..</div>
+                        <button class="app-button-secondary border rounded-pill d-flex align-items-center"
+                                data-bs-toggle="modal" data-bs-target="#emergencyContactModal">
+            <span class="me-2">
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20">
+                    <path fill-rule="evenodd"
+                          d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5M3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16m13-6a1 1 0 0 1 1 1v4h4a1 1 0 1 1 0 2h-4v4a1 1 0 1 1-2 0v-4h-4a1 1 0 1 1 0-2h4v-4a1 1 0 0 1 1-1"
+                          clip-rule="evenodd">
+                    </path>
+                </svg>
+            </span>
+                            Add an Emergency Contact
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal fade mt-5" id="emergencyContactModal" tabindex="-1"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content p-3">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add Emergency Contact</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="input-label fw-bold">Full Name</label>
+                                        <input formControlName="fullName" id="fullName" name="fullName"
+                                               class="app-text-box form-control" maxlength="200"
+                                               placeholder="e.g. John Hancock"
+                                               [ngClass]="{ 'is-invalid': submitted && fmp.firstName.errors }"
+                                               type="text"/>
+                                        <div *ngIf="submitted && fmp.fullName.errors" class="invalid-feedback">
+                                            <div *ngIf="fmp.fullName.errors.required">Full Name is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="relationshipSelect" class="form-label"><strong>Relationship</strong></label>
+                                        <select id="relationshipSelect" class="form-select"
+                                                [(ngModel)]="selectedRelationship">
+                                            <option value="" disabled selected>Select Relationship</option>
+                                            <option *ngFor="let relation of relationship"
+                                                    [value]="relation">{{ relation }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <label class="input-label fw-bold">Email</label>
+                                        <input formControlName="emailId" id="emailId" name="emailId"
+                                               class="app-text-box form-control" maxlength="200"
+                                               placeholder="e.g. John Hancock"
+                                               [ngClass]="{ 'is-invalid': submitted && fmp.firstName.errors }"
+                                               type="text"/>
+                                        <div *ngIf="submitted && fmp.emailId.errors" class="invalid-feedback">
+                                            <div *ngIf="fmp.emailId.errors.required">Email is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Phone Number</label>
+                                        <div class="input-group">
+                                            <select class="form-select">
+                                                <option selected>+91</option>
+                                                <option>+1</option>
+                                                <option>+44</option>
+                                                <option>+61</option>
+                                            </select>
+                                            <input type="text" class="form-control"
+                                                   placeholder="e.g. +1 234 567 8901">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel
+                                </button>
+                                <button type="button" class="btn btn-dark">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Services-->
+                <div *ngIf="selectedDetail?.name === 'Services'" class="mt-3 p-3">
+                    <div class="container mb-5">
+                        <div class="heading-section fw-bold fs-4 mt-2">Services</div>
+                        <div class="text-secondary">Choose the services this team member provides</div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="app-button-secondary border rounded-pill ">Hair & Styling</button>
+                        <button class="app-button-secondary border rounded-pill ">Nails</button>
+                        <button class="app-button-secondary border rounded-pill ">Eyebrows and Eyelashes</button>
+                        <div class="d-flex align-items-center">
+                            <!-- Search Button -->
+                            <button class="btn btn-outline-dark rounded-circle ms-auto" (click)="toggleSearch()">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div *ngIf="showSearch" class="mt-2">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                 <i class="bi bi-search text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" formControlName="searchQuery"
+                                   placeholder="Search services">
+                        </div>
+                    </div>
+                    <div class="service-card mt-3">
+                        <!-- All Services -->
+                        <mat-checkbox>
+                            <span class="fw-bold fs-5">All services</span>
+                            <span class="text-muted">(6)</span>
+                        </mat-checkbox>
+
+                        <hr>
+
+                        <!-- Hair & Styling Category -->
+                        <div class="hair">
+                            <mat-checkbox>
+                                <span class="fw-bold fs-5">Hair & Styling</span>
+                                <span class="text-muted">(6)</span>
+                            </mat-checkbox>
+                            <hr>
+
+                            <!-- Haircut -->
+                            <div class="d-flex align-items-center">
+                                <mat-checkbox></mat-checkbox>
+                                <div class="ms-2">
+                                    <div class="">Haircut</div>
+                                    <div class="text-muted small">45min</div>
+                                </div>
+                                <div class="ms-auto fw-bold">₹40</div>
+                            </div>
+                            <hr>
+
+                            <!-- Hair Color -->
+                            <div class="d-flex align-items-center">
+                                <mat-checkbox></mat-checkbox>
+                                <div class="ms-2">
+                                    <div class="">Hair Color</div>
+                                    <div class="text-muted small">1h 15min</div>
+                                </div>
+                                <div class="ms-auto fw-bold">₹57</div>
+                            </div>
+                            <hr>
+
+                            <!-- Blow Dry -->
+                            <div class="d-flex align-items-center">
+                                <mat-checkbox></mat-checkbox>
+                                <div class="ms-2">
+                                    <div class="">Blow Dry</div>
+                                    <div class="text-muted small">35min</div>
+                                </div>
+                                <div class="ms-auto fw-bold">₹35</div>
+                            </div>
+                            <hr>
+
+                            <!-- Balayage -->
+                            <div class="d-flex align-items-center">
+                                <mat-checkbox></mat-checkbox>
+                                <div class="ms-2">
+                                    <div class="">Balayage</div>
+                                    <div class="text-muted small">2h 30min</div>
+                                </div>
+                                <div class="ms-auto fw-bold">₹150</div>
+                            </div>
+                            <br>
+                        </div>
+
+                        <!-- Nails Category -->
+                        <mat-checkbox>
+                            <span class="fw-bold fs-5">Nails</span>
+                            <span class="text-muted">(1)</span>
+                        </mat-checkbox>
+                        <hr>
+
+                        <!-- Manicure & Pedicure -->
+                        <div class="d-flex align-items-center">
+                            <mat-checkbox></mat-checkbox>
+                            <div class="ms-2">
+                                <div class="">Manicure & Pedicure</div>
+                                <div class="text-muted small">2h 30min</div>
+                            </div>
+                            <div class="ms-auto fw-bold">₹150</div>
+                        </div>
+
+                        <br>
+
+                        <!-- Eyebrows & Lashes Category -->
+                        <mat-checkbox>
+                            <span class="fw-bold fs-5">Eyebrows & Lashes</span>
+                            <span class="text-muted">(1)</span>
+                        </mat-checkbox>
+                        <hr>
+
+                        <!-- Classic Fill -->
+                        <div class="d-flex align-items-center">
+                            <mat-checkbox></mat-checkbox>
+                            <div class="ms-2">
+                                <div class="">Classic Fill</div>
+                                <div class="text-muted small">1h</div>
+                            </div>
+                            <div class="ms-auto fw-bold">₹150</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!--locations-->
+                <div *ngIf="selectedDetail?.name === 'Locations'" class="mt-3 p-3">
+                    <div class="fw-bold fs-5 mt-4">Works at</div>
+                    <div class="text-muted">Choose the locations where this team member works</div>
+
+                    <mat-checkbox>
+                        <span class="fw-bold">All locations</span>
+                    </mat-checkbox>
+
+                    <hr>
+
+                    <div class="d-flex align-items-center gap-5">
+                        <mat-checkbox class="me-2"></mat-checkbox>
+                        <span class="icon-container">
+                              <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                   viewBox="0 0 32 32">
+                                <path fill-rule="evenodd"
+                                      d="M6.742 4h18.516a2.01 2.01 0 0 1 1.913 1.441l1.79 6.285A1 1 0 0 1 29 12v2a5 5 0 0 1-2 4v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a5 5 0 0 1-2-4v-2a1 1 0 0 1 .038-.274l1.79-6.285A2.01 2.01 0 0 1 6.743 4m-.128 12.66a1 1 0 0 0-.235-.136A3 3 0 0 1 5 14v-1h6v1a3 3 0 0 1-4.386 2.66M7 18.9V26h18v-7.101A5 5 0 0 1 20 17a5 5 0 0 1-8 0 5 5 0 0 1-5 1.899M13 14a3 3 0 0 0 6 0v-1h-6zm13.675-3-1.422-4.992L6.757 6l-1.432 5zM27 13h-6v1a3 3 0 0 0 4.386 2.66 1 1 0 0 1 .235-.136A3 3 0 0 0 27 14z"
+                                      clip-rule="evenodd"></path>
+                                 </svg>
+                        </span>
+                        <div class="ms-2">
+                            <div class="fw-bold">V-Cut Men's Arekere</div>
+                            <div class="text-muted small">Sundar Ram Shetty, Arekere</div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex align-items-center gap-5">
+                        <mat-checkbox class="me-2"></mat-checkbox>
+                        <span class="icon-container">
+                              <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                   viewBox="0 0 32 32">
+                                <path fill-rule="evenodd"
+                                      d="M6.742 4h18.516a2.01 2.01 0 0 1 1.913 1.441l1.79 6.285A1 1 0 0 1 29 12v2a5 5 0 0 1-2 4v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a5 5 0 0 1-2-4v-2a1 1 0 0 1 .038-.274l1.79-6.285A2.01 2.01 0 0 1 6.743 4m-.128 12.66a1 1 0 0 0-.235-.136A3 3 0 0 1 5 14v-1h6v1a3 3 0 0 1-4.386 2.66M7 18.9V26h18v-7.101A5 5 0 0 1 20 17a5 5 0 0 1-8 0 5 5 0 0 1-5 1.899M13 14a3 3 0 0 0 6 0v-1h-6zm13.675-3-1.422-4.992L6.757 6l-1.432 5zM27 13h-6v1a3 3 0 0 0 4.386 2.66 1 1 0 0 1 .235-.136A3 3 0 0 0 27 14z"
+                                      clip-rule="evenodd"></path>
+                                 </svg>
+                        </span>
+                        <div class="ms-2">
+                            <div class="fw-bold">V-Cut Unisex Salon</div>
+                            <div class="text-muted small">Pai layout , Hulimavu</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Settings-->
+                <div *ngIf="selectedDetail?.name === 'Settings'" class="mt-3 p-3">
+                    <h5 class="fw-bold">Appointment settings</h5>
+                    <p class="text-muted">Choose if this team member is bookable on the calendar</p>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="calendarBookings"
+                               [formControl]="calendarControl">
+                        <label class="form-check-label fw-bold" for="calendarBookings">Allow calendar bookings</label>
+                        <p class="text-muted small ms-4">Allow this team member to receive bookings on the calendar</p>
+                    </div>
+
+
+                    <hr>
+
+                    <!-- Permission Level -->
+                    <div class="mt-4">
+                        <h5 class="fw-bold">Permission level</h5>
+                        <p class="text-muted">Choose the access level this team member has to the workspace</p>
+
+                        <select class="form-select w-100" [formControl]="permissionControl">
+                            <option *ngFor="let level of permissionLevels" [value]="level">{{ level }}</option>
+                        </select>
+                        <p class="text-muted small mt-2">The access level this team member has to the workspace</p>
+                    </div>
+                </div>
+            </form>
         </div>
+
     </div>
+
 </div>
