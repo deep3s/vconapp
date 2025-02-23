@@ -1,12 +1,17 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from "ngx-ui-loader";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import {
   MSAL_GUARD_CONFIG,
@@ -98,15 +103,21 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 @NgModule({
   declarations: [AppComponent],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
+      BrowserModule,
+      BrowserAnimationsModule,
+      NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+      AppRoutingModule,
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule,
+      MatInputModule,
+      MatFormFieldModule,
+      MatIconModule,
       MatDatepickerModule,
       MatNativeDateModule,
+
+      MatButtonModule,
+      MatSelectModule,
       MatInputModule,
       NewDashboardPageComponent,
     ],

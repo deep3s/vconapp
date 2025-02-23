@@ -1,0 +1,38 @@
+.search-container {
+  border: 20px solid #000; // Black border like your reference
+  background-color: black;
+}
+
+.remove-default-icon::-webkit-calendar-picker-indicator {
+  display: none; // Removes default calendar icon
+}
+
+.date-dropdown {
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-color: white;
+}
+
+mat-calendar {
+  font-size: 1.2rem; /* Increase text size */
+  width: 100%;
+}
+
+
+.form-control {
+  font-size: 0.875rem;
+}
+
+.time-dropdown .btn {
+  border-radius: 20px;
+}
+.search{
+  width: 10%;
+ background-color: #fd7e14 !important; /* Bootstrap Orange */
+}
+.dd{
+  margin-top: 300px;
+  background-color: white;
+}
