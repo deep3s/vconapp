@@ -71,8 +71,6 @@ export class BusinessLocationAddressComponent implements OnInit {
     }
 
     initMap(lat: number, lng: number) {
-        // @ts-ignore
-        /*const map = new mappls.Map('map', {center: [lat, lng]});*/
         const map =
             this.olaMaps.init({
                 style: "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
@@ -80,13 +78,6 @@ export class BusinessLocationAddressComponent implements OnInit {
                 center: [lng, lat],
                 zoom: 16,
             })
-        //map.setZoom(17);
-
-        // @ts-ignore
-        /*const marker = new mappls.Marker({
-          map: map,
-          position: {lat, lng}
-        });*/
         const olaIcon = document.createElement('div')
         olaIcon.classList.add('olalogo');
 
@@ -94,8 +85,6 @@ export class BusinessLocationAddressComponent implements OnInit {
             .addMarker({element: olaIcon, offset: [0, -10], anchor: 'bottom', color: 'red'})
             .setLngLat([lng, lat])
             .addTo(map)
-        // @ts-ignore
-        // mappls.setStyle('grey-day');
     }
 
     selectSuggestion(suggestion: any, event: any) {
