@@ -719,6 +719,17 @@
     }
   }
 
+  &.no-border {
+    border: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: none;
+      border-radius: 0;
+    }
+  }
+
   &.disabled {
     background: #bbbcbc3b;
     pointer-events: none;
@@ -1903,7 +1914,7 @@ i {
 
   .mat-expansion-panel-header-title {
     font-family: $CPMediumRegularFont !important;
-    color: $CoolGrey !important;
+    //color: $CoolGrey !important;
     text-transform: uppercase;
     margin-right: -5px;
 
@@ -1926,8 +1937,8 @@ i {
     color: $TextGrey;
 
     .mat-expansion-panel-header {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 8px;
+      padding-right: 8px;
       // height: 45px !important;
       position: relative;
       border-radius: 4px;

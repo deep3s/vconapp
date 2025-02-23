@@ -1,60 +1,85 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MANAGE_SETTINGS_CONSTANTS} from "../../shared/manageSetting-constants";
 import {BusinessSetupService} from "../../services/business-setup/business-setup.service";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-business-details-page',
-  templateUrl: './business-details-page.component.html',
-  styleUrls: ['./business-details-page.component.scss']
+    selector: 'app-business-details-page',
+    templateUrl: './business-details-page.component.html',
+    styleUrls: ['./business-details-page.component.scss']
 })
 export class BusinessDetailsPageComponent {
 
-  businessDetailsForm: FormGroup;
-  submitted = false;
+    businessDetailsForm: FormGroup;
+    submitted = false;
+    businessDetails: any = null;
 
-  warning_1: any = MANAGE_SETTINGS_CONSTANTS.Warning_1
-  warning_2: any = MANAGE_SETTINGS_CONSTANTS.Warning_2
+    warning_1: any = MANAGE_SETTINGS_CONSTANTS.Warning_1
+    warning_2: any = MANAGE_SETTINGS_CONSTANTS.Warning_2
 
-  selectedWarning1: any = {};
-  selectedWarning2: any = {};
+    selectedWarning1: any = {};
+    selectedWarning2: any = {};
 
-  constructor(private formBuilder: FormBuilder,
-              private businessSetupService: BusinessSetupService) {
-    // console.log(data);
-  }
+    constructor(private formBuilder: FormBuilder,
+                private router: Router,
+                private businessSetupService: BusinessSetupService) {
+        this.getBusinessDetailsFromRouteData();
+    }
 
-  ngOnInit(): void {
-    this.businessDetailsForm = this.formBuilder.group({
-      businessName: [],
-      businessOwner: [],
-      businessEmail: [],
-      businessPhone: [],
-      note: [],
-      facebookLink: [],
-      instaLink: [],
-      twitterLink: [],
-      websiteLink: [],
-    });
-  }
+    getBusinessDetailsFromRouteData(): void {
+        const navigation = this.router.getCurrentNavigation();
+        this.businessDetails = navigation?.extras.state;
+    }
 
-  // convenience getter for easy access to form fields
-  get fmp(): any {
-    return this.businessDetailsForm.controls;
-  }
+    ngOnInit(): void {
+        this.businessDetailsForm = this.formBuilder.group({
+            businessName: [],
+            businessOwner: [],
+            businessEmail: [],
+            businessPhone: [],
+            note: [],
+            facebookLink: [],
+            instaLink: [],
+            twitterLink: [],
+            websiteLink: [],
+        });
+        if (this.businessDetails) {
+            this.businessDetailsForm.patchValue(this.businessDetails);
+        }
+    }
 
-  applyPrev(selectedValue: any) : void {
-    console.log(selectedValue);
-  }
+    // convenience getter for easy access to form fields
+    get fmp(): any {
+        return this.businessDetailsForm.controls;
+    }
 
-  onSubmitBusinessDetails() {
-    let businessDetails = {...this.businessDetailsForm.value};
+    applyPrev(selectedValue: any): void {
+        console.log(selectedValue);
+    }
 
-    this.businessSetupService.saveBusinessDetails(businessDetails).subscribe((data: any) => {
-      console.log(data);
-    }, (err: any) => {
-      console.log(err)
-    });
-  }
+    onSubmitBusinessDetails() {
+        let businessDetails = {...this.businessDetailsForm.value};
 
+        if (this.businessDetails?.id) {
+            this.businessSetupService.updateBusinessDetails(
+                {...this.businessDetails, ...businessDetails}).pipe().subscribe(
+                () => {
+                    this.goToBusinessDetails();
+                }, (err: any) => {
+                    console.log(err)
+                });
+        } else {
+            this.businessSetupService.saveBusinessDetails(businessDetails).pipe().subscribe(
+                () => {
+                    this.goToBusinessDetails();
+                }, (err: any) => {
+                    console.log(err)
+                });
+        }
+    }
+
+    goToBusinessDetails(): void {
+        this.router.navigateByUrl('/business-details');
+    }
 }

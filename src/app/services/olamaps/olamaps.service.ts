@@ -2,16 +2,19 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {OlaMapsHelperService} from "./olamapshelper/ola-maps-helper.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class OlaMapsService {
-    private searchUrl = 'https://api.olamaps.io/places/v1/autocomplete';
+    private olaMapsApiBaseUrl = 'https://api.olamaps.io'
+    private searchUrl = `${this.olaMapsApiBaseUrl}/places/v1/autocomplete`;
+    private placeDetailsUrl = `${this.olaMapsApiBaseUrl}/places/v1/details`;
     private geocodeUrl = 'http://localhost:3000/api/places/search/json';
     private API_KEY: string = 'qOmAe8G8Tbky3bmGXYNM1SwmNyFoC5Oy9T5KW9a4';
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private olaMapsHelperService: OlaMapsHelperService) {
     }
 
     getSuggestions(query: string): Observable<string[]> {
@@ -23,11 +26,26 @@ export class OlaMapsService {
 
         return this.http.get<any>(this.searchUrl, {params}).pipe(
             map(response => response.predictions.map((location: any) => {
-                    const {description, geometry} = location;
+                    const {description, geometry, place_id} = location;
 
-                    return {description, location: geometry.location};
+                    return {description, location: geometry.location, place_id};
                 })
             )
+        );
+    }
+
+    getPlaceDetails(placeId: string): Observable<{  }> {
+        if (!placeId.trim()) return new Observable<string[]>(); // Avoid unnecessary calls
+
+        const params = new HttpParams()
+            .set('place_id', placeId)
+            .set('api_key', this.API_KEY); // Adjust region if needed
+
+        return this.http.get<any>(this.placeDetailsUrl, {params}).pipe(
+            map(response => {
+                return  {address: response?.result?.name, ...this.olaMapsHelperService
+                        .simplifyAddressComponents(response?.result?.address_components)};
+            })
         );
     }
 

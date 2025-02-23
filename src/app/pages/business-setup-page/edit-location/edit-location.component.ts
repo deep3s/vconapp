@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {BusinessSetupService} from "../../../services/business-setup/business-setup.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'edit-location',
@@ -16,20 +17,21 @@ export class EditLocationComponent {
 
 
   constructor(private formBuilder: FormBuilder,
-              private editLocation: BusinessSetupService) {
-    // console.log(data);
+              public dialogRef: MatDialogRef<EditLocationComponent>,
+              @Inject(MAT_DIALOG_DATA) public locationInfo: any) {
   }
 
   ngOnInit(): void {
     this.editLocationForm = this.formBuilder.group({
-      address: [],
-      apt: [],
-      district: [],
-      city: [],
-      county: [],
-      state: [],
-      postcode:[],
-      country: 'India',
+      address: this.locationInfo?.address,
+      apt: '',
+      district: this.locationInfo?.district,
+      city: this.locationInfo?.city,
+      subDivision: this.locationInfo?.subDivision,
+      state: this.locationInfo?.state,
+      postCode:this.locationInfo?.postCode,
+      country: this.locationInfo?.country,
+      directions: ''
     });
   }
 
@@ -38,18 +40,12 @@ export class EditLocationComponent {
     return this.editLocationForm.controls;
   }
 
-
-  onSubmitLocationDetails() {
-    let businessDetails = {businessName: this.editLocationForm.value.businessName};
-
-    this.editLocation.saveBusinessDetails(businessDetails).subscribe((data: any) => {
-      console.log(data);
-    }, (err: any) => {
-      console.log(err)
-    });
-  }
   closeModal() {
-    console.log('Modal Closed');
+    this.dialogRef.close();
+  }
+
+  saveLocationDetails(): void {
+    this.dialogRef.close({ locationDetails: this.editLocationForm.value });
   }
 
 }

@@ -39,11 +39,11 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
         {
             name: "Business details",
             icon: "business",
-            tabUrl: "/setup-details",
+            tabUrl: "/business-details",
             tabName: "Business details",
         },
         {
-            name: "Location",
+            name: "Business Locations",
             icon: "payment",
             tabUrl: "/business-locations",
             tabName: "Location",
@@ -60,7 +60,7 @@ export class PinnedMenuComponent implements OnInit, AfterViewInit {
         {
             name: "Service menu",
             icon: "design_services",
-            tabUrl: "/catlog",
+            tabUrl: "/catalog",
             tabName: "Service menu",
         },
         {

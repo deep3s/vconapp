@@ -10,22 +10,22 @@ export class BusinessTypeComponent {
   @Output() businessTypesSelected = new EventEmitter<any>(); // Emit selected categories
 
   categories = [
-    {name: 'Hair Salon', icon: 'bi bi-scissors'},
-    {name: 'Nail Salon', icon: 'bi bi-brush'},
-    {name: 'Barbershop', icon: 'bi bi-person'},
-    {name: 'Beauty Salon', icon: 'bi bi-heart'},
-    {name: 'Aesthetics', icon: 'bi bi-magic'},
-    {name: 'Spa', icon: 'bi bi-droplet'},
-    {name: 'Massage', icon: 'bi bi-hand-thumbs-up'},
-    {name: 'Waxing Salon', icon: 'bi bi-lightning'},
-    {name: 'Tanning Studio', icon: 'bi bi-sun'},
-    {name: 'Eyebrows & Lashes', icon: 'bi bi-eye'},
-    {name: 'Tattoo & Piercing', icon: 'bi bi-heart-pulse'},
-    {name: 'Therapy Center', icon: 'bi bi-plus-circle'},
-    {name: 'Weight Loss', icon: 'bi bi-speedometer'},
-    {name: 'Personal Trainer', icon: 'bi bi-person-check'},
-    {name: 'Gym & Fitness', icon: 'bi bi-bicycle'},
-    {name: 'Other', icon: 'bi bi-plus'}
+    {typeId: '1', name: 'Hair Salon', icon: 'bi bi-scissors'},
+    {typeId: '2', name: 'Nail Salon', icon: 'bi bi-brush'},
+    {typeId: '3', name: 'Barbershop', icon: 'bi bi-person'},
+    {typeId: '4', name: 'Beauty Salon', icon: 'bi bi-heart'},
+    {typeId: '5', name: 'Aesthetics', icon: 'bi bi-magic'},
+    {typeId: '6', name: 'Spa', icon: 'bi bi-droplet'},
+    {typeId: '7', name: 'Massage', icon: 'bi bi-hand-thumbs-up'},
+    {typeId: '8', name: 'Waxing Salon', icon: 'bi bi-lightning'},
+    {typeId: '9', name: 'Tanning Studio', icon: 'bi bi-sun'},
+    {typeId: '10', name: 'Eyebrows & Lashes', icon: 'bi bi-eye'},
+    {typeId: '11', name: 'Tattoo & Piercing', icon: 'bi bi-heart-pulse'},
+    {typeId: '12', name: 'Therapy Center', icon: 'bi bi-plus-circle'},
+    {typeId: '13', name: 'Weight Loss', icon: 'bi bi-speedometer'},
+    {typeId: '14', name: 'Personal Trainer', icon: 'bi bi-person-check'},
+    {typeId: '15', name: 'Gym & Fitness', icon: 'bi bi-bicycle'},
+    {typeId: '16', name: 'Other', icon: 'bi bi-plus'}
   ];
 
   selectedCategories: any[] = [];

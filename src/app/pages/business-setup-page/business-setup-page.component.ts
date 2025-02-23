@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {BusinessSetupService} from "../../services/business-setup/business-setup.service";
+import {BusinessLocationService} from "../../services/business-location/business-location.service";
 
 @Component({
     selector: 'app-business-setup-page',
@@ -7,14 +9,20 @@ import {Component} from '@angular/core';
 })
 export class BusinessSetupPageComponent {
     step: number = 1; // Default step
-    locationSearchResults: any = [];
 
     // Object to store form data
     businessLocationDetails: any = {
-        locationDetails: null,
+        locationInfo: null,
         mainBusinessType: null,
-        secondaryBusinessTypes: []
+        secondaryBusinessTypes: [],
+        locationAddress: {},
+        locationBillingDetails: {},
+        locationTimings: {},
     };
+
+    constructor(private businessSetupService: BusinessSetupService,
+                private businessLocationService: BusinessLocationService) {
+    }
 
     // Next Step: Store data before moving forward
     nextStep() {
@@ -30,30 +38,13 @@ export class BusinessSetupPageComponent {
         }
     }
 
-    // Function to update location details from child component
-    updateLocationData(data: any) {
-        this.businessLocationDetails.locationDetails = data;
-        this.nextStep();
-
-        console.log("Updated Location Data:", this.businessLocationDetails.locationDetails);
-    }
-
-    // Function to update main business type from child component
-    updateMainBusinessType(data: any) {
-        this.businessLocationDetails.mainBusinessType = data;
-        console.log("Updated Main Business Type:", this.businessLocationDetails.mainBusinessType);
-    }
-
-    // Function to update secondary business types from child component
-    updateSecondaryBusinessTypes(data: any) {
-        this.businessLocationDetails.secondaryBusinessTypes = data;
-        console.log("Updated Secondary Business Types:", this.businessLocationDetails.secondaryBusinessTypes);
-    }
-
     // Submit form (final step)
-    submitForm() {
-        console.log("Final Form Data:", this.businessLocationDetails);
-        alert("Form Submitted Successfully!");
+    saveBusinessLocationInfo() {
+        this.businessLocationService.saveBusinessLocationDetails(this.businessLocationDetails)
+            .pipe().subscribe(data => {
+                console.log(data);
+        })
+
     }
 
     getStepTitle(): string {
@@ -75,6 +66,43 @@ export class BusinessSetupPageComponent {
 
     getProgress(): number {
         return (this.step / 5) * 100;
+    }
+
+    // Function to update location details from child component
+    updateLocationInfo(data: any) {
+        this.businessLocationDetails.locationInfo = data;
+        this.nextStep();
+    }
+
+    // Function to update main business type from child component
+    updateMainBusinessType(data: any) {
+        this.businessLocationDetails.mainBusinessType = data;
+    }
+
+    // Function to update secondary business types from child component
+    updateSecondaryBusinessTypes(data: any) {
+        this.businessLocationDetails.secondaryBusinessTypes = data;
+    }
+
+    updateLocationAddress(data: any) {
+        this.businessLocationDetails.locationAddress = data;
+    }
+
+    updateLocationBillingDetails(data: any) {
+        this.businessLocationDetails.locationBillingDetails = data;
+    }
+
+    updateLocationTimings(data: any) {
+        this.businessLocationDetails.locationTimings = data;
+    }
+
+    onSubmitLocationDetails() {
+        this.businessSetupService.saveBusinessDetails(this.businessLocationDetails)
+            .pipe().subscribe((data: any) => {
+            console.log(data);
+        }, (err: any) => {
+            console.log(err)
+        });
     }
 
 

@@ -4,8 +4,8 @@
         <button class="app-button-secondary">Actions</button>
     </div>
     <div *ngFor="let service of category.services" (click)="category(service)">
+        <category-service [service]="service"></category-service>
     </div>
-    <category-service></category-service>
 </div>
 
 

@@ -6,6 +6,7 @@ import { AddteamMembersPageComponent } from './addteam-members-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {CatlogPageComponent} from "../catlog-page/catlog-page.component";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {CatlogPageComponent} from "../catlog-page/catlog-page.component";
         AddteamMembersPageRoutingModule,
         ReactiveFormsModule,
         MatDatepickerModule,
-        FormsModule
+        FormsModule,
+        MatCheckboxModule
     ],
     exports: [AddteamMembersPageComponent]
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'location-timings',
@@ -6,14 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location-timings.component.scss']
 })
 export class LocationTimingsComponent implements OnInit {
+  @Output() public timingsSaved: EventEmitter<any> = new EventEmitter();
+
   days = [
-    { name: 'Monday', open: false, openingTime: '10:00am', closingTime: '7:00pm' },
-    { name: 'Tuesday', open: false, openingTime: '10:00am', closingTime: '7:00pm' },
-    { name: 'Wednesday', open: false, openingTime: '10:00am', closingTime: '7:00pm' },
-    { name: 'Thursday', open: false, openingTime: '10:00am', closingTime: '7:00pm' },
-    { name: 'Friday', open: false, openingTime: '10:00am', closingTime: '7:00pm' },
-    { name: 'Saturday', open: false, openingTime: '10:00am', closingTime: '5:00pm' },
-    { name: 'Sunday', open: false, openingTime: '10:00am', closingTime: '5:00pm' },
+    { name: 'Monday', open: true, openingTime: '10:00am', closingTime: '7:00pm' },
+    { name: 'Tuesday', open: true, openingTime: '10:00am', closingTime: '7:00pm' },
+    { name: 'Wednesday', open: true, openingTime: '10:00am', closingTime: '7:00pm' },
+    { name: 'Thursday', open: true, openingTime: '10:00am', closingTime: '7:00pm' },
+    { name: 'Friday', open: true, openingTime: '10:00am', closingTime: '7:00pm' },
+    { name: 'Saturday', open: true, openingTime: '10:00am', closingTime: '5:00pm' },
+    { name: 'Sunday', open: true, openingTime: '10:00am', closingTime: '5:00pm' },
   ];
 
   timeSlots = [
@@ -30,10 +32,10 @@ export class LocationTimingsComponent implements OnInit {
 
   toggleDay(day: any) {
     day.open = !day.open;
-    this.saveToLocalStorage();
+    this.saveLocationTimings();
   }
 
-  saveToLocalStorage() {
-    localStorage.setItem('openingHours', JSON.stringify(this.days));
+  saveLocationTimings() {
+    this.timingsSaved.emit(this.days);
   }
 }

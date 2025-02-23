@@ -30,6 +30,8 @@ import {
 import { AppHttpInterceptor } from "./app-http-interceptor.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatSelectModule} from "@angular/material/select";
+import {MatButtonModule} from "@angular/material/button";
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||
   window.navigator.userAgent.indexOf("Trident/") > -1; // Remove this line to use Angular Universal
@@ -107,6 +109,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         ReactiveFormsModule,
       MatDatepickerModule,
       MatNativeDateModule,
+      MatButtonModule,
+      MatSelectModule,
+      MatInputModule,
       MatInputModule,
       DragDropModule
     ],

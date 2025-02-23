@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {BusinessSetupService} from "../../../services/business-setup/business-setup.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'edit-billing-details',
@@ -16,34 +16,34 @@ export class EditBillingDetailsComponent {
 
 
   constructor(private formBuilder: FormBuilder,
-              private editBilling: BusinessSetupService) {
+              public dialogRef: MatDialogRef<EditBillingDetailsComponent>,
+              @Inject(MAT_DIALOG_DATA) public businessBillingDetails: any) {
     // console.log(data);
   }
 
   ngOnInit(): void {
     this.editBillingForm = this.formBuilder.group({
-      companyName: [],
-      address: [],
-      apt: [],
-      city: [],
-      state: [],
-      postcode: [],
+      businessLocName: this.businessBillingDetails.businessLocName,
+      address: this.businessBillingDetails?.address,
+      apt: this.businessBillingDetails?.apt,
+      city: this.businessBillingDetails?.city,
+      state: this.businessBillingDetails?.state,
+      postCode:this.businessBillingDetails?.postCode,
+      invoiceNote: '',
+      useLocationForBilling: true
     });
   }
 
-// convenience getter for easy access to form fields
+  // convenience getter for easy access to form fields
   get fmp(): any {
     return this.editBillingForm.controls;
   }
 
+  closeModal() {
+    this.dialogRef.close();
+  }
 
-  onSubmitBillingDetails() {
-    let businessDetails = {businessName: this.editBillingForm.value.businessName};
-
-    this.editBilling.saveBusinessDetails(businessDetails).subscribe((data: any) => {
-      console.log(data);
-    }, (err: any) => {
-      console.log(err)
-    });
+  saveBillingDetails(): void {
+    this.dialogRef.close({ businessBillingDetails: this.editBillingForm.value });
   }
 }
