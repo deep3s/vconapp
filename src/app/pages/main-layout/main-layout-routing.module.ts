@@ -107,31 +107,7 @@ const routes: Routes = [
                     import("../manage-ers/manage-ers-page.module").then(
                         (m) => m.ManageERSPageModule
                     ),
-            },/*
-      {
-        path: "manage-settings",
-        data: {
-          title: "Manage Settings",
-          status: true,
-        },
-        canActivate: [AuthGuardService],
-        loadChildren: () =>
-          import(
-            "../manage-ers/manage-settings/manage-settings-page.module"
-          ).then((m) => m.ManageSettingsPageModule),
-      },
-      {
-        path: "manage-ridings",
-        data: {
-          title: "Manage Ridings",
-          status: true,
-        },
-        canActivate: [AuthGuardService],
-        loadChildren: () =>
-          import(
-            "../manage-ers/manage-ridings/manage-ridings-page.module"
-          ).then((m) => m.ManageRidingsPageModule),
-      },*/
+            },
             {
                 path: "publisher",
                 data: {

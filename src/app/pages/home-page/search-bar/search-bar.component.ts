@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { debounceTime, Observable, switchMap } from "rxjs";
 import { MapplsService } from "../../../services/mappls/mappls.service";
 import { OlaMapsService } from "../../../services/olamaps/olamaps.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'search-bar',
@@ -48,6 +49,10 @@ export class SearchBarComponent {
   ];
 
   filteredCategories = [...this.allCategories]; // Default to all categories
+
+  onSearch(): void{
+    this.router.navigateByUrl('/search');
+  }
 
   toggleDropdown(): void {
     this.showDropdown = true;
@@ -112,7 +117,11 @@ export class SearchBarComponent {
   options: string[] = [];
   suggestions: Observable<any[]>;
 
-  constructor(private mapplsService: MapplsService, private olaMapsService: OlaMapsService) {}
+  constructor(private mapplsService: MapplsService,
+              private router: Router,
+              private olaMapsService: OlaMapsService) {
+
+  }
 
   ngOnInit() {
     this.suggestions = this.searchControl.valueChanges.pipe(

@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class BusinessLocationService {
 
-  apiBaseUrl='http://localhost:8080';
+  apiBaseUrl='http://localhost:8080/apis';
   businessLocationDetailsUrl=`${this.apiBaseUrl}/businessLocation`;
 
   constructor(private http: HttpClient) { }

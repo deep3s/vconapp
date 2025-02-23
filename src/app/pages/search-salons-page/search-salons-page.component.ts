@@ -1,5 +1,6 @@
 import {Component, NgIterable} from '@angular/core';
 import {Router} from "@angular/router";
+import {OlaMaps} from "olamaps-web-sdk";
 
 @Component({
     selector: 'app-search-salons-page',
@@ -10,25 +11,6 @@ export class SearchSalonsPageComponent {
     latitude: number;
     longitude: number;
     salons = [
-        {
-        name: 'V-cut Salon',
-        image: 'https://images.fresha.com/locations/location-profile-images/333200/304740/88306814-2894-45a1-a253-2778723d598c.jpg?class=width-small',
-        address: 'Hulimavu, Bangalore',
-        distance: '12 km',
-        services: [
-            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
-            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
-            {
-                name: 'Therapeutic Massage',
-                duration: '30 mins',
-                price: 1500,
-                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
-            },
-            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-        ],
-
-    },
         {
             name: 'V-cut Salon',
             image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
@@ -53,6 +35,26 @@ export class SearchSalonsPageComponent {
             ],
 
         },
+        {
+        name: 'V-cut Salon',
+        image: 'https://images.fresha.com/locations/location-profile-images/333200/304740/88306814-2894-45a1-a253-2778723d598c.jpg?class=width-small',
+        address: 'Hulimavu, Bangalore',
+        distance: '12 km',
+        services: [
+            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+            {
+                name: 'Therapeutic Massage',
+                duration: '30 mins',
+                price: 1500,
+                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+            },
+            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+        ],
+
+    },
+
 
         {
             name: 'V-cut Salon',
@@ -105,6 +107,9 @@ export class SearchSalonsPageComponent {
         },
 
     ];
+    olaMaps = new OlaMaps({
+        apiKey: 'qOmAe8G8Tbky3bmGXYNM1SwmNyFoC5Oy9T5KW9a4',
+    })
 
     constructor(private router: Router) {
         setTimeout(() => {
@@ -112,12 +117,14 @@ export class SearchSalonsPageComponent {
         }, 500)
     }
 
-    initMap(lat:number, lng:number) {
-        // @ts-ignore
-        const map = new mappls.Map('map', {center: [lat, lng]});
-        map.setZoom(15);
-        // @ts-ignore
-        mappls.setStyle('grey-day');
+    initMap(lat: number, lng: number): void {
+        const map =
+            this.olaMaps.init({
+                style: "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
+                container: 'map',
+                center: [lng, lat],
+                zoom: 15,
+            })
     }
 
     onServiceClick(service: any) {

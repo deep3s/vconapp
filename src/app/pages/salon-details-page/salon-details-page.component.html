@@ -1,16 +1,8 @@
 <div class="container salon-details-page">
     <!-- Breadcrumbs -->
-    <div class="breadcrumbs">
-        <a routerLink="/">Home</a> >
-        <a routerLink="/massage">Massage</a> >
-        <a routerLink="/bengaluru">Bengaluru</a> >
-        <span>V -Cut Salon</span>
-    </div>
 
-    <div>
-
-
-        <h1 class="head">{{ salonDetails.name }}</h1>
+    <div class="mt-5">
+        <div class="section-heading-h2">{{ salonDetails.name }}</div>
         <div class="d-flex  justify-content-between">
             <div class="d-flex ">
                 <rating-star [rating]="4.5" [tnr]="467"></rating-star>
