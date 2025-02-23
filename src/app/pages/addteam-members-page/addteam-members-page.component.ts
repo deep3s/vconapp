@@ -8,8 +8,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 })
 export class AddteamMembersPageComponent {
     addTeamMemberForm: FormGroup;
-  locationForm: FormGroup;
-
+  showSearch: boolean = false;
   submitted = false;
   showAddressName: boolean = true;
   selectedRelationship: string = '';
@@ -111,5 +110,8 @@ export class AddteamMembersPageComponent {
   permissionControl = new FormControl('Low');
   permissionLevels = ['Low', 'Medium', 'High'];
 
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+  }
 
 }

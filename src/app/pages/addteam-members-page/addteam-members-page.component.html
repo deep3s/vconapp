@@ -437,9 +437,23 @@
                         <button class="app-button-secondary border rounded-pill ">Hair & Styling</button>
                         <button class="app-button-secondary border rounded-pill ">Nails</button>
                         <button class="app-button-secondary border rounded-pill ">Eyebrows and Eyelashes</button>
-                        <button class="btn btn-outline-dark rounded-circle ms-auto">
-                            <i class="bi bi-search"></i>
-                        </button>
+                        <div class="d-flex align-items-center">
+                            <!-- Search Button -->
+                            <button class="btn btn-outline-dark rounded-circle ms-auto" (click)="toggleSearch()">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div *ngIf="showSearch" class="mt-2">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                 <i class="bi bi-search text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" formControlName="searchQuery"
+                                   placeholder="Search services">
+                        </div>
                     </div>
                     <div class="service-card mt-3">
                         <!-- All Services -->
@@ -595,24 +609,25 @@
                     <p class="text-muted">Choose if this team member is bookable on the calendar</p>
 
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="calendarBookings" [formControl]="calendarControl">
+                        <input type="checkbox" class="form-check-input" id="calendarBookings"
+                               [formControl]="calendarControl">
                         <label class="form-check-label fw-bold" for="calendarBookings">Allow calendar bookings</label>
                         <p class="text-muted small ms-4">Allow this team member to receive bookings on the calendar</p>
                     </div>
 
 
-                <hr>
+                    <hr>
 
-                <!-- Permission Level -->
-                <div class="mt-4">
-                    <h5 class="fw-bold">Permission level</h5>
-                    <p class="text-muted">Choose the access level this team member has to the workspace</p>
+                    <!-- Permission Level -->
+                    <div class="mt-4">
+                        <h5 class="fw-bold">Permission level</h5>
+                        <p class="text-muted">Choose the access level this team member has to the workspace</p>
 
-                    <select class="form-select w-100" [formControl]="permissionControl">
-                        <option *ngFor="let level of permissionLevels" [value]="level">{{ level }}</option>
-                    </select>
-                    <p class="text-muted small mt-2">The access level this team member has to the workspace</p>
-                </div>
+                        <select class="form-select w-100" [formControl]="permissionControl">
+                            <option *ngFor="let level of permissionLevels" [value]="level">{{ level }}</option>
+                        </select>
+                        <p class="text-muted small mt-2">The access level this team member has to the workspace</p>
+                    </div>
                 </div>
             </form>
         </div>
