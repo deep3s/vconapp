@@ -34,7 +34,7 @@ export class OlaMapsService {
         );
     }
 
-    getPlaceDetails(placeId: string): Observable<{  }> {
+    getPlaceDetails(placeId: string): Observable<{}> {
         if (!placeId.trim()) return new Observable<string[]>(); // Avoid unnecessary calls
 
         const params = new HttpParams()
@@ -43,8 +43,14 @@ export class OlaMapsService {
 
         return this.http.get<any>(this.placeDetailsUrl, {params}).pipe(
             map(response => {
-                return  {address: response?.result?.name, ...this.olaMapsHelperService
-                        .simplifyAddressComponents(response?.result?.address_components)};
+                return {
+                    address: response?.result?.name,
+                    placeId: placeId,
+                    lat: response?.result?.geometry?.location?.lat,
+                    lng: response?.result?.geometry?.location?.lng,
+                    ...this.olaMapsHelperService
+                        .simplifyAddressComponents(response?.result?.address_components)
+                };
             })
         );
     }
