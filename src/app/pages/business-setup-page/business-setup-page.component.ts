@@ -12,7 +12,7 @@ export class BusinessSetupPageComponent {
 
     // Object to store form data
     businessLocationDetails: any = {
-        locationDetails: null,
+        locationInfo: null,
         mainBusinessType: null,
         secondaryBusinessTypes: [],
         locationAddress: {},
@@ -69,8 +69,8 @@ export class BusinessSetupPageComponent {
     }
 
     // Function to update location details from child component
-    updateLocationData(data: any) {
-        this.businessLocationDetails.locationDetails = data;
+    updateLocationInfo(data: any) {
+        this.businessLocationDetails.locationInfo = data;
         this.nextStep();
     }
 

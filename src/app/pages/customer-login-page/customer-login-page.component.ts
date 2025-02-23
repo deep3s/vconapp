@@ -11,7 +11,6 @@ declare var google: any; // Declare Google object for TypeScript
   templateUrl: './customer-login-page.component.html',
   styleUrls: ['./customer-login-page.component.scss']
 })
-
 export class CustomerLoginPageComponent implements OnInit {
   businessDetailsForm: FormGroup;
   submitted = false;
@@ -33,9 +32,6 @@ export class CustomerLoginPageComponent implements OnInit {
 
     this.renderGoogleButton();
   }
-
-
-
   loginWithFacebook() {
     const facebookUrl = 'https://www.facebook.com/login.php?skip_api_login=1&api_key=1224875000951200&kid_directed_site=0';
     const popup = window.open(facebookUrl, 'Facebook Login', 'width=600,height=600');
@@ -89,7 +85,6 @@ export class CustomerLoginPageComponent implements OnInit {
       console.error("Invalid Google token");
     }
   }
-
 
   parseJwt(token: string) {
     try {

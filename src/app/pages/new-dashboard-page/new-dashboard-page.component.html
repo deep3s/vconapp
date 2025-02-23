@@ -62,18 +62,18 @@
             <div class="napt-card">
                 <div class="card">
                     <h5 class="card-title fw-bold">Today's Next Appointments</h5>
-                    <div *ngIf="nextappointment[1]" class="appointment">
+                    <div *ngIf="nextAppointment[1]" class="appointment">
                         <div class="da/mon fw-bold">
-                            <div>{{ nextappointment[1].date }}</div>
-                            <div>{{ nextappointment[1].month }}</div>
+                            <div>{{ nextAppointment[1].date }}</div>
+                            <div>{{ nextAppointment[1].month }}</div>
                         </div>
-                        <div class="ser">{{ nextappointment[1].time }} <span class="status started">STARTED</span>
-                            <div class="fw-bold">{{ nextappointment[1].service }}</div>
-                            <div>{{ nextappointment[1].customer }}, {{ nextappointment[1].duration }}
-                                with {{ nextappointment[1].staff }}
+                        <div class="ser">{{ nextAppointment[1].time }} <span class="status started">STARTED</span>
+                            <div class="fw-bold">{{ nextAppointment[1].service }}</div>
+                            <div>{{ nextAppointment[1].customer }}, {{ nextAppointment[1].duration }}
+                                with {{ nextAppointment[1].staff }}
                             </div>
                         </div>
-                        <div class="price">₹{{ nextappointment[1].price }}</div>
+                        <div class="price">₹{{ nextAppointment[1].price }}</div>
                     </div>
                 </div>
             </div>

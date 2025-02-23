@@ -1,17 +1,12 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from "ngx-ui-loader";
 import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-
+import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import {
   MSAL_GUARD_CONFIG,
@@ -34,7 +29,9 @@ import {
 } from "@azure/msal-browser";
 import { AppHttpInterceptor } from "./app-http-interceptor.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NewDashboardPageComponent} from "./pages/new-dashboard-page/new-dashboard-page.component";
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatSelectModule} from "@angular/material/select";
+import {MatButtonModule} from "@angular/material/button";
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||
   window.navigator.userAgent.indexOf("Trident/") > -1; // Remove this line to use Angular Universal
@@ -103,23 +100,20 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 @NgModule({
   declarations: [AppComponent],
     imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-      AppRoutingModule,
-      HttpClientModule,
-      FormsModule,
-      ReactiveFormsModule,
-      MatInputModule,
-      MatFormFieldModule,
-      MatIconModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
       MatDatepickerModule,
       MatNativeDateModule,
-
       MatButtonModule,
       MatSelectModule,
       MatInputModule,
-      NewDashboardPageComponent,
+      MatInputModule,
+      DragDropModule
     ],
   providers: [
 

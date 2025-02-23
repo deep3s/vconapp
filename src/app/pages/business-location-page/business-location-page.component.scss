@@ -1,29 +1,5 @@
-.container {
+.business-locations-page {
   margin-top: 70px;
-
-  .sidebar {
-    height: fit-content;
-    max-width: 280px;
-  }
-
-  .left-section {
-    background: white;
-    border-radius: 8px;
-    padding: 12px;
-  }
-
-  .menu-item {
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  .menu-item:hover, .menu-item.active {
-    background: #eef2ff;
-  }
 
   .section-title {
     padding: 10px 12px;
@@ -31,9 +7,10 @@
     color: #333;
   }
 
-  .location-card {
-    max-width: 700px;
-  }
+  //
+  //.location-card {
+  //  max-width: 700px;
+  //}
 
   .icon-box {
     background: #eef2ff;
@@ -42,14 +19,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 300px;
-    height: 100px;
+    margin-bottom: 10px;
   }
 
   .icon-box i {
     font-size: 24px;
   }
-  .para{
+
+  .para {
     margin-top: -20px;
+  }
+
+  .location-card {
+    height: 200px;
   }
 }

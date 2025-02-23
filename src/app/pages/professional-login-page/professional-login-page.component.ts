@@ -19,13 +19,19 @@ export class ProfessionalLoginPageComponent implements OnInit {
       alert('Popup blocked! Please allow popups for this website.');
     }
   }
-  private router: Router
-
+  loginWithGoogle() {
+    if (typeof google !== 'undefined') {
+      google.accounts.id.prompt(); // Show Google One Tap prompt
+    } else {
+      console.error("Google API not loaded.");
+    }
+  }
 
   loginWithApple() {
     window.location.href = 'https://appleid.apple.com/auth/authorize?client_id=com.fresha.Business.Web&redirect_uri=https%3A%2F%2Fpartners.fresha.com&response_type=code%20id_token&scope=name%20email&response_mode=web_message&frame_id=f84e9aec-001c-4760-8f3e-4ea66b859838&m=11&v=1.5.5';
   }
   constructor(private formBuilder: FormBuilder,
+              private router: Router,
               private businessSetupService: BusinessSetupService) {
     // console.log(data);
   }
@@ -44,13 +50,7 @@ export class ProfessionalLoginPageComponent implements OnInit {
     this.renderGoogleButton();
   }
 
-  loginWithGoogle() {
-    if (typeof google !== 'undefined') {
-      google.accounts.id.prompt(); // Show Google One Tap prompt
-    } else {
-      console.error("Google API not loaded.");
-    }
-  }
+
 
   renderGoogleButton() {
     if (typeof google !== 'undefined') {

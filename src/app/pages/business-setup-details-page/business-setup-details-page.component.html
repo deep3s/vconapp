@@ -1,0 +1,66 @@
+<div class="container mt-4 pt-4">
+    <!-- Title -->
+    <div class="section-heading-h2">Business details</div>
+    <p class="text-muted">
+        Set your business name, tax and language preferences, and manage external links.
+        <a href="#" class="text-decoration-none">Learn more.</a>
+    </p>
+
+    <!-- Business Info Section -->
+    <div class="card border-0 shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold">Business Info</h5>
+            <button class="app-button-primary px-3" (click)="editBusinessDetails()">Edit</button>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Business name</p>
+                <p class="text-muted">{{businessDetails.businessName}}</p>
+            </div>
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Country</p>
+                <p class="text-muted">India</p>
+            </div>
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Currency</p>
+                <p class="text-muted">INR</p>
+            </div>
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Tax calculation</p>
+                <p class="text-muted">Retail prices include tax</p>
+            </div>
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Team default language</p>
+                <p class="text-muted">🇬🇧 English (English)</p>
+            </div>
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Client default language</p>
+                <p class="text-muted">🇬🇧 English (English)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Links Section -->
+    <div class="card border-0 shadow-sm p-4 mt-4">
+        <h5 class="fw-bold">External links</h5>
+        <div class="row mt-3">
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Facebook</p>
+                <div>{{businessDetails.facebookLink}}</div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">X (Twitter)</p>
+                <div>{{businessDetails.twitterLink}}</div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Instagram</p>
+                <div>{{businessDetails.instaLink}}</div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <p class="fw-semibold mb-0">Website</p>
+                <div>{{businessDetails.businessName}}</div>
+            </div>
+        </div>
+    </div>
+</div>

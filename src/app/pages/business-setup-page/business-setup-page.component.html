@@ -44,7 +44,7 @@
                 <div class="mt-4">
                     <div *ngIf="step === 1">
                         <business-location-details
-                                (locationBasicsSaved)="updateLocationData($event)"></business-location-details>
+                                (locationBasicsSaved)="updateLocationInfo($event)"></business-location-details>
                     </div>
 
                     <div *ngIf="step === 2">
@@ -60,7 +60,7 @@
                         <business-location-address
                                 (locationAddressSaved)="updateLocationAddress($event)"
                                 (locationBillingSaved)="updateLocationBillingDetails($event)"
-                                [businessBillingDetails]="businessLocationDetails.locationDetails"></business-location-address>
+                                [businessBillingDetails]="businessLocationDetails.locationInfo"></business-location-address>
                     </div>
                     <div *ngIf="step === 5">
                         <location-timings (timingsSaved)="updateLocationTimings($event)"></location-timings>
