@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild} from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { debounceTime, Observable, switchMap } from "rxjs";
 import { MapplsService } from "../../../services/mappls/mappls.service";
@@ -11,6 +11,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
+  @Input() currentLocation: any = {};
+
   searchQuery: string = '';
   locationInput: string = 'Current Location';
   showTimeDropdown: boolean = false;
@@ -51,7 +53,7 @@ export class SearchBarComponent {
   filteredCategories = [...this.allCategories]; // Default to all categories
 
   onSearch(): void{
-    this.router.navigateByUrl('/search');
+    this.router.navigate(['/search'],{state: {...this.currentLocation, radius: 3}});
   }
 
   toggleDropdown(): void {

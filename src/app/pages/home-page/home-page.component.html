@@ -1,7 +1,9 @@
 
 <div class="home-page mt-4 pt-4">
     <div class="container pb-5">
-        <div class="pb-5 mb-5"><search-bar></search-bar></div>
+        <div class="pb-5 mb-5">
+            <search-bar [currentLocation]="this.userCurrentLocation"></search-bar>
+        </div>
         <salon-cards [salons]="salons" [title]="'Recently Viewed'"></salon-cards>
         <salon-cards [recommendedSalon]="recommendedSalons" [title]="'Recommended Salons'"></salon-cards>
         <salon-cards [newSalons]="newSalons" [title]="'New to V-cut'"></salon-cards>
