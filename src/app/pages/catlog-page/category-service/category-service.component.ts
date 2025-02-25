@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./category-service.component.scss']
 })
 export class CategoryServiceComponent {
-  @Input() public service:any;
+  @Input() public service:any = {};
   editService(service: any) {
     console.log("Edit:", service);
   }
