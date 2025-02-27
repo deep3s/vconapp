@@ -41,29 +41,29 @@
 
                 <!-- Step Content -->
                 <div class="mt-4">
-                    <div *ngIf="step === 1">
+                    <div [hidden]="step !== 1">
                         <business-location-details
                                 [locationInfo]="selectedLocation?.locationInfo"
                                 (locationBasicsSaved)="updateLocationInfo($event)"></business-location-details>
                     </div>
-                    <div *ngIf="step === 2">
+                    <div  [hidden]="step !== 2">
                         <business-type [multiSelect]="false"
                                        [locationInfo]="selectedLocation?.mainBusinessType"
                                        (businessTypesSelected)="updateMainBusinessType($event)"></business-type>
                     </div>
-                    <div *ngIf="step === 3">
+                    <div  [hidden]="step !== 3">
                         <business-type [multiSelect]="true"
                                        [locationInfo]="selectedLocation?.secondaryBusinessTypes"
                                        (businessTypesSelected)="updateSecondaryBusinessTypes($event)"></business-type>
                     </div>
-                    <div *ngIf="step === 4">
+                    <div  [hidden]="step !== 4">
                         <business-location-address
                                 [locationInfo]="selectedLocation?.locationAddress"
                                 (locationAddressSaved)="updateLocationAddress($event)"
                                 (locationBillingSaved)="updateLocationBillingDetails($event)"
                                 [businessBillingDetails]="businessLocationDetails.locationInfo"></business-location-address>
                     </div>
-                    <div *ngIf="step === 5">
+                    <div  [hidden]="step !== 5">
                         <location-timings (timingsSaved)="updateLocationTimings($event)"></location-timings>
                     </div>
                 </div>

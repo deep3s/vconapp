@@ -21,6 +21,10 @@ export class BusinessLocationService {
     return this.http.get<any>(`${this.businessLocationDetailsUrl}`);
   }
 
+  getBusinessLocationById(blId: string): Observable<any> {
+    return this.http.get<any>(`${this.businessLocationDetailsUrl}/${blId}`);
+  }
+
   searchBusinessLocations(lat: number, lng: number, radius = 10): Observable<any> {
     const params = new HttpParams()
         .set('latitude', lat)

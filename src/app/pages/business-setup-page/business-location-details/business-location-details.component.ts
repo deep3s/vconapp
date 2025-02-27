@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MANAGE_SETTINGS_CONSTANTS} from "src/app/shared/manageSetting-constants";
 import {BusinessSetupService} from "src/app/services/business-setup/business-setup.service";
@@ -12,7 +12,7 @@ import {BusinessLocationService} from "../../../services/business-location/busin
     templateUrl: './business-location-details.component.html',
     styleUrls: ['./business-location-details.component.scss']
 })
-export class BusinessLocationDetailsComponent implements OnInit {
+export class BusinessLocationDetailsComponent implements OnInit, OnChanges {
     @Input() locationInfo:any = {};
     @Output() locationBasicsSaved = new EventEmitter();
 
@@ -35,26 +35,22 @@ export class BusinessLocationDetailsComponent implements OnInit {
             locContactLink: ['', [Validators.required, phoneNumberValidator]],
             locEmailLink: ['', [Validators.required, Validators.email]],
         });
+    }
 
-
-        setTimeout(() => {
-            console.log(this.locationInfo, "123456789"); // Ensure locationInfo has values
-
-            if (this.locationInfo) {
-                this.businessLocationForm.patchValue({
-                    businessLocName: this.locationInfo.businessLocName || '',
-                    locContactLink: this.locationInfo.locContactLink || '',
-                    locEmailLink: this.locationInfo.locEmailLink || ''
-                });
-            }
-        },0 ); // A small delay ensures data is available before patching
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.locationInfo) {
+            this.businessLocationForm.patchValue({
+                businessLocName: this.locationInfo.businessLocName || '',
+                locContactLink: this.locationInfo.locContactLink || '',
+                locEmailLink: this.locationInfo.locEmailLink || ''
+            });
+        }
     }
 
     // convenience getter for easy access to form fields
     get fmp(): any {
         return this.businessLocationForm.controls;
     }
-
 
     onSubmitBusinessLocation() {
         this.submitted = true;

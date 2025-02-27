@@ -27,42 +27,38 @@ export class BusinessSetupPageComponent implements OnInit {
     selectedLocation: any = this.businessLocationDetails;
     locationInfoId: any;
 
-    ngOnInit() {
-        this.route.queryParams.subscribe(params => {
-            this.locationInfoId = params['id']; // Get the 'id' from URL
-            console.log("Location ID:", this.locationInfoId);
-            this.fetchLocationInfo();
-        });
-    }
-
-    fetchLocationInfo(): void {
-        this.businessLocationService.getAllBusinessLocations().subscribe(
-            (locations: any[]) => {
-                this.businessLocations = locations; // Store all locations
-                console.log("All Business Locations:", this.businessLocations);
-
-                // Find the specific location by ID
-                if (this.locationInfoId) {
-                    this.selectedLocation = this.businessLocations.find(loc => loc.id === this.locationInfoId);
-                    console.log("Selected Business Location:", this.selectedLocation);
-                }
-            },
-            error => {
-                console.error("Error fetching business locations:", error);
-            }
-        );
-    }
-
     constructor(private businessSetupService: BusinessSetupService,
                 private router: Router,
                 private route: ActivatedRoute,
                 private businessLocationService: BusinessLocationService) {
-        this.getBusinessSetupFromRouteData();
+        this.getBusinessLocationIdFromRouteParams();
     }
 
-    getBusinessSetupFromRouteData(): void {
-        const navigation = this.router.getCurrentNavigation();
-        this.businessLocationDetails = navigation?.extras.state;
+    ngOnInit() {
+
+    }
+
+    fetchLocationInfo(): void {
+        this.businessLocationService.getBusinessLocationById(this.locationInfoId)
+            .pipe()
+            .subscribe(
+            (locationDetails: any) => {
+                this.businessLocationDetails = locationDetails;
+                this.selectedLocation = locationDetails;
+            },
+            error => {
+                console.error("Error fetching business location details:", error);
+            }
+        );
+    }
+
+    getBusinessLocationIdFromRouteParams(): void {
+        this.route.queryParams.subscribe(params => {
+            this.locationInfoId = params['id']; // Get the 'id' from URL
+            if(this.locationInfoId){
+                this.fetchLocationInfo();
+            }
+        });
     }
 
     nextStep() {
