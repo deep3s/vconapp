@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {debounceTime, Observable, switchMap} from "rxjs";
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {OlaMaps} from 'olamaps-web-sdk'
 import {OlaMapsService} from "src/app/services/olamaps/olamaps.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -14,11 +14,16 @@ import {EditBillingDetailsComponent} from "../edit-billing-details/edit-billing-
     styleUrls: ['./business-location-address.component.scss']
 })
 export class BusinessLocationAddressComponent implements OnInit {
+    @Input() locationInfo:any = {};
     @Input() businessBillingDetails: any;
+    @Input() locationAddress:any = {};
+
     @Output() locationAddressSaved: EventEmitter<any> = new EventEmitter();
     @Output() locationBillingSaved: EventEmitter<any> = new EventEmitter();
     selectedLocationDetails: any = null;
     isAddressAvailable = false;
+    businessLocationForm: FormGroup;
+
     olaMaps = new OlaMaps({
         apiKey: 'qOmAe8G8Tbky3bmGXYNM1SwmNyFoC5Oy9T5KW9a4',
     })
@@ -34,8 +39,17 @@ export class BusinessLocationAddressComponent implements OnInit {
         this.suggestions = this.searchControl.valueChanges.pipe(
             debounceTime(300), // Wait 300ms after user stops typing
             switchMap(filterValue => this.olaMapsService.getSuggestions(filterValue || ''))
-        )
+        );
+
+        setTimeout(() => {
+            console.log(this.locationAddress, "Location Address Debug"); // Ensure locationAddress has values
+
+            if (this.locationAddress?.businessLocName) {
+                this.businessLocationForm.patchValue(this.locationAddress);
+            }
+        }, 0); // A small delay ensures data is available before patching
     }
+
 
     openEditAddressModal(): void {
         const editAddressDialogRef = this.dialog.open(EditLocationComponent, {

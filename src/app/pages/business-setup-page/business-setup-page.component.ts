@@ -1,14 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BusinessSetupService} from "../../services/business-setup/business-setup.service";
 import {BusinessLocationService} from "../../services/business-location/business-location.service";
 import {Router} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-business-setup-page',
     templateUrl: './business-setup-page.component.html',
     styleUrls: ['./business-setup-page.component.scss']
 })
-export class BusinessSetupPageComponent {
+
+export class BusinessSetupPageComponent implements OnInit {
     step: number = 1; // Default step
 
     // Object to store form data
@@ -21,11 +23,43 @@ export class BusinessSetupPageComponent {
         locationTimings: {},
     };
 
+    businessLocations: any;
+    selectedLocation: any = this.businessLocationDetails;
+    locationInfoId: any;
+
+    ngOnInit() {
+        this.route.queryParams.subscribe(params => {
+            this.locationInfoId = params['id']; // Get the 'id' from URL
+            console.log("Location ID:", this.locationInfoId);
+            this.fetchLocationInfo();
+        });
+    }
+
+    fetchLocationInfo(): void {
+        this.businessLocationService.getAllBusinessLocations().subscribe(
+            (locations: any[]) => {
+                this.businessLocations = locations; // Store all locations
+                console.log("All Business Locations:", this.businessLocations);
+
+                // Find the specific location by ID
+                if (this.locationInfoId) {
+                    this.selectedLocation = this.businessLocations.find(loc => loc.id === this.locationInfoId);
+                    console.log("Selected Business Location:", this.selectedLocation);
+                }
+            },
+            error => {
+                console.error("Error fetching business locations:", error);
+            }
+        );
+    }
+
     constructor(private businessSetupService: BusinessSetupService,
                 private router: Router,
+                private route: ActivatedRoute,
                 private businessLocationService: BusinessLocationService) {
         this.getBusinessSetupFromRouteData();
     }
+
     getBusinessSetupFromRouteData(): void {
         const navigation = this.router.getCurrentNavigation();
         this.businessLocationDetails = navigation?.extras.state;
@@ -48,9 +82,8 @@ export class BusinessSetupPageComponent {
     saveBusinessLocationInfo() {
         this.businessLocationService.saveBusinessLocationDetails(this.businessLocationDetails)
             .pipe().subscribe(data => {
-                console.log(data);
+            console.log(data);
         })
-
     }
 
     getStepTitle(): string {
@@ -105,12 +138,10 @@ export class BusinessSetupPageComponent {
     onSubmitLocationDetails() {
         this.businessSetupService.saveBusinessDetails(this.businessLocationDetails)
             .pipe().subscribe((data: any) => {
-            console.log(data);
-        }, (err: any) => {
-            console.log(err)
-        });
+                console.log(data);
+            },
+            (err: any) => {
+                console.log(err)
+            });
+        }
     }
-
-}
-
-

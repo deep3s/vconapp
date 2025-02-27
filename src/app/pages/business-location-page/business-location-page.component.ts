@@ -26,15 +26,21 @@ export class BusinessLocationPageComponent {
         {name: 'Client list', active: false}
     ];
 
-
     navigateToBusinessSetup() {
         this.router.navigate(['./business-setup']); // Change the route path accordingly
     }
 
-    viewLocation(businessLocation:any) {
-        this.router.navigate(['./business-setup'],{state: businessLocation}); // Change the route path accordingly
-    }
+    // viewLocation(businessLocation:any) {
+    //     // this.router.navigate(['./business-setup'],{state: businessLocation}); // Change the route path accordingly
+    //     this.router.navigate(['./business-setup')
+    // }
 
+    viewLocation(businessLocation: any) {
+        console.log(businessLocation);
+        this.router.navigate(['./business-setup'], {
+            queryParams: { id: businessLocation.id } // Sending only the 'id'
+        });
+    }
 
     constructor(private router: Router,
                 private businessLocationService: BusinessLocationService) {
@@ -48,7 +54,6 @@ export class BusinessLocationPageComponent {
             }
         )
     }
-
 
     selectDetails(item: any) {
         this.details.forEach(detail => detail.active = false);
@@ -68,6 +73,9 @@ export class BusinessLocationPageComponent {
 
     editBusinessDetails(): void {
         this.router.navigate(['business-setup'], { state: this.businessSetup });
+    }
+    deleteLocation(index: number) {
+        this.businessLocations.splice(index, 1);
     }
 
 }

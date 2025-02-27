@@ -104,14 +104,14 @@
 
 
             <div class="card p-3 mt-4 border rounded-3 shadow-sm location-card w-100"
-                 *ngFor="let businessLocation of businessLocations">
+                 *ngFor="let businessLocation of businessLocations; let i = index">
                 <div class="row h-100">
                     <div class="col-3">
-                        <div class=" icon-box w-100 h-100">
-                            <i class="bi bi-shop text-primary h-70 "></i>
+                        <div class="icon-box w-100 h-100">
+                            <i class="bi bi-shop text-primary h-70"></i>
                         </div>
                     </div>
-                    <div class="col-7 px-3 ">
+                    <div class="col-7 px-3">
                         <div class="mb-2 fw-bold lh-1">{{ businessLocation?.locationBillingDetails?.businessLocName }}</div>
                         <div class="mb-4">{{ businessLocation.locationAddress.description }}</div>
                         <small class="text-muted">No reviews yet</small>
@@ -121,22 +121,20 @@
                         <div class="row">
                             <div class="col">
                                 <div ngbDropdown class="d-inline-block">
-                                    <button type="button" class="app-button-secondary"
-                                            ngbDropdownToggle>
+                                    <button type="button" class="app-button-secondary" ngbDropdownToggle>
                                         Action
                                     </button>
                                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem (click)="viewLocation(businessLocation)">Edit</button>
-                                        <button ngbDropdownItem>Delete Location</button>
-
+                                        <button ngbDropdownItem (click)="deleteLocation(i)">Delete Location</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>

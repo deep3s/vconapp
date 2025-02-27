@@ -4,7 +4,18 @@
             <div class="row g-3">
                 <div class="col-md-3 col-sm-4 col-6" *ngFor="let category of categories"
                      (click)="selectCategory(category)">
-                    <div class="category-box" [class.selected]="selectedCategories.includes(category)">
+<!--                    {{selectedCategories.includes(category)}}-->
+<!--                    {{selectedCategories[0].typeId}}-->
+<!--                    <div class="category-box" [class.selected]="selectedCategories.includes(category)">
+                        <div class="icon">
+                            <i [class]="category.icon"></i>
+                        </div>
+                        <p>{{ category.name }}</p>
+                        <div class="checkmark" *ngIf="selectedCategories.includes(category)">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                    </div>-->
+                    <div class="category-box" [class.selected]="selectCategories(category)">
                         <div class="icon">
                             <i [class]="category.icon"></i>
                         </div>
@@ -13,6 +24,7 @@
                             <i class="bi bi-check-circle-fill"></i>
                         </div>
                     </div>
+
                 </div>
             </div>
 

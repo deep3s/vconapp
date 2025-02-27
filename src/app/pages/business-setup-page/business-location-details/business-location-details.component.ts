@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MANAGE_SETTINGS_CONSTANTS} from "src/app/shared/manageSetting-constants";
 import {BusinessSetupService} from "src/app/services/business-setup/business-setup.service";
 import {phoneNumberValidator} from "src/app/core/validators/phone-number-validator";
+import {ActivatedRoute} from "@angular/router";
+import {BusinessLocationService} from "../../../services/business-location/business-location.service";
 
 
 @Component({
@@ -24,20 +26,28 @@ export class BusinessLocationDetailsComponent implements OnInit {
     selectedWarning2: any = {};
 
     constructor(private formBuilder: FormBuilder,
-                private businessSetupService: BusinessSetupService) {
+                private businessSetupService: BusinessSetupService,  private route: ActivatedRoute,   private businessLocationService: BusinessLocationService) {
         // console.log(data);
     }
-
     ngOnInit(): void {
         this.businessLocationForm = this.formBuilder.group({
-            businessLocName: ['',  [Validators.required]],
-            locContactLink: ['',  [Validators.required, phoneNumberValidator]],
-            locEmailLink: ['',  [Validators.required, Validators.email]],
+            businessLocName: ['', [Validators.required]],
+            locContactLink: ['', [Validators.required, phoneNumberValidator]],
+            locEmailLink: ['', [Validators.required, Validators.email]],
         });
 
-        if (this.locationInfo.businessLocName){
-            this.businessLocationForm.patchValue(this.locationInfo)
-        }
+
+        setTimeout(() => {
+            console.log(this.locationInfo, "123456789"); // Ensure locationInfo has values
+
+            if (this.locationInfo) {
+                this.businessLocationForm.patchValue({
+                    businessLocName: this.locationInfo.businessLocName || '',
+                    locContactLink: this.locationInfo.locContactLink || '',
+                    locEmailLink: this.locationInfo.locEmailLink || ''
+                });
+            }
+        },0 ); // A small delay ensures data is available before patching
     }
 
     // convenience getter for easy access to form fields
