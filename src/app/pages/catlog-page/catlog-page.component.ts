@@ -10,14 +10,9 @@ export class CatlogPageComponent implements OnInit {
   searchTerm: string = '';
 
   categories: any = [];
-  selectedCategory: any = this.categories[1];
+  selectedCategory: any = {services: []}
 
-  services = [
-    { name: 'Haircut', duration: '45min', price: 40 },
-    { name: 'Hair Color', duration: '1h 15min', price: 57 },
-    { name: 'Blow Dry', duration: '35min', price: 35 },
-    { name: 'Balayage', duration: '2h 30min', price: 150 }
-  ];
+  services = [];
 
 
   selectCategory(category: any ){
@@ -34,14 +29,6 @@ export class CatlogPageComponent implements OnInit {
 
   }
   ngOnInit(): void {
-   /* let allServices:any = [];
-    this.categories.forEach((category, index) => {
-      if(index !==0){
-        allServices = [...allServices, ...category.services || []];
-      }
-    })
-
-    this.categories[0].services = allServices;*/
     this.getAllCategories();
   }
 
@@ -49,7 +36,8 @@ export class CatlogPageComponent implements OnInit {
     this.catalogService.getAllCatalog().pipe().subscribe(
         (categories:any) => {
           this.categories = categories;
-
+          this.selectedCategory = categories[0];
+          this.selectedCategory.active = true;
         }
     );
 

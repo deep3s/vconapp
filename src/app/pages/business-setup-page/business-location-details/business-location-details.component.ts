@@ -19,14 +19,7 @@ export class BusinessLocationDetailsComponent implements OnInit, OnChanges {
     businessLocationForm: FormGroup;
     submitted = false;
 
-    warning_1: any = MANAGE_SETTINGS_CONSTANTS.Warning_1
-    warning_2: any = MANAGE_SETTINGS_CONSTANTS.Warning_2
-
-    selectedWarning1: any = {};
-    selectedWarning2: any = {};
-
-    constructor(private formBuilder: FormBuilder,
-                private businessSetupService: BusinessSetupService,  private route: ActivatedRoute,   private businessLocationService: BusinessLocationService) {
+    constructor(private formBuilder: FormBuilder) {
         // console.log(data);
     }
     ngOnInit(): void {
