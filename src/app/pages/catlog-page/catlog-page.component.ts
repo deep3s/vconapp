@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {CatalogService} from "../../services/catalog/catalog.service";
 
 @Component({
   selector: 'catlog-page',
@@ -8,31 +9,7 @@ import {Component, OnInit} from '@angular/core';
 export class CatlogPageComponent implements OnInit {
   searchTerm: string = '';
 
-  categories: any = [
-    { name: 'All categories', count: 7,categoryId:1,},
-    {
-      name: 'Hair & styling', count: 4, categoryId: 1, active: true,
-      services: [
-        {name: 'Haircut', duration: '45min', price: 40},
-        {name: 'Hair Color', duration: '1h 15min', price: 57},
-        {name: 'Blow Dry', duration: '35min', price: 35},
-        {name: 'Balayage', duration: '2h 30min', price: 150}
-      ]
-    },
-    { name: 'Nails', count: 1 ,categoryId:1,
-      services: [
-        {name: 'manicure', duration: '45min', price: 100},
-      ]
-    },
-    { name: 'Eyebrows & eyelashes', count: 2,categoryId:1 ,
-      services: [
-        {name: 'classic fill', duration: '45min', price: 40},
-        {name: 'classic fill', duration: '45min', price: 40},
-
-      ]
-    }
-
-  ];
+  categories: any = [];
   selectedCategory: any = this.categories[1];
 
   services = [
@@ -41,7 +18,6 @@ export class CatlogPageComponent implements OnInit {
     { name: 'Blow Dry', duration: '35min', price: 35 },
     { name: 'Balayage', duration: '2h 30min', price: 150 }
   ];
-
 
 
   selectCategory(category: any ){
@@ -54,16 +30,30 @@ export class CatlogPageComponent implements OnInit {
     this.selectedCategory = category;
   }
 
+  constructor(private catalogService: CatalogService) {
+
+  }
   ngOnInit(): void {
-    let allServices:any = [];
+   /* let allServices:any = [];
     this.categories.forEach((category, index) => {
       if(index !==0){
         allServices = [...allServices, ...category.services || []];
       }
     })
 
-    this.categories[0].services = allServices;
+    this.categories[0].services = allServices;*/
+    this.getAllCategories();
   }
+
+ getAllCategories(){
+    this.catalogService.getAllCatalog().pipe().subscribe(
+        (categories:any) => {
+          this.categories = categories;
+
+        }
+    );
+
+ }
 
   quickBooking() {
     console.log("Quick Booking Link Clicked");
