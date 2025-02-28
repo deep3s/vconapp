@@ -6,7 +6,9 @@ import {Component, Input} from '@angular/core';
     styleUrls: ['./category-services.component.scss']
 })
 export class CategoryServicesComponent {
-    @Input() public category: any;
+    @Input() public category: any={
+        services:[]
+    };
 
 
 }

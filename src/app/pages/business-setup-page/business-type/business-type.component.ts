@@ -58,7 +58,7 @@ export class BusinessTypeComponent implements OnInit {
   //   this.emitSelection();
   // }
 
-  
+
   selectCategory(category: any) {
     if (this.multiSelect) {
       const index = this.selectedCategories.indexOf(category);
