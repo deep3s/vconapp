@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'business-type',
   templateUrl: './business-type.component.html',
   styleUrls: ['./business-type.component.scss']
 })
+
 export class BusinessTypeComponent implements OnInit {
   @Input() multiSelect: boolean = false;
   @Input() locationInfo: any;
@@ -32,7 +33,32 @@ export class BusinessTypeComponent implements OnInit {
 
   selectedCategories: any[] = [];
   otherCategory: string = '';
+  isEditing: boolean = false; // Controls Edit Mode
 
+
+
+  ngOnInit(): void {
+    if (this.locationInfo?.businessTypes) {
+      this.selectedCategories = [...this.locationInfo.businessTypes];
+    }
+  }
+  // selectCategory(category: any) {
+  //   if (this.multiSelect) {
+  //     const index = this.selectedCategories.findIndex(c => c.typeId === category.typeId);
+  //     if (index === -1) {
+  //       if (this.selectedCategories.length < 5) {
+  //         this.selectedCategories.push(category);
+  //       }
+  //     } else {
+  //       this.selectedCategories.splice(index, 1);
+  //     }
+  //   } else {
+  //     this.selectedCategories = [category];
+  //   }
+  //   this.emitSelection();
+  // }
+
+  
   selectCategory(category: any) {
     if (this.multiSelect) {
       const index = this.selectedCategories.indexOf(category);
@@ -68,16 +94,11 @@ export class BusinessTypeComponent implements OnInit {
     const selectedData = this.isOtherSelected()
         ? [...this.selectedCategories, {name: 'Other', value: this.otherCategory}]
         : this.selectedCategories;
-
     this.businessTypesSelected.emit(selectedData);
-  }
-
-  ngOnInit(): void {
-
   }
 
   selectCategories(category: any): boolean {
     return this.selectedCategories.some((selectedCategory: any) => selectedCategory.typeId === category.typeId);
   }
-
 }
+
