@@ -5,6 +5,7 @@ import { CatlogPageRoutingModule } from './catlog-page-routing.module';
 import { CatlogPageComponent } from './catlog-page.component';
 import { CategoryServicesComponent } from './category-services/category-services.component';
 import { CategoryServiceComponent } from './category-service/category-service.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -13,10 +14,12 @@ import { CategoryServiceComponent } from './category-service/category-service.co
     CategoryServicesComponent,
     CategoryServiceComponent
   ],
-  imports: [
-    CommonModule,
-    CatlogPageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        CatlogPageRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   exports: [CatlogPageComponent]
 })
 export class CatlogPageModule { }

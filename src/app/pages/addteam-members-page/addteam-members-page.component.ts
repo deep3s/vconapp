@@ -7,7 +7,8 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
   styleUrls: ['./addteam-members-page.component.scss']
 })
 export class AddteamMembersPageComponent {
-    addTeamMemberForm: FormGroup;
+
+  addTeamMemberForm: FormGroup;
   showSearch: boolean = false;
   submitted = false;
   showAddressName: boolean = true;

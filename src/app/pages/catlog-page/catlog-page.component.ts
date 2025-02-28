@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CatalogService} from "../../services/catalog/catalog.service";
+import {FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'catlog-page',
@@ -8,7 +9,9 @@ import {CatalogService} from "../../services/catalog/catalog.service";
 })
 export class CatlogPageComponent implements OnInit {
   searchTerm: string = '';
-
+    categoryForm: FormGroup;
+    showCategoryName: boolean = true;
+    submitted = false;
   categories: any = [];
   selectedCategory: any = this.categories[1];
 
@@ -19,16 +22,6 @@ export class CatlogPageComponent implements OnInit {
     { name: 'Balayage', duration: '2h 30min', price: 150 }
   ];
 
-
-  selectCategory(category: any ){
-    this.categories = this.categories.map(ct=> {
-      ct.active = false;
-      return ct;
-    })
-
-    category.active = true;
-    this.selectedCategory = category;
-  }
 
   constructor(private catalogService: CatalogService) {
 
@@ -54,6 +47,9 @@ export class CatlogPageComponent implements OnInit {
     );
 
  }
+    get fmp(): any {
+        return this.categoryForm.controls;
+    }
 
   quickBooking() {
     console.log("Quick Booking Link Clicked");
@@ -100,4 +96,8 @@ export class CatlogPageComponent implements OnInit {
     // Implement filter logic (fetch services based on selection)
   }
 
+
+    selectCategory(category: any) {
+        this.selectedCategory = category; // Update the selected category
+    }
 }
