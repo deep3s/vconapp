@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxUiLoaderConfig, NgxUiLoaderModule } from "ngx-ui-loader";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from './app.component';
+
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import {
   MSAL_GUARD_CONFIG,

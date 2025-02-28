@@ -9,6 +9,7 @@ import {ActivatedRoute} from '@angular/router';
     templateUrl: './business-setup-page.component.html',
     styleUrls: ['./business-setup-page.component.scss']
 })
+
 export class BusinessSetupPageComponent implements OnInit {
     step: number = 1; // Default step
 
@@ -142,7 +143,5 @@ export class BusinessSetupPageComponent implements OnInit {
             (err: any) => {
                 console.log(err)
             });
-        }
     }
-
-
+}
