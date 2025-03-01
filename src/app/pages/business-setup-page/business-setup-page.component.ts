@@ -1,13 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BusinessSetupService} from "../../services/business-setup/business-setup.service";
 import {BusinessLocationService} from "../../services/business-location/business-location.service";
+import {Router} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-business-setup-page',
     templateUrl: './business-setup-page.component.html',
     styleUrls: ['./business-setup-page.component.scss']
 })
-export class BusinessSetupPageComponent {
+
+export class BusinessSetupPageComponent implements OnInit {
     step: number = 1; // Default step
 
     // Object to store form data
@@ -20,11 +23,44 @@ export class BusinessSetupPageComponent {
         locationTimings: {},
     };
 
+    businessLocations: any;
+    selectedLocation: any = this.businessLocationDetails;
+    locationInfoId: any;
+
     constructor(private businessSetupService: BusinessSetupService,
+                private router: Router,
+                private route: ActivatedRoute,
                 private businessLocationService: BusinessLocationService) {
+        this.getBusinessLocationIdFromRouteParams();
     }
 
-    // Next Step: Store data before moving forward
+    ngOnInit() {
+
+    }
+
+    fetchLocationInfo(): void {
+        this.businessLocationService.getBusinessLocationById(this.locationInfoId)
+            .pipe()
+            .subscribe(
+            (locationDetails: any) => {
+                this.businessLocationDetails = locationDetails;
+                this.selectedLocation = locationDetails;
+            },
+            error => {
+                console.error("Error fetching business location details:", error);
+            }
+        );
+    }
+
+    getBusinessLocationIdFromRouteParams(): void {
+        this.route.queryParams.subscribe(params => {
+            this.locationInfoId = params['id']; // Get the 'id' from URL
+            if(this.locationInfoId){
+                this.fetchLocationInfo();
+            }
+        });
+    }
+
     nextStep() {
         if (this.step < 5) {
             this.step++;
@@ -42,9 +78,8 @@ export class BusinessSetupPageComponent {
     saveBusinessLocationInfo() {
         this.businessLocationService.saveBusinessLocationDetails(this.businessLocationDetails)
             .pipe().subscribe(data => {
-                console.log(data);
+            console.log(data);
         })
-
     }
 
     getStepTitle(): string {
@@ -99,13 +134,10 @@ export class BusinessSetupPageComponent {
     onSubmitLocationDetails() {
         this.businessSetupService.saveBusinessDetails(this.businessLocationDetails)
             .pipe().subscribe((data: any) => {
-            console.log(data);
-        }, (err: any) => {
-            console.log(err)
-        });
+                console.log(data);
+            },
+            (err: any) => {
+                console.log(err)
+            });
+        }
     }
-
-
-}
-
-

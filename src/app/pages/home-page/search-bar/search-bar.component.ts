@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild} from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { debounceTime, Observable, switchMap } from "rxjs";
 import { MapplsService } from "../../../services/mappls/mappls.service";
@@ -11,6 +11,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
+  @Input() currentLocation: any = {};
+
   searchQuery: string = '';
   locationInput: string = 'Current Location';
   showTimeDropdown: boolean = false;
@@ -51,7 +53,7 @@ export class SearchBarComponent {
   filteredCategories = [...this.allCategories]; // Default to all categories
 
   onSearch(): void{
-    this.router.navigateByUrl('/search');
+    this.router.navigate(['/search'],{state: {...this.currentLocation, radius: 3}});
   }
 
   toggleDropdown(): void {
@@ -183,11 +185,11 @@ export class SearchBarComponent {
     this.showTimeDropdown = false;
   }
 
-  @HostListener('document:click', ['$event'])
+  @HostListener('document:mousedown', ['$event'])
   closeDropdown(event: Event) {
     const target = event.target as HTMLElement;
 
-    // Prevent closing when clicking inside the category dropdown
+    // Check if click is inside the dropdown or search input
     if (target.closest('.dropdown-menu-custom') || target.closest('.search-input')) {
       return; // Don't close if inside dropdown or input
     }
@@ -202,12 +204,99 @@ export class SearchBarComponent {
       this.showDateDropdown = false;
     }
 
-    // Close category dropdown if clicked outside
-    if (!target.closest('.category-dropdown') && !target.closest('.category-toggle')) {
+    // Delay closing dropdown to allow category selection
+    setTimeout(() => {
       this.showDropdown = false;
-    }
+    }, 200);
   }
+  formControl: FormControl<Date | null>;
 
-
+  // constructor() {
+  //   const initialValue = new Date();
+  //   initialValue.setHours(12, 30, 0);
+  //   this.formControl = new FormControl(initialValue);
+  // }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+showTimeDropdown = false;
+selectedTimeOption = '';
+selectedTimeRange = { from: '', to: '' };
+
+timeOptions = ['Any time', 'Morning', 'Afternoon', 'Evening'];
+
+timeSlots: string[] = [
+  '12:00 AM', '12:30 AM', '1:00 AM', '1:30 AM', '2:00 AM',
+  '2:30 AM', '3:00 AM', '3:30 AM', '4:00 AM', '4:30 AM',
+  '5:00 AM', '5:30 AM', '6:00 AM', '6:30 AM', '7:00 AM',
+  '7:30 AM', '8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM',
+  '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM',
+  '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
+  '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM',
+  '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM',
+  '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM',
+  '10:30 PM', '11:00 PM', '11:30 PM'
+];
+
+toggleTimeDropdown() {
+  this.showTimeDropdown = !this.showTimeDropdown;
+}
+
+selectTimeOption(option: string) {
+  this.selectedTimeOption = option;
+
+  switch (option) {
+    case 'Any time':
+      this.selectedTimeRange = { from: '', to: '' };
+      break;
+    case 'Morning':
+      this.selectedTimeRange = { from: '6:00 AM', to: '11:59 AM' };
+      break;
+    case 'Afternoon':
+      this.selectedTimeRange = { from: '12:00 PM', to: '5:59 PM' };
+      break;
+    case 'Evening':
+      this.selectedTimeRange = { from: '6:00 PM', to: '11:59 PM' };
+      break;
+  }
+}
+
+@HostListener('document:click', ['$event'])
+closeDropdown(event: Event) {
+  const target = event.target as HTMLElement;
+  if (!target.closest('.time-dropdown') && !target.closest('.time-toggle')) {
+    this.showTimeDropdown = false;
+  }
+}*/

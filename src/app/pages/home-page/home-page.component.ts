@@ -1,12 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import {Router} from "@angular/router";
-
-// @ts-ignore
-import {VconService} from "src/app/services/vcon/vcon.service";
-import {ReviewCardsComponent} from "./review-cards/review-cards.component";
 
 @Component({
     selector: 'app-home-page',
@@ -15,190 +8,34 @@ import {ReviewCardsComponent} from "./review-cards/review-cards.component";
 })
 
 export class HomePageComponent implements OnInit {
-    // Form Controls
-    treatmentControl = new FormControl('');
-    locationControl = new FormControl('');
-    form = new FormGroup({
-        date: new FormControl(),
-        time: new FormControl()
-    });
-
-    // Data Lists
-    treatmentsList: string[] = ['Haircut', 'Facial', 'Manicure', 'Pedicure', 'Waxing'];
-    locationsList: string[] = ['Bengaluru', 'Mumbai', 'Delhi', 'Hyderabad', 'Chennai'];
-    timeList: string[] = [
-        '09:00 AM',
-        '10:00 AM',
-        '11:00 AM',
-        '12:00 PM',
-        '01:00 PM',
-        '02:00 PM',
-        '03:00 PM',
-        '04:00 PM',
-        '05:00 PM',
-        '06:00 PM',
-        '07:00 PM',
-        '08:00 PM',
-        '09:00 PM'
-    ];
-
-    // Filtered Options
-    filteredTreatments!: Observable<string[]>;
-    filteredLocations!: Observable<string[]>;
-
-    // Carousel Data
-    // cards = [
-    //
-    //     {
-    //         id: 1,
-    //         name: null,
-    //         address: "hulimavu",
-    //         nearby: "sai ram hospital",
-    //         imageUrls: "https://images.app.goo.gl/cD89ehzh5vWUSseg7"
-    //     },
-    //     {
-    //         id: 2,
-    //         name: null,
-    //         address: "jp nagar",
-    //         nearby: "style up",
-    //         imageUrls: "https://images.app.goo.gl/cHsk9x8RXHTdFSNG8"
-    //     },
-    //     {
-    //         id: 3,
-    //         name: null,
-    //         address: "hulimavu",
-    //         nearby: "muthoot finance",
-    //         imageUrls: "https://images.app.goo.gl/g5N81BH3URRkuGPP7"
-    //     },
-    //     {
-    //         id: 4,
-    //         name: null,
-    //         address: "DLF",
-    //         nearby: "venkateshwara",
-    //         imageUrls: "https://images.app.goo.gl/NwakhCNwhJTkHTyd7"
-    //     }
-    // ];
-
-    constructor(public vonService: VconService, public router: Router) {
-    }
-
-    ngOnInit(): void {
-        // Initialize Autocomplete Filters
-        this.filteredTreatments = this.treatmentControl.valueChanges.pipe(
-            startWith(''),
-            map(value => this.filterOptions(value, this.treatmentsList))
-        );
-
-        this.filteredLocations = this.locationControl.valueChanges.pipe(
-            startWith(''),
-            map(value => this.filterOptions(value, this.locationsList))
-        );
-    }
-
-    // Filter Options Method
-    private filterOptions(value: any, options: string[]): string[] {
-        const filterValue = value.toLowerCase();
-        return options.filter(option => option.toLowerCase().includes(filterValue));
-    }
-
-    // Event Handlers
-    onOptionSelected(event: any) {
-        console.log('Treatment selected:', event.option.value);
-    }
-
-    onLocationSelected(event: any) {
-        console.log('Location selected:', event.option.value);
-    }
-
-    onTimeSelected(event: any) {
-        console.log('Time selected:', event.value);
-    }
-
-    getAllSalons() {
-        let salons = [
-            {
-                id: 1,
-                name: null,
-                address: "hulimavu",
-                nearby: "sai ram hospital",
-                imageUrls: "https://images.app.goo.gl/cD89ehzh5vWUSseg7"
-            },
-            {
-                id: 2,
-                name: null,
-                address: "jp nagar",
-                nearby: "style up",
-                imageUrls: "https://images.app.goo.gl/cHsk9x8RXHTdFSNG8"
-            },
-            {
-                id: 3,
-                name: null,
-                address: "hulimavu",
-                nearby: "muthoor finance",
-                imageUrls: "https://images.app.goo.gl/g5N81BH3URRkuGPP7"
-            },
-            {
-                id: 4,
-                name: null,
-                address: "DLF",
-                nearby: "venkateshwara",
-                imageUrls: "https://images.app.goo.gl/NwakhCNwhJTkHTyd7"
-            }
-        ];
-
-        this.vonService.getAllSalons().subscribe(
-            data => {
-                console.log('Salon data:', data);
-            },
-            err => {
-                console.log('Error fetching salons:', err);
-            }
-        );
-    }
-
-    onSearch() {
-        const selectedTreatment = this.treatmentControl.value;
-        const selectedLocation = this.locationControl.value;
-        const selectedDate = this.form.get('date')?.value;
-        const selectedTime = this.form.get('time')?.value;
-
-        console.log({
-            treatment: selectedTreatment,
-            location: selectedLocation,
-            date: selectedDate,
-            time: selectedTime
-        });
-
-        this.getAllSalons();
-    }
-
-
-    redirectToDetails(id: any) {
-        this.router.navigateByUrl("/salon-details");
-    }
-
+    userCurrentLocation: any = {};
     salons = [
 
         {
-        name: 'V-cut Salon',
-        image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
-        address: 'Hulimavu, Bangalore',
-        deals: 'Beauty Salon',
-        distance: '12 km',
-        services: [
-            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
-            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
-            {
-                name: 'Therapeutic Massage',
-                duration: '30 mins',
-                price: 1500,
-                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
-            },
-            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-        ],
+            name: 'V-cut Salon',
+            image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
+            address: 'Hulimavu, Bangalore',
+            deals: 'Beauty Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
 
-    },
+        },
         {
             name: 'Naturals Salon',
             image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
@@ -281,25 +118,30 @@ export class HomePageComponent implements OnInit {
 
     recommendedSalons = [
         {
-        name: 'V-cut Salon',
-        image: 'https://images.fresha.com/locations/location-profile-images/36756/1876918/958f0636-f31d-4572-a297-becec37fb03f.jpg?class=venue-gallery-small&class=width-small',
-        address: 'Hulimavu, Bangalore',
-        deals: 'Beauty Salon',
-        distance: '12 km',
-        services: [
-            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
-            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
-            {
-                name: 'Therapeutic Massage',
-                duration: '30 mins',
-                price: 1500,
-                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
-            },
-            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-        ],
+            name: 'V-cut Salon',
+            image: 'https://images.fresha.com/locations/location-profile-images/36756/1876918/958f0636-f31d-4572-a297-becec37fb03f.jpg?class=venue-gallery-small&class=width-small',
+            address: 'Hulimavu, Bangalore',
+            deals: 'Beauty Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
 
-    },
+        },
         {
             name: 'Naturals Salon',
             image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
@@ -382,25 +224,30 @@ export class HomePageComponent implements OnInit {
 
     newSalons = [
         {
-        name: 'V-cut Salon',
-        image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
-        address: 'Hulimavu, Bangalore',
-        deals: 'Beauty Salon',
-        distance: '12 km',
-        services: [
-            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
-            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
-            {
-                name: 'Therapeutic Massage',
-                duration: '30 mins',
-                price: 1500,
-                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
-            },
-            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-        ],
+            name: 'V-cut Salon',
+            image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
+            address: 'Hulimavu, Bangalore',
+            deals: 'Beauty Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
 
-    },
+        },
         {
             name: 'Naturals Salon',
             image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
@@ -482,25 +329,30 @@ export class HomePageComponent implements OnInit {
     ];
     trendingSalons = [
         {
-        name: 'V-cut Salon',
-        image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
-        address: 'Hulimavu, Bangalore',
-        deals: 'Beauty Salon',
-        distance: '12 km',
-        services: [
-            {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
-            {name: 'Swedish Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-            {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
-            {
-                name: 'Therapeutic Massage',
-                duration: '30 mins',
-                price: 1500,
-                nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
-            },
-            {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
-        ],
+            name: 'V-cut Salon',
+            image: 'https://images.fresha.com/locations/location-profile-images/437841/1995450/2d8a39d4-2c1b-4109-a46a-e39681dfbdb1-Blown-Indiranagar-IN-Karnataka-Bangalore-Indiranagar-Fresha.jpg?class=venue-gallery-large',
+            address: 'Hulimavu, Bangalore',
+            deals: 'Beauty Salon',
+            distance: '12 km',
+            services: [
+                {name: 'Female to male massage', duration: '30 mins', price: 2010, nextSlots: ['1:50 pm', '2:50 pm'],},
+                {
+                    name: 'Swedish Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Deep Tissue Massage', duration: '30 mins', price: 1500, nextSlots: ['1:50 pm', '2:50 pm',],},
+                {
+                    name: 'Therapeutic Massage',
+                    duration: '30 mins',
+                    price: 1500,
+                    nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],
+                },
+                {name: 'Reflexology', duration: '30 mins', price: 1000, nextSlots: ['1:50 pm', '2:50 pm', '3:50 pm'],},
+            ],
 
-    },
+        },
         {
             name: 'Naturals Salon',
             image: 'https://images.fresha.com/locations/location-profile-images/526451/708080/25deb95e-6c98-4d2a-8b71-e688230f8157.jpg?class=width-small`1',
@@ -590,7 +442,29 @@ export class HomePageComponent implements OnInit {
             comment: 'Great experience, easy to book. Paying for treatments is so convenient — no cash or cards needed!'
         }
     ];
-    protected readonly ReviewCardsComponent = ReviewCardsComponent;
+
+    constructor(public router: Router) {
+    }
+
+    ngOnInit(): void {
+        this.getLocation();
+    }
+
+    getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position: GeolocationPosition) => {
+                    this.userCurrentLocation.lat = position.coords.latitude;
+                    this.userCurrentLocation.lng = position.coords.longitude;
+                },
+                (error) => {
+                    console.error('Error getting location:', error);
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+    }
 }
 
 

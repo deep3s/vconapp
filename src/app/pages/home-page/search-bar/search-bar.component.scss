@@ -11,6 +11,17 @@
     min-width: 200px;
   }
 }
+.dropdown-menu-custom {
+  z-index: 5;
+  top: 100%; /* Make sure it's below input */
+  position: relative; /* Prevents covering other elements */
+
+}
+.time-option:hover {
+  background-color: #4caf50 !important; /* Green background */
+  color: white !important; /* White text */
+}
+
 
 /* Remove Default Calendar Icon */
 .remove-default-icon::-webkit-calendar-picker-indicator {

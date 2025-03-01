@@ -1,6 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {Router} from "@angular/router";
 import {BusinessLocationService} from "../../services/business-location/business-location.service";
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-business-location-page',
@@ -8,29 +9,43 @@ import {BusinessLocationService} from "../../services/business-location/business
     styleUrls: ['./business-location-page.component.scss']
 })
 export class BusinessLocationPageComponent {
-    dropdowns = {
-        optionsDropdown: false,
-        actionsDropdown: false
-    };
-
     businessLocations: any = [];
-
-    constructor(private router: Router,
-                private businessLocationService: BusinessLocationService) {
-        this.getAllBusinessLocations();
-    }
-
+    showModal = false;
+    imports: [NgbDropdownModule];
+    businessSetup: any = {};
     details = [
         {name: 'Business details', active: false},
         {name: 'Locations', active: false},
         {name: 'Client sources', active: false}
     ];
+
     settings = [
         {name: 'Service menu', active: false},
         {name: 'Product list', active: false},
         {name: 'Memberships', active: false},
         {name: 'Client list', active: false}
     ];
+
+    navigateToBusinessSetup() {
+        this.router.navigate(['./business-setup']); // Change the route path accordingly
+    }
+
+    // viewLocation(businessLocation:any) {
+    //     // this.router.navigate(['./business-setup'],{state: businessLocation}); // Change the route path accordingly
+    //     this.router.navigate(['./business-setup')
+    // }
+
+    viewLocation(businessLocation: any) {
+        console.log(businessLocation);
+        this.router.navigate(['./business-setup'], {
+            queryParams: { id: businessLocation.id } // Sending only the 'id'
+        });
+    }
+
+    constructor(private router: Router,
+                private businessLocationService: BusinessLocationService) {
+        this.getAllBusinessLocations();
+    }
 
     getAllBusinessLocations(): void {
         this.businessLocationService.getAllBusinessLocations().pipe().subscribe(
@@ -40,7 +55,6 @@ export class BusinessLocationPageComponent {
         )
     }
 
-
     selectDetails(item: any) {
         this.details.forEach(detail => detail.active = false);
         this.settings.forEach(setting => setting.active = false);
@@ -48,47 +62,20 @@ export class BusinessLocationPageComponent {
     }
 
     copyShareLink(event: Event) {
-        event.preventDefault(); // Prevents page reload
-        const shareLink = "https://yourwebsite.com/share"; // Replace with actual link
+        event.preventDefault(); // Prevents any unintended behavior
+        const shareLink = "https://yourwebsite.com/share"; // Replace with the actual share link
         navigator.clipboard.writeText(shareLink).then(() => {
             alert("Share link copied!");
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
         });
     }
 
-    navigateToBusinessSetup() {
-        this.router.navigate(['./business-setup']); // Change the route path accordingly
+    editBusinessDetails(): void {
+        this.router.navigate(['business-setup'], { state: this.businessSetup });
     }
-
-
-    toggleDropdown(event: Event, dropdown: keyof typeof this.dropdowns) {
-        event.stopPropagation();
-        // Close other dropdowns
-        Object.keys(this.dropdowns).forEach(key => {
-            if (key !== dropdown) {
-                this.dropdowns[key as keyof typeof this.dropdowns] = false;
-            }
-        });
-        // Toggle the clicked dropdown
-        this.dropdowns[dropdown] = !this.dropdowns[dropdown];
-    }
-
-    viewLocation(event: Event) {
-        event.preventDefault();
-        alert('View Location Clicked!'); // Replace with actual view logic
-    }
-
-    deleteLocation(event: Event) {
-        event.preventDefault();
-        if (confirm('Are you sure you want to delete this location?')) {
-            alert('Location Deleted!'); // Replace with actual delete logic
-        }
-    }
-
-    // Close dropdown when clicking outside
-    @HostListener('document:click', ['$event'])
-    closeDropdown() {
-        this.dropdowns.optionsDropdown = false;
-        this.dropdowns.actionsDropdown = false;
+    deleteLocation(index: number) {
+        this.businessLocations.splice(index, 1);
     }
 
 }

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EditLocationComponent } from './edit-location.component';
+// import { EditLocationComponent } from './edit-location.component';
+
 import { BusinessLocationDetailsComponent } from './business-location-details.component';
+import {EditLocationComponent} from "../edit-location/edit-location.component";
 
 describe('BusinessLocationDetailsComponent', () => {
     let component: BusinessLocationDetailsComponent;

@@ -17,7 +17,6 @@
             <button class="app-button-primary" (click)="saveBusinessLocationInfo()" *ngIf="step === 5">
                 Submit
             </button>
-
         </div>
 
         <!-- Progress Bar -->
@@ -42,27 +41,29 @@
 
                 <!-- Step Content -->
                 <div class="mt-4">
-                    <div *ngIf="step === 1">
+                    <div [hidden]="step !== 1">
                         <business-location-details
+                                [locationInfo]="selectedLocation?.locationInfo"
                                 (locationBasicsSaved)="updateLocationInfo($event)"></business-location-details>
                     </div>
-
-                    <div *ngIf="step === 2">
+                    <div  [hidden]="step !== 2">
                         <business-type [multiSelect]="false"
+                                       [locationInfo]="selectedLocation?.mainBusinessType"
                                        (businessTypesSelected)="updateMainBusinessType($event)"></business-type>
                     </div>
-
-                    <div *ngIf="step === 3">
+                    <div  [hidden]="step !== 3">
                         <business-type [multiSelect]="true"
+                                       [locationInfo]="selectedLocation?.secondaryBusinessTypes"
                                        (businessTypesSelected)="updateSecondaryBusinessTypes($event)"></business-type>
                     </div>
-                    <div *ngIf="step === 4">
+                    <div  [hidden]="step !== 4">
                         <business-location-address
+                                [locationInfo]="selectedLocation?.locationAddress"
                                 (locationAddressSaved)="updateLocationAddress($event)"
                                 (locationBillingSaved)="updateLocationBillingDetails($event)"
                                 [businessBillingDetails]="businessLocationDetails.locationInfo"></business-location-address>
                     </div>
-                    <div *ngIf="step === 5">
+                    <div  [hidden]="step !== 5">
                         <location-timings (timingsSaved)="updateLocationTimings($event)"></location-timings>
                     </div>
                 </div>
@@ -70,17 +71,5 @@
         </div>
     </div>
 </div>
-
-<!--<business-location-details></business-location-details>-->
-<!--<div class="text-center mt-5">-->
-<!--    <div class="text-secondary">Add a new location</div>-->
-<!--    <div class="section-heading fw-bold">Choose your main business type</div>-->
-<!--</div>-->
-<!--<business-type [multiSelect]="false"></business-type>-->
-<!--<div class="text-center mt-5">-->
-<!--    <div class="text-secondary">Add a new location</div>-->
-<!--    <div class="section-heading fw-bold">Choose your secondary business types</div>-->
-<!--</div>-->
-<!--<business-type [multiSelect]="true"></business-type>-->
 
 

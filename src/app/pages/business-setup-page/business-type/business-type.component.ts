@@ -1,12 +1,14 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'business-type',
   templateUrl: './business-type.component.html',
   styleUrls: ['./business-type.component.scss']
 })
-export class BusinessTypeComponent {
+export class BusinessTypeComponent implements OnInit {
   @Input() multiSelect: boolean = false;
+  @Input() locationInfo: any;
+  @Input() mainBusinessType: any = {};
   @Output() businessTypesSelected = new EventEmitter<any>(); // Emit selected categories
 
   categories = [
@@ -19,13 +21,13 @@ export class BusinessTypeComponent {
     {typeId: '7', name: 'Massage', icon: 'bi bi-hand-thumbs-up'},
     {typeId: '8', name: 'Waxing Salon', icon: 'bi bi-lightning'},
     {typeId: '9', name: 'Tanning Studio', icon: 'bi bi-sun'},
-    {typeId: '10', name: 'Eyebrows & Lashes', icon: 'bi bi-eye'},
-    {typeId: '11', name: 'Tattoo & Piercing', icon: 'bi bi-heart-pulse'},
-    {typeId: '12', name: 'Therapy Center', icon: 'bi bi-plus-circle'},
-    {typeId: '13', name: 'Weight Loss', icon: 'bi bi-speedometer'},
-    {typeId: '14', name: 'Personal Trainer', icon: 'bi bi-person-check'},
-    {typeId: '15', name: 'Gym & Fitness', icon: 'bi bi-bicycle'},
-    {typeId: '16', name: 'Other', icon: 'bi bi-plus'}
+    {typeId: '10',name: 'Eyebrows & Lashes', icon: 'bi bi-eye'},
+    {typeId: '11',name: 'Tattoo & Piercing', icon: 'bi bi-heart-pulse'},
+    {typeId: '12',name: 'Therapy Center', icon: 'bi bi-plus-circle'},
+    {typeId: '13',name: 'Weight Loss', icon: 'bi bi-speedometer'},
+    {typeId: '14',name: 'Personal Trainer', icon: 'bi bi-person-check'},
+    {typeId: '15',name: 'Gym & Fitness', icon: 'bi bi-bicycle'},
+    {typeId: '16',name: 'Other', icon: 'bi bi-plus'}
   ];
 
   selectedCategories: any[] = [];
@@ -37,14 +39,17 @@ export class BusinessTypeComponent {
       if (index === -1) {
         if (this.selectedCategories.length < 5) {
           this.selectedCategories.push(category);
+          console.log(this.selectedCategories);
         }
       } else {
         this.selectedCategories.splice(index, 1);
+        console.log(this.selectedCategories);
+
       }
     } else {
       this.selectedCategories = [category];
+      console.log(this.selectedCategories);
     }
-
     this.emitSelection();
   }
 
@@ -61,9 +66,18 @@ export class BusinessTypeComponent {
   // Emit selected categories to parent
   emitSelection() {
     const selectedData = this.isOtherSelected()
-        ? [...this.selectedCategories, { name: 'Other', value: this.otherCategory }]
+        ? [...this.selectedCategories, {name: 'Other', value: this.otherCategory}]
         : this.selectedCategories;
 
     this.businessTypesSelected.emit(selectedData);
   }
+
+  ngOnInit(): void {
+
+  }
+
+  selectCategories(category: any): boolean {
+    return this.selectedCategories.some((selectedCategory: any) => selectedCategory.typeId === category.typeId);
+  }
+
 }
