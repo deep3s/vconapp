@@ -8,6 +8,7 @@ import {Observable} from "rxjs";
 export class CatalogService {
   apiBaseUrl='http://localhost:8080';
   catalogUrl=`${this.apiBaseUrl}/categories`;
+  servicesUrl=`${this.apiBaseUrl}/services`;
 
   constructor(private http: HttpClient) { }
 
@@ -19,5 +20,8 @@ export class CatalogService {
     return this.http.get<any>(`${this.catalogUrl}`);
   }
 
+  createService(serviceDetails:any){
+    return this.http.post<any>(`${this.servicesUrl}`, serviceDetails);
+  }
 
 }

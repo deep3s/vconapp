@@ -2,6 +2,7 @@
 <div class="app-ngs-container category mb-4 ">
     <ng-select class="app-multi-select"
                [searchable]="false" placeholder="select"
+               [bindValue]="'id'"
                (change)="onChange()"
                [items]="items"
                [(ngModel)]="selectedValue"
