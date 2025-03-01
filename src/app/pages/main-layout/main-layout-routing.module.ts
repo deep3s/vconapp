@@ -241,6 +241,7 @@ const routes: Routes = [
             },
         ],
     },
+    { path: 'new-service', loadChildren: () => import('../new-service-page/new-service-page.module').then(m => m.NewServicePageModule) },
 ];
 
 @NgModule({

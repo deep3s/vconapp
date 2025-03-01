@@ -1,17 +1,3 @@
-<!--<div class="d-flex">-->
-<!--    &lt;!&ndash; Sidebar &ndash;&gt;-->
-<!--    <div class="d-flex flex-column p-3 border-end sidebar">-->
-<!--        <p class="fw-bold">Catalog</p>-->
-<!--        <a href="#" class="d-block py-2 text-decoration-none active">Service menu</a>-->
-<!--        <a href="#" class="d-block py-2 text-decoration-none">Memberships</a>-->
-<!--        <a href="#" class="d-block py-2 text-decoration-none">Products</a>-->
-<!--        <p class="fw-bold mt-3">Inventory</p>-->
-<!--        <a href="#" class="d-block py-2 text-decoration-none">Stocktakes</a>-->
-<!--        <a href="#" class="d-block py-2 text-decoration-none">Stock orders</a>-->
-<!--        <a href="#" class="d-block py-2 text-decoration-none">Suppliers</a>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Main Content (Scrollable) &ndash;&gt;-->
 <div class="container main-content">
     <div class="flex-grow-1 py-4">
         <div class="d-flex justify-content-between align-items-center">
@@ -38,7 +24,7 @@
                         + <span class="ps-2">Add</span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#" (click)="addSingleService()">Single Service</a></li>
+                        <li><a class="dropdown-item" routerLink="/new-service">Single Service</a></li>
                         <li><a class="dropdown-item" href="#" (click)="addPackage()">Package</a></li>
                         <li><a class="dropdown-item" href="#" (click)="addCategory()" data-bs-toggle="modal"
                                data-bs-target="#addressModal">Category</a></li>
@@ -160,5 +146,3 @@
         </div>
     </div>
 </div>
-
-

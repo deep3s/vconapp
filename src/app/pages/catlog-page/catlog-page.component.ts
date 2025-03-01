@@ -3,99 +3,98 @@ import {CatalogService} from "../../services/catalog/catalog.service";
 import {FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'catlog-page',
-  templateUrl: './catlog-page.component.html',
-  styleUrls: ['./catlog-page.component.scss']
+    selector: 'catlog-page',
+    templateUrl: './catlog-page.component.html',
+    styleUrls: ['./catlog-page.component.scss']
 })
 export class CatlogPageComponent implements OnInit {
-  searchTerm: string = '';
+    searchTerm: string = '';
     categoryForm: FormGroup;
     showCategoryName: boolean = true;
     submitted = false;
-  categories: any = [];
-  selectedCategory: any = this.categories[1];
+    categories: any = [];
+    selectedCategory: any = this.categories[1];
 
-  services = [
-    { name: 'Haircut', duration: '45min', price: 40 },
-    { name: 'Hair Color', duration: '1h 15min', price: 57 },
-    { name: 'Blow Dry', duration: '35min', price: 35 },
-    { name: 'Balayage', duration: '2h 30min', price: 150 }
-  ];
+    services = [
+        { name: 'Haircut', duration: '45min', price: 40 },
+        { name: 'Hair Color', duration: '1h 15min', price: 57 },
+        { name: 'Blow Dry', duration: '35min', price: 35 },
+        { name: 'Balayage', duration: '2h 30min', price: 150 }
+    ];
 
 
-  constructor(private catalogService: CatalogService) {
+    constructor(private catalogService: CatalogService) {
 
-  }
-  ngOnInit(): void {
-   /* let allServices:any = [];
-    this.categories.forEach((category, index) => {
-      if(index !==0){
-        allServices = [...allServices, ...category.services || []];
-      }
-    })
+    }
+    ngOnInit(): void {
+        /* let allServices:any = [];
+         this.categories.forEach((category, index) => {
+           if(index !==0){
+             allServices = [...allServices, ...category.services || []];
+           }
+         })
 
-    this.categories[0].services = allServices;*/
-    this.getAllCategories();
-  }
+         this.categories[0].services = allServices;*/
+        this.getAllCategories();
+    }
 
- getAllCategories(){
-    this.catalogService.getAllCatalog().pipe().subscribe(
-        (categories:any) => {
-          this.categories = categories;
+    getAllCategories(){
+        this.catalogService.getAllCatalog().pipe().subscribe(
+            (categories:any) => {
+                this.categories = categories;
 
-        }
-    );
+            }
+        );
+    }
 
- }
     get fmp(): any {
         return this.categoryForm.controls;
     }
 
-  quickBooking() {
-    console.log("Quick Booking Link Clicked");
-    // Add your logic here
-  }
+    quickBooking() {
+        console.log("Quick Booking Link Clicked");
+        // Add your logic here
+    }
 
-  setMenuOrder() {
-    console.log("Set Menu Order Clicked");
-    // Add your logic here
-  }
+    setMenuOrder() {
+        console.log("Set Menu Order Clicked");
+        // Add your logic here
+    }
 
-  openSettings() {
-    console.log("Settings Clicked");
-    // Add your logic here
-  }
+    openSettings() {
+        console.log("Settings Clicked");
+        // Add your logic here
+    }
 
-  downloadPDF() {
-    console.log("Download PDF Clicked");
-    // Add your logic here (generate/download PDF)
-  }
+    downloadPDF() {
+        console.log("Download PDF Clicked");
+        // Add your logic here (generate/download PDF)
+    }
 
-  downloadExcel() {
-    console.log("Download Excel Clicked");
-    // Add your logic here (generate/download Excel)
-  }
-  addSingleService() {
-    console.log("Adding Single Service");
-    // Add your logic here
-  }
+    downloadExcel() {
+        console.log("Download Excel Clicked");
+        // Add your logic here (generate/download Excel)
+    }
+    addSingleService() {
+        console.log("Adding Single Service");
+        // Add your logic here
+    }
 
-  addPackage() {
-    console.log("Adding Package");
-    // Add your logic here
-  }
+    addPackage() {
+        console.log("Adding Package");
+        // Add your logic here
+    }
 
-  addCategory() {
-    console.log("Adding Category");
-    // Add your logic here
-  }
+    addCategory() {
+        console.log("Adding Category");
+        // Add your logic here
+    }
 
-  // Apply Filters from Modal
-  applyFilters() {
-    console.log("Filters Applied");
-    // Implement filter logic (fetch services based on selection)
-  }
-
+    // Apply Filters from Modal
+    applyFilters() {
+        console.log("Filters Applied");
+        // Implement filter logic (fetch services based on selection)
+    }
 
     selectCategory(category: any) {
         this.selectedCategory = category; // Update the selected category

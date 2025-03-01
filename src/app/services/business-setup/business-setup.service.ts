@@ -35,5 +35,4 @@ export class BusinessSetupService {
     getBusinessInfo(): Observable<any> {
         return this.businessInfo.asObservable();
     }
-
 }

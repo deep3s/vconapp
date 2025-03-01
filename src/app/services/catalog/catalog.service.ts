@@ -18,4 +18,6 @@ export class CatalogService {
   getAllCatalog(): Observable<any> {
     return this.http.get<any>(`${this.catalogUrl}`);
   }
+
+
 }
