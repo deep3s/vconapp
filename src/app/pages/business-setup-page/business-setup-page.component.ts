@@ -23,29 +23,28 @@ export class BusinessSetupPageComponent implements OnInit {
         locationTimings: {},
     };
 
-    businessLocations: any;
     selectedLocation: any = this.businessLocationDetails;
     locationInfoId: any;
+    businessTypeId: any;
 
-    ngOnInit() {
-        this.route.queryParams.subscribe(params => {
-            this.locationInfoId = params['id']; // Get the 'id' from URL
-            console.log("Location ID:", this.locationInfoId);
-            this.fetchLocationInfo();
-        });
+
+    constructor(private businessSetupService: BusinessSetupService,
+                private router: Router,
+                private route: ActivatedRoute,
+                private businessLocationService: BusinessLocationService) {
+        this.getBusinessLocationIdFromRouteParams();
     }
 
-    fetchLocationInfo(): void {
-        this.businessLocationService.getAllBusinessLocations().subscribe(
-            (locations: any[]) => {
-                this.businessLocations = locations; // Store all locations
-                console.log("All Business Locations:", this.businessLocations);
+    ngOnInit() {
 
-                // Find the specific location by ID
-                if (this.locationInfoId) {
-                    this.selectedLocation = this.businessLocations.find(loc => loc.id === this.locationInfoId);
-                    console.log("Selected Business Location:", this.selectedLocation);
-                }
+    }
+
+
+    fetchLocationInfo(): void {
+        this.businessLocationService.getBusinessLocationById(this.locationInfoId).pipe().subscribe(
+            (locationDetails: any[]) => {
+                this.businessLocationDetails = locationDetails;
+                this.selectedLocation = locationDetails;
             },
             error => {
                 console.error("Error fetching business locations:", error);
@@ -53,16 +52,14 @@ export class BusinessSetupPageComponent implements OnInit {
         );
     }
 
-    constructor(private businessSetupService: BusinessSetupService,
-                private router: Router,
-                private route: ActivatedRoute,
-                private businessLocationService: BusinessLocationService) {
-        this.getBusinessSetupFromRouteData();
-    }
-
-    getBusinessSetupFromRouteData(): void {
-        const navigation = this.router.getCurrentNavigation();
-        this.businessLocationDetails = navigation?.extras.state;
+    getBusinessLocationIdFromRouteParams(): void {
+        this.route.queryParams.subscribe(params => {
+            this.locationInfoId = params['id']; // Get the 'id' from URL
+            this.businessTypeId = params['businessTypeId']; // Get 'businessTypeId' from URL
+            if(this.locationInfoId){
+                this.fetchLocationInfo();
+            }
+        });
     }
 
     nextStep() {
@@ -80,10 +77,18 @@ export class BusinessSetupPageComponent implements OnInit {
 
     // Submit form (final step)
     saveBusinessLocationInfo() {
-        this.businessLocationService.saveBusinessLocationDetails(this.businessLocationDetails)
-            .pipe().subscribe(data => {
-            console.log(data);
-        })
+
+        if(this.businessLocationDetails.id) {
+            this.businessLocationService.updateBusinessLocationDetails(this.businessLocationDetails)
+                .pipe().subscribe(data => {
+                console.log(data);
+            })
+        } else{
+            this.businessLocationService.createBusinessLocationDetails(this.businessLocationDetails)
+                .pipe().subscribe(data => {
+                console.log(data);
+            })
+        }
     }
 
     getStepTitle(): string {
@@ -133,15 +138,5 @@ export class BusinessSetupPageComponent implements OnInit {
 
     updateLocationTimings(data: any) {
         this.businessLocationDetails.locationTimings = data;
-    }
-
-    onSubmitLocationDetails() {
-        this.businessSetupService.saveBusinessDetails(this.businessLocationDetails)
-            .pipe().subscribe((data: any) => {
-                console.log(data);
-            },
-            (err: any) => {
-                console.log(err)
-            });
     }
 }

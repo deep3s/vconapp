@@ -70,7 +70,7 @@ export class BusinessDetailsPageComponent {
                     console.log(err)
                 });
         } else {
-            this.businessSetupService.saveBusinessDetails(businessDetails).pipe().subscribe(
+            this.businessSetupService.createBusinessDetails(businessDetails).pipe().subscribe(
                 () => {
                     this.goToBusinessDetails();
                 }, (err: any) => {

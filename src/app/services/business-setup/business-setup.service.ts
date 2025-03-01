@@ -14,7 +14,7 @@ export class BusinessSetupService {
     constructor(private http: HttpClient) {
     }
 
-    saveBusinessDetails(businessDetails: any): Observable<any> {
+    createBusinessDetails(businessDetails: any): Observable<any> {
         return this.http.post<any>(`${this.businessDetailsUrl}`, businessDetails);
     }
 

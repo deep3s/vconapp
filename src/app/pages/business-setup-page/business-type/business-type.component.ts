@@ -1,6 +1,8 @@
 
 
-import {Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {phoneNumberValidator} from "../../../core/validators/phone-number-validator";
 
 @Component({
   selector: 'business-type',
@@ -8,11 +10,11 @@ import {Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./business-type.component.scss']
 })
 
-export class BusinessTypeComponent implements OnInit {
+export class BusinessTypeComponent implements OnInit, OnChanges {
   @Input() multiSelect: boolean = false;
-  @Input() locationInfo: any;
-  @Input() mainBusinessType: any = {};
+  @Input() selectedBusinessTypes:any;
   @Output() businessTypesSelected = new EventEmitter<any>(); // Emit selected categories
+
 
   categories = [
     {typeId: '1', name: 'Hair Salon', icon: 'bi bi-scissors'},
@@ -35,30 +37,19 @@ export class BusinessTypeComponent implements OnInit {
 
   selectedCategories: any[] = [];
   otherCategory: string = '';
-  isEditing: boolean = false; // Controls Edit Mode
 
-
+  constructor(private formBuilder: FormBuilder) {
+    // console.log(data);
+  }
 
   ngOnInit(): void {
-    if (this.locationInfo?.businessTypes) {
-      this.selectedCategories = [...this.locationInfo.businessTypes];
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.selectedBusinessTypes) {
+      this.selectedCategories = this.selectedBusinessTypes;
     }
   }
-  // selectCategory(category: any) {
-  //   if (this.multiSelect) {
-  //     const index = this.selectedCategories.findIndex(c => c.typeId === category.typeId);
-  //     if (index === -1) {
-  //       if (this.selectedCategories.length < 5) {
-  //         this.selectedCategories.push(category);
-  //       }
-  //     } else {
-  //       this.selectedCategories.splice(index, 1);
-  //     }
-  //   } else {
-  //     this.selectedCategories = [category];
-  //   }
-  //   this.emitSelection();
-  // }
+
   selectCategory(category: any) {
     if (this.multiSelect) {
       const index = this.selectedCategories.indexOf(category);

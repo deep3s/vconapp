@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {debounceTime, Observable, switchMap} from "rxjs";
 import {FormControl, FormGroup} from "@angular/forms";
 import {OlaMaps} from 'olamaps-web-sdk'
@@ -13,10 +13,9 @@ import {EditBillingDetailsComponent} from "../edit-billing-details/edit-billing-
     templateUrl: './business-location-address.component.html',
     styleUrls: ['./business-location-address.component.scss']
 })
-export class BusinessLocationAddressComponent implements OnInit {
-    @Input() locationInfo:any = {};
+export class BusinessLocationAddressComponent implements OnInit, OnChanges {
     @Input() businessBillingDetails: any;
-    @Input() locationAddress:any = {};
+    @Input() locationAddress: any = {};
 
     @Output() locationAddressSaved: EventEmitter<any> = new EventEmitter();
     @Output() locationBillingSaved: EventEmitter<any> = new EventEmitter();
@@ -36,20 +35,26 @@ export class BusinessLocationAddressComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.suggestions = this.searchControl.valueChanges.pipe(
-            debounceTime(300), // Wait 300ms after user stops typing
-            switchMap(filterValue => this.olaMapsService.getSuggestions(filterValue || ''))
-        );
-
-        setTimeout(() => {
-            console.log(this.locationAddress, "Location Address Debug"); // Ensure locationAddress has values
-
-            if (this.locationAddress?.businessLocName) {
-                this.businessLocationForm.patchValue(this.locationAddress);
-            }
-        }, 0); // A small delay ensures data is available before patching
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (this.locationAddress){
+            this.populateReceivedLocationAddress(this.locationAddress);
+        }
+    }
+
+    populateReceivedLocationAddress(addressDetails: any){
+        this.selectedLocationDetails = {...addressDetails};
+        this.businessBillingDetails = {
+            ...this.businessBillingDetails ?? {},
+            address: addressDetails.address,
+            apt: addressDetails.apt,
+            city: addressDetails.city,
+            state: addressDetails.state,
+            postCode: addressDetails.postCode
+        };
+        this.isAddressAvailable = true;
+    }
 
     openEditAddressModal(): void {
         const editAddressDialogRef = this.dialog.open(EditLocationComponent, {
@@ -113,7 +118,7 @@ export class BusinessLocationAddressComponent implements OnInit {
         this.olaMapsService.getPlaceDetails(suggestion.place_id).pipe().subscribe((placeDetails: any) => {
             this.selectedLocationDetails = {...placeDetails, description: suggestion.description};
             this.businessBillingDetails = {
-                ...this.businessBillingDetails??{},
+                ...this.businessBillingDetails ?? {},
                 address: placeDetails.address,
                 apt: placeDetails.apt,
                 city: placeDetails.city,

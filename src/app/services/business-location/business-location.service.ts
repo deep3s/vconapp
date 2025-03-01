@@ -13,8 +13,12 @@ export class BusinessLocationService {
 
   constructor(private http: HttpClient) { }
 
-  saveBusinessLocationDetails(businessLocationDetails: any): Observable<any> {
+  createBusinessLocationDetails(businessLocationDetails: any): Observable<any> {
     return this.http.post<any>(`${this.businessLocationDetailsUrl}`, businessLocationDetails);
+  }
+
+  updateBusinessLocationDetails(businessLocationDetails: any): Observable<any> {
+    return this.http.put<any>(`${this.businessLocationDetailsUrl}/${businessLocationDetails.id}`, businessLocationDetails);
   }
 
   getAllBusinessLocations(): Observable<any> {
