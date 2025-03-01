@@ -239,9 +239,13 @@ const routes: Routes = [
                 path: 'professional-login',
                 loadChildren: () => import('../professional-login-page/professional-login-page.module').then(m => m.ProfessionalLoginPageModule)
             },
+            {
+                path: 'new-service',
+                loadChildren: () => import('../new-service-page/new-service-page.module').then(m => m.NewServicePageModule)
+            },
+
         ],
     },
-    { path: 'new-service', loadChildren: () => import('../new-service-page/new-service-page.module').then(m => m.NewServicePageModule) },
 ];
 
 @NgModule({
